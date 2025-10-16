@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Blog — Recent Articles</title>
+  <link rel="stylesheet" href="../assets/css/blog.css" />
+</head>
+<body>
+    <div class="blog-frame">
+    <!-- Nền màu -->
+    <div class="blog-bg-color"></div>
+
+    <!-- Ảnh nền bên phải -->
+    <img src="../assets/images/TourHeader - Copy.jpg" alt="Ảnh nền" class="blog-bg-img">
+
+    <!-- Ảnh người đè lên -->
+    <img src="../assets/images/TourHeaderPerson.jpg" alt="Người" class="blog-person">
+
+    <!-- Text -->
+    <div class="blog-text">
+      <h1>BLOG RECENT</h1>
+      <div class="breadcrumb">
+        <span class="home">HOME</span>
+        <span class="arrow">›</span>
+        <span class="current">BLOG</span>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Search" />
+        <button id="searchBtn" aria-label="Search">🔍</button>
+      </div>
+
+      <div class="block">
+        <h3>TAGS</h3>
+        <div id="tags" class="tags"></div>
+      </div>
+
+      <div class="block">
+        <h3>POPULAR</h3>
+        <div id="popular" class="popular"></div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <h2 class="section-title">RECENT BLOGS</h2>
+      <section id="grid" class="grid"></section>
+
+      <!-- Pagination -->
+      <nav id="pagination" class="pagination" aria-label="Pagination"></nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/blog.js"></script>
+</body>
+</html>

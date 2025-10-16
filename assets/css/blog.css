@@ -1,0 +1,434 @@
+:root {
+    --offset: 55px;
+    --frame-width: 1820px;
+    --frame-height: 530px;
+    --gap: 22px;
+    --radius: 14px;
+    --border: #e5e7eb;
+    --text: #111827;
+    --muted: #6b7280;
+    --brand: #2563eb;
+    --card: #ffffff;
+    --bg: #fafafa;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f4f4f4;
+}
+
+/* === KHUNG CHÍNH === */
+.blog-frame {
+    position: relative;
+    margin: var(--offset) auto;
+    width: min(var(--frame-width), calc(100% - 110px));
+    height: var(--frame-height);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* === NỀN MÀU TRÁI === */
+.blog-bg-color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    /* phần nền trái */
+    height: 100%;
+    background-color: #F5E2D3;
+    z-index: 1;
+}
+
+/* === ẢNH NỀN === */
+.blog-bg-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1140px;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* === ẢNH NGƯỜI === */
+.blog-person {
+    position: absolute;
+    bottom: 0;
+    right: 290px;
+    height: 80%;
+    object-fit: contain;
+    z-index: 3;
+}
+
+/* === TEXT === */
+.blog-text {
+    position: absolute;
+    top: 50%;
+    left: 150px;
+    transform: translateY(-50%);
+    z-index: 4;
+}
+
+.blog-text h1 {
+    font-size: 45px;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 40px;
+    transform: translateX(80px);
+    /* tràn qua phải */
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    border: 3px solid #eca871;
+    border-radius: 8px;
+    padding: 10px 22px;
+    background: transparent;
+    gap: 10px;
+    transform: translateX(80px);
+    /* tràn qua phải */
+}
+
+.breadcrumb .home {
+    font-weight: 700;
+    color: #000;
+}
+
+.breadcrumb .arrow {
+    color: #ff7c28;
+    font-weight: 700;
+    font-size: 30px;
+    transform: translateY(-3px);
+}
+
+
+.breadcrumb .current {
+    color: #b6b3b2;
+    font-weight: 600;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+.container {
+    max-width: 1120px;
+    margin: 30px auto;
+    padding: 0 18px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--gap);
+}
+
+@media (max-width: 960px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: 2;
+    }
+}
+
+/* Sidebar */
+.sidebar .search-box {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.sidebar input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #fff;
+}
+
+.sidebar button {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.block {
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+    margin-top: 18px;
+}
+
+.block h3 {
+    font-size: 14px;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin: 0 0 10px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 12px;
+    cursor: pointer;
+    background: #fff;
+}
+
+.tag.active,
+.tag:hover {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+}
+
+.popular .item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 14px 0;
+}
+
+.popular img {
+    width: 110px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.popular .meta {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.popular .title {
+    font-size: 13px;
+    color: var(--text);
+    margin: 4px 0 0;
+}
+
+/* Main */
+.section-title {
+    margin: 4px 0 14px;
+    font-size: 20px;
+    letter-spacing: .06em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+}
+
+@media (max-width: 780px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow .15s ease, transform .15s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .06);
+    transform: translateY(-3px);
+}
+
+.card .cover {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.card .body {
+    padding: 14px 14px 18px 14px;
+}
+
+.card .category {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.card .title {
+    margin: 4px 0 10px;
+    font-size: 18px;
+    line-height: 1.35;
+}
+
+.card .author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.card .avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+/* Big first card style */
+.card.big .cover {
+    height: 360px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 26px 0 10px;
+    flex-wrap: wrap;
+}
+
+.pagination .btn,
+.pagination .page {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pagination .page.active {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+}
+
+.pagination .btn[disabled] {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* POPULAR: layout đều, bỏ margin lẻ tẻ */
+.popular {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    /* khoảng cách đều giữa các item */
+}
+
+/* Mỗi item: 2 cột (ảnh + nội dung), căn giữa theo trục dọc */
+.popular .item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    /* thumb 96px + nội dung */
+    align-items: center;
+    column-gap: 12px;
+    padding: 6px 8px;
+    border-radius: 12px;
+    text-decoration: none;
+    /* không gạch chân */
+    color: inherit;
+}
+
+/* Thumbnail cố định, không méo, bo tròn như nhau */
+.popular .item img {
+    width: 96px;
+    aspect-ratio: 4 / 3;
+    /* cùng tỉ lệ */
+    height: auto;
+    /* auto theo aspect-ratio */
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+/* Meta nhỏ gọn, một dòng */
+.popular .meta {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .06em;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Tiêu đề clamp 2 dòng để chiều cao đồng đều */
+.popular .title {
+    font-size: 13px;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Hover/focus nhẹ tay cho dễ nhìn (giữ layout) */
+.popular .item:hover,
+.popular .item:focus {
+    background: #f6f7fb;
+    outline: none;
+}
+
+
+/* --- Card cover: đồng bộ tỉ lệ ảnh để các card cân đối --- */
+.card .cover {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    /* cùng tỉ lệ cho tất cả ảnh */
+    object-fit: cover;
+    /* crop đẹp, không méo */
+    display: block;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Card to (hero) — to hơn 1 xí ở hàng đầu */
+.card.big .cover {
+    aspect-ratio: 16 / 9;
+    /* cao hơn một chút */
+}
+
+/* Cho card đầu full-width hàng 1 (giống mock bạn gửi) */
+@media (min-width: 781px) {
+    .grid .card.big {
+        grid-column: span 2;
+        /* chiếm cả 2 cột */
+    }
+}
+
+/* Nhỏ hơn mobile vẫn 1 cột như cũ nên không cần gì thêm */

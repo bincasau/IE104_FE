@@ -1,0 +1,104 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "10 Must-See Attractions in Santorini, Greece",
+      "category": "Travel",
+      "author": "Angus Smith",
+      "date": "August 15, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=12",
+      "image": "../assets/images/blog/blog1_1.jpg",
+      "slug": "10-must-see-attractions-santorini"
+    },
+    {
+      "id": 2,
+      "title": "Our Beginner’s Guide to Start Hiking in The Swiss Alps",
+      "category": "Guide",
+      "author": "Marta K.",
+      "date": "July 10, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=5",
+      "image": "../assets/images/blog/blog2_1.jpg",
+      "slug": "beginners-guide-hiking-swiss-alps"
+    },
+    {
+      "id": 3,
+      "title": "Solo Travel: The Best Thing You Can Do for Yourself",
+      "category": "Inspiration",
+      "author": "A. Nguyen",
+      "date": "June 18, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=9",
+      "image": "../assets/images/blog/blog3_1.jpg",
+      "slug": "solo-travel-best-thing"
+    },
+    {
+      "id": 4,
+      "title": "Family Fun Vacation: 7 Tips for Traveling with Kids",
+      "category": "Tips & Trick",
+      "author": "Hồ Lan",
+      "date": "April 22, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=3",
+      "image": "../assets/images/blog/blog4_1.jpg",
+      "slug": "family-fun-vacation-tips"
+    },
+    {
+      "id": 5,
+      "title": "Thanksgiving Festival and Culinary Heaven in Canada",
+      "category": "Food",
+      "author": "Celine",
+      "date": "March 10, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=7",
+      "image": "../assets/images/blog/blog5_1.jpg",
+      "slug": "thanksgiving-in-canada"
+    },
+    {
+      "id": 6,
+      "title": "3 Amazing National Parks & Beaches to Add to Your Life Bucket List",
+      "category": "Food",
+      "author": "Mai Trần",
+      "date": "February 17, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=2",
+      "image": "../assets/images/blog/blog6_1.jpg",
+      "slug": "3-national-parks-beaches"
+    },
+    {
+      "id": 7,
+      "title": "Budget Travel Lifestyle: Why You Should Travel Off-Season",
+      "category": "Tips & Trick",
+      "author": "Quang",
+      "date": "January 8, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=4",
+      "image": "../assets/images/blog/blog7_1.jpg",
+      "slug": "budget-travel-offseason"
+    },
+    {
+      "id": 8,
+      "title": "Exploring Vietnam: From Ha Giang Loop to Phu Quoc Beaches",
+      "category": "Destination",
+      "author": "Lan Phạm",
+      "date": "May 5, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=13",
+      "image": "../assets/images/blog/blog8_1.jpg",
+      "slug": "exploring-vietnam"
+    },
+    {
+      "id": 9,
+      "title": "The Future of Eco-Tourism: Traveling Green in 2025",
+      "category": "Inspiration",
+      "author": "Henry Do",
+      "date": "May 29, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=15",
+      "image": "../assets/images/blog/blog9_1.jpg",
+      "slug": "eco-travel-2025"
+    },
+    {
+      "id": 10,
+      "title": "Top 8 Street Foods You Must Try in Bangkok",
+      "category": "Food",
+      "author": "Thảo Lê",
+      "date": "April 12, 2025",
+      "avatar": "https://i.pravatar.cc/40?img=6",
+      "image": "../assets/images/blog/blog10_1.jpg",
+      "slug": "street-foods-bangkok"
+    }
+  ]
+}
