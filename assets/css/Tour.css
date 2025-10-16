@@ -270,7 +270,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* input chính */
 .search-box {
-  width: 745px;            /* theo yêu cầu */
+  width: 770px;            /* theo yêu cầu */
   height: 50px;            /* theo yêu cầu */
   padding: 0 22px 0 48px;  /* chừa chỗ bên trái cho icon */
   border-radius: 50px;     /* bo tròn 2 đầu */
@@ -325,4 +325,238 @@ input[type="range"]::-webkit-slider-thumb {
     top: auto;
   }
   .search-box { width: 540px; }
+}
+.tour-list {
+  position: absolute;
+  top: 780px;
+  left: 655px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- Thẻ tour --- */
+.tour-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 10px 20px;
+  height: 310px;
+}
+
+/* --- Ảnh tour --- */
+.tour-card img {
+  width: 300px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 5px; /* cách trên dưới 5px */
+}
+
+/* --- Thông tin tour --- */
+.tour-info {
+  flex: 1;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.tour-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.tour-info p {
+  font-size: 15px;
+  color: #555;
+  margin: 3px 0;
+  line-height: 1.5;
+}
+
+.tour-info .location {
+  margin-top: 8px;
+  color: #888;
+  font-size: 14px;
+}
+
+/* --- Giá & nút View --- */
+.tour-price {
+  width: 200px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.tour-price .duration {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.tour-price .price {
+  font-size: 22px;
+  font-weight: 900;
+  color: #009933;
+}
+
+.tour-price button {
+  margin-top: 10px;
+  background: #ffcc00;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.tour-price button:hover {
+  background: #ffb700;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+  position: absolute;
+  top: calc(780px + 371px * 5 + 30px);
+  left: 655px;
+  width: 1000px;
+}
+
+.pagination button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #111;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: all 0.25s ease;
+  min-width: 40px;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #f1f5ff;
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.pagination button.active {
+  background-color: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.pagination button:disabled {
+  background-color: #f8f8f8;
+  color: #aaa;
+  border-color: #eee;
+  cursor: not-allowed;
+}
+
+/* --- Giá tour chi tiết --- */
+.price-box {
+  text-align: right;
+}
+
+.price-box .old-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.price-box .price {
+  font-size: 35px;
+  font-weight: 650;
+  color: #009933;
+  margin-bottom: 4px;
+}
+
+.price-box .discount {
+  color: #e67300;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.price-box .save {
+  color: #d32f2f;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* --- Lịch availability --- */
+.availability {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.availability i {
+  color: #ffcc00;
+}
+
+.avail-date {
+  background: #ffeb99;
+  color: #444;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+
+/* === PAGINATION STYLING === */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.pagination button {
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  color: #000;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Nút trang hiện tại */
+.pagination .active {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  font-weight: 600;
 }
