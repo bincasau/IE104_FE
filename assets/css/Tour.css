@@ -1,0 +1,328 @@
+:root {
+  --offset: 55px;
+  --frame-width: 1820px;
+  --frame-height: 530px;
+}
+
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f4f4f4;
+  color: #111;
+}
+
+/* === HEADER === */
+.tour-frame {
+  position: relative;
+  margin: var(--offset) auto;
+  width: min(var(--frame-width), calc(100% - 110px));
+  height: var(--frame-height);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.tour-bg-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background-color: #F5E2D3;
+  z-index: 1;
+}
+
+.tour-bg-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1140px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.tour-person {
+  position: absolute;
+  bottom: 0;
+  right: 275px;
+  height: 90%;
+  object-fit: contain;
+  z-index: 3;
+}
+
+.tour-text {
+  position: absolute;
+  top: 50%;
+  left: 150px;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+
+.tour-text h1 {
+  font-size: 45px;
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 40px;
+  transform: translateX(80px);
+}
+
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  border: 3px solid #eca871;
+  border-radius: 8px;
+  padding: 10px 22px;
+  gap: 10px;
+  transform: translateX(80px);
+}
+
+.breadcrumb .home { font-weight: 700; color: #000; }
+.breadcrumb .arrow { color: #ff7c28; font-weight: 700; font-size: 30px; transform: translateY(-3px); }
+.breadcrumb .current { color: #b6b3b2; font-weight: 600; }
+
+/* === FILTER AREA === */
+.filter-area {
+  margin: 130px 0 60px 300px; /* cách header 130px */
+  max-width: 320px;
+  background: transparent; /* bỏ khung */
+  padding: 0;
+  box-shadow: none;
+}
+
+.filter-area h2 {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.criteria-section {
+  margin-bottom: 40px;
+}
+
+.criteria-section h3 {
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* Destination & Activities */
+.criteria-section label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin: 8px 0;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 600;
+}
+.criteria-section label:hover { color: #ff7c28; }
+
+.criteria-section input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  accent-color: #ffcc00;
+  border-radius: 4px;
+}
+
+/* Show More */
+.show-more {
+  margin-top: 10px;
+  color: #e75a24;
+  font-size: 13px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.show-more:hover { text-decoration: underline; }
+
+/* === Range sliders (giá & ngày) === */
+.range-wrapper {
+  position: relative;
+  width: 280px; /* ngắn lại */
+  margin-top: 25px;
+  margin-bottom: 45px; /* cách ra khỏi phần dưới */
+}
+
+/* Thanh trượt */
+input[type="range"] {
+  width: 100%;
+  height: 8px;
+  border-radius: 6px;
+  background: #ffe066;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffcc00;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+/* Hiển thị giá trị min - max dưới thanh */
+.range-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: #222;
+  margin-top: 8px; /* nằm dưới thanh */
+}
+
+
+/* Các nhãn hoạt động cuối cùng */
+.criteria-section:last-child label {
+  font-size: 14px;
+}
+
+
+/* === THANH TÌM KIẾM & SORT === */
+.search-sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 40px 0 25px 0; /* cách phần trên 40px */
+}
+
+.search-box {
+  width: 746px;
+  height: 46px;
+  padding: 0 18px;
+  font-size: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.25s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.search-box:focus {
+  border-color: #ff7c28;
+  box-shadow: 0 0 0 3px rgba(255, 124, 40, 0.2);
+}
+
+.sort-box select {
+  width: 160px;
+  height: 45px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  padding: 0 10px;
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #ff7c28 50%),
+    linear-gradient(135deg, #ff7c28 50%, transparent 50%);
+  background-position: calc(100% - 18px) center,
+    calc(100% - 13px) center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.sort-box select:focus {
+  outline: none;
+  border-color: #ff7c28;
+}
+
+
+/* ========== Search + Sort (Font Awesome icon) ========== */
+/* container chung (nằm ngoài .criteria-section nếu muốn) */
+.criteria-controls {
+  position: absolute; /* hoặc fixed nếu bạn muốn cố định theo cửa sổ */
+  top: 700px;         /* chỉnh lại theo layout của bạn */
+  left: 660px;        /* chỉnh lại theo layout của bạn */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 50;
+}
+
+/* search box wrapper (chứa icon + input) */
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* icon kính lúp (Font Awesome) */
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #8a8a8a;
+  pointer-events: none;
+}
+
+/* input chính */
+.search-box {
+  width: 745px;            /* theo yêu cầu */
+  height: 50px;            /* theo yêu cầu */
+  padding: 0 22px 0 48px;  /* chừa chỗ bên trái cho icon */
+  border-radius: 50px;     /* bo tròn 2 đầu */
+  border: 2px solid #ddd;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  background: #fff;
+  transition: box-shadow .18s ease, border-color .18s ease;
+}
+
+/* hiệu ứng focus */
+.search-box:focus {
+  border-color: #ff7c28;
+  box-shadow: 0 6px 18px rgba(255,124,40,0.12);
+}
+
+/* sort select styling (viên thuốc) */
+.sort-box select {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  padding: 0 18px;
+  cursor: pointer;
+  appearance: none;
+  /* custom arrow using background */
+  background-image:
+    linear-gradient(45deg, transparent 50%, #ff7c28 50%),
+    linear-gradient(135deg, #ff7c28 50%, transparent 50%);
+  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* focus style select */
+.sort-box select:focus {
+  outline: none;
+  border-color: #ff7c28;
+}
+
+/* responsive fallback: nếu màn hẹp thì cho flow xuống */
+@media (max-width: 1200px) {
+  .criteria-controls {
+    position: static;
+    margin-top: 24px;
+    left: auto;
+    top: auto;
+  }
+  .search-box { width: 540px; }
+}

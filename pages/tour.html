@@ -1,31 +1,91 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang Tour</title>
-  <link rel="stylesheet" href="../assets/css/styleTour.css">
-</head>
-<body>
-  <div class="tour-frame">
-    <!-- Nền màu -->
-    <div class="tour-bg-color"></div>
-
-    <!-- Ảnh nền bên phải -->
-    <img src="../assets/images/TourHeader - Copy.jpg" alt="Ảnh nền" class="tour-bg-img">
-
-    <!-- Ảnh người đè lên -->
-    <img src="../assets/images/TourHeaderPerson.jpg" alt="Người" class="tour-person">
-
-    <!-- Text -->
-    <div class="tour-text">
-      <h1>Trip Search Result</h1>
-      <div class="breadcrumb">
-        <span class="home">HOME</span>
-        <span class="arrow">›</span>
-        <span class="current">TRIP SEARCH RESULT</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Tour</title>
+    <link rel="stylesheet" href="../assets/css/Tour.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="tour-frame">
+      <div class="tour-bg-color"></div>
+      <img src="../assets/images/TourHeader - Copy.jpg" class="tour-bg-img" />
+      <img src="../assets/images/TourHeaderPerson.jpg" class="tour-person" />
+      <div class="tour-text">
+        <h1>Trip Search Result</h1>
+        <div class="breadcrumb">
+          <span class="home">HOME</span>
+          <span class="arrow">›</span>
+          <span class="current">TRIP SEARCH RESULT</span>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+
+    <div class="criteria-controls">
+      <div class="search-container">
+        <i
+          class="fa-solid fa-magnifying-glass search-icon"
+          aria-hidden="true"
+        ></i>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-box"
+          placeholder="Search for tours..."
+          aria-label="Search for tours"
+        />
+      </div>
+
+      <div class="sort-box">
+        <select id="sortSelect" aria-label="Sort tours">
+          <option value="recent">Recently Added</option>
+          <option value="priceAsc">Price: Low → High</option>
+          <option value="priceDesc">Price: High → Low</option>
+        </select>
+      </div>
+    </div>
+    <!-- FILTER AREA -->
+    <div class="filter-area">
+      <h2>Criteria</h2>
+
+      <div class="criteria-section">
+        <h3>Destination</h3>
+        <div id="destinationList"></div>
+        <button id="showMoreDest" class="show-more">Show More</button>
+      </div>
+
+      <div class="criteria-section">
+        <h3>Price</h3>
+        <div class="range-wrapper">
+          <input type="range" id="priceRange" min="0" max="2000" value="0" />
+          <div class="range-values">
+            <span id="priceMin">$0</span>
+            <span id="priceMax">$2000</span>
+          </div>
+        </div>
+      </div>
+      <div class="criteria-section">
+        <h3>Duration</h3>
+        <div class="range-wrapper">
+          <input type="range" id="durationRange" min="1" max="15" value="1" />
+          <div class="range-values">
+            <span id="durationMin">1 day</span>
+            <span id="durationMax">15 days</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="criteria-section">
+        <h3>Activities</h3>
+        <div id="activityList"></div>
+        <button id="showMoreAct" class="show-more">Show More</button>
+      </div>
+    </div>
+
+    <script src="../assets/js/Tour.js"></script>
+  </body>
 </html>
