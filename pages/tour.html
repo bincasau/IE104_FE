@@ -10,7 +10,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     />
   </head>
+
   <body>
+    <!-- ========== HEADER FRAME ========== -->
     <div class="tour-frame">
       <div class="tour-bg-color"></div>
       <img src="../assets/images/TourHeader - Copy.jpg" class="tour-bg-img" />
@@ -25,12 +27,10 @@
       </div>
     </div>
 
-    <div class="criteria-controls">
+    <!-- ========== SEARCH + SORT BAR ========== -->
+    <div class="criteria-controls scroll-animate">
       <div class="search-container">
-        <i
-          class="fa-solid fa-magnifying-glass search-icon"
-          aria-hidden="true"
-        ></i>
+        <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
         <input
           type="text"
           id="searchInput"
@@ -49,12 +49,39 @@
       </div>
     </div>
 
-    <section class="tour-list" id="tour-list"></section>
+    <!-- ========== TOUR LIST ========== -->
+    <section class="tour-list scroll-animate" id="tour-list">
+      <!-- Ví dụ mẫu để bạn test hiệu ứng, sau này JS sẽ render thật -->
+      <div class="tour-card scroll-animate">
+        <img src="../assets/images/sample1.jpg" alt="Tour" />
+        <div class="tour-info">
+          <h3>Ha Long Bay Adventure</h3>
+          <p>3 days • From $399</p>
+        </div>
+      </div>
 
-    <div class="pagination" id="pagination"></div>
+      <div class="tour-card scroll-animate">
+        <img src="../assets/images/sample2.jpg" alt="Tour" />
+        <div class="tour-info">
+          <h3>Sapa Mountain Trek</h3>
+          <p>4 days • From $499</p>
+        </div>
+      </div>
 
-    <!-- FILTER AREA -->
-    <div class="filter-area">
+      <div class="tour-card scroll-animate">
+        <img src="../assets/images/sample3.jpg" alt="Tour" />
+        <div class="tour-info">
+          <h3>Da Nang Beach Escape</h3>
+          <p>2 days • From $299</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PAGINATION ========== -->
+    <div class="pagination scroll-animate" id="pagination"></div>
+
+    <!-- ========== FILTER AREA ========== -->
+    <div class="filter-area scroll-animate">
       <h2>Criteria</h2>
 
       <div class="criteria-section">
@@ -73,6 +100,7 @@
           </div>
         </div>
       </div>
+
       <div class="criteria-section">
         <h3>Duration</h3>
         <div class="range-wrapper">

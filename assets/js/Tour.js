@@ -1,4 +1,3 @@
-// Tour.js — Replace your old file with this
 document.addEventListener("DOMContentLoaded", () => {
   // ==== ELEMENTS ====
   const destList = document.getElementById("destinationList");
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPage = 1;
   const toursPerPage = 5;
 
-  // ==== Normalization for Vietnamese + whitespace + case ====
+  // ==== Helper: Normalize ====
   const normalize = (s) =>
     String(s ?? "")
       .toLowerCase()
@@ -35,11 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
       .replace(/\s+/g, " ")
       .trim();
 
-  // ==== Render checkboxes (adds an "All" checkbox at top) ====
+  // ==== Scroll to top ====
+  function scrollToTopSmooth() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // ==== Render checkboxes ====
   function renderList(arr, container, limit, showAll, typeLabel) {
     container.innerHTML = "";
 
-    // All checkbox (checked by default)
     const allLabel = document.createElement("label");
     const allCb = document.createElement("input");
     allCb.type = "checkbox";
@@ -55,43 +58,37 @@ document.addEventListener("DOMContentLoaded", () => {
       const cb = document.createElement("input");
       cb.type = "checkbox";
       cb.value = name;
-      cb.checked = false;
       label.appendChild(cb);
       label.appendChild(document.createTextNode(" " + name));
       container.appendChild(label);
     });
   }
 
-  // ==== Load tours JSON, init filters & ranges ====
+  // ==== Load tours ====
   async function loadTours() {
     try {
       const res = await fetch("../data/tours.json");
       const data = await res.json();
       tours = Array.isArray(data.tours) ? data.tours : [];
 
-      // get unique locations & activities
       provinces = [...new Set(tours.map((t) => t.location))];
       activities = [...new Set(tours.flatMap((t) => t.activities || []))];
 
-      // render initial filter lists
       renderList(provinces, destList, 4, showAllDest, "Destinations");
       renderList(activities, actList, 4, showAllAct, "Activities");
 
-      // set price range max to max price from data (and default value = max so all show)
       const maxPriceFound = tours.length ? Math.max(...tours.map((t) => t.price)) : 2000;
       priceRange.max = Math.max(2000, maxPriceFound);
       priceRange.value = priceRange.max;
       priceMin.textContent = `$0`;
       priceMax.textContent = `$${priceRange.value}`;
 
-      // set duration range max to max duration
       const maxDurationFound = tours.length ? Math.max(...tours.map((t) => t.duration)) : 15;
       durationRange.max = Math.max(15, maxDurationFound);
       durationRange.value = durationRange.max;
       durationMin.textContent = `1 day`;
       durationMax.textContent = `${durationRange.value} days`;
 
-      // attach events to new checkbox elements
       attachFilterEvents();
 
       filteredTours = [...tours];
@@ -102,105 +99,66 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ==== Attach events to checkbox lists (call after renderList) ====
+  // ==== Filter checkboxes ====
   function attachFilterEvents() {
-    // Destination checkboxes
     destList.querySelectorAll("input[type='checkbox']").forEach((cb) => {
-      cb.removeEventListener("change", onDestChange);
       cb.addEventListener("change", onDestChange);
     });
-
-    // Activity checkboxes
     actList.querySelectorAll("input[type='checkbox']").forEach((cb) => {
-      cb.removeEventListener("change", onActChange);
       cb.addEventListener("change", onActChange);
     });
   }
 
-  // ==== Checkbox handlers (keeps "All" semantics stable) ====
   function onDestChange(e) {
-    const changed = e.target;
     const allCb = destList.querySelector('input[value="all"]');
-
-    if (changed.value === "all" && changed.checked) {
-      // check All -> uncheck others
-      destList.querySelectorAll('input[type="checkbox"]').forEach((c) => {
-        c.checked = c === changed;
-      });
-    } else if (changed.value !== "all" && changed.checked) {
-      // uncheck All if any specific selected
-      if (allCb) allCb.checked = false;
-    } else {
-      // if none selected -> re-enable All
-      const anyChecked = Array.from(destList.querySelectorAll('input[type="checkbox"]'))
-        .some((c) => c.checked && c.value !== "all");
-      if (!anyChecked && allCb) allCb.checked = true;
+    if (e.target.value === "all" && e.target.checked) {
+      destList.querySelectorAll('input[type="checkbox"]').forEach((c) => (c.checked = c === e.target));
+    } else if (e.target.checked) {
+      allCb.checked = false;
+    } else if (![...destList.querySelectorAll('input[type="checkbox"]')].some((c) => c.checked && c.value !== "all")) {
+      allCb.checked = true;
     }
-
     applyFilters();
   }
 
   function onActChange(e) {
-    const changed = e.target;
     const allCb = actList.querySelector('input[value="all"]');
-
-    if (changed.value === "all" && changed.checked) {
-      actList.querySelectorAll('input[type="checkbox"]').forEach((c) => {
-        c.checked = c === changed;
-      });
-    } else if (changed.value !== "all" && changed.checked) {
-      if (allCb) allCb.checked = false;
-    } else {
-      const anyChecked = Array.from(actList.querySelectorAll('input[type="checkbox"]'))
-        .some((c) => c.checked && c.value !== "all");
-      if (!anyChecked && allCb) allCb.checked = true;
+    if (e.target.value === "all" && e.target.checked) {
+      actList.querySelectorAll('input[type="checkbox"]').forEach((c) => (c.checked = c === e.target));
+    } else if (e.target.checked) {
+      allCb.checked = false;
+    } else if (![...actList.querySelectorAll('input[type="checkbox"]')].some((c) => c.checked && c.value !== "all")) {
+      allCb.checked = true;
     }
-
     applyFilters();
   }
 
-  // ==== Build filter selection arrays (normalized) ====
+  // ==== Apply filters ====
   function getSelectedValues(container) {
-    return Array.from(container.querySelectorAll('input[type="checkbox"]:checked'))
-      .map((c) => normalize(c.value));
+    return [...container.querySelectorAll('input[type="checkbox"]:checked')].map((c) => normalize(c.value));
   }
 
-  // ==== Apply all filters (search, checkboxes, price, duration) ====
   function applyFilters() {
     const searchQ = normalize(searchInput.value);
-    const selectedProvs = getSelectedValues(destList); // 'all' normalized -> 'all'
+    const selectedProvs = getSelectedValues(destList);
     const selectedActs = getSelectedValues(actList);
-
     const maxPrice = parseInt(priceRange.value, 10);
     const maxDur = parseInt(durationRange.value, 10);
-
-    // If nothing is checked (shouldn't happen because All is default), treat as all
-    const provAllSelected = selectedProvs.length === 0 || selectedProvs.includes("all");
-    const actAllSelected = selectedActs.length === 0 || selectedActs.includes("all");
+    const provAll = selectedProvs.includes("all") || selectedProvs.length === 0;
+    const actAll = selectedActs.includes("all") || selectedActs.length === 0;
 
     filteredTours = tours.filter((t) => {
-      // normalize tour fields
       const loc = normalize(t.location);
-      const acts = (t.activities || []).map((a) => normalize(a));
-      const title = normalize(t.title);
-
-      // province: OR if multiple selected (match any)
-      const provinceMatch = provAllSelected || selectedProvs.includes(loc);
-
-      // activities: OR if multiple selected (match any)
-      const activityMatch = actAllSelected || acts.some((a) => selectedActs.includes(a));
-
-      // search match (title includes search)
-      const searchMatch = title.includes(searchQ);
-
-      // price & duration
-      const priceMatch = Number(t.price) <= maxPrice;
-      const durationMatch = Number(t.duration) <= maxDur;
-
-      return provinceMatch && activityMatch && searchMatch && priceMatch && durationMatch;
+      const acts = (t.activities || []).map(normalize);
+      return (
+        (provAll || selectedProvs.includes(loc)) &&
+        (actAll || acts.some((a) => selectedActs.includes(a))) &&
+        normalize(t.title).includes(searchQ) &&
+        t.price <= maxPrice &&
+        t.duration <= maxDur
+      );
     });
 
-    // reset page
     currentPage = 1;
     renderTours();
   }
@@ -210,11 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const mode = sortSelect.value;
     if (mode === "priceAsc") return arr.slice().sort((a, b) => a.price - b.price);
     if (mode === "priceDesc") return arr.slice().sort((a, b) => b.price - a.price);
-    // recent/default: by id desc (newer first) or leave as is
     return arr.slice().sort((a, b) => b.id - a.id);
   }
 
-  // ==== Render tours + pagination (simple prev/next + numbered pages) ====
+  // ==== Render tours ====
   function renderTours() {
     container.innerHTML = "";
     const sorted = sortTours(filteredTours);
@@ -230,11 +187,19 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // fade-in + scroll top
+    container.style.opacity = "0";
+    scrollToTopSmooth();
+    setTimeout(() => {
+      container.style.transition = "opacity 0.5s ease";
+      container.style.opacity = "1";
+    }, 50);
+
     pageTours.forEach((tour) => {
       const saveAmount = tour.oldPrice ? tour.oldPrice - tour.price : 0;
-      const datesHTML = (tour.availability || []).map(d => `<span class="avail-date">${d}</span>`).join("");
+      const datesHTML = (tour.availability || []).map((d) => `<span class="avail-date">${d}</span>`).join("");
       container.innerHTML += `
-        <div class="tour-card">
+        <div class="tour-card scroll-animate">
           <img src="${tour.image}" alt="${tour.title}">
           <div class="tour-info">
             <h3>${tour.title}</h3>
@@ -251,40 +216,52 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <button>View More</button>
           </div>
-        </div>
-      `;
+        </div>`;
     });
 
-    // build pagination (Prev, numbered pages limited, Next)
+    // pagination
     pagination.innerHTML = "";
     const prev = document.createElement("button");
     prev.textContent = "Prev";
     prev.disabled = currentPage === 1;
-    prev.addEventListener("click", () => { if (currentPage > 1) { currentPage--; renderTours(); } });
+    prev.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderTours();
+      }
+    });
     pagination.appendChild(prev);
 
-    // show up to 7 page buttons centered on current
     const maxButtons = 7;
     let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
     let endPage = Math.min(totalPages, startPage + maxButtons - 1);
-    if (endPage - startPage + 1 < maxButtons) startPage = Math.max(1, endPage - maxButtons + 1);
+    if (endPage - startPage + 1 < maxButtons)
+      startPage = Math.max(1, endPage - maxButtons + 1);
 
     for (let p = startPage; p <= endPage; p++) {
       const btn = document.createElement("button");
       btn.textContent = p;
       if (p === currentPage) btn.classList.add("active");
-      btn.addEventListener("click", () => { currentPage = p; renderTours(); });
+      btn.addEventListener("click", () => {
+        currentPage = p;
+        renderTours();
+      });
       pagination.appendChild(btn);
     }
 
     const next = document.createElement("button");
     next.textContent = "Next";
     next.disabled = currentPage === totalPages;
-    next.addEventListener("click", () => { if (currentPage < totalPages) { currentPage++; renderTours(); } });
+    next.addEventListener("click", () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderTours();
+      }
+    });
     pagination.appendChild(next);
   }
 
-  // ==== Show more / less handlers (re-render lists & re-attach events) ====
+  // ==== Show more buttons ====
   showMoreDestBtn.addEventListener("click", () => {
     showAllDest = !showAllDest;
     renderList(provinces, destList, 4, showAllDest, "Destinations");
@@ -301,18 +278,13 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilters();
   });
 
-  // ==== Input & control events ====
-  // search (debounced)
+  // ==== Inputs ====
   let debounce;
   searchInput.addEventListener("input", () => {
     clearTimeout(debounce);
     debounce = setTimeout(applyFilters, 250);
   });
-
-  // sort
-  sortSelect.addEventListener("change", () => { applyFilters(); });
-
-  // range sliders
+  sortSelect.addEventListener("change", applyFilters);
   priceRange.addEventListener("input", () => {
     priceMax.textContent = `$${priceRange.value}`;
     applyFilters();
