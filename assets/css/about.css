@@ -1,0 +1,202 @@
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.about-frame{
+    background-color: #f0f0f0;
+    background-image: url(../images/aboutus_header.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 800px;
+    width: 100%;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.breadcrumb{
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: 30px;
+    color: white;
+}
+
+.blog-text {
+    position: absolute;
+    color: white   ;
+    text-align: center;
+    
+}
+
+h1{
+    font-size: 100px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.text-intro{
+    font-size:20px;
+    text-align: center;
+    font-weight: 500;
+    margin: 0 200px;
+    margin-top: 150px;
+}
+
+
+/* phần giới thiệu về chúng tôi */
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    max-width: 1800px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 22.5px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+
+    margin: 100px auto;
+    margin-top: 150px;
+}
+
+.card {
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    margin-top: 80px;
+}
+
+.square-button {
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin: auto;
+    font-size: 40px;
+}
+
+
+.square-button:hover {
+    transform: translateX(-50%) scale(1.2); /* Phóng to 20% khi hover */
+    
+}
+
+.card i {
+    font-size: 3.75em;
+    color: #007bff;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.card h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin: 15px 0;
+}
+
+.card p {
+    font-size: 1.35em;
+    color: #666;
+    margin: 0;
+}
+
+/* ===== TEAM SECTION ===== */
+.team-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.team-container h2 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Lưới team */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* CARD CHUNG */
+.team-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  background-color: #fff;
+  transition: transform 0.4s ease;
+}
+
+/* ẢNH CHÍNH & ẢNH HOVER */
+.team-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease-in-out, transform 1.2s ease-in-out;
+}
+
+/* Ẩn ảnh hover ban đầu */
+.hover-image {
+  opacity: 0;
+}
+
+/* Khi hover: chuyển ảnh và phóng to */
+.team-card:hover .main-image {
+  opacity: 0;
+  transform: scale(1.4);
+}
+
+.team-card:hover .hover-image {
+  opacity: 1;
+  transform: scale(1.2); /* phóng to 20% */
+}
+
+/* Card nổi nhẹ khi hover */
+.team-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Chữ overlay */
+.team-card h3,
+.team-card p {
+  position: absolute;
+  left: 10px;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+.team-card h3 {
+  bottom: 60px;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.team-card p {
+  bottom: 30px;
+  font-size: 1em;
+  font-style: italic;
+}
