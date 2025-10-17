@@ -1,30 +1,27 @@
-// ---- Config ----
-const PAGE_SIZE = 5; // số bài/ trang
-const DATA_URL  = "../data/blogs.json"; // nhớ tạo file này
+// ====== CONFIG ======
+const DATA_URL  = "../data/blogs.json"; // chứa cả blogs + details
+const PAGE_SIZE = 6;
 
-// ---- State ----
-let allBlogs = [];
-let filteredBlogs = [];
-let currentPage = 1;
-let activeTag = null;
+// ====== STATE ======
+let allBlogs = [], details = [], filteredBlogs = [];
+let currentPage = 1, activeTag = null;
 
-// ---- Helpers ----
-const $ = sel => document.querySelector(sel);
-const $$ = sel => Array.from(document.querySelectorAll(sel));
+// ====== HELPERS ======
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const paginate = (arr, p=1, size=PAGE_SIZE)=>arr.slice((p-1)*size, p*size);
+const uniq = arr => Array.from(new Set(arr));
 
-function paginate(arr, page = 1, size = PAGE_SIZE) {
-  const start = (page - 1) * size;
-  return arr.slice(start, start + size);
+// ====== SIDEBAR ======
+function renderTags(blogs){
+  const tags = uniq(blogs.map(b=>b.category));
+  $("#tags").innerHTML = tags.map(t=>`
+    <button class="tag ${t===activeTag?"active":""}" data-tag="${t}">${t}</button>
+  `).join("");
 }
-
-function uniq(arr) { return Array.from(new Set(arr)); }
-
-// ---- Renderers ----
-function renderPopular(blogs) {
-  const popEl = $("#popular");
-  const picks = blogs.slice(0, 4); // 4 bài bất kỳ đầu danh sách (bạn có thể sort theo view)
-  popEl.innerHTML = picks.map(b => `
-    <a class="item" href="#${b.slug}" data-slug="${b.slug}">
+function renderPopular(blogs){
+  $("#popular").innerHTML = blogs.slice(0,4).map(b=>`
+    <a class="item" href="#${b.slug}">
       <img src="${b.image}" alt="${b.title}">
       <div>
         <div class="meta">${b.category}</div>
@@ -34,107 +31,113 @@ function renderPopular(blogs) {
   `).join("");
 }
 
-function renderTags(blogs) {
-  const tagsEl = $("#tags");
-  const tags = uniq(blogs.map(b => b.category)); // dùng category làm tag chính
-  tagsEl.innerHTML = tags.map(t => `<button class="tag${t===activeTag?' active':''}" data-tag="${t}">${t}</button>`).join("");
-}
-
-function cardTemplate(b, isBig=false) {
-  return `
-    <article class="card ${isBig ? 'big' : ''}" data-slug="${b.slug}" tabindex="0">
-      <img class="cover" src="${b.image}" alt="${b.title}">
-      <div class="body">
-        <div class="category">${b.category}</div>
-        <h3 class="title">${b.title}</h3>
-        <div class="author">
-          <img class="avatar" src="${b.avatar}" alt="${b.author}">
-          <span>${b.author} · ${b.date}</span>
-        </div>
+// ====== GRID ======
+function card(b,isBig=false){return`
+  <article class="card ${isBig?'big':''}" data-slug="${b.slug}">
+    <img class="cover" src="${b.image}" alt="${b.title}">
+    <div class="body">
+      <div class="category">${b.category}</div>
+      <h3 class="title">${b.title}</h3>
+      <div class="author">
+        <img class="avatar" src="${b.avatar}" alt="${b.author}">
+        <span>${b.author} · ${b.date}</span>
       </div>
-    </article>
-  `;
-}
+    </div>
+  </article>`;}
 
-function renderGrid() {
-  const holder = $("#grid");
-  const list = paginate(filteredBlogs, currentPage, PAGE_SIZE);
-  // tấm lớn đầu tiên (giống mock)
-  holder.innerHTML = list.map((b, idx) => cardTemplate(b, idx === 0)).join("");
-
-
-  // attach click → (Bạn có thể chuyển sang detail.html nếu đã có trang chi tiết)
-  $$("#grid .card").forEach(card => {
-    card.addEventListener("click", () => {
-      const slug = card.dataset.slug;
-      // ví dụ: mở detail.html?slug=...
-      // window.location.href = `detail.html?slug=${slug}`;
-      // demo: chỉ cuộn lên đầu và đánh hash
-      location.hash = slug;
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+function renderGrid(){
+  const list = paginate(filteredBlogs, currentPage);
+  $("#grid").innerHTML = list.map((b,i)=>card(b,i===0&&currentPage===1)).join("");
+  $$("#grid .card").forEach(c=>{
+    c.onclick=()=>{location.hash=c.dataset.slug;window.scrollTo({top:0,behavior:"smooth"});}
   });
 }
 
-function renderPagination() {
-  const totalPages = Math.max(1, Math.ceil(filteredBlogs.length / PAGE_SIZE));
+function renderPagination(){
+  const total = Math.ceil(filteredBlogs.length / PAGE_SIZE);
   const nav = $("#pagination");
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-
   nav.innerHTML = `
-    <button class="btn prev" ${currentPage===1?'disabled':''}>Previous</button>
-    ${pages.map(p => `<button class="page ${p===currentPage?'active':''}" data-page="${p}">${p}</button>`).join("")}
-    <button class="btn next" ${currentPage===totalPages?'disabled':''}>Next</button>
-  `;
-
-  nav.querySelector(".prev").onclick = () => { if (currentPage>1){ currentPage--; renderGrid(); renderPagination(); window.scrollTo({top:0,behavior:"smooth"});} };
-  nav.querySelector(".next").onclick = () => { if (currentPage<totalPages){ currentPage++; renderGrid(); renderPagination(); window.scrollTo({top:0,behavior:"smooth"});} };
-  $$("#pagination .page").forEach(btn => {
-    btn.onclick = () => {
-      currentPage = Number(btn.dataset.page);
-      renderGrid(); renderPagination();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-  });
+    <button class="btn prev" ${currentPage===1?'disabled':''}>Prev</button>
+    ${Array.from({length:total},(_,i)=>`
+      <button class="page ${i+1===currentPage?'active':''}" data-page="${i+1}">${i+1}</button>
+    `).join("")}
+    <button class="btn next" ${currentPage===total?'disabled':''}>Next</button>`;
+  nav.querySelector(".prev").onclick=()=>{if(currentPage>1){currentPage--;renderGrid();renderPagination();}};
+  nav.querySelector(".next").onclick=()=>{if(currentPage<total){currentPage++;renderGrid();renderPagination();}};
+  $$("#pagination .page").forEach(b=>b.onclick=()=>{currentPage=+b.dataset.page;renderGrid();renderPagination();});
 }
 
-// ---- Search & Filter ----
-function applyFilters() {
-  const q = $("#searchInput").value.trim().toLowerCase();
-  filteredBlogs = allBlogs.filter(b => {
-    const byText = !q || b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q);
-    const byTag  = !activeTag || b.category === activeTag;
-    return byText && byTag;
+// ====== FILTER ======
+function applyFilter(){
+  const q=($("#searchInput").value||"").toLowerCase();
+  filteredBlogs=allBlogs.filter(b=>{
+    const t=!q||b.title.toLowerCase().includes(q)||b.author.toLowerCase().includes(q);
+    const c=!activeTag||b.category===activeTag;
+    return t&&c;
   });
-  currentPage = 1;
-  renderGrid();
-  renderPagination();
+  currentPage=1;renderGrid();renderPagination();
 }
 
-function attachSidebarEvents() {
-  $("#searchBtn").onclick = applyFilters;
-  $("#searchInput").onkeydown = (e) => { if (e.key === "Enter") applyFilters(); };
-  $("#tags").addEventListener("click", e => {
-    const btn = e.target.closest(".tag");
-    if (!btn) return;
-    activeTag = (btn.dataset.tag === activeTag) ? null : btn.dataset.tag;
-    renderTags(allBlogs);
-    applyFilters();
-  });
+// ====== DETAIL ======
+function renderBlogDetail(slug){
+  const post=details.find(p=>p.slug===slug);if(!post)return;
+  const list=$("#grid"),pag=$("#pagination"),ttl=$(".section-title");
+  let box=$("#blog-detail");
+  if(!box){box=document.createElement("div");box.id="blog-detail";box.className="blog-detail";$(".main").insertBefore(box,pag);}
+  list.style.display="none";pag.style.display="none";ttl.style.display="none";
+  const avatar=(allBlogs.find(b=>b.slug===slug)?.avatar)||"https://i.pravatar.cc/40?img=1";
+  const mins=Math.max(1,Math.round(post.intro.split(" ").length/150));
+  box.classList.remove("hidden");
+  box.innerHTML=`
+    <div class="bd-hero">
+      <img src="${post.cover}" alt="${post.title}">
+      <span class="bd-chip">${post.category}</span>
+    </div>
+    <div class="bd-head">
+      <button class="back-btn">← Back to Blogs</button>
+      <h1 class="bd-title">${post.title}</h1>
+      <div class="bd-meta">
+        <img class="avatar" src="${avatar}" alt="${post.author}">
+        <span>${post.author}</span>
+        <span>•</span><span>${post.date}</span>
+        <span>•</span><span>${mins} min read</span>
+      </div>
+    </div>
+    <div class="bd-divider"></div>
+    <div class="bd-body">
+      <p class="bd-intro">${post.intro}</p>
+      ${post.sections.map((s,i)=>`
+        <section class="bd-section">
+          <h2>${s.heading}</h2>
+          <p>${s.text}</p>
+          ${s.image?`<img src="${s.image}" alt="${s.heading}"><div class="bd-cap">Figure ${i+1}. ${s.heading}</div>`:""}
+        </section>`).join("")}
+      ${post.quote?`<div class="bd-quote">${post.quote}</div>`:""}
+      ${post.gallery?`<div class="bd-gallery">${post.gallery.map(g=>`<img src="${g}">`).join("")}</div>`:""}
+    </div>`;
+  box.querySelector(".back-btn").onclick=()=>{
+    box.classList.add("hidden");
+    list.style.display="";pag.style.display="";ttl.style.display="";
+    location.hash="";
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
 }
 
-// ---- Boot ----
-(async function init() {
-  const res = await fetch(DATA_URL);
-  const data = await res.json();
+// ====== ROUTER ======
+function handleRoute(){
+  const slug=location.hash.replace("#","");
+  const box=$("#blog-detail");
+  if(slug)renderBlogDetail(slug);
+  else if(box){box.classList.add("hidden");$("#grid").style.display="";$("#pagination").style.display="";$(".section-title").style.display="";}
+}
 
-  // sắp xếp mới nhất trước (nếu date là dạng text tiếng Anh — có thể giữ nguyên id desc)
-  allBlogs = data.blogs.slice().sort((a,b) => b.id - a.id);
-  filteredBlogs = allBlogs.slice();
-
-  renderPopular(allBlogs);
-  renderTags(allBlogs);
-  renderGrid();
-  renderPagination();
-  attachSidebarEvents();
+// ====== INIT ======
+(async()=>{
+  const res=await fetch(DATA_URL);const data=await res.json();
+  allBlogs=data.blogs;details=data.details;filteredBlogs=allBlogs.slice();
+  renderTags(allBlogs);renderPopular(allBlogs);renderGrid();renderPagination();
+  $("#searchBtn").onclick=applyFilter;$("#searchInput").onkeydown=e=>e.key==="Enter"&&applyFilter();
+  $("#tags").onclick=e=>{const b=e.target.closest(".tag");if(!b)return;activeTag=b.dataset.tag===activeTag?null:b.dataset.tag;renderTags(allBlogs);applyFilter();}
+  window.addEventListener("hashchange",handleRoute);
+  handleRoute();
 })();
