@@ -4,36 +4,106 @@ body {
     padding: 0;
     width: 100%;
 }
+:root {
+    --offset: 55px;
+    --frame-width: 1820px;
+    --frame-height: 530px;
+    --gap: 22px;
+    --radius: 14px;
+    --border: #e5e7eb;
+    --text: #111827;
+    --muted: #6b7280;
+    --brand: #2563eb;
+    --card: #ffffff;
+    --bg: #fafafa;
+}
 
-.about-frame{
-    background-color: #f0f0f0;
-    background-image: url(../images/aboutus_header.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 800px;
-    width: 100%;
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f4f4f4;
+}
+
+/* === KHUNG CHÍNH === */
+.blog-frame {
     position: relative;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    margin: var(--offset) auto;
+    width: min(var(--frame-width), calc(100% - 110px));
+    height: var(--frame-height);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.breadcrumb{
-    margin-top: 20px;
-    margin-left: 50px;
-    font-size: 30px;
-    color: white;
+/* === NỀN MÀU TRÁI === */
+.blog-bg-color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    /* phần nền trái */
+    height: 100%;
+    background-color: #F5E2D3;
+    z-index: 1;
 }
 
+/* === ẢNH NỀN === */
+.blog-bg-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1140px;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* === ẢNH NGƯỜI === */
+.blog-person {
+    position: absolute;
+    bottom: 0;
+    right: 290px;
+    height: 80%;
+    object-fit: contain;
+    z-index: 3;
+}
+
+/* === TEXT === */
 .blog-text {
     position: absolute;
-    color: white   ;
-    text-align: center;
-    
+    top: 50%;
+    left: 150px;
+    transform: translateY(-50%);
+    z-index: 4;
 }
+
+.blog-text h1 {
+    font-size: 45px;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 40px;
+    transform: translateX(80px);
+    /* tràn qua phải */
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 22px;
+    background: transparent;
+    gap: 10px;
+    transform: translateX(80px);
+    font-size: 18px;
+    /* tràn qua phải */
+}
+
 
 h1{
     font-size: 100px;
@@ -178,6 +248,27 @@ h1{
 .team-card:hover {
   transform: translateY(-8px);
 }
+
+/* Thu nhỏ các card khác khi hover một card */
+.team-grid:hover .team-card {
+  transform: scale(0.9); /* Thu nhỏ các card khác */
+  transition: transform 0.4s ease;
+}
+
+.team-grid .team-card:hover {
+  transform: translateY(-8px) scale(1.1); /* Phóng to card được hover */
+  transition: transform 0.4s ease;
+}
+
+/* Giữ hiệu ứng một thời gian ngắn khi di chuột ra */
+.team-card {
+  transition: transform 0.4s ease 0.5s; /* Trì hoãn 0.5s khi di chuột ra */
+}
+
+.team-grid .team-card:hover {
+  transition-delay: 0s; /* Không trì hoãn khi hover */
+}
+
 
 /* Chữ overlay */
 .team-card h3,

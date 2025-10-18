@@ -1,0 +1,636 @@
+/* Reset & Fonts */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========== Main first ==========*/
+
+/* Mainfirst Section */
+.mainfirst {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  aspect-ratio: 1920 / 972.5;
+  overflow-x: hidden; /* chỉ chặn tràn ngang */
+  overflow-y: visible;
+}
+
+/* Background + overlay darker */
+.mainfirst-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../images/home/aerial-tropical-rock-beach.jpg") center/cover no-repeat;
+  z-index: 0;
+}
+
+/* Text + Booking container */
+.content-wrapper {
+  position: absolute;
+  left: 15.57vw; /* 299px */
+  top: 20.05vh; /* 195px */
+  width: 46.88vw; /* 900px */
+  height: 63vh; /* 612.5px */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Text section */
+.text-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 29.95vw; /* 575px */
+  height: 33.45vh; /* 325px */
+  color: #fff;
+}
+
+.welcome {
+  font-family: "Playball", cursive;
+  font-size: 1.3vw; /* ~25px */
+  color: #eb662b;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.main-text {
+  position: absolute;
+  top: 17.6vh; /* 171px */
+  left: 0;
+  width: 29.95vw;
+  font-size: 0.94vw; /* ~18px */
+  line-height: 1.5;
+}
+
+.btn-destination {
+  position: absolute;
+  top: 27.6vh; /* 269px */
+  left: 0;
+  width: 9.38vw; /* 180px */
+  height: 5.76vh; /* 56px */
+  border: none;
+  border-radius: 120px;
+  background: #fad71b;
+  color: #000;
+  font-weight: 600;
+  font-size: 0.9vw;
+  cursor: pointer;
+}
+
+.btn-destination .arrow {
+  margin-left: 6px;
+}
+
+/* Booking Form */
+.booking-form {
+  position: absolute;
+  top: 46vh; /* 447.5px */
+  left: 0;
+  width: 50vw;
+  height: 15vh;
+  background: #fff;
+  border-radius: 1vw;
+  box-shadow: 0 1vh 3vw rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vh 2vw;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4vh;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 0.7vw;
+  color: #555;
+}
+
+.form-group input {
+  padding: 1vh 0.8vw;
+  border: 1px solid #ddd;
+  border-radius: 0.5vw;
+  font-size: 0.8vw;
+  max-width: 8vw;
+}
+
+.btn-search {
+  background: #fad71b;
+  border: none;
+  border-radius: 0.6vw;
+  padding: 1.2vh 1.6vw;
+
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9vw;
+}
+
+/* Woman */
+.woman {
+  position: absolute;
+  left: 37.8vw; /* 726px */
+  top: 10.54vh; /* 102.5px */
+  width: 42.18vw; /* 810px */
+  height: 83.3vh; /* 810px */
+  z-index: 3;
+  object-fit: contain;
+}
+
+/* Plane */
+.plane {
+  position: absolute;
+  left: 71.46vw; /* 1372px */
+  top: 10.8vh; /* 105px */
+  width: 25.31vw; /* 486px */
+  height: 25.81vh; /* 251px */
+  z-index: 2;
+  object-fit: contain;
+  animation: planeFly 6s ease-in-out infinite alternate;
+}
+
+/* Clouds */
+.cloud {
+  position: absolute;
+  width: 19.3vw; /* 371px */
+  height: 27.9vh; /* 271px */
+  object-fit: contain;
+  z-index: 3;
+  opacity: 0.85;
+}
+
+.cloud1 {
+  left: 76.3vw; /* 1465px */
+  top: 14.9vh; /* 145px */
+  animation: cloudDrift1 12s ease-in-out infinite alternate;
+}
+
+.cloud2 {
+  left: 79.1vw; /* 1519px */
+  top: 13.96vh; /* 135.88px */
+  animation: cloudDrift2 15s ease-in-out infinite alternate;
+}
+
+/* Photo Container */
+.photo-container {
+  position: absolute;
+  left: 63.54vw; /* 1220px */
+  top: 15vh; /* 972.5px */
+  width: 35.16vw; /* 675px */
+  height: 80vh; /* 778px */
+  z-index: 1;
+}
+
+.photo {
+  position: absolute;
+  border-radius: 1vw;
+  object-fit: cover;
+}
+
+.overwater {
+  left: 0;
+  top: 0;
+  width: 25.52vw; /* 490px */
+  height: 58.63vh; /* 570px */
+  z-index: 1;
+}
+
+.couple {
+  left: 0;
+  top: 44.02vh; /* 428px */
+  width: 18.75vw; /* 360px */
+  height: 36vh; /* 350px */
+  z-index: 2;
+}
+
+.colosseum {
+  left: 18.13vw; /* 348px */
+  top: 50vh; /* 486px */
+  width: 17.29vw; /* 332px */
+  height: 30.03vh; /* 292px */
+  z-index: 3;
+}
+
+@keyframes planeFly {
+  0% {
+    transform: translateY(0) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-1.5vh) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(2deg);
+  }
+}
+
+@keyframes cloudDrift1 {
+  0% {
+    transform: translateX(0) scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(-2vw) scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes cloudDrift2 {
+  0% {
+    transform: translateX(0) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(2vw) scale(1.1);
+    opacity: 0.95;
+  }
+}
+
+/* =========== Mainsecond ============== */
+
+.mainsecond {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh 0; /* khoảng cách trên dưới */
+}
+
+/* Chia bố cục thành 2 cột: bên trái (text + card), bên phải (ảnh) */
+.feature-container {
+  width: 85%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4vw;
+  align-items: start;
+  position: relative; /* để shape đặt tuyệt đối bên trong */
+}
+
+/* --- Cột trái gồm tiêu đề và các thẻ --- */
+.feature-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+/* Phần tiêu đề */
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.feature-text .subheading {
+  font-family: "Playball", cursive;
+  color: #eb662b;
+  font-size: 1.2vw;
+}
+
+.feature-text h2 {
+  font-size: 2.6vw;
+  color: #111;
+  font-weight: 700;
+}
+
+.feature-text h3 {
+  font-size: 2vw;
+  color: #777;
+  font-weight: 500;
+  font-style: italic;
+  padding-bottom: 20px;
+}
+
+/* --- Hình shape (đường bay cong) --- */
+.feature-shape {
+  position: absolute;
+  left: 48%; /* vị trí ngang (điều chỉnh nếu lệch) */
+  top: 10%; /* vị trí dọc (điều chỉnh nếu lệch) */
+  width: 8vw; /* kích thước tương đối */
+  height: auto;
+  z-index: 1;
+  opacity: 0.9;
+  pointer-events: none; /* không chặn thao tác chuột */
+  animation: floatShape 6s ease-in-out infinite alternate;
+}
+
+/* Hiệu ứng bay nhẹ cho shape */
+@keyframes floatShape {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+/* --- Khu vực 3 thẻ tính năng --- */
+/* Hộp nền phía sau ảnh minh họa trong mỗi thẻ */
+.img-wrapper {
+  background: #fff; /* nền trắng */
+  border-radius: 1vw;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  margin-top: 2vh;
+  padding: 1.5vh 0;
+  transform: rotate(-4deg); /* xoay nhẹ để tạo cảm giác sinh động */
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Khi hover thẻ cha → ảnh và nền nghiêng ngược lại */
+.feature-card:hover .img-wrapper {
+  transform: rotate(0deg) translateY(-0.5vh);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Ảnh minh họa bên trong wrapper */
+.img-wrapper img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.feature-grid {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5vw;
+  align-items: stretch;
+}
+
+/* Thẻ tính năng (card) */
+.feature-card {
+  flex: 1;
+  background: #f6f6f6;
+  border-radius: 1vw;
+  padding: 2vh 1.5vw;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Hiệu ứng hover: nổi nhẹ */
+.feature-card:hover {
+  transform: translateY(-0.8vh);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h4 {
+  font-size: 1.1vw;
+  font-weight: 700;
+  margin-bottom: 1vh;
+  color: #111;
+}
+
+.feature-card p {
+  font-size: 0.9vw;
+  color: #555;
+  flex: 1;
+}
+
+/* Hình bên trong thẻ */
+.feature-card img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  margin-top: 1vh;
+  border-radius: 0.6vw;
+}
+
+/* Màu riêng cho từng thẻ */
+.feature-card.purple {
+  background: #e7e6fb;
+}
+.feature-card.yellow {
+  background: #fff2d8;
+}
+.feature-card.gray {
+  background: #eaeaea;
+}
+
+/* --- Cột phải: hình ảnh minh họa --- */
+.feature-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-image img {
+  width: 20vw;
+  height: auto;
+  border-radius: 1vw;
+  border: 2px solid #f05a28;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: rotate(-4deg);
+  transition: transform 0.4s ease;
+}
+
+/* Khi hover: ảnh hơi nghiêng trở lại */
+.feature-image img:hover {
+  transform: rotate(0deg) translateY(-1vh);
+}
+
+/* --- Responsive cho màn nhỏ --- */
+@media (max-width: 1024px) {
+  .feature-container {
+    grid-template-columns: 1fr;
+    gap: 6vh;
+  }
+  .feature-grid {
+    flex-direction: column;
+  }
+  .feature-image img {
+    width: 60vw;
+    transform: none;
+  }
+  .feature-text h2 {
+    font-size: 5vw;
+  }
+  .feature-text h3 {
+    font-size: 4vw;
+  }
+}
+
+/* ============ MAIN THIRD ============ */
+.mainthird {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  width: 100%;
+  background: #f5f5f5;
+  min-height: 90vh;
+  background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    url("../images/home/mainthird_bg.png") center/cover no-repeat;
+  overflow: hidden;
+}
+
+/* Bên trái - text  */
+.mainthird-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 5vw;
+}
+
+.mainthird-left .bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.third-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  max-width: 500px;
+}
+
+.third-text .subheading {
+  font-family: "Playball", cursive;
+  font-size: 1.2vw;
+  color: #eb662b;
+  margin-bottom: 1vh;
+}
+
+.third-text h2 {
+  font-size: 2.5vw;
+  line-height: 1.3;
+  font-weight: 700;
+  margin-bottom: 2vh;
+}
+
+.third-text h2 em {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.third-text .desc {
+  font-size: 1vw;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3vh;
+  line-height: 1.6;
+}
+
+/* Nút */
+.mainthird .btn-destination {
+  background: #fad71b;
+  color: #000;
+  border: none;
+  border-radius: 100px;
+  padding: 1.2vh 2vw;
+  font-weight: 600;
+  font-size: 0.95vw;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5vw;
+  margin-top: 3vh;
+  min-width: 12vw;
+  transition: all 0.3s ease;
+}
+.btn-destination:hover {
+  background: #ffe769; /* màu vàng sáng hơn */
+  transform: translateY(-0.4vh); /* nhích nhẹ lên trên */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Bên phải - Grid ảnh */
+.mainthird-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 3vw;
+}
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1.5vw;
+  width: 100%;
+  max-width: 900px;
+}
+
+.destination-card {
+  position: relative;
+  border-radius: 1vw;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.destination-card.tall {
+  grid-row: span 2; /* thẻ giữa cao hơn */
+}
+
+.destination-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.destination-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Nhãn dưới ảnh */
+.destination-card .label {
+  position: absolute;
+  bottom: 1vh;
+  left: 1vw;
+  right: 1vw;
+  background: #fff;
+  color: #000;
+  font-size: 0.9vw;
+  font-weight: 500;
+  padding: 0.7vh 1vw;
+  border-radius: 0.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.destination-card:hover .label {
+  background: #fad71b;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mainthird {
+    grid-template-columns: 1fr;
+  }
+  .mainthird-left {
+    min-height: 50vh;
+  }
+  .destinations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .third-text h2 {
+    font-size: 6vw;
+  }
+  .third-text .desc {
+    font-size: 2.6vw;
+  }
+}
