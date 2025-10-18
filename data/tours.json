@@ -2,8 +2,8 @@
   "tours": [
     {
       "id": 1,
-      "title": "Hạ Long Bay Explorer",
-      "location": "Quảng Ninh",
+      "title": "Ha Long Bay Explorer",
+      "location": "Quang Ninh",
       "duration": 3,
       "price": 599,
       "oldPrice": 899,
@@ -11,13 +11,13 @@
       "featured": true,
       "activities": ["Water Activities", "Relaxation & Nature Activities"],
       "availability": ["Aug 25, 2025", "Aug 26, 2025", "Aug 27, 2025"],
-      "shortDesc": "Cruise through the emerald waters of Hạ Long Bay, explore limestone caves, and relax onboard.",
+      "shortDesc": "Cruise through the emerald waters of Ha Long Bay, explore limestone caves, and relax onboard.",
       "image": "../assets/images/tour/tour_1.jpg"
     },
     {
       "id": 2,
       "title": "Sapa Mountain Adventure",
-      "location": "Lào Cai",
+      "location": "Lao Cai",
       "duration": 4,
       "price": 499,
       "oldPrice": 750,
@@ -30,8 +30,8 @@
     },
     {
       "id": 3,
-      "title": "Hội An Ancient Town",
-      "location": "Quảng Nam",
+      "title": "Hoi An Ancient Town",
+      "location": "Quang Nam",
       "duration": 2,
       "price": 299,
       "oldPrice": 450,
@@ -39,13 +39,13 @@
       "featured": false,
       "activities": ["Cultural & Historical Activities"],
       "availability": ["Aug 20, 2025", "Aug 22, 2025"],
-      "shortDesc": "Wander the lantern-lit streets of Hội An and experience the charm of Vietnam’s heritage town.",
+      "shortDesc": "Wander the lantern-lit streets of Hoi An and experience the charm of Vietnam’s heritage town.",
       "image": "../assets/images/tour/tour_3.jpg"
     },
     {
       "id": 4,
-      "title": "Phú Quốc Beach Paradise",
-      "location": "Kiên Giang",
+      "title": "Phu Quoc Beach Paradise",
+      "location": "Kien Giang",
       "duration": 5,
       "price": 899,
       "oldPrice": 1200,
@@ -53,13 +53,13 @@
       "featured": true,
       "activities": ["Water Activities", "Relaxation & Nature Activities"],
       "availability": ["Nov 1, 2025", "Nov 5, 2025"],
-      "shortDesc": "Relax on crystal-clear beaches, snorkel among coral reefs, and enjoy fresh seafood on Phú Quốc Island.",
+      "shortDesc": "Relax on crystal-clear beaches, snorkel among coral reefs, and enjoy fresh seafood on Phu Quoc Island.",
       "image": "../assets/images/tour/tour_4.jpg"
     },
     {
       "id": 5,
-      "title": "Đà Lạt Flower Getaway",
-      "location": "Lâm Đồng",
+      "title": "Da Lat Flower Getaway",
+      "location": "Lam Dong",
       "duration": 3,
       "price": 459,
       "oldPrice": 650,
@@ -72,8 +72,8 @@
     },
     {
       "id": 6,
-      "title": "Huế Imperial Discovery",
-      "location": "Thừa Thiên Huế",
+      "title": "Hue Imperial Discovery",
+      "location": "Thua Thien Hue",
       "duration": 2,
       "price": 329,
       "oldPrice": 480,
@@ -81,13 +81,13 @@
       "featured": false,
       "activities": ["Cultural & Historical Activities"],
       "availability": ["Oct 15, 2025", "Oct 17, 2025"],
-      "shortDesc": "Explore the ancient capital of Huế, its citadel, royal tombs, and serene Perfume River.",
+      "shortDesc": "Explore the ancient capital of Hue, its citadel, royal tombs, and serene Perfume River.",
       "image": "../assets/images/tour/tour_6.jpg"
     },
     {
       "id": 7,
       "title": "Nha Trang Island Hopping",
-      "location": "Khánh Hòa",
+      "location": "Khanh Hoa",
       "duration": 3,
       "price": 649,
       "oldPrice": 950,
@@ -100,8 +100,8 @@
     },
     {
       "id": 8,
-      "title": "Hà Nội City Highlights",
-      "location": "Hà Nội",
+      "title": "Hanoi City Highlights",
+      "location": "Ha Noi",
       "duration": 2,
       "price": 259,
       "oldPrice": 400,
@@ -115,7 +115,7 @@
     {
       "id": 9,
       "title": "Mekong Delta Journey",
-      "location": "Cần Thơ",
+      "location": "Can Tho",
       "duration": 3,
       "price": 399,
       "oldPrice": 580,
@@ -128,8 +128,8 @@
     },
     {
       "id": 10,
-      "title": "Côn Đảo Escape",
-      "location": "Bà Rịa - Vũng Tàu",
+      "title": "Con Dao Escape",
+      "location": "Ba Ria - Vung Tau",
       "duration": 4,
       "price": 899,
       "oldPrice": 1300,
@@ -137,7 +137,7 @@
       "featured": true,
       "activities": ["Relaxation & Nature Activities", "Adventure Activities"],
       "availability": ["Dec 1, 2025", "Dec 5, 2025"],
-      "shortDesc": "Unwind in Vietnam’s hidden gem — Côn Đảo, known for its pristine beaches and national parks.",
+      "shortDesc": "Unwind in Vietnam’s hidden gem — Con Dao, known for its pristine beaches and national parks.",
       "image": "../assets/images/tour/tour_10.jpg"
     }
   ]

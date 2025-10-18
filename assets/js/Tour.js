@@ -77,13 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
       renderList(provinces, destList, 4, showAllDest, "Destinations");
       renderList(activities, actList, 4, showAllAct, "Activities");
 
-      const maxPriceFound = tours.length ? Math.max(...tours.map((t) => t.price)) : 2000;
+      const maxPriceFound = tours.length
+        ? Math.max(...tours.map((t) => t.price))
+        : 2000;
       priceRange.max = Math.max(2000, maxPriceFound);
       priceRange.value = priceRange.max;
       priceMin.textContent = `$0`;
       priceMax.textContent = `$${priceRange.value}`;
 
-      const maxDurationFound = tours.length ? Math.max(...tours.map((t) => t.duration)) : 15;
+      const maxDurationFound = tours.length
+        ? Math.max(...tours.map((t) => t.duration))
+        : 15;
       durationRange.max = Math.max(15, maxDurationFound);
       durationRange.value = durationRange.max;
       durationMin.textContent = `1 day`;
@@ -95,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
       renderTours();
     } catch (err) {
       console.error("Lỗi load tour:", err);
-      container.innerHTML = "<p style='text-align:center'>Không thể load data tours.json</p>";
+      container.innerHTML =
+        "<p style='text-align:center'>Không thể load data tours.json</p>";
     }
   }
 
@@ -112,10 +117,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function onDestChange(e) {
     const allCb = destList.querySelector('input[value="all"]');
     if (e.target.value === "all" && e.target.checked) {
-      destList.querySelectorAll('input[type="checkbox"]').forEach((c) => (c.checked = c === e.target));
+      destList
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach((c) => (c.checked = c === e.target));
     } else if (e.target.checked) {
       allCb.checked = false;
-    } else if (![...destList.querySelectorAll('input[type="checkbox"]')].some((c) => c.checked && c.value !== "all")) {
+    } else if (
+      ![...destList.querySelectorAll('input[type="checkbox"]')].some(
+        (c) => c.checked && c.value !== "all"
+      )
+    ) {
       allCb.checked = true;
     }
     applyFilters();
@@ -124,10 +135,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function onActChange(e) {
     const allCb = actList.querySelector('input[value="all"]');
     if (e.target.value === "all" && e.target.checked) {
-      actList.querySelectorAll('input[type="checkbox"]').forEach((c) => (c.checked = c === e.target));
+      actList
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach((c) => (c.checked = c === e.target));
     } else if (e.target.checked) {
       allCb.checked = false;
-    } else if (![...actList.querySelectorAll('input[type="checkbox"]')].some((c) => c.checked && c.value !== "all")) {
+    } else if (
+      ![...actList.querySelectorAll('input[type="checkbox"]')].some(
+        (c) => c.checked && c.value !== "all"
+      )
+    ) {
       allCb.checked = true;
     }
     applyFilters();
@@ -135,7 +152,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ==== Apply filters ====
   function getSelectedValues(container) {
-    return [...container.querySelectorAll('input[type="checkbox"]:checked')].map((c) => normalize(c.value));
+    return [
+      ...container.querySelectorAll('input[type="checkbox"]:checked'),
+    ].map((c) => normalize(c.value));
   }
 
   function applyFilters() {
@@ -166,8 +185,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==== Sort helper ====
   function sortTours(arr) {
     const mode = sortSelect.value;
-    if (mode === "priceAsc") return arr.slice().sort((a, b) => a.price - b.price);
-    if (mode === "priceDesc") return arr.slice().sort((a, b) => b.price - a.price);
+    if (mode === "priceAsc")
+      return arr.slice().sort((a, b) => a.price - b.price);
+    if (mode === "priceDesc")
+      return arr.slice().sort((a, b) => b.price - a.price);
     return arr.slice().sort((a, b) => b.id - a.id);
   }
 
@@ -182,7 +203,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const pageTours = sorted.slice(start, start + toursPerPage);
 
     if (pageTours.length === 0) {
-      container.innerHTML = "<p style='text-align:center'>Không có tour nào phù hợp 🥲</p>";
+      container.innerHTML =
+        "<p style='text-align:center'>Không có tour nào phù hợp 🥲</p>";
       pagination.innerHTML = "";
       return;
     }
@@ -197,7 +219,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     pageTours.forEach((tour) => {
       const saveAmount = tour.oldPrice ? tour.oldPrice - tour.price : 0;
-      const datesHTML = (tour.availability || []).map((d) => `<span class="avail-date">${d}</span>`).join("");
+      const datesHTML = (tour.availability || [])
+        .map((d) => `<span class="avail-date">${d}</span>`)
+        .join("");
       container.innerHTML += `
         <div class="tour-card scroll-animate">
           <img src="${tour.image}" alt="${tour.title}">
@@ -210,13 +234,28 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="tour-price">
             <p class="duration">${tour.duration} Days</p>
             <div class="price-box">
-              <p class="old-price">${tour.oldPrice ? `$${tour.oldPrice}` : ""}</p>
+              <p class="old-price">From ${
+                tour.oldPrice ? `$${tour.oldPrice}` : ""
+              }</p>
               <p class="price">$${tour.price}</p>
-              ${saveAmount > 0 ? `<p class="save">💰 Save $${saveAmount}</p>` : ""}
+              ${
+                saveAmount > 0
+                  ? `<p class="save">💰 Save $${saveAmount}</p>`
+                  : ""
+              }
             </div>
             <button>View More</button>
           </div>
         </div>`;
+    });
+
+    // Sau vòng lặp pageTours.forEach(...) và trước phần pagination
+    // Thêm đoạn này:
+    const viewMoreButtons = container.querySelectorAll(".tour-card button");
+    viewMoreButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        window.location.href = "tourdetail.html"; // 👉 chuyển sang trang chi tiết tour
+      });
     });
 
     // pagination
@@ -290,7 +329,9 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilters();
   });
   durationRange.addEventListener("input", () => {
-    durationMax.textContent = `${durationRange.value} day${durationRange.value > 1 ? "s" : ""}`;
+    durationMax.textContent = `${durationRange.value} day${
+      durationRange.value > 1 ? "s" : ""
+    }`;
     applyFilters();
   });
 
