@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif !important;
   background: #f4f4f4;
   color: #111;
 }
@@ -500,3 +500,24 @@ body {
   font-size: 15px;
   opacity: 0.9;
 }
+
+.back-section {
+  text-align: center;
+  margin: 60px 0 40px;
+}
+
+.back-btn {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #005f87;
+}
+
