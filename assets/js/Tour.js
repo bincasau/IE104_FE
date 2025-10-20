@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const viewMoreButtons = container.querySelectorAll(".tour-card button");
     viewMoreButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
-        window.location.href = "/pages/tourdetail.html"; // 👉 chuyển sang trang chi tiết tour
+        window.location.href = "../pages/tourdetail.html"; // 👉 chuyển sang trang chi tiết tour
       });
     });
 
