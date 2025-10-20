@@ -1,10 +1,7 @@
-/* ========================================
-   ROOT & RESET
-======================================== */
 :root {
-  --offset: 55px;
-  --frame-width: 1820px;
-  --frame-height: 530px;
+  --accent: #ff7c28;
+  --accent-light: #f5e2d3;
+  --shadow: rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -19,62 +16,51 @@ body {
   color: #111;
 }
 
-/* ========================================
-   HEADER (TOUR FRAME)
-======================================== */
+/* ========== HEADER ========== */
 .tour-frame {
   position: relative;
-  margin: var(--offset) auto;
-  width: min(var(--frame-width), calc(100% - 110px));
-  height: var(--frame-height);
+  display: flex;
+  width: min(1820px, 95%);
+  height: 530px;
+  margin: 55px auto;
   border-radius: 25px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px var(--shadow);
 }
 
 .tour-bg-color {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
-  height: 100%;
-  background-color: #f5e2d3;
-  z-index: 1;
+  flex: 0 0 60%;
+  background-color: var(--accent-light);
 }
 
 .tour-bg-img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1140px;
-  height: 100%;
+  flex: 1;
   object-fit: cover;
-  z-index: 2;
+  width: 100%;
+  height: 100%;
 }
 
 .tour-person {
   position: absolute;
   bottom: 0;
-  right: 275px;
+  right: 12%;
   height: 90%;
   object-fit: contain;
-  z-index: 3;
 }
 
 .tour-text {
   position: absolute;
   top: 50%;
-  left: 150px;
+  left: 8%;
   transform: translateY(-50%);
-  z-index: 4;
+  z-index: 3;
 }
 
 .tour-text h1 {
-  font-size: 45px;
+  font-size: clamp(36px, 4vw, 45px);
   font-weight: 900;
   color: #000;
-  margin-bottom: 40px;
-  transform: translateX(80px);
+  margin-bottom: 35px;
 }
 
 .breadcrumb {
@@ -84,7 +70,7 @@ body {
   border-radius: 8px;
   padding: 10px 22px;
   gap: 10px;
-  transform: translateX(80px);
+  background: #fff;
 }
 
 .breadcrumb .home {
@@ -92,27 +78,36 @@ body {
   color: #000;
 }
 
-.breadcrumb .arrow {
-  color: #ff7c28;
-  font-weight: 700;
-  font-size: 30px;
-  transform: translateY(-3px);
-}
-
 .breadcrumb .current {
-  color: #b6b3b2;
+  color: #aaa;
   font-weight: 600;
 }
 
-/* ========================================
-   FILTER AREA
-======================================== */
+/* ========== MAIN LAYOUT ========== */
+.main-layout {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: flex-start;
+  padding: 80px 5%;
+}
+
+/* ========== FILTER AREA (STICKY) ========== */
 .filter-area {
-  margin: 130px 0 60px 300px;
-  max-width: 320px;
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
+  position: sticky;
+  top: 100px;
+  flex: 0 0 280px;
+  background: rgba(255, 255, 255, 0); /* nền trắng mờ, chìm nhẹ */
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.0); /* đổ bóng nhẹ hơn */
+  backdrop-filter: blur(6px); /* hiệu ứng mờ đẹp mắt */
+  height: max-content;
+  align-self: flex-start;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  transition: all 0.3s ease;
 }
 
 .filter-area h2 {
@@ -125,7 +120,7 @@ body {
 }
 
 .criteria-section {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .criteria-section h3 {
@@ -141,12 +136,12 @@ body {
   font-size: 14px;
   margin: 8px 0;
   cursor: pointer;
-  transition: 0.2s;
   font-weight: 600;
+  transition: 0.2s;
 }
 
 .criteria-section label:hover {
-  color: #ff7c28;
+  color: var(--accent);
 }
 
 .criteria-section input[type="checkbox"] {
@@ -154,12 +149,11 @@ body {
   height: 18px;
   margin-right: 8px;
   accent-color: #ffcc00;
-  border-radius: 4px;
 }
 
 .show-more {
   margin-top: 10px;
-  color: #e75a24;
+  color: var(--accent);
   font-size: 13px;
   font-weight: 600;
   background: none;
@@ -167,62 +161,24 @@ body {
   cursor: pointer;
 }
 
-.show-more:hover {
-  text-decoration: underline;
+/* ========== TOUR AREA ========== */
+.tour-section {
+  flex: 1;
+  max-width: 1050px;
 }
 
-/* === RANGE SLIDERS === */
-.range-wrapper {
-  position: relative;
-  width: 280px;
-  margin-top: 25px;
-  margin-bottom: 45px;
-}
-
-input[type="range"] {
-  width: 100%;
-  height: 8px;
-  border-radius: 6px;
-  background: #ffe066;
-  outline: none;
-  -webkit-appearance: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #ffcc00;
-  border: 2px solid #fff;
-  cursor: pointer;
-}
-
-.range-values {
+.criteria-controls {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
-  font-weight: 700;
-  color: #222;
-  margin-top: 8px;
-}
-
-/* ========================================
-   SEARCH + SORT AREA
-======================================== */
-.criteria-controls {
-  position: absolute;
-  top: 700px;
-  left: 660px;
-  display: flex;
   align-items: center;
-  gap: 20px;
-  z-index: 50;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
 }
 
 .search-container {
   position: relative;
-  display: inline-block;
+  flex: 1;
+  min-width: 300px;
 }
 
 .search-icon {
@@ -232,438 +188,256 @@ input[type="range"]::-webkit-slider-thumb {
   transform: translateY(-50%);
   font-size: 18px;
   color: #8a8a8a;
-  pointer-events: none;
 }
 
 .search-box {
-  width: 770px;
-  height: 50px;
-  padding: 0 22px 0 48px;
+  width: 100%;
+  height: 48px;
+  padding: 0 20px 0 48px;
   border-radius: 50px;
   border: 2px solid #ddd;
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  outline: none;
   background: #fff;
-  transition: box-shadow 0.18s ease, border-color 0.18s ease;
-}
-
-.search-box:focus {
-  border-color: #ff7c28;
-  box-shadow: 0 6px 18px rgba(255, 124, 40, 0.12);
 }
 
 .sort-box select {
   width: 200px;
-  height: 50px;
+  height: 48px;
   border-radius: 10px;
   border: 2px solid #ddd;
   background: #fff;
   font-size: 15px;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   padding: 0 18px;
   cursor: pointer;
-  appearance: none;
-  background-image:
-    linear-gradient(45deg, transparent 50%, #ff7c28 50%),
-    linear-gradient(135deg, #ff7c28 50%, transparent 50%);
-  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
-  background-size: 6px 6px;
-  background-repeat: no-repeat;
 }
 
-.sort-box select:focus {
-  outline: none;
-  border-color: #ff7c28;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-  .criteria-controls {
-    position: static;
-    margin-top: 24px;
-  }
-
-  .search-box {
-    width: 540px;
-  }
-}
-
-/* ========================================
-   TOUR LIST
-======================================== */
+/* TOUR GRID */
 .tour-list {
-  position: absolute;
-  top: 750px;
-  left: 655px;
-  width: 1000px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  gap: 25px;
 }
 
 .tour-card {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 10px 20px;
-  height: 310px;
+  box-shadow: 0 4px 10px var(--shadow);
+  padding: 18px;
+  gap: 20px;
+  align-items: center;
+  transition: transform 0.25s ease;
+}
+
+.tour-card:hover {
+  transform: translateY(-4px);
 }
 
 .tour-card img {
-  width: 300px;
-  height: 280px;
-  object-fit: cover;
+  width: 290px;
+  height: 220px;
   border-radius: 12px;
-  margin: 5px;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
+.tour-card img.lazy-loaded {
+  opacity: 1;
+}
+
+/* INFO */
 .tour-info {
   flex: 1;
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
 .tour-info h3 {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #111;
+  max-width: 75%;
+  line-height: 1.3;
 }
 
 .tour-info p {
   font-size: 15px;
   color: #555;
-  margin: 3px 0;
-  line-height: 1.5;
+  max-width: 75%;
+  line-height: 1.4;
 }
 
 .tour-info .location {
   margin-top: 8px;
-  color: #888;
+  font-weight: 600;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* AVAILABILITY (Ngày) */
+.availability {
+  margin-top: 8px;
+}
+
+.date-range {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffe066;
+  color: #333;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 5px 12px;
+}
+
+.date-range .date {
   font-size: 14px;
 }
 
-/* PRICE SECTION */
+.range-arrow {
+  color: #444;
+  font-weight: 800;
+}
+
+/* =============================
+   RANGE BAR (vàng - xám)
+============================= */
+input[type="range"] {
+  width: 100%;
+  height: 8px;
+  border-radius: 6px;
+  background: linear-gradient(
+    to right,
+    #ffe066 var(--progress, 100%),
+    #d8d8d8 var(--progress, 100%)
+  );
+  outline: none;
+  appearance: none;
+  transition: background 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffcc00;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffcc00;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+/* =============================
+   TOUR PRICE (2 cột gọn đẹp)
+============================= */
 .tour-price {
-  width: 200px;
-  text-align: right;
+  width: 260px;
+  padding: 20px;
+  border-left: 1px solid #eee;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: flex-end;
-  justify-content: center;
+  gap: 14px;
 }
 
-.tour-price .duration {
+.price-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+/* Hàng 1: From – Giá hiện tại */
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.price-row .from-label {
+  font-size: 15px;
   font-weight: 600;
-  margin-bottom: 5px;
-  color: #000;
+  color: #333;
 }
 
-.tour-price .price {
-  font-size: 13px;
-  font-weight: 900;
-  color: #990000;
+.price-row .price {
+  font-size: 23px;
+  font-weight: 800;
+  color: #ff1e00; /* đỏ tươi */
+  letter-spacing: 0.5px;
 }
 
-.tour-price button {
-  font-size: 17px;
-  margin-top: 10px;
+/* Hàng 2: Days – Save */
+.price-row-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.price-row-bottom .duration {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.price-row-bottom .save {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2fd353;
+}
+
+/* Nút View More */
+.view-more {
+  font-size: 20px;
   background: #ffcc00;
   border: none;
-  padding: 10px 18px;
-  border-radius: 12px;
+  padding: 12px 0;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 700;
+  width: 100%;
+  text-align: center;
   transition: all 0.25s ease;
+  margin-top: 4px;
 }
 
-.tour-price button:hover {
+.view-more:hover {
   background: #ffb700;
+  transform: scale(1.03);
 }
 
-/* PRICE BOX (CHI TIẾT) */
-.price-box {
-  text-align: right;
-}
-
-.price-box .old-price {
-  text-decoration: line-through;
-  color: #999;
-  font-size: 15px;
-  margin-bottom: 2px;
-}
-
-.price-box .price {
-  font-size: 35px;
-  font-weight: 600;
-  color: #ff1500;
-  margin-bottom: 4px;
-}
-
-.price-box .discount {
-  color: #e67300;
-  font-weight: 700;
-  font-size: 20px;
-}
-
-.price-box .save {
-  color: #2fd353;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-/* AVAILABILITY */
-.availability {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  font-size: 15px;
-}
-
-.availability i {
-  color: #ffcc00;
-}
-
-.avail-date {
-  background: #ffeb99;
-  color: #444;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-weight: 600;
-}
-
-/* ========================================
-   PAGINATION
-======================================== */
+/* ========== PAGINATION ========== */
 .pagination {
-  position: absolute;
-  left: 655px;
-  top: calc(780px + 371px * 5 - 230px); /* giữ công thức cũ */
-  width: 1000px;
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 8px;
-  font-family: "Poppins", sans-serif;
-  margin-top: 25px;
+  margin: 45px 0 80px;
 }
 
 .pagination button {
-  border: 1px solid #d0d0d0;
+  border: 1px solid #ccc;
   background: #fff;
-  color: #000;
   padding: 8px 14px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 15px;
-  transition: all 0.2s ease;
-  min-width: 40px;
 }
 
-.pagination button:hover:not(:disabled) {
-  background: #007bff;
+.pagination button.active,
+.pagination button:hover {
+  background: var(--accent);
   color: #fff;
-  border-color: #007bff;
+  border-color: var(--accent);
 }
-
-.pagination button.active {
-  background: #007bff;
-  color: #fff;
-  border-color: #007bff;
-  font-weight: 600;
-}
-
-.pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* ========================================
-   ANIMATION EFFECTS
-======================================== */
-
-/* Fade-in & slide base */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInSides {
-  from {
-    opacity: 0;
-    clip-path: inset(0 50% 0 50%);
-  }
-  to {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-/* ===== FRAME (ảnh + màu kéo vào giữa) ===== */
-.tour-frame {
-  animation: slideInSides 1.4s ease-out both;
-}
-
-/* ===== SIDEBAR FILTER trượt từ dưới lên ===== */
-.filter-area {
-  opacity: 0;
-  transform: translateY(60px);
-  animation: fadeInUp 1.2s ease forwards;
-  animation-delay: 0.6s;
-}
-
-/* ===== TOUR CARD fade in từ trái sang ===== */
-.tour-card {
-  opacity: 0;
-  transform: translateX(-50px);
-  animation: fadeInLeft 0.8s ease forwards;
-}
-
-/* Khi nhiều tour xuất hiện – delay nhẹ từng cái cho đẹp */
-.tour-card:nth-child(1) { animation-delay: 0.3s; }
-.tour-card:nth-child(2) { animation-delay: 0.45s; }
-.tour-card:nth-child(3) { animation-delay: 0.6s; }
-.tour-card:nth-child(4) { animation-delay: 0.75s; }
-.tour-card:nth-child(5) { animation-delay: 0.9s; }
-
-/* ===== SEARCH + SORT AREA fade lên nhẹ ===== */
-.criteria-controls {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 0.8s;
-}
-
-/* Pagination hiện dần */
-.pagination {
-  opacity: 0;
-  transform: translateY(25px);
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 1.2s;
-}
-
-/* =======================================
-   ANIMATION KEYFRAMES
-======================================= */
-
-/* Slide & fade base */
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-80px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(80px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* =======================================
-   FRAME ANIMATION PARTS
-======================================= */
-.tour-frame {
-  position: relative;
-  overflow: hidden;
-}
-
-.tour-bg-color {
-  opacity: 0;
-  animation: slideInLeft 1.2s ease-out forwards;
-}
-
-.tour-bg-img {
-  opacity: 0;
-  animation: slideInRight 1.3s ease-out forwards;
-  animation-delay: 0.2s;
-}
-
-.tour-person {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s ease forwards;
-  animation-delay: 1s;
-}
-
-.tour-text {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1s ease forwards;
-  animation-delay: 1.3s;
-}
-
-/* Ẩn trước khi scroll tới (sẽ bật lại bằng JS) */
-.scroll-animate {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.scroll-animate.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ========== TOUR CARD ANIMATION ========== */
-.tour-card {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: all 0.8s ease;
-}
-
-.tour-card.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.tour-card:nth-child(1) { transition-delay: 0.1s; }
-.tour-card:nth-child(2) { transition-delay: 0.25s; }
-.tour-card:nth-child(3) { transition-delay: 0.4s; }
-

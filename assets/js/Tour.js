@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPage = 1;
   const toursPerPage = 5;
 
-  // ==== Helper: Normalize ====
+  // ==== Helper: Normalize string (xử lý dấu, chữ hoa/thường) ====
   const normalize = (s) =>
     String(s ?? "")
       .toLowerCase()
@@ -34,12 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .replace(/\s+/g, " ")
       .trim();
 
-  // ==== Scroll to top ====
+  // ==== Cuộn lên đầu trang ====
   function scrollToTopSmooth() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // ==== Render checkboxes ====
+  // ==== Render checkboxes cho bộ lọc ====
   function renderList(arr, container, limit, showAll, typeLabel) {
     container.innerHTML = "";
 
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==== Load tours ====
+  // ==== Load dữ liệu tour ====
   async function loadTours() {
     try {
       const res = await fetch("../data/tours.json");
@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderList(provinces, destList, 4, showAllDest, "Destinations");
       renderList(activities, actList, 4, showAllAct, "Activities");
 
+      // Setup thanh range
       const maxPriceFound = tours.length
         ? Math.max(...tours.map((t) => t.price))
         : 2000;
@@ -97,6 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       filteredTours = [...tours];
       renderTours();
+
+      // Cập nhật hiệu ứng range
+      [priceRange, durationRange].forEach((r) => {
+        setRangeProgress(r);
+        r.addEventListener("input", () => setRangeProgress(r));
+      });
     } catch (err) {
       console.error("Lỗi load tour:", err);
       container.innerHTML =
@@ -104,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ==== Filter checkboxes ====
+  // ==== Gán sự kiện cho các checkbox ====
   function attachFilterEvents() {
     destList.querySelectorAll("input[type='checkbox']").forEach((cb) => {
       cb.addEventListener("change", onDestChange);
@@ -150,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilters();
   }
 
-  // ==== Apply filters ====
+  // ==== Lọc dữ liệu ====
   function getSelectedValues(container) {
     return [
       ...container.querySelectorAll('input[type="checkbox"]:checked'),
@@ -192,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return arr.slice().sort((a, b) => b.id - a.id);
   }
 
-  // ==== Render tours ====
+  // ==== Render danh sách tour ====
   function renderTours() {
     container.innerHTML = "";
     const sorted = sortTours(filteredTours);
@@ -213,52 +220,76 @@ document.addEventListener("DOMContentLoaded", () => {
     container.style.opacity = "0";
     scrollToTopSmooth();
     setTimeout(() => {
-      container.style.transition = "opacity 0.5s ease";
+      container.style.transition = "opacity 0.45s ease";
       container.style.opacity = "1";
-    }, 50);
+    }, 60);
 
+    // build tour cards
     pageTours.forEach((tour) => {
       const saveAmount = tour.oldPrice ? tour.oldPrice - tour.price : 0;
-      const datesHTML = (tour.availability || [])
-        .map((d) => `<span class="avail-date">${d}</span>`)
-        .join("");
+
+      // === Render availability (2 ngày -> có mũi tên) ===
+      let availHTML = "";
+      if (Array.isArray(tour.availability) && tour.availability.length === 2) {
+        const a = tour.availability[0];
+        const b = tour.availability[1];
+        availHTML = `
+          <div class="date-range">
+            <span class="date">${a}</span>
+            <span class="range-arrow">→</span>
+            <span class="date">${b}</span>
+          </div>`;
+      } else {
+        availHTML = (tour.availability || [])
+          .map((d) => `<span class="avail-date">${d}</span>`)
+          .join("");
+      }
+
+      // === Build card HTML ===
       container.innerHTML += `
         <div class="tour-card scroll-animate">
-          <img src="${tour.image}" alt="${tour.title}">
+          <img src="${tour.image}" alt="${tour.title}" loading="lazy" />
           <div class="tour-info">
             <h3>${tour.title}</h3>
             <p>${tour.shortDesc}</p>
-            <p class="location">📍 ${tour.location}</p>
-            <div class="availability"><i class="fa-regular fa-calendar"></i> ${datesHTML}</div>
+            <p class="location"><i class="fa-solid fa-map-marker-alt" style="color:#d9302f;font-size:18px;"></i> ${
+              tour.location
+            }</p>
+            <div class="availability">${availHTML}</div>
           </div>
+
           <div class="tour-price">
-            <p class="duration">${tour.duration} Days</p>
             <div class="price-box">
-              <p class="old-price">From ${
-                tour.oldPrice ? `$${tour.oldPrice}` : ""
-              }</p>
-              <p class="price">$${tour.price}</p>
-              ${
-                saveAmount > 0
-                  ? `<p class="save">💰 Save $${saveAmount}</p>`
-                  : ""
-              }
+              <div class="price-row">
+                <div class="from-label">From $${tour.oldPrice}</div>
+                <div class="price">$${tour.price}</div>
+              </div>
+              
+              <div class="price-row-bottom">
+                <div class="duration">${tour.duration} Days</div>
+                ${saveAmount > 0 ? `<div class="save">Save $${saveAmount}</div>` : ""}
+              </div>
             </div>
-            <button>View More</button>
+            <button class="view-more">View More</button>
           </div>
+
         </div>`;
     });
 
-    // Sau vòng lặp pageTours.forEach(...) và trước phần pagination
-    // Thêm đoạn này:
-    const viewMoreButtons = container.querySelectorAll(".tour-card button");
-    viewMoreButtons.forEach((btn) => {
+    // === Lazy-load effect ===
+    container.querySelectorAll("img[loading='lazy']").forEach((img) => {
+      if (img.complete) img.classList.add("lazy-loaded");
+      else img.addEventListener("load", () => img.classList.add("lazy-loaded"));
+    });
+
+    // === Button View More ===
+    container.querySelectorAll(".tour-card .view-more").forEach((btn) => {
       btn.addEventListener("click", () => {
-        window.location.href = "/pages/tourdetail.html"; // 👉 chuyển sang trang chi tiết tour
+        window.location.href = "/pages/tourdetail.html";
       });
     });
 
-    // pagination
+    // === Pagination ===
     pagination.innerHTML = "";
     const prev = document.createElement("button");
     prev.textContent = "Prev";
@@ -338,3 +369,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==== Start ====
   loadTours();
 });
+
+// ==== RANGE BAR VÀNG - XÁM (JS cập nhật CSS var) ====
+function setRangeProgress(inputEl) {
+  const min = Number(inputEl.min || 0);
+  const max = Number(inputEl.max || 100);
+  const val = Number(inputEl.value);
+  const percent = Math.round(((val - min) / (max - min)) * 100);
+  inputEl.style.setProperty("--progress", `${percent}%`);
+}

@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TravelEasy Tour</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/Tour.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -12,7 +18,7 @@
   </head>
 
   <body>
-    <!-- ========== HEADER FRAME ========== -->
+    <!-- ========== HEADER ========== -->
     <div class="tour-frame">
       <div class="tour-bg-color"></div>
       <img src="../assets/images/TourHeader - Copy.jpg" class="tour-bg-img" />
@@ -21,103 +27,80 @@
         <h1>Trip Search Result</h1>
         <div class="breadcrumb">
           <span class="home">HOME</span>
-          <span class="arrow">›</span>
+          <i class="ri-arrow-right-s-line"></i>
           <span class="current">TRIP SEARCH RESULT</span>
         </div>
       </div>
     </div>
 
-    <!-- ========== SEARCH + SORT BAR ========== -->
-    <div class="criteria-controls scroll-animate">
-      <div class="search-container">
-        <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-        <input
-          type="text"
-          id="searchInput"
-          class="search-box"
-          placeholder="Search for tours..."
-          aria-label="Search for tours"
-        />
-      </div>
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main-layout">
+      <!-- === FILTER AREA === -->
+      <aside class="filter-area scroll-animate">
+        <h2>Criteria</h2>
 
-      <div class="sort-box">
-        <select id="sortSelect" aria-label="Sort tours">
-          <option value="recent">Recently Added</option>
-          <option value="priceAsc">Price: Low → High</option>
-          <option value="priceDesc">Price: High → Low</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- ========== TOUR LIST ========== -->
-    <section class="tour-list scroll-animate" id="tour-list">
-      <!-- Ví dụ mẫu để bạn test hiệu ứng, sau này JS sẽ render thật -->
-      <div class="tour-card scroll-animate">
-        <img src="../assets/images/sample1.jpg" alt="Tour" />
-        <div class="tour-info">
-          <h3>Ha Long Bay Adventure</h3>
-          <p>3 days • From $399</p>
+        <div class="criteria-section">
+          <h3>Destination</h3>
+          <div id="destinationList"></div>
+          <button id="showMoreDest" class="show-more">Show More</button>
         </div>
-      </div>
 
-      <div class="tour-card scroll-animate">
-        <img src="../assets/images/sample2.jpg" alt="Tour" />
-        <div class="tour-info">
-          <h3>Sapa Mountain Trek</h3>
-          <p>4 days • From $499</p>
-        </div>
-      </div>
-
-      <div class="tour-card scroll-animate">
-        <img src="../assets/images/sample3.jpg" alt="Tour" />
-        <div class="tour-info">
-          <h3>Da Nang Beach Escape</h3>
-          <p>2 days • From $299</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== PAGINATION ========== -->
-    <div class="pagination scroll-animate" id="pagination"></div>
-
-    <!-- ========== FILTER AREA ========== -->
-    <div class="filter-area scroll-animate">
-      <h2>Criteria</h2>
-
-      <div class="criteria-section">
-        <h3>Destination</h3>
-        <div id="destinationList"></div>
-        <button id="showMoreDest" class="show-more">Show More</button>
-      </div>
-
-      <div class="criteria-section">
-        <h3>Price</h3>
-        <div class="range-wrapper">
-          <input type="range" id="priceRange" min="0" max="2000" value="0" />
-          <div class="range-values">
-            <span id="priceMin">$0</span>
-            <span id="priceMax">$2000</span>
+        <div class="criteria-section">
+          <h3>Price</h3>
+          <div class="range-wrapper">
+            <input type="range" id="priceRange" min="0" max="2000" value="0" />
+            <div class="range-values">
+              <span id="priceMin">$0</span>
+              <span id="priceMax">$2000</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="criteria-section">
-        <h3>Duration</h3>
-        <div class="range-wrapper">
-          <input type="range" id="durationRange" min="1" max="15" value="1" />
-          <div class="range-values">
-            <span id="durationMin">1 day</span>
-            <span id="durationMax">15 days</span>
+        <div class="criteria-section">
+          <h3>Duration</h3>
+          <div class="range-wrapper">
+            <input type="range" id="durationRange" min="1" max="15" value="1" />
+            <div class="range-values">
+              <span id="durationMin">1 day</span>
+              <span id="durationMax">15 days</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="criteria-section">
-        <h3>Activities</h3>
-        <div id="activityList"></div>
-        <button id="showMoreAct" class="show-more">Show More</button>
-      </div>
-    </div>
+        <div class="criteria-section">
+          <h3>Activities</h3>
+          <div id="activityList"></div>
+          <button id="showMoreAct" class="show-more">Show More</button>
+        </div>
+      </aside>
+
+      <!-- === TOUR LIST AREA === -->
+      <section class="tour-section">
+        <div class="criteria-controls scroll-animate">
+          <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input
+              type="text"
+              id="searchInput"
+              class="search-box"
+              placeholder="Search for tours..."
+              aria-label="Search for tours"
+            />
+          </div>
+
+          <div class="sort-box">
+            <select id="sortSelect" aria-label="Sort tours">
+              <option value="recent">Recently Added</option>
+              <option value="priceAsc">Price: Low → High</option>
+              <option value="priceDesc">Price: High → Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tour-list scroll-animate" id="tour-list"></div>
+        <div class="pagination scroll-animate" id="pagination"></div>
+      </section>
+    </main>
 
     <script src="../assets/js/Tour.js"></script>
   </body>
