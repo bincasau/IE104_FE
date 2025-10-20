@@ -432,3 +432,427 @@ body {
 }
 
 /* Nhỏ hơn mobile vẫn 1 cột như cũ nên không cần gì thêm */
+/* =============== BLOG DETAIL =============== */
+.blog-detail {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+}
+
+/* Hero */
+.bd-hero {
+  position: relative;
+  overflow: hidden;
+}
+.bd-hero img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 7;        /* cao vừa mắt */
+  object-fit: cover;
+  display: block;
+}
+.bd-chip {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(255,255,255,.9);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+
+/* Head */
+.bd-head {
+  padding: 22px 22px 10px;
+}
+.back-btn {
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.bd-title {
+  margin: 12px 0 6px;
+  font-size: clamp(20px, 2vw + 8px, 28px);
+  line-height: 1.25;
+}
+.bd-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.bd-meta .avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+/* Divider */
+.bd-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 22px;
+}
+
+/* Body */
+.bd-intro {
+  color: #374151;
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+/* Section */
+.bd-section {
+  margin: 18px 0 20px;
+}
+
+.bd-section h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  position: relative;
+  padding-left: 48px;
+}
+.bd-section p {
+  color: #4b5563;
+  line-height: 1.8;
+}
+.bd-section img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 10px 0 6px;
+  border: 1px solid var(--border);
+}
+.bd-cap {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Quote */
+.bd-quote {
+  margin: 20px 0;
+  background: #f7faff;
+  border: 1px solid #dbe5ff;
+  border-left: 4px solid var(--brand);
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-style: italic;
+  color: #1f2937;
+}
+
+/* Gallery */
+.bd-gallery {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.bd-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+/* Prev/Next nav */
+.bd-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 22px 22px;
+}
+.bd-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+}
+.bd-nav a:hover { background: #f6f7fb; }
+
+/* 1 cột mobile */
+@media (max-width: 680px) {
+  .bd-gallery { grid-template-columns: 1fr 1fr; }
+  .bd-section h2 { padding-left: 40px; }
+}
+/* =============== BLOG DETAIL =============== */
+.blog-detail {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+}
+
+/* Hero */
+.bd-hero {
+  position: relative;
+  overflow: hidden;
+}
+.bd-hero img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 7;        /* cao vừa mắt */
+  object-fit: cover;
+  display: block;
+}
+.bd-chip {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(255,255,255,.9);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+
+/* Head */
+.bd-head {
+  padding: 22px 22px 10px;
+}
+.back-btn {
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.bd-title {
+  margin: 12px 0 6px;
+  font-size: clamp(20px, 2vw + 8px, 28px);
+  line-height: 1.25;
+}
+.bd-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.bd-meta .avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+/* Divider */
+.bd-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 22px;
+}
+
+/* Body */
+.bd-body {
+  padding: 6px 22px 22px;
+}
+.bd-intro {
+  color: #374151;
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+/* Section */
+.bd-section {
+  margin: 18px 0 20px;
+}
+.bd-section h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  position: relative;
+  padding-left: 0px;
+}
+.bd-section h2::before {
+  position: absolute;
+  left: 0;
+  top: -2px;
+  font-weight: 700;
+  color: var(--brand);
+}
+.bd-section p {
+  color: #4b5563;
+  line-height: 1.8;
+}
+.bd-section img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 10px 0 6px;
+  border: 1px solid var(--border);
+}
+.bd-cap {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Quote */
+/* ==== Blog Quote — Enhanced Focus Style ==== */
+.bd-quote {
+  position: relative;
+  margin: 36px auto;
+  padding: 36px 48px;
+  max-width: 720px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+  border: 1px solid #dbeafe;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  color: #111827;
+  font-size: clamp(20px, 2vw + 8px, 26px);
+  line-height: 1.7;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+}
+
+.bd-quote:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Dấu ngoặc kép lớn mờ — tạo cảm giác "trích dẫn" */
+.bd-quote::before {
+  content: "“";
+  position: absolute;
+  top: -8px;
+  left: 18px;
+  font-size: 100px;
+  color: var(--brand, #2563eb);
+  opacity: 0.15;
+  line-height: 1;
+  font-family: "Georgia", serif;
+}
+
+/* Dấu ngoặc kép kết thúc nhẹ ở cuối */
+.bd-quote::after {
+  content: "”";
+  position: absolute;
+  bottom: -36px;
+  right: 22px;
+  font-size: 80px;
+  color: var(--brand, #2563eb);
+  opacity: 0.1;
+  line-height: 1;
+  font-family: "Georgia", serif;
+}
+
+/* Responsive */
+@media (max-width: 680px) {
+  .bd-quote {
+    padding: 24px;
+    font-size: 20px;
+  }
+  .bd-quote::before {
+    font-size: 80px;
+    top: -6px;
+  }
+  .bd-quote::after {
+    font-size: 60px;
+    bottom: -24px;
+  }
+}
+
+/* Gallery */
+.bd-gallery {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.bd-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+/* Prev/Next nav */
+.bd-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 22px 22px;
+}
+.bd-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+}
+.bd-nav a:hover { background: #f6f7fb; }
+
+/* 1 cột mobile */
+@media (max-width: 680px) {
+  .bd-gallery { grid-template-columns: 1fr 1fr; }
+  .bd-section h2 { padding-left: 40px; }
+}
+/* ====== Layout 2 cột: Sidebar + Main ====== */
+.container{
+  /* dùng grid để sidebar sticky mượt mà hơn */
+  display: grid;
+  grid-template-columns: 320px minmax(0,1fr); /* sidebar 320px + nội dung co giãn */
+  gap: 28px;
+  align-items: start;
+  max-width: 1180px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+/* ====== Sticky Sidebar ====== */
+.sidebar{
+  position: sticky;
+  top: 96px;              /* chỉnh theo chiều cao header/hero của bạn (80–120px) */
+  height: fit-content;    /* để sticky tính chiều cao đúng */
+  align-self: start;      /* đảm bảo bám lên trên */
+  z-index: 2;             /* nổi hơn nền hero phía sau nếu có */
+}
+
+/* Nếu container/cha có set overflow, nhớ tắt để sticky hoạt động */
+.container, .blog-frame { overflow: visible; }
+
+/* ====== Responsive: dưới tablet chuyển về 1 cột & tắt sticky ====== */
+@media (max-width: 992px){
+  .container{
+    grid-template-columns: 1fr; /* 1 cột */
+  }
+  .sidebar{
+    position: static;
+    top: auto;
+  }
+}
