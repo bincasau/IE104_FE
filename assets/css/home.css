@@ -1,4 +1,6 @@
-/* Reset & Fonts */
+/* ======================================================
+   RESET & FONT CƠ BẢN
+====================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,20 +12,21 @@ body {
   overflow-x: hidden;
 }
 
-/* =========== Main first ==========*/
+/* ======================================================
+   PHẦN 1: HERO SECTION (main-hero)
+====================================================== */
 
-/* Mainfirst Section */
-.mainfirst {
+.main-hero {
   position: relative;
   width: 100vw;
   height: 100vh;
   aspect-ratio: 1920 / 972.5;
-  overflow-x: hidden; /* chỉ chặn tràn ngang */
+  overflow-x: hidden;
   overflow-y: visible;
 }
 
-/* Background + overlay darker */
-.mainfirst-bg {
+/* Background + overlay */
+.hero-bg {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -32,31 +35,31 @@ body {
   z-index: 0;
 }
 
-/* Text + Booking container */
-.content-wrapper {
+/* Nội dung hero */
+.hero-content {
   position: absolute;
-  left: 15.57vw; /* 299px */
-  top: 20.05vh; /* 195px */
-  width: 46.88vw; /* 900px */
-  height: 63vh; /* 612.5px */
+  left: 15.57vw;
+  top: 20.05vh;
+  width: 46.88vw;
+  height: 63vh;
   z-index: 10;
   display: flex;
   flex-direction: column;
 }
 
 /* Text section */
-.text-content {
+.hero-text {
   position: absolute;
   top: 0;
   left: 0;
-  width: 29.95vw; /* 575px */
-  height: 33.45vh; /* 325px */
+  width: 29.95vw;
+  height: 33.45vh;
   color: #fff;
 }
 
 .welcome {
-  font-family: "Playball", cursive;
-  font-size: 1.3vw; /* ~25px */
+  font-family: "Poppins", cursive;
+  font-size: 1.3vw;
   color: #eb662b;
   position: absolute;
   top: 0;
@@ -65,19 +68,20 @@ body {
 
 .main-text {
   position: absolute;
-  top: 17.6vh; /* 171px */
+  top: 17.6vh;
   left: 0;
   width: 29.95vw;
-  font-size: 0.94vw; /* ~18px */
+  font-size: 0.94vw;
   line-height: 1.5;
 }
 
+/* Nút */
 .btn-destination {
   position: absolute;
-  top: 27.6vh; /* 269px */
+  top: 27.6vh;
   left: 0;
-  width: 9.38vw; /* 180px */
-  height: 5.76vh; /* 56px */
+  width: 9.38vw;
+  height: 5.76vh;
   border: none;
   border-radius: 120px;
   background: #fad71b;
@@ -85,16 +89,19 @@ body {
   font-weight: 600;
   font-size: 0.9vw;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.btn-destination .arrow {
-  margin-left: 6px;
+.btn-destination:hover {
+  background: #ffe769;
+  transform: translateY(-0.4vh);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Booking Form */
+/* Form booking */
 .booking-form {
   position: absolute;
-  top: 46vh; /* 447.5px */
+  top: 46vh;
   left: 0;
   width: 50vw;
   height: 15vh;
@@ -132,64 +139,61 @@ body {
   border: none;
   border-radius: 0.6vw;
   padding: 1.2vh 1.6vw;
-
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9vw;
 }
 
-/* Woman */
-.woman {
+/* Hình minh họa */
+.hero-woman {
   position: absolute;
-  left: 37.8vw; /* 726px */
-  top: 10.54vh; /* 102.5px */
-  width: 42.18vw; /* 810px */
-  height: 83.3vh; /* 810px */
+  left: 37.8vw;
+  top: 10.54vh;
+  width: 42.18vw;
+  height: 83.3vh;
   z-index: 3;
   object-fit: contain;
 }
 
-/* Plane */
-.plane {
+.hero-plane {
   position: absolute;
-  left: 71.46vw; /* 1372px */
-  top: 10.8vh; /* 105px */
-  width: 25.31vw; /* 486px */
-  height: 25.81vh; /* 251px */
+  left: 71.46vw;
+  top: 10.8vh;
+  width: 25.31vw;
+  height: 25.81vh;
   z-index: 2;
   object-fit: contain;
   animation: planeFly 6s ease-in-out infinite alternate;
 }
 
-/* Clouds */
-.cloud {
+.hero-cloud {
   position: absolute;
-  width: 19.3vw; /* 371px */
-  height: 27.9vh; /* 271px */
+  width: 19.3vw;
+  height: 27.9vh;
   object-fit: contain;
   z-index: 3;
   opacity: 0.85;
 }
 
 .cloud1 {
-  left: 76.3vw; /* 1465px */
-  top: 14.9vh; /* 145px */
+  left: 76.3vw;
+  top: 14.9vh;
   animation: cloudDrift1 12s ease-in-out infinite alternate;
 }
 
 .cloud2 {
-  left: 79.1vw; /* 1519px */
-  top: 13.96vh; /* 135.88px */
+  left: 79.1vw;
+  top: 13.96vh;
   animation: cloudDrift2 15s ease-in-out infinite alternate;
 }
 
-/* Photo Container */
+/* Ảnh chồng trang trí */
 .photo-container {
   position: absolute;
-  left: 63.54vw; /* 1220px */
-  top: 15vh; /* 972.5px */
-  width: 35.16vw; /* 675px */
-  height: 80vh; /* 778px */
+  left: 63.54vw;
+  top: 15vh;
+  width: 35.16vw;
+  height: 80vh;
   z-index: 1;
 }
 
@@ -202,27 +206,28 @@ body {
 .overwater {
   left: 0;
   top: 0;
-  width: 25.52vw; /* 490px */
-  height: 58.63vh; /* 570px */
+  width: 25.52vw;
+  height: 58.63vh;
   z-index: 1;
 }
 
 .couple {
   left: 0;
-  top: 44.02vh; /* 428px */
-  width: 18.75vw; /* 360px */
-  height: 36vh; /* 350px */
+  top: 44.02vh;
+  width: 18.75vw;
+  height: 36vh;
   z-index: 2;
 }
 
 .colosseum {
-  left: 18.13vw; /* 348px */
-  top: 50vh; /* 486px */
-  width: 17.29vw; /* 332px */
-  height: 30.03vh; /* 292px */
+  left: 18.13vw;
+  top: 50vh;
+  width: 17.29vw;
+  height: 30.03vh;
   z-index: 3;
 }
 
+/* Hiệu ứng */
 @keyframes planeFly {
   0% {
     transform: translateY(0) rotate(2deg);
@@ -257,18 +262,19 @@ body {
   }
 }
 
-/* =========== Mainsecond ============== */
+/* ======================================================
+   PHẦN 2: FEATURE SECTION (main-feature)
+====================================================== */
 
-.mainsecond {
+.main-feature {
   width: 100%;
   background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10vh 0; /* khoảng cách trên dưới */
+  padding: 10vh 0;
 }
 
-/* Chia bố cục thành 2 cột: bên trái (text + card), bên phải (ảnh) */
 .feature-container {
   width: 85%;
   max-width: 1400px;
@@ -276,17 +282,15 @@ body {
   grid-template-columns: 2fr 1fr;
   gap: 4vw;
   align-items: start;
-  position: relative; /* để shape đặt tuyệt đối bên trong */
+  position: relative;
 }
 
-/* --- Cột trái gồm tiêu đề và các thẻ --- */
 .feature-left {
   display: flex;
   flex-direction: column;
   gap: 4vh;
 }
 
-/* Phần tiêu đề */
 .feature-text {
   display: flex;
   flex-direction: column;
@@ -294,7 +298,7 @@ body {
 }
 
 .feature-text .subheading {
-  font-family: "Playball", cursive;
+  font-family: "Poppins", cursive;
   color: #eb662b;
   font-size: 1.2vw;
 }
@@ -313,20 +317,19 @@ body {
   padding-bottom: 20px;
 }
 
-/* --- Hình shape (đường bay cong) --- */
+/* Shape */
 .feature-shape {
   position: absolute;
-  left: 48%; /* vị trí ngang (điều chỉnh nếu lệch) */
-  top: 10%; /* vị trí dọc (điều chỉnh nếu lệch) */
-  width: 8vw; /* kích thước tương đối */
+  left: 48%;
+  top: 10%;
+  width: 8vw;
   height: auto;
   z-index: 1;
   opacity: 0.9;
-  pointer-events: none; /* không chặn thao tác chuột */
+  pointer-events: none;
   animation: floatShape 6s ease-in-out infinite alternate;
 }
 
-/* Hiệu ứng bay nhẹ cho shape */
 @keyframes floatShape {
   0% {
     transform: translateY(0px) rotate(0deg);
@@ -336,35 +339,7 @@ body {
   }
 }
 
-/* --- Khu vực 3 thẻ tính năng --- */
-/* Hộp nền phía sau ảnh minh họa trong mỗi thẻ */
-.img-wrapper {
-  background: #fff; /* nền trắng */
-  border-radius: 1vw;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-  margin-top: 2vh;
-  padding: 1.5vh 0;
-  transform: rotate(-4deg); /* xoay nhẹ để tạo cảm giác sinh động */
-  transition: all 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Khi hover thẻ cha → ảnh và nền nghiêng ngược lại */
-.feature-card:hover .img-wrapper {
-  transform: rotate(0deg) translateY(-0.5vh);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
-}
-
-/* Ảnh minh họa bên trong wrapper */
-.img-wrapper img {
-  width: 80%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
+/* Grid thẻ */
 .feature-grid {
   display: flex;
   justify-content: flex-start;
@@ -372,7 +347,7 @@ body {
   align-items: stretch;
 }
 
-/* Thẻ tính năng (card) */
+/* Thẻ */
 .feature-card {
   flex: 1;
   background: #f6f6f6;
@@ -386,10 +361,34 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Hiệu ứng hover: nổi nhẹ */
 .feature-card:hover {
   transform: translateY(-0.8vh);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Nền trắng dưới ảnh */
+.img-wrapper {
+  background: #fff;
+  border-radius: 1vw;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  margin-top: 2vh;
+  padding: 1.5vh 0;
+  transform: rotate(-4deg);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-card:hover .img-wrapper {
+  transform: rotate(0deg) translateY(-0.5vh);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+}
+
+.img-wrapper img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
 }
 
 .feature-card h4 {
@@ -405,16 +404,7 @@ body {
   flex: 1;
 }
 
-/* Hình bên trong thẻ */
-.feature-card img {
-  width: 100%;
-  max-height: 120px;
-  object-fit: contain;
-  margin-top: 1vh;
-  border-radius: 0.6vw;
-}
-
-/* Màu riêng cho từng thẻ */
+/* Màu từng thẻ */
 .feature-card.purple {
   background: #e7e6fb;
 }
@@ -425,7 +415,7 @@ body {
   background: #eaeaea;
 }
 
-/* --- Cột phải: hình ảnh minh họa --- */
+/* Hình bên phải */
 .feature-image {
   display: flex;
   justify-content: center;
@@ -442,12 +432,11 @@ body {
   transition: transform 0.4s ease;
 }
 
-/* Khi hover: ảnh hơi nghiêng trở lại */
 .feature-image img:hover {
   transform: rotate(0deg) translateY(-1vh);
 }
 
-/* --- Responsive cho màn nhỏ --- */
+/* Responsive feature */
 @media (max-width: 1024px) {
   .feature-container {
     grid-template-columns: 1fr;
@@ -468,12 +457,14 @@ body {
   }
 }
 
-/* ============ MAIN THIRD ============ */
-.mainthird {
+/* ======================================================
+   PHẦN 3: DESTINATIONS SECTION (main-destinations)
+====================================================== */
+
+.main-destinations {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   width: 100%;
-  background: #f5f5f5;
   min-height: 90vh;
   background: linear-gradient(
       90deg,
@@ -484,55 +475,55 @@ body {
   overflow: hidden;
 }
 
-/* Bên trái - text  */
-.mainthird-left {
+/* Cột trái */
+.dest-left {
   position: relative;
   display: flex;
   align-items: center;
   padding: 0 5vw;
 }
 
-.mainthird-left .bg-overlay {
+.dest-left .bg-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-.third-text {
+.dest-text {
   position: relative;
   z-index: 2;
   color: #fff;
   max-width: 500px;
 }
 
-.third-text .subheading {
-  font-family: "Playball", cursive;
+.dest-text .subheading {
+  font-family: "Poppins", cursive;
   font-size: 1.2vw;
   color: #eb662b;
   margin-bottom: 1vh;
 }
 
-.third-text h2 {
+.dest-text h2 {
   font-size: 2.5vw;
   line-height: 1.3;
   font-weight: 700;
   margin-bottom: 2vh;
 }
 
-.third-text h2 em {
+.dest-text h2 em {
   font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.third-text .desc {
+.dest-text .desc {
   font-size: 1vw;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 3vh;
   line-height: 1.6;
 }
 
-/* Nút */
-.mainthird .btn-destination {
+/* Button */
+.main-destinations .btn-destination {
   background: #fad71b;
   color: #000;
   border: none;
@@ -548,21 +539,22 @@ body {
   min-width: 12vw;
   transition: all 0.3s ease;
 }
-.btn-destination:hover {
-  background: #ffe769; /* màu vàng sáng hơn */
-  transform: translateY(-0.4vh); /* nhích nhẹ lên trên */
+
+.main-destinations .btn-destination:hover {
+  background: #ffe769;
+  transform: translateY(-0.4vh);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Bên phải - Grid ảnh */
-.mainthird-right {
+/* Cột phải */
+.dest-right {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4vh 3vw;
 }
 
-.destinations-grid {
+.dest-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -571,7 +563,7 @@ body {
   max-width: 900px;
 }
 
-.destination-card {
+.dest-card {
   position: relative;
   border-radius: 1vw;
   overflow: hidden;
@@ -579,23 +571,23 @@ body {
   transition: all 0.3s ease;
 }
 
-.destination-card.tall {
-  grid-row: span 2; /* thẻ giữa cao hơn */
+.dest-card.tall {
+  grid-row: span 2;
 }
 
-.destination-card img {
+.dest-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
 
-.destination-card:hover img {
+.dest-card:hover img {
   transform: scale(1.05);
 }
 
-/* Nhãn dưới ảnh */
-.destination-card .label {
+/* Label */
+.dest-card .label {
   position: absolute;
   bottom: 1vh;
   left: 1vw;
@@ -612,25 +604,1154 @@ body {
   transition: all 0.3s ease;
 }
 
-.destination-card:hover .label {
+.dest-card:hover .label {
   background: #fad71b;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .mainthird {
+  .main-destinations {
     grid-template-columns: 1fr;
   }
-  .mainthird-left {
+  .dest-left {
     min-height: 50vh;
   }
-  .destinations-grid {
+  .dest-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .third-text h2 {
+  .dest-text h2 {
     font-size: 6vw;
   }
-  .third-text .desc {
+  .dest-text .desc {
     font-size: 2.6vw;
+  }
+}
+
+/* =============================================
+   PHẦN 4: ABOUT SECTION (giới thiệu thương hiệu)
+============================================== */
+.main-about {
+  width: 100%;
+  background: url("../images/home/about_bg.png") center/cover no-repeat;
+  padding: 10vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container {
+  width: 85%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 6vh;
+}
+
+/* ====== Hàng 1: Tiêu đề & mô tả ====== */
+.about-header {
+  text-align: left;
+  color: #111;
+}
+
+.about-header .subheading {
+  font-family: "Popins", cursive;
+  color: #eb662b;
+  font-size: 1.2vw;
+  margin-bottom: 1vh;
+}
+
+.about-header h2 {
+  font-size: 2.5vw;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1.5vh;
+}
+
+.about-header h2 em {
+  font-weight: 400;
+  color: #777;
+  font-style: italic;
+}
+
+/* ====== Hàng 2: 3 cột ====== */
+.about-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 2vw;
+}
+
+/* --- CỘT TRÁI: 2 ẢNH NGHIÊNG --- */
+.about-left {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+}
+
+.about-img {
+  width: 16vw;
+  border-radius: 1vw;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Ảnh lớn bên trái */
+.img-1 {
+  width: 18vw;
+  transform: rotate(-6deg);
+  z-index: 2;
+}
+
+/* Ảnh nhỏ bên phải */
+.img-2 {
+  width: 14vw;
+  transform: rotate(0deg);
+  margin-left: -2vw;
+  z-index: 1;
+}
+
+/* Hover hiệu ứng mềm */
+.about-img:hover {
+  transform: scale(1.03);
+}
+
+/* --- Cột giữa: Nội dung & nút --- */
+.about-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3vh;
+}
+
+.about-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+}
+.about-middle .desc {
+  font-size: 1vw;
+  color: #555;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.feature-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 1vw;
+  background: #fff;
+  padding: 1.5vh 1.5vw;
+  border-radius: 0.8vw;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-0.4vh);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.feature-box .icon {
+  width: 2.5vw;
+  height: auto;
+}
+
+.feature-box h4 {
+  font-size: 1vw;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.3vh;
+}
+
+.feature-box p {
+  font-size: 0.85vw;
+  color: #555;
+}
+
+/* --- Nút --- */
+.btn-about {
+  background: #fad71b;
+  color: #000;
+  border: none;
+  border-radius: 100px;
+  padding: 1.2vh 2vw;
+  font-weight: 600;
+  font-size: 0.95vw;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6vw;
+  transition: all 0.3s ease;
+}
+
+.btn-about:hover {
+  background: #ffe86f;
+  transform: translateY(-0.4vh);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Cột phải: Hình vali --- */
+.about-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.decor-img {
+  width: 150%;
+  height: auto;
+  object-fit: contain;
+  animation: floatDecor 5s ease-in-out infinite alternate;
+}
+
+@keyframes floatDecor {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-1.5vh);
+  }
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 1024px) {
+  .about-header h2 {
+    font-size: 5vw;
+  }
+  .about-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 5vh;
+  }
+  .about-img {
+    width: 40vw;
+  }
+  .feature-box {
+    justify-content: center;
+  }
+  .btn-about {
+    font-size: 3vw;
+  }
+}
+
+/* =============================================
+     PHẦN 5: RECOMMENDED TRIPS SECTION (gợi ý tour)
+============================================== --> */
+.main-recommend {
+  background: url("../images/home/recommendations_bg.png") center/cover
+    no-repeat;
+  width: 100%;
+  padding: 10vh 0;
+  display: flex;
+  justify-content: center;
+}
+
+.recommend-container {
+  width: 85%;
+  max-width: 1400px;
+  text-align: center;
+}
+
+/* --- Header --- */
+.recommend-header .subheading {
+  font-family: "Poppins", cursive;
+  color: #eb662b;
+  font-size: 1.2vw;
+  margin-bottom: 0.8vh;
+}
+
+.recommend-header h2 {
+  font-size: 2vw;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 6vh;
+}
+
+/* --- Grid --- */
+.recommend-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vw;
+}
+
+/* --- Card --- */
+.tour-card {
+  background: #fff;
+  border-radius: 1vw;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tour-card:hover {
+  transform: translateY(-0.8vh);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tour-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.tour-info {
+  padding: 2vh 1.5vw;
+  text-align: left;
+}
+
+.tour-info h4 {
+  font-size: 1.1vw;
+  color: #111;
+  font-weight: 600;
+  margin-bottom: 0.5vh;
+}
+
+.tour-info .location {
+  color: #777;
+  font-size: 0.9vw;
+  margin-bottom: 1vh;
+}
+
+.tour-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85vw;
+  color: #444;
+  margin-bottom: 2vh;
+}
+
+/* --- Nút --- */
+.btn-view,
+.btn-more {
+  background: #fad71b;
+  border: none;
+  border-radius: 50px;
+  padding: 1vh 2vw;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-view:hover,
+.btn-more:hover {
+  background: #ffe86b;
+  transform: translateY(-0.3vh);
+}
+
+.btn-center {
+  margin-top: 6vh;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .recommend-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .recommend-header h2 {
+    font-size: 4vw;
+  }
+}
+
+/* ============================================
+      PHẦN 6: WHY CHOOSE US
+=============================================== */
+.main-chooseus {
+  position: relative;
+  width: 100%;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* --- Nền chính --- */
+.chooseus-bg {
+  position: absolute;
+  inset: 0;
+  background: url("../images/home/chooseus_bg.png") center/cover no-repeat;
+  z-index: 0;
+}
+
+/* --- Bố cục tổng thể --- */
+.chooseus-container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10vh 0 18vh; /* thêm khoảng trống dưới để không bị đè lên ảnh */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* --- Nội dung chính (giữa section) --- */
+.chooseus-content {
+  max-width: 800px;
+  text-align: left;
+}
+
+.chooseus-content .subheading {
+  font-family: "Poppins", cursive;
+  color: #eb662b;
+  font-size: 1.1vw;
+}
+
+.chooseus-content h2 {
+  font-size: 2.4vw;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 3vh;
+}
+
+.chooseus-content h2 em {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* --- Grid 4 feature box --- */
+.chooseus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vw 2vh;
+  margin-top: 2vh;
+}
+
+.chooseus-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1vw;
+  border-radius: 0.8vw;
+  padding: 2vh 1.5vw;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.chooseus-card:hover {
+  transform: translateY(-0.4vh);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.chooseus-card img {
+  width: 32px;
+  height: auto;
+  filter: brightness(0) saturate(100%) invert(75%) sepia(96%) saturate(1242%)
+    hue-rotate(4deg) brightness(101%) contrast(98%);
+}
+
+.chooseus-card h4 {
+  font-size: 1vw;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 0.5vh;
+}
+
+.chooseus-card p {
+  font-size: 0.85vw;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+/* --- Cô gái bên trái --- */
+.chooseus-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.chooseus-img-left {
+  width: min(24vw, 360px);
+  height: auto;
+  object-fit: contain;
+}
+
+/* Ô “21+ years of experience” trên ảnh trái */
+.experience-box {
+  position: absolute;
+  left: 90%;
+  top: 5%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.8vw;
+  text-align: center;
+  padding: 2vh 2vw;
+}
+
+.experience-box h3 {
+  font-size: 2.3vw;
+  font-weight: 700;
+  margin-bottom: 0.3vh;
+  color: #fad71b;
+}
+
+.experience-box p {
+  font-size: 0.9vw;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Cô gái bên phải --- */
+.chooseus-right {
+  position: absolute;
+  bottom: 0;
+  right: 2vw;
+  z-index: 3;
+}
+
+.chooseus-img-right {
+  width: min(26vw, 400px);
+  height: auto;
+  object-fit: contain;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .chooseus-content {
+    text-align: center;
+  }
+
+  .chooseus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chooseus-img-left {
+    width: 35vw;
+  }
+
+  .chooseus-img-right {
+    width: 38vw;
+  }
+
+  .chooseus-container {
+    padding-bottom: 14vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .chooseus-img-right {
+    display: none; /* ẩn ảnh phải khi quá nhỏ */
+  }
+
+  .chooseus-img-left {
+    width: 60vw;
+  }
+
+  .chooseus-container {
+    padding-bottom: 12vh;
+  }
+
+  .chooseus-card h4 {
+    font-size: 3.5vw;
+  }
+
+  .chooseus-card p {
+    font-size: 2.8vw;
+  }
+}
+
+/* =====================================================
+   PHẦN 7: TESTIMONIALS SECTION (Đánh giá khách hàng)
+   ===================================================== */
+
+.main-testimonials {
+  position: relative;
+  width: 100%;
+  background: url("../images/home/testimonials_bg.png") center/cover no-repeat;
+  padding: 10vh 0;
+  text-align: center;
+  color: #111;
+}
+
+/* --- Container tổng --- */
+.testimonials-container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Header (tiêu đề + phụ đề) --- */
+.testimonials-header .subheading {
+  font-family: "Poppins", cursive;
+  color: #eb662b;
+  font-size: 1.2vw;
+  margin-bottom: 1vh;
+}
+
+.testimonials-header h2 {
+  font-size: 2.2vw;
+  font-weight: 700;
+  margin-bottom: 6vh;
+}
+
+/* --- Khối nội dung đánh giá (ảnh + text) --- */
+.testimonial-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
+  margin-bottom: 6vh;
+}
+
+/* --- Cột trái: Ảnh khách hàng --- */
+.testimonial-left img {
+  width: 250px;
+  height: auto;
+  border-radius: 0.8vw;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Cột phải: Nội dung đánh giá --- */
+.testimonial-right {
+  max-width: 600px;
+  text-align: left;
+}
+
+.stars img {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.3vw;
+}
+
+.testimonial-text {
+  font-size: 1vw;
+  color: #333;
+  line-height: 1.7;
+  margin: 1.5vh 0;
+}
+
+.testimonial-info h4 {
+  font-weight: 700;
+  font-size: 1vw;
+}
+
+.testimonial-info p {
+  font-size: 0.9vw;
+  color: #666;
+}
+
+/* --- Dãy logo thương hiệu --- */
+.testimonials-brands {
+  border-top: 1px solid #ddd;
+  margin-top: 4vh;
+  padding-top: 3vh;
+}
+
+.testimonials-brands p {
+  font-weight: 600;
+  font-size: 1vw;
+  margin-bottom: 2vh;
+}
+
+.brands-img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .testimonial-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .testimonial-right {
+    text-align: center;
+  }
+
+  .testimonials-header h2 {
+    font-size: 5vw;
+  }
+
+  .brands-img {
+    width: 90%;
+  }
+}
+
+/* =====================================================
+   PHẦN 8: SPECIAL OFFER SECTION (Ưu đãi đặc biệt)
+   ===================================================== */
+
+.main-offer {
+  width: 100%;
+  height: 600px;
+  background: url("../images/home/offer_bg.png") center/cover no-repeat;
+  font-family: "Poppins", sans-serif;
+  padding: 12vh 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Nội dung text và discount --- */
+.offer-content {
+  position: absolute;
+  top: 50%;
+  left: 28%;
+  transform: translateY(-50%);
+  text-align: left;
+  color: #111;
+  max-width: 380px;
+  z-index: 2;
+}
+
+.offer-content h2 {
+  font-size: 2.6vw;
+  font-weight: 700;
+  margin-bottom: 1vh;
+}
+
+.offer-content p {
+  font-size: 1vw;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 2.5vh;
+}
+
+.btn-offer {
+  background: #fad71b;
+  border: none;
+  border-radius: 50px;
+  padding: 1.2vh 2vw;
+  font-size: 0.95vw;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-offer:hover {
+  background: #ffe86f;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.3vh);
+}
+
+.offer-discount {
+  margin-top: 3vh;
+  width: 15vw;
+  height: auto;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .main-offer {
+    background-position: center center;
+  }
+
+  .offer-content {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .offer-content h2 {
+    font-size: 6vw;
+  }
+
+  .offer-content p {
+    font-size: 2.8vw;
+  }
+
+  .offer-discount {
+    width: 40vw;
+  }
+}
+
+/* =============================================
+   PHẦN 9: TRIP SHOWCASE SECTION (Gợi ý hành trình)
+============================================= */
+
+.main-tripshowcase {
+  position: relative;
+  width: 100%;
+  background: url("../images/home/tripshowcase_bg.png") center/cover no-repeat;
+  font-family: "Poppins", sans-serif;
+  padding: 10vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bố cục 3 cột */
+.tripshowcase-container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 2vw;
+  align-items: stretch; /* 👈 3 cột cao bằng nhau */
+  width: 85%;
+  max-width: 1300px;
+}
+
+/* === Cột trái / phải === */
+.tripshowcase-col {
+  background: #fff;
+  border-radius: 1vw;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 3vh 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.trip-card-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vh;
+}
+
+.trip-title {
+  font-size: 1.1vw;
+  font-weight: 600;
+  margin-bottom: 2vh;
+}
+
+.trip-card {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  padding-bottom: 2vh;
+  border-bottom: 1px solid #eee;
+}
+
+.trip-card:last-child {
+  border-bottom: none;
+}
+
+.trip-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 0.6vw;
+}
+
+.trip-info h5 {
+  font-size: 0.95vw;
+  font-weight: 500;
+  color: #111;
+}
+
+.trip-info p {
+  font-size: 0.85vw;
+  color: #777;
+  margin-top: 0.3vh;
+}
+
+/* === Ảnh trung tâm === */
+.tripshowcase-center {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* khớp chiều cao với 2 cột bên */
+  overflow: hidden;
+}
+
+.tripshowcase-center img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* giúp ảnh luôn vừa khung */
+  border-radius: 1vw; /* bo nhẹ  */
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .tripshowcase-container {
+    grid-template-columns: 1fr;
+    gap: 4vh;
+  }
+
+  .tripshowcase-col {
+    padding: 4vh 5vw;
+  }
+
+  .trip-info h5 {
+    font-size: 3.5vw;
+  }
+
+  .trip-info p {
+    font-size: 3vw;
+  }
+
+  .tripshowcase-center img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ===========================
+   PHẦN 10: BLOG & NEWS
+=========================== */
+.main-blog {
+  background: #fff;
+  padding: 8vh 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.blog-container {
+  width: 85%;
+  max-width: 1300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.blog-header span.blog-subtitle {
+  color: #e27b47;
+  font-weight: 500;
+  font-size: 1vw;
+}
+
+.blog-header h2 {
+  font-size: 2vw;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.3;
+  margin: 1vh 0 5vh;
+}
+
+/* ===== GRID ===== */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vw;
+  justify-content: center;
+}
+
+/* ===== ITEM ===== */
+.blog-item {
+  background: #fff;
+  border-radius: 1vw;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.blog-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== IMG ===== */
+.blog-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1vw 1vw 0 0;
+}
+
+.blog-img img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-date {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #e27b47;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0.6vw;
+  text-align: center;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.8vw;
+}
+
+.blog-date span {
+  display: block;
+  font-size: 1vw;
+}
+
+/* ===== CONTENT ===== */
+.blog-content {
+  padding: 1.8rem;
+}
+
+.blog-category {
+  font-size: 0.9vw;
+  color: #888;
+  margin-bottom: 0.5vh;
+}
+
+.blog-title {
+  font-size: 1vw;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 1rem;
+}
+
+.blog-author {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.blog-author img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.blog-author span {
+  font-size: 0.9vw;
+  color: #555;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 4vh;
+  }
+
+  .blog-header h2 {
+    font-size: 6vw;
+  }
+
+  .blog-date {
+    font-size: 2.5vw;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .blog-date span {
+    font-size: 3vw;
+  }
+
+  .blog-title {
+    font-size: 3.5vw;
+  }
+
+  .blog-author span {
+    font-size: 2.8vw;
+  }
+}
+
+/* ===========================
+   PHẦN NEWSLETTER
+=========================== */
+.main-newsletter {
+  position: relative;
+  background: url("../images/home/newsletter_bg.png") center/cover no-repeat;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  color: #111;
+  text-align: center;
+}
+
+.newsletter-overlay {
+  background: rgba(255, 255, 255, 0.75); /* lớp phủ sáng giúp chữ rõ */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletter-content {
+  max-width: 700px;
+  width: 90%;
+}
+
+.newsletter-content h2 {
+  font-size: 2vw;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 3vh;
+}
+
+.newsletter-benefits {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2vw;
+  margin-bottom: 4vh;
+  color: #444;
+}
+
+.newsletter-benefits p {
+  font-size: 0.9vw;
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+}
+
+.newsletter-benefits i {
+  color: #2d68ff;
+}
+
+/* ===== FORM ===== */
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 0.6vw;
+  overflow: hidden;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 0 auto;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 1.2rem 1.5rem;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  color: #111;
+}
+
+.newsletter-form button {
+  background: #fdd835;
+  color: #111;
+  font-weight: 600;
+  border: none;
+  padding: 1.2rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: #ffcc00;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .main-newsletter {
+    height: 50vh;
+  }
+
+  .newsletter-content h2 {
+    font-size: 5vw;
+  }
+
+  .newsletter-benefits p {
+    font-size: 3vw;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 1vw;
+  }
+
+  .newsletter-form input {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+  }
+
+  .newsletter-form button {
+    width: 100%;
+    border-radius: 0;
+    font-size: 1rem;
   }
 }

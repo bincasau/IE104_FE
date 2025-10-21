@@ -6,24 +6,26 @@
     <title>Home</title>
     <link rel="stylesheet" href="../assets/css/home.css" />
   </head>
-  <body>
-    <!-- ============= Main First ================== -->
-    <section class="mainfirst">
-      <div class="mainfirst-bg"></div>
 
-      <!-- Text + Booking -->
-      <div class="content-wrapper">
-        <div class="text-content">
+  <body>
+    <!-- =============================================
+         PHẦN 1: HERO SECTION (ảnh nền + cô gái + form booking)
+    ============================================== -->
+    <section class="main-hero">
+      <div class="hero-bg"></div>
+
+      <!-- Text + Form đặt tour -->
+      <div class="hero-content">
+        <div class="hero-text">
           <p class="welcome">Welcome to Travel VN</p>
           <p class="main-text">
             Discover your next great adventure and uncover unforgettable moments
             waiting just around the corner.
           </p>
-          <button class="btn-destination">
-            All Destinations <span class="arrow">➜</span>
-          </button>
+          <button class="btn-destination">All Destinations</button>
         </div>
 
+        <!-- Form booking -->
         <form class="booking-form">
           <div class="form-group">
             <label>Select a city</label>
@@ -45,25 +47,29 @@
         </form>
       </div>
 
-      <!-- Woman -->
-      <img src="../assets/images/home/woman.png" alt="Traveler" class="woman" />
-
-      <!-- Plane -->
-      <img src="../assets/images/home/plane.png" alt="Plane" class="plane" />
-
-      <!-- Clouds -->
+      <!-- Hình ảnh minh họa -->
       <img
-        src="../assets/images/home/cloud.png"
-        alt="Cloud"
-        class="cloud cloud1"
+        src="../assets/images/home/woman.png"
+        alt="Traveler"
+        class="hero-woman"
+      />
+      <img
+        src="../assets/images/home/plane.png"
+        alt="Plane"
+        class="hero-plane"
       />
       <img
         src="../assets/images/home/cloud.png"
         alt="Cloud"
-        class="cloud cloud2"
+        class="hero-cloud cloud1"
+      />
+      <img
+        src="../assets/images/home/cloud.png"
+        alt="Cloud"
+        class="hero-cloud cloud2"
       />
 
-      <!-- Photo Container -->
+      <!-- Bộ ảnh trang trí -->
       <div class="photo-container">
         <img
           src="../assets/images/home/overwater.png"
@@ -83,12 +89,14 @@
       </div>
     </section>
 
-    <!-- ============ Main second =========== -->
-    <section class="mainsecond">
+    <!-- =============================================
+         PHẦN 2: FEATURE SECTION (3 tính năng chính)
+    ============================================== -->
+    <section class="main-feature">
       <div class="feature-container">
-        <!-- CỘT TRÁI: Tiêu đề + Shape + 3 Thẻ tính năng -->
+        <!-- CỘT TRÁI: Tiêu đề + shape + thẻ tính năng -->
         <div class="feature-left">
-          <!-- Phần tiêu đề -->
+          <!-- Tiêu đề -->
           <div class="feature-text">
             <p class="subheading">Travel VN Feature</p>
             <h2>
@@ -98,10 +106,10 @@
             <h3><em>Made Easy.</em></h3>
           </div>
 
-          <!-- Hình shape: đường bay cong và máy bay -->
+          <!-- Hình shape -->
           <img
             src="../assets/images/home/shape.png"
-            alt="Đường bay"
+            alt="Đường bay cong"
             class="feature-shape"
           />
 
@@ -114,8 +122,6 @@
                 With countless choices at your fingertips, the perfect
                 experience.
               </p>
-
-              <!-- Nền trắng sau ảnh -->
               <div class="img-wrapper">
                 <img
                   src="../assets/images/home/feature-1.png"
@@ -131,7 +137,6 @@
                 Enjoy unbeatable deals and exclusive discounts on flights,
                 hotels, and tours.
               </p>
-
               <div class="img-wrapper">
                 <img
                   src="../assets/images/home/feature-2.png"
@@ -147,7 +152,6 @@
                 Experience an exclusive trip tailored just for you, with premium
                 services.
               </p>
-
               <div class="img-wrapper">
                 <img
                   src="../assets/images/home/feature-3.png"
@@ -158,7 +162,7 @@
           </div>
         </div>
 
-        <!-- CỘT PHẢI: Hình ảnh chính -->
+        <!-- CỘT PHẢI: Ảnh minh họa -->
         <div class="feature-image">
           <img
             src="../assets/images/home/feature_img.png"
@@ -167,12 +171,16 @@
         </div>
       </div>
     </section>
-    <!-- ====================  Main Third  ======================== -->
-    <section class="mainthird">
-      <div class="mainthird-left">
+
+    <!-- =============================================
+         PHẦN 3: DESTINATIONS SECTION (điểm đến nổi bật)
+    ============================================== -->
+    <section class="main-destinations">
+      <!-- Cột trái: Text giới thiệu -->
+      <div class="dest-left">
         <div class="bg-overlay"></div>
 
-        <div class="third-text">
+        <div class="dest-text">
           <p class="subheading">Best Tours</p>
           <h2>Featured Destinations to Inspire <em>Your Journey</em></h2>
           <p class="desc">
@@ -184,10 +192,11 @@
         </div>
       </div>
 
-      <div class="mainthird-right">
-        <div class="destinations-grid">
+      <!-- Cột phải: Lưới ảnh điểm đến -->
+      <div class="dest-right">
+        <div class="dest-grid">
           <!-- Ảnh 1 -->
-          <div class="destination-card">
+          <div class="dest-card">
             <img src="../assets/images/tour/tour_1.jpg" alt="Hạ Long" />
             <div class="label">
               <span>Hạ Long</span> <span class="arrow">➜</span>
@@ -195,23 +204,23 @@
           </div>
 
           <!-- Ảnh 2 -->
-          <div class="destination-card tall">
-            <img src="../assets/images/tour/tour_6.jpg" alt="Đà Lạt" />
+          <div class="dest-card tall">
+            <img src="../assets/images/tour/tour_6.jpg" alt="Huế" />
             <div class="label">
-              <span>France</span> <span class="arrow">➜</span>
+              <span>Huế</span> <span class="arrow">➜</span>
             </div>
           </div>
 
           <!-- Ảnh 3 -->
-          <div class="destination-card">
-            <img src="../assets/images/tour/tour_7.jpg" alt="India" />
+          <div class="dest-card">
+            <img src="../assets/images/tour/tour_7.jpg" alt="Nha Trang" />
             <div class="label">
-              <span>India</span> <span class="arrow">➜</span>
+              <span>Nha Trang</span> <span class="arrow">➜</span>
             </div>
           </div>
 
           <!-- Ảnh 4 -->
-          <div class="destination-card">
+          <div class="dest-card">
             <img src="../assets/images/tour/tour_5.jpg" alt="Đà Lạt" />
             <div class="label">
               <span>Đà Lạt</span> <span class="arrow">➜</span>
@@ -219,31 +228,589 @@
           </div>
 
           <!-- Ảnh 5 -->
-          <div class="destination-card">
-            <img src="../assets/images/tour/tour_8.jpg" alt="Roman" />
+          <div class="dest-card">
+            <img src="../assets/images/tour/tour_8.jpg" alt="Hà Nội" />
             <div class="label">
-              <span>Roman</span> <span class="arrow">➜</span>
+              <span>Hà Nội</span> <span class="arrow">➜</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ====================  Main Four   ======================== -->
-    <section class="mainfour"></section>
-    <!-- ====================  Main Five   ======================== -->
-    <section class="mainfive"></section>
-    <!-- ====================  Main Six    ======================== -->
-    <section class="mainsix"></section>
-    <!-- ====================  Main Seven  ======================== -->
-    <section class="mainseven"></section>
-    <!-- ====================  Main Eight  ======================== -->
-    <section class="maineight"></section>
-    <!-- ====================  Main Nine   ======================== -->
-    <section class="mainnine"></section>
-    <!-- ====================  Main Ten    ======================== -->
-    <section class="mainten"></section>
-    <!-- ====================  Main Eleven ======================== -->
-    <section class="maineleven"></section>
+    <!-- =============================================
+     PHẦN 4: ABOUT SECTION (giới thiệu thương hiệu)
+    ============================================== -->
+    <section class="main-about">
+      <div class="about-container">
+        <!-- Hàng 1: tiêu đề & mô tả -->
+        <div class="about-header">
+          <p class="subheading">About Us Travel VN</p>
+          <h2>
+            Our Trusted Travel Partner for <br />
+            Unforgettable <em>Journeys Worldwide.</em>
+          </h2>
+        </div>
+
+        <!-- Hàng 2: 3 cột nội dung -->
+        <div class="about-row">
+          <!-- Cột trái -->
+          <div class="about-left">
+            <img
+              src="../assets/images/home/about_img1.png"
+              alt="Travel photo 1"
+              class="about-img img-1"
+            />
+            <img
+              src="../assets/images/home/about_img2.png"
+              alt="Traveler woman"
+              class="about-img img-2"
+            />
+          </div>
+
+          <!-- Cột giữa -->
+          <div class="about-middle">
+            <p class="desc">
+              Discover breathtaking destinations handpicked for unforgettable
+              experiences. From tropical beaches to cultural landmarks, your
+              next adventure starts here.
+            </p>
+            <div class="about-features">
+              <div class="feature-box">
+                <img
+                  src="../assets/images/home/icon_1.png"
+                  alt="Best Travel Agency"
+                  class="icon"
+                />
+                <div class="text">
+                  <h4>Best Travel Agency</h4>
+                  <p>
+                    Discover unparalleled journeys with the best travel agency.
+                  </p>
+                </div>
+              </div>
+
+              <div class="feature-box">
+                <img
+                  src="../assets/images/home/icon_2.png"
+                  alt="Visa Get in 3 Days"
+                  class="icon"
+                />
+                <div class="text">
+                  <h4>Visa Get in 3 Days</h4>
+                  <p>
+                    Secure your visa in just 3 days with our efficient and
+                    reliable service.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-about">Know About Us</button>
+          </div>
+
+          <!-- Cột phải -->
+          <div class="about-right">
+            <img
+              src="../assets/images/home/about_decor.png"
+              alt="Travel decor"
+              class="decor-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+     PHẦN 5: RECOMMENDED TRIPS SECTION (gợi ý tour)
+    ============================================== -->
+    <section class="main-recommend">
+      <div class="recommend-container">
+        <!-- Tiêu đề -->
+        <div class="recommend-header">
+          <p class="subheading">Best Tours</p>
+          <h2>Recommended Trips For Your</h2>
+        </div>
+
+        <!-- Lưới tour -->
+        <div class="recommend-grid">
+          <!-- 6 tour mẫu tĩnh, sau sẽ render bằng JS -->
+          <div class="tour-card">
+            <img
+              src="../assets/images/tour/tour_1.jpg"
+              alt="Tour"
+              class="tour-img"
+            />
+            <div class="tour-info">
+              <h4>Ha Long Bay Explorer</h4>
+              <p class="location">Location: Quang Ninh</p>
+
+              <div class="tour-meta">
+                <span>⏱ 3 Days</span>
+                <span>💲 $599</span>
+              </div>
+
+              <button class="btn-view">View Tour</button>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <img
+              src="../assets/images/tour/tour_2.jpg"
+              alt="Tour"
+              class="tour-img"
+            />
+            <div class="tour-info">
+              <h4>Sapa Mountain Adventure</h4>
+              <p class="location">Location: Lao Cai</p>
+              <div class="tour-meta">
+                <span>⏱ 4 Days</span>
+                <span>💲 $499</span>
+              </div>
+              <button class="btn-view">View Tour</button>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <img
+              src="../assets/images/tour/tour_3.jpg"
+              alt="Tour"
+              class="tour-img"
+            />
+            <div class="tour-info">
+              <h4>Hoi An Ancient Town</h4>
+              <p class="location">Location: Quang Nam</p>
+              <div class="tour-meta">
+                <span>⏱ 2 Days</span>
+                <span>💲 $299</span>
+              </div>
+              <button class="btn-view">View Tour</button>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <img
+              src="../assets/images/tour/tour_4.jpg"
+              alt="Tour"
+              class="tour-img"
+            />
+            <div class="tour-info">
+              <h4>Phu Quoc Beach Paradise</h4>
+              <p class="location">Location: Kien Giang</p>
+              <div class="tour-meta">
+                <span>⏱ 5 Days</span>
+                <span>💲 $899</span>
+              </div>
+              <button class="btn-view">View Tour</button>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <img
+              src="../assets/images/tour/tour_5.jpg"
+              alt="Tour"
+              class="tour-img"
+            />
+            <div class="tour-info">
+              <h4>Da Lat Flower Getaway</h4>
+              <p class="location">Location: Lam Dong</p>
+              <div class="tour-meta">
+                <span>⏱ 3 Days</span>
+                <span>💲 $459</span>
+              </div>
+              <button class="btn-view">View Tour</button>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <img
+              src="../assets/images/tour/tour_6.jpg"
+              alt="Tour"
+              class="tour-img"
+            />
+            <div class="tour-info">
+              <h4>Hue Imperial Discovery</h4>
+              <p class="location">Location: Thua Thien Hue</p>
+              <div class="tour-meta">
+                <span>⏱ 2 Days</span>
+                <span>💲 $329</span>
+              </div>
+              <button class="btn-view">View Tour</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nút xem thêm -->
+        <div class="btn-center">
+          <button class="btn-more">View All Tour</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+     PHẦN 6: WHY CHOOSE US SECTION (lý do chọn Travel VN)
+============================================== -->
+    <section class="main-chooseus">
+      <!-- Nền chính -->
+      <div class="chooseus-bg"></div>
+
+      <div class="chooseus-container">
+        <!-- Cột trái - hình cô gái + kinh nghiệm -->
+        <div class="chooseus-left">
+          <img
+            src="../assets/images/home/chooseus_left.png"
+            alt="Traveler Woman"
+            class="chooseus-img-left"
+          />
+          <div class="experience-box">
+            <h3>21+</h3>
+            <p>Years of Experience</p>
+          </div>
+        </div>
+
+        <!-- Cột giữa - nội dung chính -->
+        <div class="chooseus-content">
+          <p class="subheading">Why Choose Travlia</p>
+          <h2>
+            Why Travelers Trust <br />
+            <span>Travlia</span> for Seamless <em>Travel Experiences</em>
+          </h2>
+
+          <!-- Các hộp tính năng -->
+          <div class="chooseus-grid">
+            <!-- 1 -->
+            <div class="chooseus-card">
+              <img
+                src="../assets/images/home/icon_agent.svg"
+                alt="Agent Icon"
+              />
+              <div class="text">
+                <h4>Best Travel Agents</h4>
+                <p>
+                  We begin by understanding your vision, goals, and market to
+                  craft a tailored strategy.
+                </p>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="chooseus-card">
+              <img
+                src="../assets/images/home/icon_safety.svg"
+                alt="Safety Icon"
+              />
+              <div class="text">
+                <h4>Safety First Always</h4>
+                <p>
+                  User-centric design and interactive prototypes bring your
+                  product idea to life.
+                </p>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="chooseus-card">
+              <img
+                src="../assets/images/home/icon_price.svg"
+                alt="Price Icon"
+              />
+              <div class="text">
+                <h4>Best Price Guarantee</h4>
+                <p>
+                  Agile development ensures a scalable, secure product with
+                  continuous testing for quality.
+                </p>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="chooseus-card">
+              <img
+                src="../assets/images/home/icon_support.svg"
+                alt="Support Icon"
+              />
+              <div class="text">
+                <h4>24/7 Customer Support</h4>
+                <p>
+                  We deploy, optimize, and support your startup as it grows and
+                  scales in the market.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột phải - hình cô gái + biểu tượng du lịch -->
+        <div class="chooseus-right">
+          <img
+            src="../assets/images/home/chooseus_right.png"
+            alt="Traveler with landmarks"
+            class="chooseus-img-right"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+     PHẦN 7: TESTIMONIALS SECTION (Đánh giá khách hàng)
+================================================ -->
+    <section class="main-testimonials">
+      <div class="testimonials-container">
+        <!-- Tiêu đề -->
+        <div class="testimonials-header">
+          <p class="subheading">Our Testimonials</p>
+          <h2>What’s Our Customers Say About Us!</h2>
+        </div>
+
+        <!-- Nội dung đánh giá -->
+        <div class="testimonial-box">
+          <!-- Ảnh khách hàng -->
+          <div class="testimonial-left">
+            <img
+              src="../assets/images/home/testimonial_1.png"
+              alt="Customer"
+              class="testimonial-img"
+            />
+          </div>
+
+          <!-- Nội dung -->
+          <div class="testimonial-right">
+            <div class="stars">
+              <img src="../assets/images/home/icon_star.svg" alt="Star" />
+              <img src="../assets/images/home/icon_star.svg" alt="Star" />
+              <img src="../assets/images/home/icon_star.svg" alt="Star" />
+              <img src="../assets/images/home/icon_star.svg" alt="Star" />
+              <img src="../assets/images/home/icon_star.svg" alt="Star" />
+            </div>
+
+            <p class="testimonial-text">
+              "This tour was everything I hoped for and more! The guides were
+              knowledgeable, the itinerary was well-organized, and the
+              experiences were unforgettable. It felt like a dream come true.
+              Highly recommend to anyone looking for an adventure!"
+            </p>
+
+            <div class="testimonial-info">
+              <h4>Cameron William</h4>
+              <p>Marketing Director, Oliver’s LAB llc.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dãy logo thương hiệu -->
+        <div class="testimonials-brands">
+          <p>Trusted By 15,000+ Founders & Business Owners</p>
+          <img
+            src="../assets/images/home/testimonials_brands.png"
+            alt="Trusted Brands"
+            class="brands-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+     PHẦN 8: SPECIAL OFFER SECTION (Ưu đãi đặc biệt)
+    ================================================ -->
+    <section class="main-offer">
+      <div class="offer-content">
+        <h2>Get Special Offer</h2>
+        <p>
+          Embark on an unforgettable journey with our exclusive tour special
+          offer — seize the moment and create lasting memories.
+        </p>
+        <button class="btn-offer">Booking Now</button>
+
+        <img
+          src="../assets/images/home/offer_discount_40.svg"
+          alt="40 percent off"
+          class="offer-discount"
+        />
+      </div>
+    </section>
+
+    <!-- =============================================
+     PHẦN 9: TRIP SHOWCASE SECTION (Gợi ý hành trình)
+    ================================================ -->
+    <section class="main-tripshowcase">
+      <div class="tripshowcase-bg"></div>
+
+      <div class="tripshowcase-container">
+        <!-- Cột trái -->
+        <div class="tripshowcase-col tripshowcase-left">
+          <div class="trip-card-group">
+            <h4 class="trip-title">Recommended for you</h4>
+
+            <div class="trip-card">
+              <img src="../assets/images/tour/tour_1.jpg" alt="tour 1" />
+              <div class="trip-info">
+                <h5>Lithaniya – Santa Cruza</h5>
+                <p>From $359</p>
+              </div>
+            </div>
+
+            <div class="trip-card">
+              <img src="../assets/images/tour/tour_2.jpg" alt="tour 2" />
+              <div class="trip-info">
+                <h5>Velouria – Monte Sienna</h5>
+                <p>From $859</p>
+              </div>
+            </div>
+
+            <div class="trip-card">
+              <img src="../assets/images/tour/tour_3.jpg" alt="tour 3" />
+              <div class="trip-info">
+                <h5>Elvarra – Costa Lumia</h5>
+                <p>From $689</p>
+              </div>
+            </div>
+
+            <div class="trip-card">
+              <img src="../assets/images/tour/tour_4.jpg" alt="tour 4" />
+              <div class="trip-info">
+                <h5>Velouria – Monte Sienna</h5>
+                <p>From $859</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ảnh trung tâm -->
+        <div class="tripshowcase-center">
+          <img
+            src="../assets/images/home/tripshowcase-center.png"
+            alt="center trip"
+          />
+        </div>
+
+        <!-- Cột phải -->
+        <div class="tripshowcase-col tripshowcase-right">
+          <div class="trip-card-group">
+            <h4 class="trip-title">Family Trip</h4>
+
+            <div class="trip-card">
+              <img src="../assets/images/tour/tour_5.jpg" alt="tour 5" />
+              <div class="trip-info">
+                <h5>Lithaniya – Santa Cruza</h5>
+                <p>From $359</p>
+              </div>
+            </div>
+
+            <div class="trip-card">
+              <img src="../assets/images/tour/tour_6.jpg" alt="tour 6" />
+              <div class="trip-info">
+                <h5>Velouria – Monte Sienna</h5>
+                <p>From $859</p>
+              </div>
+            </div>
+
+            <div class="trip-card">
+              <img src="../assets/images/tour/tour_7.jpg" alt="tour 7" />
+              <div class="trip-info">
+                <h5>Elvarra – Costa Lumia</h5>
+                <p>From $689</p>
+              </div>
+            </div>
+
+            <div class="trip-card">
+              <img src="../assets/images/tour/tour_8.jpg" alt="tour 8" />
+              <div class="trip-info">
+                <h5>Velouria – Monte Sienna</h5>
+                <p>From $859</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+     PHẦN 10: BLOG SECTION (bài viết & kinh nghiệm du lịch)
+    ============================================== -->
+    <section class="main-blog">
+      <div class="blog-container">
+        <div class="blog-header">
+          <span class="blog-subtitle">Blog & News</span>
+          <h2>Learn Something More From<br />Our Latest Blogs.</h2>
+        </div>
+
+        <div class="blog-grid">
+          <!-- Blog item -->
+          <div class="blog-item">
+            <div class="blog-img">
+              <img src="../assets/images/blog/blog1_1.jpg" alt="Blog 1" />
+              <div class="blog-date"><span>15</span> AUG</div>
+            </div>
+            <div class="blog-content">
+              <p class="blog-category">Travel</p>
+              <h4 class="blog-title">
+                10 Must-See Attractions in Santorini, Greece
+              </h4>
+              <div class="blog-author">
+                <img src="https://i.pravatar.cc/40?img=12" alt="Author" />
+                <span>by Angus Smith</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-item">
+            <div class="blog-img">
+              <img src="../assets/images/blog/blog2_1.jpg" alt="Blog 2" />
+              <div class="blog-date"><span>10</span> JUL</div>
+            </div>
+            <div class="blog-content">
+              <p class="blog-category">Guide</p>
+              <h4 class="blog-title">
+                A Beginner’s Guide to Hiking in the Swiss Alps
+              </h4>
+              <div class="blog-author">
+                <img src="https://i.pravatar.cc/40?img=5" alt="Author" />
+                <span>by Marta K.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-item">
+            <div class="blog-img">
+              <img src="../assets/images/blog/blog3_1.jpg" alt="Blog 3" />
+              <div class="blog-date"><span>18</span> JUN</div>
+            </div>
+            <div class="blog-content">
+              <p class="blog-category">Inspiration</p>
+              <h4 class="blog-title">
+                Solo Travel: The Best Thing You Can Do for Yourself
+              </h4>
+              <div class="blog-author">
+                <img src="https://i.pravatar.cc/40?img=9" alt="Author" />
+                <span>by A. Nguyen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+     PHẦN 11: NEWSLETTER SECTION (đăng ký nhận tin)
+    ============================================== -->
+    <section class="main-newsletter">
+      <div class="newsletter-overlay">
+        <div class="newsletter-content">
+          <h2>Subscribe to Our Newsletter &<br />Join Travlia Go.</h2>
+
+          <div class="newsletter-benefits">
+            <p>
+              <i class="fa-solid fa-circle-check"></i> The Best Travel Deals
+            </p>
+            <p><i class="fa-solid fa-circle-check"></i> Exclusive Promotions</p>
+            <p><i class="fa-solid fa-circle-check"></i> Expert Travel Tips</p>
+          </div>
+
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter Your Email" required />
+            <button type="submit">
+              Subscribe <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
