@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // View More
     container.querySelectorAll(".tour-card .view-more").forEach((btn) => {
       btn.addEventListener("click", () => {
-        window.location.href = "/pages/tourdetail.html";
+        window.location.href = "../../pages/tourdetail.html";
       });
     });
 

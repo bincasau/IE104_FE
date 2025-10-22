@@ -10,7 +10,7 @@
       "discount": "33% Off",
       "featured": true,
       "activities": ["Water Activities", "Relaxation & Nature Activities"],
-      "availability": ["Aug 25, 2025", "Aug 26, 2025", "Aug 27, 2025"],
+      "availability": ["Aug 25, 2025", "Aug 27, 2025"],
       "shortDesc": "Cruise through the emerald waters of Ha Long Bay, explore limestone caves, and relax onboard.",
       "image": "../assets/images/tour/tour_1.jpg"
     },

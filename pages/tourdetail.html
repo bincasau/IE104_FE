@@ -1,174 +1,383 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tour Detail - Cancun Beach Vacation</title>
+    <title>Tour Detail</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
     <link rel="stylesheet" href="../assets/css/tourdetail.css" />
   </head>
   <body>
-    <div class="tour-frame">
-      <div class="tour-bg-color"></div>
-      <img src="../assets/images/TourHeader - Copy.jpg" class="tour-bg-img" />
-      <img src="../assets/images/TourHeaderPerson.jpg" class="tour-person" />
-      <div class="tour-text">
-        <h1>Trip Search Result</h1>
-        <div class="breadcrumb">
-          <span class="home">HOME</span>
-          <span class="arrow">›</span>
-          <span class="current">TRIP SEARCH RESULT</span>
+    <section class="tour-gallery">
+      <div class="gallery-left">
+        <img
+          src="../assets/images/detailTour/detailTour1.jpg"
+          alt="Main tour image"
+        />
+      </div>
+
+      <div class="gallery-right">
+        <div class="small-img">
+          <img src="../assets/images/detailTour/detailTour2.jpg" alt="" />
         </div>
+        <div class="small-img">
+          <img src="../assets/images/detailTour/detailTour3.jpg" alt="" />
+        </div>
+        <div class="small-img">
+          <img src="../assets/images/detailTour/detailTour4.jpg" alt="" />
+        </div>
+        <div class="small-img last">
+          <img src="../assets/images/detailTour/detailTour5.jpg" alt="" />
+          <div class="overlay">
+            <button class="btn" id="openVideo">🎥 Video</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔽 Popup video đặt ngoài section -->
+    <div class="video-popup" id="videoPopup">
+      <div class="video-content">
+        <span class="close-btn" id="closePopup">&times;</span>
+        <iframe
+          id="videoFrame"
+          width="800"
+          height="450"
+          src=""
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
 
-    <section class="slider-section">
-      <button class="nav prev">‹</button>
-      <div class="carousel">
-        <div class="slide">
-          <img src="../assets/images/detailTour/slide5.jpg" alt="" />
+    <section class="tour-info">
+      <div class="info-left">
+        <div class="tour-header">
+          <div class="title-frame">
+            <h1 class="tour-title">Ha Long Bay Luxury Cruise Tour</h1>
+          </div>
+          <div class="tour-nav">
+            <a href="#overview">Overview</a>
+            <a href="#include">Included</a>
+            <a href="#map">Map</a>
+            <a href="#itinerary">Itinerary</a>
+            <a href="#tour">Others Tour</a>
+          </div>
         </div>
-        <div class="slide">
-          <img src="../assets/images/detailTour/slide1.jpg" alt="" />
-        </div>
-        <div class="slide">
-          <img src="../assets/images/detailTour/slide2.jpg" alt="" />
-        </div>
-        <div class="slide">
-          <img src="../assets/images/detailTour/slide3.jpg" alt="" />
-        </div>
-        <div class="slide">
-          <img src="../assets/images/detailTour/slide4.jpg" alt="" />
-        </div>
-      </div>
-      <button class="nav next">›</button>
-    </section>
+        <div id="overview" class="overview-section">
+          <h3 class="section-title">Overview</h3>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="container">
-      <!-- ==== TOUR 1: HA LONG BAY ==== -->
-      <section class="intro">
-        <div class="intro-text">
-          <h3>INTRODUCTION</h3>
           <p>
-            Experience the breathtaking beauty of <strong>Ha Long Bay</strong> —
-            a UNESCO World Heritage site and one of Vietnam’s top travel
-            destinations. Cruise through emerald waters surrounded by thousands
-            of limestone karsts and islets. Enjoy kayaking, swimming, or
-            exploring hidden caves like Sung Sot Cave and Thien Cung Cave.
-            Onboard, taste authentic Vietnamese seafood cuisine prepared by
-            local chefs. This 3-day tour offers the perfect balance of
-            relaxation and adventure amid stunning natural scenery.
+            Located in the Gulf of Tonkin, Ha Long Bay is one of Vietnam’s most
+            magnificent natural wonders and a UNESCO World Heritage site. With
+            over 1,600 limestone islands and islets rising dramatically from
+            emerald-green waters, the bay creates a surreal seascape that seems
+            to come straight out of a dream.
+
+            <br /><br />
+            On this 3-day journey, travelers will sail through the peaceful
+            waters on a luxurious cruise, explore hidden caves like Sung Sot
+            (Surprise Cave), and kayak through the quiet lagoons surrounded by
+            towering cliffs. Enjoy freshly caught seafood served on board, watch
+            the sunset from the sundeck, and experience the calm beauty of Ha
+            Long Bay at night under a sky filled with stars.
+
+            <br /><br />
+            The trip also includes visits to local floating fishing villages,
+            giving you a glimpse into the daily lives of fishermen who have
+            called this bay home for generations. Whether you are seeking
+            adventure, relaxation, or a romantic escape, Ha Long Bay promises an
+            unforgettable journey through one of the world’s most spectacular
+            landscapes.
           </p>
 
-          <div class="included">
-            <h3>INCLUDED</h3>
-            <ul>
-              <li>✔️ 2-night stay on a luxury cruise in Ha Long Bay</li>
-              <li>✔️ Round-trip transfers from Hanoi</li>
-              <li>
-                ✔️ All meals on board (Vietnamese and international cuisine)
-              </li>
-              <li>✔️ Entrance fees to caves and tourist sites</li>
-              <li>✔️ Kayaking and swimming activities</li>
-              <li>✔️ English-speaking local guide</li>
-            </ul>
+          <div class="overview-grid">
+            <div class="overview-item">
+              <i class="fa-solid fa-location-dot"></i> Hanoi, Vietnam
+            </div>
+            <div class="overview-item">
+              <i class="fa-regular fa-clock"></i> 3 Days 2 Nights
+            </div>
+            <div class="overview-item">
+              <i class="fa-solid fa-bus"></i> Bus & Cruise
+            </div>
+            <div class="overview-item">
+              <i class="fa-solid fa-hotel"></i> 4-Star Hotel
+            </div>
           </div>
         </div>
 
-        <div class="tour-info-card">
-          <div class="tour-info-left">
-            <h3>Tour Package Details</h3>
-            <ul>
-              <li>
-                <span class="icon">📍</span> Ha Long Bay, Quang Ninh, Vietnam
-              </li>
-              <li><span class="icon">💵</span> Start from $350</li>
-              <li><span class="icon">🕒</span> 3 Days, 2 Nights</li>
-              <li>
-                <span class="icon">📅</span> March 5, 2026 - March 7, 2026
-              </li>
-            </ul>
-
-            <div class="not-included">
-              <h3>NOT INCLUDED</h3>
-              <ul>
-                <li>❌ Airfare to and from Hanoi</li>
-                <li>❌ Personal expenses & beverages</li>
-                <li>❌ Optional activities not listed in the itinerary</li>
-                <li>❌ Tips for guides and crew</li>
+        <!-- 🔹 Include & Not Include Section -->
+        <!-- 🔹 Include & Not Include Section -->
+        <div id="include" class="include-wrapper">
+          <div class="include-section">
+            <div class="include-column">
+              <h3 class="section-title">Include</h3>
+              <ul class="include-list">
+                <li>
+                  <i class="fa-solid fa-check check"></i> Transportation by bus
+                  & cruise
+                </li>
+                <li>
+                  <i class="fa-solid fa-check check"></i> 4-Star Hotel
+                  accommodation
+                </li>
+                <li>
+                  <i class="fa-solid fa-check check"></i> Daily breakfast &
+                  lunch
+                </li>
+                <li>
+                  <i class="fa-solid fa-check check"></i> Professional tour
+                  guide
+                </li>
+                <li>
+                  <i class="fa-solid fa-check check"></i> English-speaking guide
+                </li>
+                <li>
+                  <i class="fa-solid fa-check check"></i> 2 nights on deluxe
+                  cruise cabin
+                </li>
+                <li>
+                  <i class="fa-solid fa-check check"></i> All meals on board
+                </li>
+                <li>
+                  <i class="fa-solid fa-check check"></i> Entrance tickets
+                </li>
               </ul>
             </div>
-            <!-- CTA BANNER -->
-            <div class="cta-banner">
-              <img
-                src="../assets/images/detailTour/adventure-banner.jpg"
-                alt="Adventure Banner"
-              />
-              <div class="cta-content">
-                <h2>Ready for an adventure?</h2>
-                <button class="cta-btn">Book Now</button>
+
+            <div class="include-column">
+              <h3 class="section-title">Not Include</h3>
+              <ul class="include-list">
+                <li>
+                  <i class="fa-solid fa-xmark cross"></i> Personal expenses
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark cross"></i> Travel insurance
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark cross"></i> Tips for guide &
+                  driver
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark cross"></i> Drinks outside the
+                  program
+                </li>
+                <li><i class="fa-solid fa-xmark cross"></i> Visa fees</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="map" class="map-section">
+          <div class="map-section">
+            <h3 class="section-title">Maps</h3>
+            <p>
+              Ha Long Bay, located in Quang Ninh Province, Vietnam — a UNESCO
+              World Heritage Site known for its emerald waters and thousands of
+              limestone islands topped by rainforests.
+            </p>
+            <div class="map-container">
+              <iframe
+                width="100%"
+                height="400"
+                style="border: 0; border-radius: 10px"
+                loading="lazy"
+                allowfullscreen
+                src="https://maps.google.com/maps?q=Vịnh%20Hạ%20Long&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <section id="itinerary" class="itinerary-section">
+          <h3 class="section-title">Itinerary</h3>
+
+          <div class="timeline">
+            <!-- 🔹 DAY 1 -->
+            <div class="timeline-day">
+              <div class="timeline-header">
+                <div class="day-label">Day 1</div>
+                <button class="accordion-btn">
+                  Hanoi → Ha Long Bay
+                  <i class="fa-solid fa-chevron-down"></i>
+                </button>
+              </div>
+
+              <div class="accordion-content">
+                <div class="day-right">
+                  <div class="day-image">
+                    <img
+                      src="../assets/images/detailTour/hanoi.jpg"
+                      alt="Day 1"
+                    />
+                  </div>
+
+                  <div class="mini-nav">
+                    <button class="mini-tab active" data-tab="overview1">
+                      Overview
+                    </button>
+                    <button class="mini-tab" data-tab="schedule1">
+                      Schedule
+                    </button>
+                    <button class="mini-tab" data-tab="meals1">Meals</button>
+                    <button class="mini-tab" data-tab="accommodation1">
+                      Accommodation
+                    </button>
+                  </div>
+
+                  <div class="tab-content active" id="overview1">
+                    <p>
+                      Begin your journey from Hanoi to Ha Long Bay. Cruise
+                      across emerald waters and admire limestone islands.
+                    </p>
+                  </div>
+
+                  <div class="tab-content" id="schedule1">
+                    <ul>
+                      <li>08:00 – Depart from Hanoi</li>
+                      <li>12:00 – Lunch on cruise</li>
+                      <li>15:00 – Visit Sung Sot Cave</li>
+                      <li>19:00 – Dinner onboard</li>
+                    </ul>
+                  </div>
+
+                  <div class="tab-content" id="meals1">
+                    <p>
+                      Lunch and dinner with fresh seafood. Vegetarian options
+                      available.
+                    </p>
+                  </div>
+
+                  <div class="tab-content" id="accommodation1">
+                    <p>
+                      Stay in a luxury cruise cabin with private balcony and
+                      ocean view.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 🔹 DAY 2 -->
+            <div class="timeline-day">
+              <div class="timeline-header">
+                <div class="day-label">Day 2</div>
+                <button class="accordion-btn">
+                  Explore Hidden Caves & Kayak
+                  <i class="fa-solid fa-chevron-down"></i>
+                </button>
+              </div>
+
+              <div class="accordion-content">
+                <div class="day-right">
+                  <div class="day-image">
+                    <img
+                      src="../assets/images/detailTour/cave.jpg"
+                      alt="Day 2"
+                    />
+                  </div>
+
+                  <div class="mini-nav">
+                    <button class="mini-tab active" data-tab="overview2">
+                      Overview
+                    </button>
+                    <button class="mini-tab" data-tab="schedule2">
+                      Schedule
+                    </button>
+                    <button class="mini-tab" data-tab="meals2">Meals</button>
+                    <button class="mini-tab" data-tab="accommodation2">
+                      Accommodation
+                    </button>
+                  </div>
+
+                  <div class="tab-content active" id="overview2">
+                    <p>
+                      Explore Luon Cave by kayak and visit hidden lagoons
+                      surrounded by cliffs.
+                    </p>
+                  </div>
+
+                  <div class="tab-content" id="schedule2">
+                    <ul>
+                      <li>06:30 – Morning Tai Chi on deck</li>
+                      <li>09:00 – Kayaking at Luon Cave</li>
+                      <li>13:00 – Seafood lunch</li>
+                      <li>16:00 – Sunset party and dinner</li>
+                    </ul>
+                  </div>
+
+                  <div class="tab-content" id="meals2">
+                    <p>Breakfast buffet, seafood lunch, BBQ dinner onboard.</p>
+                  </div>
+
+                  <div class="tab-content" id="accommodation2">
+                    <p>Overnight on cruise, enjoy peaceful night in the bay.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </section>
+      </div>
 
-          <div class="tour-info-right">
-            <p>Quota</p>
-            <strong>20</strong>
-            <small>/ 40</small>
-          </div>
-        </div>
-      </section>
-
-      <!-- ITINERARY SECTION -->
-      <section class="itinerary">
-        <div class="itinerary-header">
-          <h3>ITINERARY</h3>
-          <a href="#" class="view-more">See More Activities</a>
-        </div>
-
-        <div class="itinerary-cards">
-          <div class="itinerary-card">
-            <img
-              src="../assets/images/detailTour/snorkeling.jpg"
-              alt="Beach Day"
+      <div class="info-right">
+        <div class="video-frame">
+          <video
+            controls
+            poster="../assets/images/detailTour/video-thumbnail.jpg"
+          >
+            <source
+              src="../assets/images/detailTour/Download.mp4"
+              type="video/mp4"
             />
-            <div class="overlay">
-              <h4>Beach Day & Snorkeling</h4>
-              <p>Estimated time: 6–8 hours</p>
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <form class="join-form">
+          <h3>Join Us Tour</h3>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" />
+          </div>
+
+          <div class="form-group">
+            <label for="start-date">Starting Date</label>
+            <input type="date" id="start-date" />
+          </div>
+
+          <div class="form-group guests">
+            <label>Guests</label>
+            <div class="guest-inputs">
+              <input type="number" min="1" placeholder="Adults" />
+              <input type="number" min="0" placeholder="Kids" />
             </div>
           </div>
 
-          <div class="itinerary-card">
-            <img
-              src="../assets/images/detailTour/chichen.jpg"
-              alt="Chichen Itza"
-            />
-            <div class="overlay">
-              <h4>Chichen Itza & Cenote Tour</h4>
-              <p>Estimated time: 14–16 hours</p>
-            </div>
+          <div class="form-group">
+            <label for="facilities">Extra Facilities</label>
+            <select id="facilities">
+              <option selected disabled>Choose...</option>
+              <option value="meals">Meals Included</option>
+              <option value="pickup">Airport Pickup</option>
+              <option value="guide">Private Guide</option>
+              <option value="insurance">Travel Insurance</option>
+            </select>
           </div>
 
-          <div class="itinerary-card">
-            <img
-              src="../assets/images/detailTour/culinary.jpg"
-              alt="Culinary Festival"
-            />
-            <div class="overlay">
-              <h4>Culinary Festival at The Resort</h4>
-              <p>Estimated time: 6–8 hours</p>
-            </div>
+          <div class="form-bottom">
+            <p class="price">Total: <span>$299</span></p>
+            <button type="button" class="book-btn">Book This Tour</button>
           </div>
-        </div>
-
-        <!-- BACK BUTTON -->
-        <div class="back-section">
-          <button class="back-btn" onclick="window.location.href='../pages/tour.html'">
-            ← Back to Tours
-          </button>
-        </div>
-      </section>
-    </main>
+        </form>
+      </div>
+    </section>
 
     <script src="../assets/js/tourdetail.js"></script>
   </body>
