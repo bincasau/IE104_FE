@@ -21,7 +21,7 @@ function renderTags(blogs) {
 }
 
 function renderPopular(blogs) {
-  $("#popular").innerHTML = blogs.slice(0, 4).map(b => `
+  $("#popular").innerHTML = blogs.slice(0, 7).map(b => `
     <a class="item" href="#${b.slug}">
       <img src="${b.image}" alt="${b.title}">
       <div>
@@ -54,7 +54,6 @@ function renderGrid() {
   $$("#grid .card").forEach(c => {
     c.onclick = () => {
       location.hash = c.dataset.slug;
-      // ĐÃ XÓA LỆNH SCROLL TO TOP TẠI ĐÂY
     };
   });
 }
@@ -279,7 +278,13 @@ function handleRoute() {
   renderPagination();
 
   $("#searchBtn").onclick = applyFilter;
-  $("#searchInput").onkeydown = e => e.key === "Enter" && applyFilter();
+  $("#searchInput").onkeydown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();      
+      applyFilter();
+    }
+  };
+
 
   // Logic click tag
   $("#tags").onclick = e => {
