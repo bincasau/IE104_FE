@@ -25,10 +25,6 @@ body {
     box-sizing: border-box;
 }
 
-body {
-    font-family: "Poppins", sans-serif;
-    background: #f4f4f4;
-}
 
 /* === KHUNG CHÍNH === */
 .blog-frame {
@@ -69,7 +65,7 @@ body {
     position: absolute;
     bottom: 0;
     right: 290px;
-    height: 80%;
+    height: 60%;
     object-fit: contain;
     z-index: 3;
 }
@@ -111,80 +107,9 @@ h1{
     margin-bottom: 20px;
 }
 
-.text-intro{
-    font-size:20px;
-    text-align: center;
-    font-weight: 500;
-    margin: 0 200px;
-    margin-top: 150px;
-}
-
-/* phần giới thiệu về chúng tôi */
-.container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 80%;
-    max-width: 1800px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 22.5px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-
-    margin: 100px auto;
-    margin-top: 150px;
-}
-
-.card {
-    text-align: center;
-    padding: 30px;
-    position: relative;
-    margin-top: 80px;
-}
-
-.square-button {
-    position: absolute;
-    top: -70px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    margin: auto;
-    font-size: 40px;
-}
-
-
-.square-button:hover {
-    transform: translateX(-50%) scale(1.2); /* Phóng to 20% khi hover */
-    
-}
-
-.card i {
-    font-size: 3.75em;
-    color: #007bff;
-    margin-bottom: 15px;
-    margin-top: 20px;
-}
-
-.card h3 {
-    font-size: 1.8em;
-    color: #333;
-    margin: 15px 0;
-}
-
-.card p {
-    font-size: 1.35em;
-    color: #666;
-    margin: 0;
-}
 
 /* giới thiệu team   */
-.team-container {
+/* .team-container {
   text-align: center;
   padding: 20px;
 }
@@ -193,19 +118,19 @@ h1{
   font-size: 2em;
   color: #333;
   margin-bottom: 20px;
-}
+} */
 
 /* Lưới team */
-.team-grid {
+/* .team-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
-}
+} */
 
 /* CARD CHUNG */
-.team-card {
+/* .team-card {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
@@ -213,10 +138,10 @@ h1{
   height: 500px;
   background-color: #fff;
   transition: transform 0.4s ease;
-}
+} */
 
 /* ẢNH CHÍNH & ẢNH HOVER */
-.team-card img {
+/* .team-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -224,51 +149,51 @@ h1{
   top: 0;
   left: 0;
   transition: opacity 0.5s ease-in-out, transform 1.2s ease-in-out;
-}
+} */
 
 /* Ẩn ảnh hover ban đầu */
-.hover-image {
+/* .hover-image {
   opacity: 0;
-}
+} */
 
 /* Khi hover: chuyển ảnh và phóng to */
-.team-card:hover .main-image {
+/* .team-card:hover .main-image {
   opacity: 0;
   transform: scale(1.4);
-}
+} */
 
-.team-card:hover .hover-image {
+/* .team-card:hover .hover-image {
   opacity: 1;
-  transform: scale(1.2); /* phóng to 20% */
-}
+  transform: scale(1.2); 
+} */
 
 /* Card nổi nhẹ khi hover */
-.team-card:hover {
+/* .team-card:hover {
   transform: translateY(-8px);
-}
+} */
 
 /* Thu nhỏ các card khác khi hover một card */
-.team-grid:hover .team-card {
-  transform: scale(0.9); /* Thu nhỏ các card khác */
+/* .team-grid:hover .team-card {
+  transform: scale(0.9); 
   transition: transform 0.4s ease;
-}
+} */
 
-.team-grid .team-card:hover {
-  transform: translateY(-8px) scale(1.1); /* Phóng to card được hover */
+/* .team-grid .team-card:hover {
+  transform: translateY(-8px) scale(1.1); Phóng to card được hover
   transition: transform 0.4s ease;
-}
+} */
 
 /* Giữ hiệu ứng một thời gian ngắn khi di chuột ra */
-.team-card {
-  transition: transform 0.4s ease 0.5s; /* Trì hoãn 0.5s khi di chuột ra */
-}
+/* .team-card {
+  transition: transform 0.4s ease 0.5s; Trì hoãn 0.5s khi di chuột ra
+} */
 
-.team-grid .team-card:hover {
+/* .team-grid .team-card:hover {
   transition-delay: 0s; /* Không trì hoãn khi hover */
-}
+
 
 /* Chữ overlay */
-.team-card h3,
+/* .team-card h3,
 .team-card p {
   position: absolute;
   left: 10px;
@@ -287,4 +212,368 @@ h1{
   bottom: 30px;
   font-size: 1em;
   font-style: italic;
+} */
+
+.container {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 1100px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 100px auto;
+}
+
+.header {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.agency-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.description {
+  font-size: 14px;
+  color: #666;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.main-image {
+  grid-column: 1;
+            
+}
+
+.main-image img {
+  width: 90%;
+  border-radius: 50px;
+}
+
+.features {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.feature-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.feature-text {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.feature-desc {
+  font-size: 14px;
+  color: #666;
+}
+
+.suitcase {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.suitcase img {
+  width: 50%;
+  transform: rotate(45deg);
+}
+
+.suitcase-text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.suitcase button{
+  margin-top: 220px;
+}
+
+.button {
+  grid-column: span 2;
+  text-align: center;
+}
+
+.more-button {
+  background-color: #ffd700;
+  color: #333;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.globe-icon {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+/* =================================================================== */
+
+.travel-wrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 25px auto;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+image {
+  width: 45%;
+  height: auto;
+}
+  
+.text {
+  width: 45%;
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+img {
+  width: 30%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+/* =================================================================== */
+
+.vacation-container {
+  max-width: 1600px;
+  margin: var(--offset) auto;
+  padding: 0 20px;
+}
+
+.right-section {
+  position: relative;
+  background-color: #F5E2D3;
+  border-radius: 15px;
+  padding: 40px 80px;
+  height: 700px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-image: url(../images/Background_about.png);
+  background-size: cover; 
+}
+
+.booking-form {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* --- mỗi nhóm form --- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* --- hàng ngang gồm 2 cột --- */
+.input-row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-row > div {
+  flex: 1;
+}
+
+/* --- label và input --- */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+/* --- nút --- */
+.explore-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.explore-btn:hover {
+  background-color: #555;
+}
+
+.plane-icon {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  width: 100px;
+}
+
+
+/* ======================================================================== */
+
+.about_abs {
+  max-width: 1600px;
+  height: 700px;
+  background: url(../images/about_abs.png);
+  background-size: cover;
+  padding: 60px 80px;
+  border-radius: 20px;
+  margin: 100px auto;
+}
+
+/* ================================================================================= */
+
+.team-container {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.team-container h2 {
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  transition: all 0.3s ease;
+}
+
+.team-card {
+  position: relative;
+  width: 220px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 20px 10px;
+  transition: all 0.4s ease;
+}
+
+.team-card img {
+  width: 100%;
+  border-radius: 50%;
+  transition: opacity 0.4s ease;
+}
+
+.team-card .hover-image {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.team-card h3 {
+  margin: 15px 0 5px;
+  transition: all 0.3s ease;
+}
+
+.team-card p {
+  margin: 0;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.team-card .comment {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+/* Hover vào card */
+.team-card:hover {
+  transform: translateY(-20px) scale(1.15);
+  z-index: 10;
+}
+
+.team-card:hover img {
+  opacity: 0;
+}
+
+.team-card:hover .hover-image {
+  opacity: 1;
+}
+
+.team-card:hover .comment {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Làm mờ các thẻ khác khi hover vào 1 thẻ */
+.team-grid:hover .team-card {
+  transform: scale(0.9);
+  opacity: 0.6;
+}
+
+.team-grid:hover .team-card:hover {
+  transform: translateY(-20px) scale(1.15);
+  opacity: 1;
 }
