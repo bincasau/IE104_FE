@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==== Load tours ====
   async function loadTours() {
     try {
-      const res = await fetch("../data/tours.json");
+      const res = await fetch("../../data/tours.json");
       const data = await res.json();
       tours = Array.isArray(data.tours) ? data.tours : [];
 
@@ -283,11 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // View More
     container.querySelectorAll(".tour-card .view-more").forEach((btn) => {
       btn.addEventListener("click", () => {
-<<<<<<< HEAD
         window.location.href = "../../pages/tourdetail.html";
-=======
-        window.location.href = "./tourdetail.html";
->>>>>>> 0e3423ed8de19749d14eb8075cd48c17b229f85e
       });
     });
 
