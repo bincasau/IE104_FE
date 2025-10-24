@@ -4,7 +4,8 @@ footer {
   color: #fff;
   position: relative;
   margin: 0;
-  padding: 0;
+  padding-top: 50;
+  background-color: #fff;
 }
 
 /* --- Contact Box nổi --- */
@@ -12,7 +13,7 @@ footer {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: -50px; /* đẩy lên để nằm giữa ranh trắng-đen */
+  transform: translateY(-5px); /* đẩy lên để nằm giữa ranh trắng-đen */
   z-index: 5;
 }
 

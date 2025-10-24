@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+export async function initPage() {
+  console.log("Tour.js loaded");
+  // document.addEventListener("DOMContentLoaded", () => {
   // ==== ELEMENTS ====
   const destList = document.getElementById("destinationList");
   const actList = document.getElementById("activityList");
@@ -185,8 +187,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==== Sort ====
   function sortTours(arr) {
     const mode = sortSelect.value;
-    if (mode === "priceAsc") return arr.slice().sort((a, b) => a.price - b.price);
-    if (mode === "priceDesc") return arr.slice().sort((a, b) => b.price - a.price);
+    if (mode === "priceAsc")
+      return arr.slice().sort((a, b) => a.price - b.price);
+    if (mode === "priceDesc")
+      return arr.slice().sort((a, b) => b.price - a.price);
     return arr.slice().sort((a, b) => b.id - a.id);
   }
 
@@ -246,10 +250,11 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="tour-info">
             <h3>${tour.title}</h3>
             <p>${tour.shortDesc}</p>
-            <p class="location"><i class="fa-solid fa-map-marker-alt" style="color:#d9302f;font-size:18px;"></i> ${tour.location}</p>
+            <p class="location"><i class="fa-solid fa-map-marker-alt" style="color:#d9302f;font-size:18px;"></i> ${
+              tour.location
+            }</p>
             <div class="availability">${availHTML}</div>
           </div>
-
           <div class="tour-price">
             <div class="price-box">
               <div class="price-row">
@@ -366,13 +371,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ==== Start ====
   loadTours();
-});
+  // });
 
-// ==== Range bar ====
-function setRangeProgress(inputEl) {
-  const min = Number(inputEl.min || 0);
-  const max = Number(inputEl.max || 100);
-  const val = Number(inputEl.value);
-  const percent = Math.round(((val - min) / (max - min)) * 100);
-  inputEl.style.setProperty("--progress", `${percent}%`);
+  // ==== Range bar ====
+  function setRangeProgress(inputEl) {
+    const min = Number(inputEl.min || 0);
+    const max = Number(inputEl.max || 100);
+    const val = Number(inputEl.value);
+    const percent = Math.round(((val - min) / (max - min)) * 100);
+    inputEl.style.setProperty("--progress", `${percent}%`);
+  }
 }
