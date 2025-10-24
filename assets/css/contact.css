@@ -110,7 +110,7 @@ body {
     justify-content: flex-end;  /* Đẩy form qua bên phải */
     align-items: center;        /* (tuỳ chọn) căn giữa theo chiều dọc */
     background-color: #F5E2D3;
-    background-image: url(../images/Background_about.png);
+    background-image: url(../images/about/Background_about.png);
 }
 
 .contact-form-section {
