@@ -580,3 +580,124 @@ input[type="range"] {
   color: #888; /* hoặc đổi sang màu bạn thích, ví dụ #F5E2D3 */
   font-size: 14px;
 }
+
+/* =============================
+   RESPONSIVE DESIGN
+============================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .main-layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .filter-area {
+    position: static;
+    max-height: none;
+    order: -1; /* đưa phần filter lên trên */
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    backdrop-filter: none;
+    background: #fff;
+  }
+
+  .tour-section {
+    max-width: 100%;
+  }
+
+  .criteria-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .sort-box select {
+    width: 100%;
+  }
+
+  .tour-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tour-card img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .tour-info h3, .tour-info p {
+    max-width: 100%;
+  }
+
+  .tour-price {
+    border-left: none;
+    border-top: 1px solid #eee;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .view-more {
+    width: 80%;
+  }
+
+  /* Header chỉnh ảnh */
+  .tour-frame {
+    height: 420px;
+  }
+
+  .tour-person {
+    right: 50%;
+    transform: translateX(50%);
+    height: 85%;
+  }
+
+  .tour-text {
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .tour-text h1 {
+    font-size: 32px;
+  }
+
+  .breadcrumb {
+    justify-content: center;
+  }
+}
+
+/* Mobile nhỏ */
+@media (max-width: 576px) {
+  .tour-frame {
+    height: 350px;
+  }
+
+  .tour-person {
+    height: 70%;
+  }
+
+  .tour-text h1 {
+    font-size: 26px;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .main-layout {
+    padding: 50px 5%;
+  }
+
+  .tour-card img {
+    height: 200px;
+  }
+
+  .view-more {
+    width: 100%;
+    font-size: 18px;
+  }
+}
