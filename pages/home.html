@@ -29,7 +29,7 @@
         <form class="booking-form">
           <div class="form-group">
             <label>Select a city</label>
-            <input type="text" placeholder="Where To Next?" />
+            <input id="city-input" type="text" placeholder="Where To Next?" />
           </div>
           <div class="form-group">
             <label>Check in</label>
@@ -207,7 +207,7 @@
           <div class="dest-card tall">
             <img src="../assets/images/tour/tour_6.jpg" alt="Huế" />
             <div class="label">
-              <span>Huế</span> <span class="arrow">➜</span>
+              <span>Thừa Thiên Huế</span> <span class="arrow">➜</span>
             </div>
           </div>
 
@@ -221,9 +221,9 @@
 
           <!-- Ảnh 4 -->
           <div class="dest-card">
-            <img src="../assets/images/tour/tour_5.jpg" alt="Đà Lạt" />
+            <img src="../assets/images/tour/tour_9.jpg" alt="Cần Thơ" />
             <div class="label">
-              <span>Đà Lạt</span> <span class="arrow">➜</span>
+              <span>Cần Thơ</span> <span class="arrow">➜</span>
             </div>
           </div>
 
@@ -804,11 +804,29 @@
           </div>
 
           <form class="newsletter-form">
-            <input type="email" placeholder="Enter Your Email" required />
+            <input
+              type="text"
+              id="newsletterEmail"
+              placeholder="Enter Your Email"
+              required
+            />
             <button type="submit">
               Subscribe <i class="fa-solid fa-arrow-right"></i>
             </button>
           </form>
+          <small class="error-msg"></small>
+        </div>
+      </div>
+
+      <!--  Popup cảm ơn -->
+      <div class="thank-popup hidden" id="thankPopup" style="display: none">
+        <div class="thank-box">
+          <div class="thank-icon">
+            <i class="fa-solid fa-paper-plane"></i>
+          </div>
+          <h3>Thank You!</h3>
+          <p>You’ve successfully subscribed to our newsletter.</p>
+          <button id="closePopup">Close</button>
         </div>
       </div>
     </section>

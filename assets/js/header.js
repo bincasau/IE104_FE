@@ -13,12 +13,13 @@ export async function initHeader() {
     link.addEventListener("click", async (e) => {
       e.preventDefault();
 
-      navLinks.forEach((l) => l.classList.remove("active"));
-      link.classList.add("active");
-
+      // Lấy class đại diện cho trang (bỏ qua "active")
       const pageName = [...link.classList].find((c) => c !== "active");
+      if (!pageName) return;
+
       console.log("Loading page:", pageName);
 
+      // Bản đồ trang
       const pageMap = {
         Home: { html: "./pages/home.html", js: "./home.js" },
         About: { html: "./pages/about.html", js: "./about.js" },
@@ -30,14 +31,8 @@ export async function initHeader() {
       const selected = pageMap[pageName];
       if (!selected) return console.warn("Trang không tồn tại:", pageName);
 
-      await loadSection("content", selected.html);
-
-      try {
-        const module = await import(selected.js);
-        if (module.initPage) module.initPage();
-      } catch (err) {
-        console.warn("Không tìm thấy JS cho trang", pageName, err);
-      }
+      // ✅ Gọi loadSection mới (đã xử lý active + title + load JS)
+      await loadSection("content", selected.html, selected.js, pageName);
 
       // Đóng menu khi chọn link (mobile)
       navLinksContainer.classList.remove("show");
@@ -67,12 +62,7 @@ export async function initHeader() {
   if (btnExplore) {
     btnExplore.addEventListener("click", async (e) => {
       e.preventDefault();
-      const link = document.querySelector(".Tours");
-      navLinks.forEach((l) => l.classList.remove("active"));
-      link.classList.add("active");
-      await loadSection("content", "./pages/tour.html");
-      const tourModule = await import("./tour.js");
-      if (tourModule.initPage) tourModule.initPage();
+      await loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
     });
   }
 
@@ -81,12 +71,7 @@ export async function initHeader() {
   if (logo) {
     logo.addEventListener("click", async (e) => {
       e.preventDefault();
-      const link = document.querySelector(".Home");
-      navLinks.forEach((l) => l.classList.remove("active"));
-      link.classList.add("active");
-      await loadSection("content", "./pages/home.html");
-      const homeModule = await import("./home.js");
-      if (homeModule.initPage) homeModule.initPage();
+      await loadSection("content", "./pages/home.html", "./home.js", "Home");
     });
   }
 
@@ -105,13 +90,13 @@ export async function initHeader() {
   if (hamburgerBtn && navLinksContainer) {
     hamburgerBtn.addEventListener("click", () => {
       const isOpen = navLinksContainer.classList.toggle("show");
-      hamburgerBtn.classList.toggle("active", isOpen); //  thêm class để kích hoạt xoay
+      hamburgerBtn.classList.toggle("active", isOpen);
 
       if (icon) {
         if (isOpen) {
-          icon.classList.replace("fa-bars", "fa-xmark"); // đổi thành X
+          icon.classList.replace("fa-bars", "fa-xmark");
         } else {
-          icon.classList.replace("fa-xmark", "fa-bars"); // đổi lại ☰
+          icon.classList.replace("fa-xmark", "fa-bars");
         }
       }
     });

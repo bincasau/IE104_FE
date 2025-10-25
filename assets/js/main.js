@@ -1,11 +1,13 @@
-// main.js
-import { loadSection } from "./utils.js";
+import { loadSection, setFavicon } from "./utils.js";
 
-// Load các phần cố định
-loadSection("header", "components/header.html");
-const headerModule = await import("./header.js");
-headerModule.initHeader();
-loadSection("content", "pages/home.html");
-const homeModule = await import("./home.js");
-homeModule.initPage();
-loadSection("footer", "components/footer.html");
+// Đặt logo trên tab (favicon)
+setFavicon("./assets/images/logo_ie104.png");
+
+// Load các phần chính
+await loadSection("header", "./components/header.html");
+await loadSection("footer", "./components/footer.html");
+await loadSection("content", "./pages/home.html", "./home.js", "Home");
+
+// Sau khi header load xong thì khởi tạo JS cho header
+const { initHeader } = await import("./header.js");
+initHeader();

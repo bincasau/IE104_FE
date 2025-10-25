@@ -331,6 +331,11 @@ export async function initPage() {
   }
 
   function handleRoute() {
+    const savedSlug = sessionStorage.getItem("openBlogSlug");
+    if (savedSlug) {
+      location.hash = savedSlug;
+      sessionStorage.removeItem("openBlogSlug");
+    }
     const slug = decodeURIComponent(location.hash.replace(/^#/, "").trim());
     if (!slug) {
       showListView();

@@ -1,3 +1,4 @@
+import { loadSection } from "./utils.js";
 document.addEventListener("DOMContentLoaded", function () {
   const openBtn = document.getElementById("openVideo");
   const popup = document.getElementById("videoPopup");
@@ -93,4 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
   grid.addEventListener("scroll", updateButtons);
   window.addEventListener("resize", updateButtons);
   updateButtons();
+});
+
+const otherTours = document.querySelectorAll(".others-list a");
+otherTours.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    loadSection(
+      "content",
+      "./pages/tourdetail.html",
+      "./tourdetail.js",
+      "Tour Detail"
+    );
+  });
 });

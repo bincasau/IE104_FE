@@ -1,3 +1,4 @@
+import { loadSection } from "./utils.js";
 export async function initPage() {
   console.log("Tour.js loaded");
   // document.addEventListener("DOMContentLoaded", () => {
@@ -288,7 +289,13 @@ export async function initPage() {
     // View More
     container.querySelectorAll(".tour-card .view-more").forEach((btn) => {
       btn.addEventListener("click", () => {
-        window.location.href = "../../pages/tourdetail.html";
+        // e.preventDefault();
+        loadSection(
+          "content",
+          "./pages/tourdetail.html",
+          "./tourdetail.js",
+          "Tour Detail"
+        );
       });
     });
 
@@ -368,6 +375,76 @@ export async function initPage() {
     }`;
     applyFilters();
   });
+
+  // ==== Nhận dữ liệu searchCity từ trang Home ====
+  const savedCity = sessionStorage.getItem("searchCity");
+  if (savedCity) {
+    searchInput.value = savedCity;
+
+    // Xóa sau khi dùng để tránh lưu cho lần sau
+    sessionStorage.removeItem("searchCity");
+
+    // Sau khi tours load xong thì áp dụng filter tự động
+    // Vì loadTours() là async, ta sẽ chờ nó hoàn tất
+    const origLoadTours = loadTours;
+    loadTours = async function () {
+      await origLoadTours();
+      applyFilters(); // Lọc theo city đã nhập
+    };
+  }
+  // ==== Start ====
+  const selectedProvinceRaw = sessionStorage.getItem("selectedProvince");
+
+  async function start() {
+    await loadTours(); // tải tour + render danh sách ban đầu
+
+    if (selectedProvinceRaw) {
+      const selectedProvince = normalize(selectedProvinceRaw);
+
+      // Hàm tick tỉnh, có xử lý show more nếu cần
+      const tickProvince = () => {
+        const allCb = destList.querySelector('input[value="all"]');
+        if (allCb) allCb.checked = false;
+
+        const targetCb = Array.from(
+          destList.querySelectorAll('input[type="checkbox"]')
+        ).find((cb) => normalize(cb.value) === selectedProvince);
+
+        if (targetCb) {
+          targetCb.checked = true;
+          applyFilters();
+          console.log("✅ Đã tick tỉnh:", selectedProvinceRaw);
+        } else {
+          console.warn("⚠️ Không tìm thấy tỉnh:", selectedProvinceRaw);
+        }
+
+        sessionStorage.removeItem("selectedProvince");
+      };
+
+      // Nếu tỉnh chưa nằm trong list (có thể nằm trong phần Show More)
+      let hasProvince =
+        provinces.findIndex((p) => normalize(p) === selectedProvince) !== -1;
+
+      // Nếu có nhưng không hiển thị (vì showMoreDest = false)
+      const isHidden = !showAllDest && provinces.length > 4;
+
+      if (hasProvince && isHidden) {
+        // Mở rộng danh sách trước khi tick
+        showAllDest = true;
+        renderList(provinces, destList, 4, showAllDest, "Destinations");
+        attachFilterEvents();
+        showMoreDestBtn.textContent = "Show Less";
+
+        // Tick sau khi DOM đã update
+        setTimeout(tickProvince, 100);
+      } else {
+        // Trường hợp bình thường
+        setTimeout(tickProvince, 100);
+      }
+    }
+  }
+
+  start();
 
   // ==== Start ====
   loadTours();
