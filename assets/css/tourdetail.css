@@ -426,7 +426,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  max-width: 60%; /* 🟦 chỉ chiếm 60% chiều ngang, không tràn sang form */
 }
+
+
 .timeline-header {
   display: flex;
   align-items: center;
@@ -859,4 +862,72 @@ body {
     font-size: 14px;
     line-height: 1.6;
   }
+}
+
+/* === ITINERARY SECTION FIX === */
+.itinerary-section {
+  margin-top: 60px;
+  width: 100%;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 100%;
+}
+
+.timeline-day {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Giới hạn khung lịch trình theo chiều ngang của phần info-left */
+.info-left .timeline {
+  width: 100%;
+  max-width: 100%;
+}
+
+.accordion-content {
+  display: none;
+  margin-top: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  animation: fadeSlide 0.4s ease;
+}
+
+.accordion-content.open {
+  display: block;
+}
+
+/* === Fix ảnh trong lịch trình === */
+.accordion-content .day-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 15px auto;
+  display: block;
+}
+
+/* Đảm bảo không tràn sang form bên phải */
+.info-left {
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+
+.tour-title {
+  font-size: 42px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.85); /* trắng đục hơi trong */
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.25); /* tạo chiều sâu nhẹ */
+  background: none; /* bỏ background clip */
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  filter: none;
 }

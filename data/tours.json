@@ -9,10 +9,84 @@
       "oldPrice": 899,
       "discount": "33% Off",
       "featured": true,
-      "activities": ["Water Activities", "Relaxation & Nature Activities"],
-      "availability": ["Aug 25, 2025", "Aug 27, 2025"],
-      "shortDesc": "Cruise through the emerald waters of Ha Long Bay, explore limestone caves, and relax onboard.",
-      "image": "../assets/images/tour/tour_1.jpg"
+      "activities": [
+        "Water Activities",
+        "Relaxation & Nature Activities"
+      ],
+      "availability": [
+        "Aug 25, 2025",
+        "Aug 27, 2025"
+      ],
+      "shortDesc": "Cruise through emerald waters, explore limestone caves, and relax onboard a luxury cruise.",
+      "image": "../assets/images/tour/tour_1.jpg",
+      "gallery": [
+        "../assets/images/detailTour/tour1/1.jpg",
+        "../assets/images/detailTour/tour1/2.jpg",
+        "../assets/images/detailTour/tour1/3.jpg",
+        "../assets/images/detailTour/tour1/4.jpg",
+        "../assets/images/detailTour/tour1/5.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/SpOWgms2uto?si=M3i2Jeg5j4BgdUx8",
+      "overview": "Ha Long Bay is a UNESCO World Heritage with thousands of limestone karsts rising from emerald waters. This 3-day cruise blends relaxation with soft adventure: caves, kayaking, seafood dinners, sunrise Tai Chi.",
+      "includes": [
+        "Transportation by bus & cruise",
+        "4-Star cabin with private bathroom",
+        "Daily breakfast & lunch; 1 dinner",
+        "Professional, English-speaking guide",
+        "Kayak & cave entrance fees",
+        "All meals on board day 2",
+        "Welcome drink & sunset tea"
+      ],
+      "notIncludes": [
+        "Personal expenses",
+        "Travel insurance",
+        "Tips for guide & driver",
+        "Beverages not mentioned"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Hanoi → Ha Long Bay",
+          "overview": "Transfer from Hanoi, board cruise, lunch, visit Surprise Cave, sunset on deck.",
+          "schedule": [
+            "08:00 — Depart Hanoi (limousine bus)",
+            "12:00 — Check-in & lunch onboard",
+            "15:00 — Sung Sot (Surprise) Cave",
+            "19:00 — Dinner on the cruise"
+          ],
+          "meals": "Lunch, Dinner",
+          "accommodation": "Deluxe cabin onboard (private bathroom)",
+          "image": "../assets/images/detailTour/hanoi.jpg"
+        },
+        {
+          "day": 2,
+          "title": "Kayak & Hidden Lagoons",
+          "overview": "Kayak at Luon Cave; swim at Titop beach; sunset party.",
+          "schedule": [
+            "06:30 — Morning Tai Chi",
+            "09:00 — Kayaking at Luon Cave",
+            "13:00 — Seafood lunch",
+            "16:30 — Sunset party"
+          ],
+          "meals": "Breakfast, Lunch, Dinner",
+          "accommodation": "Overnight onboard",
+          "image": "../assets/images/detailTour/tour1/6.jpg"
+        },
+        {
+          "day": 3,
+          "title": "Cruise Back to Harbor → Hanoi",
+          "overview": "Enjoy a lazy morning and brunch before returning to Hanoi.",
+          "schedule": [
+            "07:00 — Light breakfast",
+            "09:30 — Cooking demo & brunch",
+            "11:30 — Disembark, drive to Hanoi"
+          ],
+          "meals": "Breakfast/Brunch",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/tour1/7.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Vịnh%20Hạ%20Long&t=&z=12&ie=UTF8&iwloc=&output=embed"
     },
     {
       "id": 2,
@@ -23,10 +97,90 @@
       "oldPrice": 750,
       "discount": "34% Off",
       "featured": true,
-      "activities": ["Hiking & Trekking", "Cultural & Historical Activities"],
-      "availability": ["Sep 10, 2025", "Sep 14, 2025"],
-      "shortDesc": "Trek through terraced rice fields, visit ethnic minority villages, and enjoy Sapa’s cool mountain air.",
-      "image": "../assets/images/tour/tour_2.jpg"
+      "activities": [
+        "Hiking & Trekking",
+        "Cultural & Historical Activities"
+      ],
+      "availability": [
+        "Sep 10, 2025",
+        "Sep 14, 2025"
+      ],
+      "shortDesc": "Trek terraced rice fields, visit minority villages, stay in cozy homestays.",
+      "image": "../assets/images/tour/tour_2.jpg",
+      "gallery": [
+        "../assets/images/detailTour/tour2/1.jpg",
+        "../assets/images/detailTour/tour2/2.jpg",
+        "../assets/images/detailTour/tour2/3.jpg",
+        "../assets/images/detailTour/tour2/4.jpg",
+        "../assets/images/detailTour/tour2/5.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/KuKHih_QwhM?si=KMaWv4V3S3nJ3zHH",
+      "overview": "Sapa’s cool highlands offer epic rice terraces and authentic hill-tribe culture. Moderate daily treks with plenty of photo stops.",
+      "includes": [
+        "Sleeper train/bus Hanoi ↔ Lao Cai",
+        "Local guide (Hmong or Dao)",
+        "Homestay with breakfast",
+        "All entrance fees",
+        "Drinking water on trekking days"
+      ],
+      "notIncludes": [
+        "Personal porter",
+        "Travel insurance",
+        "Alcoholic drinks",
+        "Tips"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Hanoi → Sapa",
+          "overview": "Travel to Sapa, light trek to Cat Cat.",
+          "schedule": [
+            "07:00 — Bus/train to Sapa",
+            "14:00 — Cat Cat village"
+          ],
+          "meals": "—",
+          "accommodation": "Hotel in Sapa",
+          "image": "../assets/images/detailTour/tour2/1.jpg"
+        },
+        {
+          "day": 2,
+          "title": "Y Linh Ho — Lao Chai — Ta Van",
+          "overview": "Full-day trek along Muong Hoa valley.",
+          "schedule": [
+            "08:00 — Start trek",
+            "12:00 — Picnic lunch",
+            "17:00 — Ta Van homestay"
+          ],
+          "meals": "Breakfast, Lunch, Dinner",
+          "accommodation": "Homestay",
+          "image": "../assets/images/detailTour/tour2/6.jpg"
+        },
+        {
+          "day": 3,
+          "title": "Giang Ta Chai — Su Pan",
+          "overview": "Waterfalls and bamboo forests.",
+          "schedule": [
+            "09:00 — Trek to Giang Ta Chai",
+            "15:00 — Transfer back to Sapa"
+          ],
+          "meals": "Breakfast, Lunch",
+          "accommodation": "Hotel in Sapa",
+          "image": "../assets/images/detailTour/tour2/7.jpg"
+        },
+        {
+          "day": 4,
+          "title": "Fansipan Cable Car / Free time → Hanoi",
+          "overview": "Optional Fansipan peak via cable car, return to Hanoi.",
+          "schedule": [
+            "09:00 — Fansipan cable car (optional)",
+            "15:00 — Bus/train to Hanoi"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/tour2/8.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Sapa&t=&z=12&ie=UTF8&iwloc=&output=embed"
     },
     {
       "id": 3,
@@ -37,10 +191,59 @@
       "oldPrice": 450,
       "discount": "33% Off",
       "featured": false,
-      "activities": ["Cultural & Historical Activities"],
-      "availability": ["Aug 20, 2025", "Aug 22, 2025"],
-      "shortDesc": "Wander the lantern-lit streets of Hoi An and experience the charm of Vietnam’s heritage town.",
-      "image": "../assets/images/tour/tour_3.jpg"
+      "activities": [
+        "Cultural & Historical Activities"
+      ],
+      "availability": [
+        "Aug 20, 2025",
+        "Aug 22, 2025"
+      ],
+      "shortDesc": "Lantern-lit streets, tailor-made outfits, and river cruises at dusk.",
+      "image": "../assets/images/tour/tour_3.jpg",
+      "gallery": [
+        "../assets/images/detailTour/detailTour3.jpg",
+        "../assets/images/detailTour/detailTour4.jpg",
+        "../assets/images/detailTour/detailTour5.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/kN1QKfV8g2E",
+      "overview": "Discover UNESCO-listed Hoi An: Japanese Bridge, ancient houses, and vibrant food scene.",
+      "includes": [
+        "Walking tour with local guide",
+        "Boat ride on Thu Bon River",
+        "Tailor consultation voucher"
+      ],
+      "notIncludes": [
+        "Custom clothing cost",
+        "Personal expenses",
+        "Insurance"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Old Town Highlights",
+          "overview": "Walking tour & boat ride.",
+          "schedule": [
+            "14:00 — Japanese Covered Bridge",
+            "17:30 — Boat ride"
+          ],
+          "meals": "—",
+          "accommodation": "Hotel in Hoi An",
+          "image": "../assets/images/detailTour/detailTour1.jpg"
+        },
+        {
+          "day": 2,
+          "title": "Tra Que / An Bang Beach",
+          "overview": "Countryside or beach time.",
+          "schedule": [
+            "09:00 — Tra Que vegetable village",
+            "13:00 — Free time / beach"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour2.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Hoi%20An&t=&z=12&ie=UTF8&iwloc=&output=embed"
     },
     {
       "id": 4,
@@ -51,10 +254,94 @@
       "oldPrice": 1200,
       "discount": "25% Off",
       "featured": true,
-      "activities": ["Water Activities", "Relaxation & Nature Activities"],
-      "availability": ["Nov 1, 2025", "Nov 5, 2025"],
-      "shortDesc": "Relax on crystal-clear beaches, snorkel among coral reefs, and enjoy fresh seafood on Phu Quoc Island.",
-      "image": "../assets/images/tour/tour_4.jpg"
+      "activities": [
+        "Water Activities",
+        "Relaxation & Nature Activities"
+      ],
+      "availability": [
+        "Nov 1, 2025",
+        "Nov 5, 2025"
+      ],
+      "shortDesc": "Crystal-clear beaches, snorkeling coral gardens, and sunset fishing.",
+      "image": "../assets/images/tour/tour_4.jpg",
+      "gallery": [
+        "../assets/images/detailTour/snorkeling.jpg",
+        "../assets/images/detailTour/detailTour4.jpg",
+        "../assets/images/detailTour/detailTour5.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/3N2wqX0hS3U",
+      "overview": "Explore the pearl island: Sao Beach, An Thoi archipelago, night market seafood.",
+      "includes": [
+        "Airport pickup",
+        "Snorkeling trip by speedboat",
+        "Hotel 4★ with breakfast"
+      ],
+      "notIncludes": [
+        "Lunch & dinner",
+        "Watersports fees",
+        "Insurance"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival — Night Market",
+          "overview": "Check in & explore night market.",
+          "schedule": [
+            "14:00 — Hotel check-in",
+            "19:00 — Night market"
+          ],
+          "meals": "—",
+          "accommodation": "Resort 4★",
+          "image": "../assets/images/detailTour/detailTour1.jpg"
+        },
+        {
+          "day": 2,
+          "title": "An Thoi Islands",
+          "overview": "Island-hopping & snorkeling.",
+          "schedule": [
+            "09:00 — Speedboat trip",
+            "12:00 — Lunch on island"
+          ],
+          "meals": "Breakfast, Lunch",
+          "accommodation": "Resort 4★",
+          "image": "../assets/images/detailTour/snorkeling.jpg"
+        },
+        {
+          "day": 3,
+          "title": "Sao Beach — Cable Car",
+          "overview": "Beach day & Hon Thom cable car.",
+          "schedule": [
+            "10:00 — Sao Beach",
+            "16:00 — Cable car"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "Resort 4★",
+          "image": "../assets/images/detailTour/detailTour4.jpg"
+        },
+        {
+          "day": 4,
+          "title": "Free Day",
+          "overview": "Optional spa or VinWonders.",
+          "schedule": [
+            "—"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "Resort 4★",
+          "image": "../assets/images/detailTour/detailTour5.jpg"
+        },
+        {
+          "day": 5,
+          "title": "Departure",
+          "overview": "Transfer to airport.",
+          "schedule": [
+            "—"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour2.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Phu%20Quoc&t=&z=11&ie=UTF8&iwloc=&output=embed"
     },
     {
       "id": 5,
@@ -65,10 +352,71 @@
       "oldPrice": 650,
       "discount": "29% Off",
       "featured": false,
-      "activities": ["Relaxation & Nature Activities", "Adventure Activities"],
-      "availability": ["Sep 5, 2025", "Sep 7, 2025"],
-      "shortDesc": "Visit flower gardens, pine forests, and waterfalls in Vietnam’s most romantic city.",
-      "image": "../assets/images/tour/tour_5.jpg"
+      "activities": [
+        "Relaxation & Nature Activities",
+        "Adventure Activities"
+      ],
+      "availability": [
+        "Sep 5, 2025",
+        "Sep 7, 2025"
+      ],
+      "shortDesc": "City of flowers, pine forests, coffee farms, and waterfalls.",
+      "image": "../assets/images/tour/tour_5.jpg",
+      "gallery": [
+        "../assets/images/detailTour/detailTour1.jpg",
+        "../assets/images/detailTour/detailTour3.jpg",
+        "../assets/images/detailTour/detailTour5.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+      "overview": "Enjoy Da Lat’s cool climate, French villas, and café culture.",
+      "includes": [
+        "Hotel 3★ with breakfast",
+        "Waterfall entrance tickets",
+        "Coffee farm visit"
+      ],
+      "notIncludes": [
+        "Lunch & dinner",
+        "Cable car ticket",
+        "Insurance"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "City Highlights",
+          "overview": "Xuan Huong Lake, Crazy House.",
+          "schedule": [
+            "14:00 — Crazy House",
+            "16:30 — Night market"
+          ],
+          "meals": "—",
+          "accommodation": "Hotel 3★",
+          "image": "../assets/images/detailTour/detailTour4.jpg"
+        },
+        {
+          "day": 2,
+          "title": "Datanla Waterfall — Coffee Farm",
+          "overview": "Alpine coaster & tasting.",
+          "schedule": [
+            "09:00 — Datanla",
+            "14:00 — Coffee farm"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "Hotel 3★",
+          "image": "../assets/images/detailTour/detailTour5.jpg"
+        },
+        {
+          "day": 3,
+          "title": "Free Morning — Depart",
+          "overview": "Flower garden stroll.",
+          "schedule": [
+            "—"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour2.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Da%20Lat&t=&z=12&ie=UTF8&iwloc=&output=embed"
     },
     {
       "id": 6,
@@ -79,10 +427,59 @@
       "oldPrice": 480,
       "discount": "31% Off",
       "featured": false,
-      "activities": ["Cultural & Historical Activities"],
-      "availability": ["Oct 15, 2025", "Oct 17, 2025"],
-      "shortDesc": "Explore the ancient capital of Hue, its citadel, royal tombs, and serene Perfume River.",
-      "image": "../assets/images/tour/tour_6.jpg"
+      "activities": [
+        "Cultural & Historical Activities"
+      ],
+      "availability": [
+        "Oct 15, 2025",
+        "Oct 17, 2025"
+      ],
+      "shortDesc": "Citadel, royal tombs, and serene Perfume River cruise.",
+      "image": "../assets/images/tour/tour_6.jpg",
+      "gallery": [
+        "../assets/images/detailTour/detailTour2.jpg",
+        "../assets/images/detailTour/detailTour3.jpg",
+        "../assets/images/detailTour/detailTour4.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/4qk9RZrMMXk",
+      "overview": "Step into Nguyen Dynasty heritage with palaces, pagodas, and garden houses.",
+      "includes": [
+        "Citadel & tomb tickets",
+        "Boat ride on Perfume River",
+        "Local guide"
+      ],
+      "notIncludes": [
+        "Meals",
+        "Hotel",
+        "Insurance"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Citadel & Thien Mu",
+          "overview": "Imperial City highlights.",
+          "schedule": [
+            "08:30 — Imperial City",
+            "15:00 — Thien Mu Pagoda"
+          ],
+          "meals": "—",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour1.jpg"
+        },
+        {
+          "day": 2,
+          "title": "Royal Tombs",
+          "overview": "Khai Dinh & Minh Mang.",
+          "schedule": [
+            "09:00 — Khai Dinh",
+            "13:30 — Minh Mang"
+          ],
+          "meals": "—",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour2.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Hue%20Citadel&t=&z=12&ie=UTF8&iwloc=&output=embed"
     },
     {
       "id": 7,
@@ -93,10 +490,70 @@
       "oldPrice": 950,
       "discount": "32% Off",
       "featured": true,
-      "activities": ["Water Activities", "Adventure Activities"],
-      "availability": ["Aug 28, 2025", "Sep 1, 2025"],
-      "shortDesc": "Dive into turquoise waters, explore islands, and enjoy Nha Trang’s stunning coastline.",
-      "image": "../assets/images/tour/tour_7.jpg"
+      "activities": [
+        "Water Activities",
+        "Adventure Activities"
+      ],
+      "availability": [
+        "Aug 28, 2025",
+        "Sep 1, 2025"
+      ],
+      "shortDesc": "Turquoise waters, coral snorkeling, and seafood lunches.",
+      "image": "../assets/images/tour/tour_7.jpg",
+      "gallery": [
+        "../assets/images/detailTour/snorkeling.jpg",
+        "../assets/images/detailTour/detailTour3.jpg",
+        "../assets/images/detailTour/detailTour4.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/MI3bGQk0cSo",
+      "overview": "Island-hop by speedboat, glass-bottom boat, or snorkeling set.",
+      "includes": [
+        "Island-hopping boat",
+        "Snorkeling set",
+        "Seafood lunch 1 day"
+      ],
+      "notIncludes": [
+        "Hotel",
+        "Dinner",
+        "Insurance"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Hon Mun — Hon Mot",
+          "overview": "Coral reefs & swimming.",
+          "schedule": [
+            "09:00 — Boat departs",
+            "12:30 — Lunch"
+          ],
+          "meals": "Lunch",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour5.jpg"
+        },
+        {
+          "day": 2,
+          "title": "VinWonders / Free Day",
+          "overview": "Theme park or chill.",
+          "schedule": [
+            "—"
+          ],
+          "meals": "—",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour4.jpg"
+        },
+        {
+          "day": 3,
+          "title": "Seafood Market — Depart",
+          "overview": "Shopping & departure.",
+          "schedule": [
+            "—"
+          ],
+          "meals": "—",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour2.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Nha%20Trang&t=&z=12&ie=UTF8&iwloc=&output=embed"
     },
     {
       "id": 8,
@@ -107,10 +564,60 @@
       "oldPrice": 400,
       "discount": "35% Off",
       "featured": false,
-      "activities": ["Cultural & Historical Activities", "Food & Culinary Tours"],
-      "availability": ["Aug 18, 2025", "Aug 19, 2025"],
-      "shortDesc": "Discover the culture and cuisine of Vietnam’s capital through temples, museums, and street food.",
-      "image": "../assets/images/tour/tour_8.jpg"
+      "activities": [
+        "Cultural & Historical Activities",
+        "Food & Culinary Tours"
+      ],
+      "availability": [
+        "Aug 18, 2025",
+        "Aug 19, 2025"
+      ],
+      "shortDesc": "Temples, museums, Old Quarter street food, and cyclo ride.",
+      "image": "../assets/images/tour/tour_8.jpg",
+      "gallery": [
+        "../assets/images/detailTour/detailTour1.jpg",
+        "../assets/images/detailTour/detailTour3.jpg",
+        "../assets/images/detailTour/culinary.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/4T6Yz6kGQ1s",
+      "overview": "The capital’s best in two days—from Ho Chi Minh Complex to egg coffee alleys.",
+      "includes": [
+        "Cyclo ride 45 minutes",
+        "Street food tasting",
+        "Entrance tickets"
+      ],
+      "notIncludes": [
+        "Hotel",
+        "Airport transfers",
+        "Insurance"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Old Quarter & Street Food",
+          "overview": "Walk & taste.",
+          "schedule": [
+            "15:00 — Cyclo ride",
+            "18:00 — Street food tour"
+          ],
+          "meals": "Dinner (tastings)",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/culinary.jpg"
+        },
+        {
+          "day": 2,
+          "title": "Ho Chi Minh Complex — Temple of Literature",
+          "overview": "History day.",
+          "schedule": [
+            "09:00 — HCM Mausoleum (outside)",
+            "14:00 — Temple of Literature"
+          ],
+          "meals": "—",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour3.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Hanoi&t=&z=12&ie=UTF8&iwloc=&output=embed"
     },
     {
       "id": 9,
@@ -121,10 +628,71 @@
       "oldPrice": 580,
       "discount": "31% Off",
       "featured": false,
-      "activities": ["Cultural & Historical Activities", "Water Activities"],
-      "availability": ["Sep 2, 2025", "Sep 4, 2025"],
-      "shortDesc": "Cruise through floating markets, local villages, and fruit orchards in the Mekong Delta.",
-      "image": "../assets/images/tour/tour_9.jpg"
+      "activities": [
+        "Cultural & Historical Activities",
+        "Water Activities"
+      ],
+      "availability": [
+        "Sep 2, 2025",
+        "Sep 4, 2025"
+      ],
+      "shortDesc": "Floating markets, river life, and fruit orchards.",
+      "image": "../assets/images/tour/tour_9.jpg",
+      "gallery": [
+        "../assets/images/detailTour/detailTour2.jpg",
+        "../assets/images/detailTour/detailTour5.jpg",
+        "../assets/images/detailTour/detailTour4.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/2p7w1Q9rJ8o",
+      "overview": "Experience authentic delta culture, early morning markets, and canal cruises.",
+      "includes": [
+        "Boat to Cai Rang Floating Market",
+        "Fruit garden visit",
+        "Local guide"
+      ],
+      "notIncludes": [
+        "Hotel",
+        "Some meals",
+        "Insurance"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Saigon → Can Tho",
+          "overview": "Drive to Can Tho; evening promenade.",
+          "schedule": [
+            "08:00 — Depart HCMC",
+            "19:00 — Ninh Kieu wharf"
+          ],
+          "meals": "—",
+          "accommodation": "Hotel in Can Tho",
+          "image": "../assets/images/detailTour/detailTour1.jpg"
+        },
+        {
+          "day": 2,
+          "title": "Cai Rang Floating Market",
+          "overview": "Boat ride at sunrise.",
+          "schedule": [
+            "05:30 — Boat to market",
+            "09:00 — Fruit garden"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "Hotel in Can Tho",
+          "image": "../assets/images/detailTour/detailTour2.jpg"
+        },
+        {
+          "day": 3,
+          "title": "Tra Su / Return",
+          "overview": "Optional Tra Su cajuput forest.",
+          "schedule": [
+            "—"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour5.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Can%20Tho&t=&z=11&ie=UTF8&iwloc=&output=embed"
     },
     {
       "id": 10,
@@ -135,10 +703,80 @@
       "oldPrice": 1300,
       "discount": "31% Off",
       "featured": true,
-      "activities": ["Relaxation & Nature Activities", "Adventure Activities"],
-      "availability": ["Dec 1, 2025", "Dec 5, 2025"],
-      "shortDesc": "Unwind in Vietnam’s hidden gem — Con Dao, known for its pristine beaches and national parks.",
-      "image": "../assets/images/tour/tour_10.jpg"
+      "activities": [
+        "Relaxation & Nature Activities",
+        "Adventure Activities"
+      ],
+      "availability": [
+        "Dec 1, 2025",
+        "Dec 5, 2025"
+      ],
+      "shortDesc": "Pristine beaches, national park hikes, and turtle conservation (seasonal).",
+      "image": "../assets/images/tour/tour_10.jpg",
+      "gallery": [
+        "../assets/images/detailTour/detailTour4.jpg",
+        "../assets/images/detailTour/detailTour5.jpg",
+        "../assets/images/detailTour/detailTour3.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/x0Zs7Xy8vYk",
+      "overview": "Remote island beauty, WWII history sites, and protected bays.",
+      "includes": [
+        "Airport transfers",
+        "National park permit",
+        "Hotel 4★ with breakfast"
+      ],
+      "notIncludes": [
+        "Dinner",
+        "Diving fees",
+        "Insurance"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Bay Swim",
+          "overview": "Easy day by the sea.",
+          "schedule": [
+            "—"
+          ],
+          "meals": "—",
+          "accommodation": "Resort 4★",
+          "image": "../assets/images/detailTour/detailTour1.jpg"
+        },
+        {
+          "day": 2,
+          "title": "National Park Trails",
+          "overview": "Hiking & lookout points.",
+          "schedule": [
+            "09:00 — Park hikes"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "Resort 4★",
+          "image": "../assets/images/detailTour/detailTour3.jpg"
+        },
+        {
+          "day": 3,
+          "title": "Turtle Conservation (seasonal)",
+          "overview": "Night observation with rangers.",
+          "schedule": [
+            "—"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "Resort 4★",
+          "image": "../assets/images/detailTour/detailTour5.jpg"
+        },
+        {
+          "day": 4,
+          "title": "Free Morning — Depart",
+          "overview": "Souvenir time & airport.",
+          "schedule": [
+            "—"
+          ],
+          "meals": "Breakfast",
+          "accommodation": "—",
+          "image": "../assets/images/detailTour/detailTour2.jpg"
+        }
+      ],
+      "mapEmbed": "https://maps.google.com/maps?q=Con%20Dao&t=&z=12&ie=UTF8&iwloc=&output=embed"
     }
   ]
 }
