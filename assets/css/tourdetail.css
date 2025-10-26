@@ -21,7 +21,7 @@
 .blog-bg-img {
   position: absolute;
   top: 0; right: 0;
-  width: 1140px;
+  width: 70%;
   height: 100%;
   object-fit: cover;
   z-index: 2;
@@ -63,7 +63,7 @@
   font-size: 30px;
   transform: translateY(-3px);
 }
-.breadcrumb .current { color: #b6b3b2; font-weight: 600; }
+.breadcrumb .current { color: #ffffff; font-weight: 600; }
 
 /* ================================
    === RESET & BASE ===
@@ -72,7 +72,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif ;
 }
 body {
   background: #f7f7f7;

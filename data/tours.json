@@ -201,11 +201,13 @@
       "shortDesc": "Lantern-lit streets, tailor-made outfits, and river cruises at dusk.",
       "image": "../assets/images/tour/tour_3.jpg",
       "gallery": [
-        "../assets/images/detailTour/detailTour3.jpg",
-        "../assets/images/detailTour/detailTour4.jpg",
-        "../assets/images/detailTour/detailTour5.jpg"
+        "../assets/images/detailTour/tour3/1.jpg",
+        "../assets/images/detailTour/tour3/2.jpg",
+        "../assets/images/detailTour/tour3/3.jpg",
+        "../assets/images/detailTour/tour3/4.jpg",
+        "../assets/images/detailTour/tour3/5.jpg"
       ],
-      "videoUrl": "https://www.youtube.com/embed/kN1QKfV8g2E",
+      "videoUrl": "https://www.youtube.com/embed/QtJkmBb3TAM?si=5-bw0uVtFi-Yzldo",
       "overview": "Discover UNESCO-listed Hoi An: Japanese Bridge, ancient houses, and vibrant food scene.",
       "includes": [
         "Walking tour with local guide",
@@ -228,7 +230,7 @@
           ],
           "meals": "—",
           "accommodation": "Hotel in Hoi An",
-          "image": "../assets/images/detailTour/detailTour1.jpg"
+          "image": "../assets/images/detailTour/tour3/3.jpg"
         },
         {
           "day": 2,
@@ -240,7 +242,7 @@
           ],
           "meals": "Breakfast",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour2.jpg"
+          "image": "../assets/images/detailTour/tour3/6.jpg"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Hoi%20An&t=&z=12&ie=UTF8&iwloc=&output=embed"
@@ -265,11 +267,13 @@
       "shortDesc": "Crystal-clear beaches, snorkeling coral gardens, and sunset fishing.",
       "image": "../assets/images/tour/tour_4.jpg",
       "gallery": [
-        "../assets/images/detailTour/snorkeling.jpg",
-        "../assets/images/detailTour/detailTour4.jpg",
-        "../assets/images/detailTour/detailTour5.jpg"
+        "../assets/images/detailTour/tour4/1.jpg",
+        "../assets/images/detailTour/tour4/2.jpg",
+        "../assets/images/detailTour/tour4/3.jpg",
+        "../assets/images/detailTour/tour4/4.jpg",
+        "../assets/images/detailTour/tour4/5.jpg"
       ],
-      "videoUrl": "https://www.youtube.com/embed/3N2wqX0hS3U",
+      "videoUrl": "https://www.youtube.com/embed/__5mr_Xtb30?si=0PB0z5IIGAgPGIyS",
       "overview": "Explore the pearl island: Sao Beach, An Thoi archipelago, night market seafood.",
       "includes": [
         "Airport pickup",
@@ -304,7 +308,7 @@
           ],
           "meals": "Breakfast, Lunch",
           "accommodation": "Resort 4★",
-          "image": "../assets/images/detailTour/snorkeling.jpg"
+          "image": "../assets/images/detailTour/tour4/6.jpg"
         },
         {
           "day": 3,
@@ -316,7 +320,7 @@
           ],
           "meals": "Breakfast",
           "accommodation": "Resort 4★",
-          "image": "../assets/images/detailTour/detailTour4.jpg"
+          "image": "../assets/images/detailTour/tour4/7.jpg"
         },
         {
           "day": 4,
