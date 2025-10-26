@@ -97,20 +97,18 @@ body {
 }
 
 /* =========================================================
-   ABOUT INTRO — 3 CỘT NGANG, TRANSPARENT, FULL WIDTH
+   ABOUT INTRO — 3 CỘT NGANG
 ========================================================= */
 .about-intro {
   display: grid;
-  grid-template-columns: 1.2fr 1.2fr 0.8fr; /* trái - giữa - phải */
+  grid-template-columns: 1.2fr 1.2fr 0.8fr;
   align-items: center;
   justify-content: space-between;
-  width: min(var(--frame-width), calc(100% - 110px)); /* bằng hero banner */
+  width: min(var(--frame-width), calc(100% - 110px));
   margin: var(--offset) auto 100px;
   padding: 60px 80px;
-  background: transparent; /* trong suốt */
-  border: none;
-  box-shadow: none;
   gap: 60px;
+  background: transparent;
 }
 
 /* --- TRÁI --- */
@@ -149,7 +147,6 @@ body {
   font-size: 15px;
   line-height: 1.7;
   color: #444;
-  max-width: 100%;
 }
 
 .about-intro__features {
@@ -158,25 +155,53 @@ body {
   gap: 18px;
 }
 
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.feature-item__icon {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5e2d3;
+  border-radius: 16px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  font-size: 26px;
+  color: #000;
+  transition: all 0.25s ease;
+}
+
+.feature-item__icon:hover {
+  background: #ffd992;
+  transform: scale(1.1);
+}
+
 .feature-item__title {
-  font-weight: 700;
-  font-size: 17px;
-  margin-bottom: 4px;
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 6px;
   color: #111;
 }
 
 .feature-item__desc {
-  color: #666;
-  font-size: 14px;
-  line-height: 1.5;
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 /* --- PHẢI --- */
 .about-intro__right {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-end;
+  transform: translateX(-40px);
 }
 
 .about-intro__suitcase {
@@ -191,47 +216,283 @@ body {
 }
 
 .about-intro__suitcase img:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 .about-intro__suitcase-text {
-  font-size: 14px;
-  color: #555;
+  font-size: 15px;
+  color: #444;
   font-style: italic;
-  text-align: right;
-  margin-top: 8px;
+  text-align: left;
+  margin-top: 10px;
+}
+
+/* --- BUTTON --- */
+.about-intro__button {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-more {
+  background-color: #ffd54f;
+  color: #222;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-more:hover {
+  background-color: #ffc107;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================================================
-   TRAVEL EXPERIENCE
+   TRAVEL EXPERIENCE (TIMELINE)
 ========================================================= */
 .travel-experience {
+  max-width: 1200px;
+  margin: 100px auto;
   text-align: center;
-  max-width: 800px;
-  margin: 25px auto;
 }
 
 .travel-experience h1 {
   font-size: 2.5em;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
+  font-weight: 800;
 }
 
-.travel-experience__row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
+/* --- timeline --- */
+.timeline {
+  position: relative;
+  width: 100%;
+  padding: 40px 0;
 }
 
-.travel-experience__image {
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background-color: #ddd;
+}
+
+.timeline-item {
+  position: relative;
   width: 50%;
-  border-radius: 10px;
+  padding: 35px 60px;
+  box-sizing: border-box;
 }
 
-.travel-experience__text {
-  width: 45%;
-  font-size: 1.1em;
-  padding: 10px;
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+  margin-top: -200px;
+}
+
+/* --- chấm tròn --- */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border: 3px solid #2563eb;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-item.right::before {
+  left: -10px;
+  right: auto;
+}
+
+/* --- nội dung --- */
+.timeline-content {
+  display: inline-block;
+  max-width: 400px;
+}
+
+.timeline-content h3 {
+  font-size: 1.6em;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.timeline-content p {
+  font-size: 1.15em;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* --- hình ảnh --- */
+.timeline-item.left .timeline-content img {
+  width: 130%;
+  max-width: 520px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(8px) translateX(-170px);
+}
+
+.timeline-item.right .timeline-content img {
+  width: 130%;
+  max-width: 520px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(60px) translateX(60px);
+}
+
+/* =========================================================
+   TEAM SECTION
+========================================================= */
+.team-section {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.team-section h2 {
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.team-section__grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.team-section__card {
+  position: relative;
+  width: 220px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 20px 10px;
+  transition: all 0.4s ease;
+}
+
+.team-section__image-box {
+  position: relative;
+  z-index: 1;
+}
+
+.team-section__image {
+  width: 100%;
+  border-radius: 50%;
+  transition: opacity 0.4s ease;
+}
+
+.team-section__image--hover {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.team-section__card h3,
+.team-section__card p,
+.team-section__comment {
+  position: relative;
+  z-index: 2;
+}
+
+.team-section__comment {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+/* --- hover effect --- */
+.team-section__card:hover {
+  transform: translateY(-20px) scale(1.15);
+  z-index: 10;
+}
+
+.team-section__card:hover .team-section__image {
+  opacity: 0;
+}
+
+.team-section__card:hover .team-section__image--hover {
+  opacity: 1;
+}
+
+.team-section__card:hover .team-section__comment {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-section__grid:hover .team-section__card {
+  transform: scale(0.9);
+  opacity: 0.6;
+}
+
+.team-section__grid:hover .team-section__card:hover {
+  transform: translateY(-20px) scale(1.15);
+  opacity: 1;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 992px) {
+  .about-intro {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 40px;
+    width: calc(100% - 40px);
+  }
+
+  .about-intro__right {
+    align-items: center;
+  }
+
+  .about-intro__suitcase {
+    width: 220px;
+  }
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    text-align: left;
+    padding-left: 40px;
+  }
+
+  .timeline-item::before {
+    left: 0;
+  }
+
+  .timeline-content img {
+    transform: none;
+    max-width: 100%;
+  }
 }
 
 /* =========================================================
@@ -325,7 +586,7 @@ select {
 }
 
 /* =========================================================
-   ABOUT HERO
+   ABOUT HERO SECTION
 ========================================================= */
 .about-hero {
   max-width: 1600px;
@@ -456,6 +717,11 @@ select {
   transition: all 0.4s ease;
 }
 
+.team-section__image-box {
+  position: relative;
+  z-index: 1;
+}
+
 .team-section__image {
   width: 100%;
   border-radius: 50%;
@@ -473,6 +739,13 @@ select {
   transition: opacity 0.4s ease;
 }
 
+.team-section__card h3,
+.team-section__card p,
+.team-section__comment {
+  position: relative;
+  z-index: 2;
+}
+
 .team-section__comment {
   margin-top: 15px;
   font-size: 14px;
@@ -482,6 +755,7 @@ select {
   transition: all 0.4s ease;
 }
 
+/* --- Hover effect --- */
 .team-section__card:hover {
   transform: translateY(-20px) scale(1.15);
   z-index: 10;
@@ -510,331 +784,3 @@ select {
   opacity: 1;
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-@media (max-width: 992px) {
-  .about-intro {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 40px;
-    width: calc(100% - 40px);
-  }
-
-  .about-intro__right {
-    align-items: center;
-  }
-
-  .about-intro__suitcase {
-    width: 220px;
-  }
-}
-
-/* =========================================================
-   ABOUT INTRO — FEATURE ICONS (TO & ĐẸP HƠN)
-========================================================= */
-.feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  margin-bottom: 26px;
-}
-
-.feature-item__icon {
-  width: 58px;
-  height: 58px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f5e2d3; /* match hero màu vàng hồng */
-  border-radius: 16px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-  color: #000;
-  font-size: 26px; /* ✅ icon to hơn */
-  transition: all 0.25s ease;
-}
-
-.feature-item__icon:hover {
-  background: #ffd992;
-  transform: scale(1.1);
-}
-
-.feature-item__content {
-  display: flex;
-  flex-direction: column;
-}
-
-.feature-item__title {
-  font-weight: 800;
-  font-size: 20px; /* ✅ chữ to hơn */
-  margin-bottom: 6px;
-  color: #111;
-}
-
-.feature-item__desc {
-  color: #555;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* =========================================================
-   ABOUT INTRO — VALI (GẦN PHẦN CHỮ HƠN)
-========================================================= */
-.about-intro__right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* ✅ dịch vali về trái gần chữ */
-  justify-content: flex-end;
-  transform: translateX(-40px); /* ✅ đẩy nguyên khối vali qua trái */
-}
-
-.about-intro__suitcase {
-  width: 340px;
-}
-
-.about-intro__suitcase img {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
-  transition: transform 0.3s ease;
-}
-
-.about-intro__suitcase img:hover {
-  transform: translateY(-6px);
-}
-
-.about-intro__suitcase-text {
-  font-size: 15px;
-  color: #444;
-  font-style: italic;
-  text-align: left; /* ✅ đổi lại cho hợp với hướng */
-  margin-top: 10px;
-}
-
-/* =========================================================
-   ABOUT INTRO — NÚT MORE ABOUT US
-========================================================= */
-.about-intro__button {
-  margin-top: 25px;
-  display: flex;
-  justify-content: flex-start; /* canh trái cho cân với text */
-}
-
-.btn-more {
-  background-color: #ffd54f; /* vàng nhẹ đồng bộ hero banner */
-  color: #222;
-  font-weight: 700;
-  font-size: 15px;
-  padding: 12px 26px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.btn-more:hover {
-  background-color: #ffc107;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-}
-
-.hero-banner,
-.about-intro,
-.booking-section,
-.about-hero,
-.team-section {
-  margin-top: var(--section-spacing);
-  margin-bottom: var(--section-spacing);
-}
-
-.travel-experience {
-  max-width: 1200px;
-  margin: 100px auto;
-  text-align: center;
-}
-
-.travel-experience h1 {
-  font-size: 2.5em;
-  margin-bottom: 60px;
-  font-weight: 800;
-}
-
-/* --- timeline --- */
-.timeline {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  padding: 40px 0;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 100%;
-  background-color: #ddd;
-}
-
-/* --- mỗi item --- */
-.timeline-item {
-  position: relative;
-  width: 50%;
-  padding: 20px 40px;
-  box-sizing: border-box;
-}
-
-.timeline-item.left {
-  left: 0;
-  text-align: right;
-}
-
-.timeline-item.right {
-  left: 50%;
-  text-align: left;
-}
-
-/* --- chấm tròn --- */
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  top: 35px;
-  right: -10px;
-  width: 18px;
-  height: 18px;
-  background-color: #fff;
-  border: 3px solid #2563eb;
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.timeline-item.right::before {
-  left: -10px;
-  right: auto;
-}
-
-/* --- nội dung --- */
-.timeline-content {
-  display: inline-block;
-  max-width: 400px;
-}
-
-.timeline-content h3 {
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-bottom: 4px; /* ✅ cho khít chữ */
-}
-
-.timeline-content p {
-  font-size: 0.95em;
-  line-height: 1.4; /* ✅ cho khít hơn */
-  color: #333;
-  margin-bottom: 15px;
-}
-
-/* --- hình ảnh --- */
-.timeline-content img {
-  width: 100%;
-  max-width: 380px;
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  transform: translateY(5px) translateX(-15px);
-}
-
-.timeline-item.right .timeline-content img {
-  transform: translateY(5px) translateX(15px);
-}
-
-/* --- responsive --- */
-@media (max-width: 768px) {
-  .timeline::before {
-    left: 10px;
-  }
-
-  .timeline-item {
-    width: 100%;
-    text-align: left;
-    padding-left: 40px;
-  }
-
-  .timeline-item::before {
-    left: 0;
-  }
-
-  .timeline-content img {
-    transform: none;
-    max-width: 100%;
-  }
-}
-
-/* =========================================================
-   TINH CHỈNH CHIỀU CAO CÁC CHẤM VÀ CĂN NGANG ẢNH
-========================================================= */
-
-/* đẩy các bước bên phải lên một chút để canh ngang với ảnh trái */
-.timeline-item.right {
-  margin-top: -200px; /* kéo lên cho gần hơn */
-}
-
-/* nếu có bước thứ 3 trở đi — tinh chỉnh nhẹ để đều hơn */
-.timeline-item.left:nth-of-type(3),
-.timeline-item.right:nth-of-type(4) {
-  margin-top: -200px;
-}
-
-/* tinh chỉnh chấm timeline cho cân */
-.timeline-item::before {
-  top: 15px; /* chấm nằm gần đầu chữ hơn */
-}
-
-/* =========================================================
-   NÂNG CẤP TIMELINE — ẢNH TO HƠN VÀ CÁCH TIMELINE ĐẸP
-========================================================= */
-
-/* --- ảnh lớn hơn, lệch xa đường timeline --- */
-.timeline-content img {
-  width: 130%;              /* làm ảnh to hơn hẳn */
-  max-width: 520px;         /* tránh vỡ ảnh */
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  transform: translateY(8px) translateX(-170px); /* đẩy ảnh lệch khỏi timeline */
-}
-
-/* --- bên phải lệch theo hướng ngược lại --- */
-.timeline-item.right .timeline-content img {
-  transform: translateY(60px) translateX(60px);
-}
-
-/* --- chữ to hơn cho cân với ảnh --- */
-.timeline-content h3 {
-  font-size: 1.6em;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.timeline-content p {
-  font-size: 1.15em;
-  line-height: 1.5;
-  color: #333;
-}
-
-/* --- tăng padding để gọn gàng --- */
-.timeline-item {
-  padding: 35px 60px;
-}
-
-.team-section__image-box {
-  position: relative;
-  z-index: 1;
-}
-
-.team-section__card h3,
-.team-section__card p,
-.team-section__comment {
-  position: relative;
-  z-index: 2; /* luôn nằm trên ảnh */
-}
