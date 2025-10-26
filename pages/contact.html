@@ -1,113 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
-    <link rel="stylesheet" href="../assets/css/contact.css">
-</head>
-<body>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../assets/css/contact.css" />
+  </head>
+  <body>
     <div class="blog-frame">
-    <!-- Nền màu -->
-    <div class="blog-bg-color"></div>
+      <!-- Nền màu -->
+      <div class="blog-bg-color"></div>
 
-    <!-- Ảnh nền bên phải -->
-    <img src="../assets/images/TourHeader - Copy.jpg" alt="Ảnh nền" class="blog-bg-img">
+      <!-- Ảnh nền bên phải -->
+      <img
+        src="../assets/images/TourHeader - Copy.jpg"
+        alt="Ảnh nền"
+        class="blog-bg-img"
+      />
 
-    <!-- Ảnh người đè lên -->
-    <img src="../assets/images/TourHeaderPerson.jpg" alt="Người" class="blog-person">
+      <!-- Ảnh người đè lên -->
+      <img
+        src="../assets/images/TourHeaderPerson.jpg"
+        alt="Người"
+        class="blog-person"
+      />
 
-    <!-- Text -->
-    <div class="blog-text">
-      <h1>  CONTACT US</h1>
-      <div class="breadcrumb">
-        <span class="home">HOME</span>
-        <span class="arrow">›</span>
-        <span class="current">CONTACT US</span>
+      <!-- Text -->
+      <div class="blog-text">
+        <h1>CONTACT US</h1>
+        <div class="breadcrumb">
+          <span class="home">HOME</span>
+          <span class="arrow">›</span>
+          <span class="current">CONTACT</span>
+        </div>
       </div>
     </div>
-  </div>
-    
-   <!-- Khung liên hệ -->
 
-   <div class="contact-container">
-    <section class="contact-form-section">
-      <!-- <form class="contact-form">
-        <h2>Liên Hệ Với Chúng Tôi</h2>
-        <input type="text" placeholder="Họ và tên" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Yêu cầu hoặc thắc mắc của bạn" required></textarea>
-        <button type="submit">Gửi</button>
-      </form> -->
-      <h1>Contact With Us</h1>
-        <div class="form-row">
-        <div class="form-group">
-            <label>From</label>
-            <select>
-                <option>Where To Next?</option>
-            </select>
+    <!-- ===== PROMO + BOOKING-LIKE CONTACT CARD ===== -->
+    <section class="promo">
+      <div class="promo__inner">
+        <div class="promo__left">
+          <h2 class="promo__kicker">We're here to assist</h2>
+          <h3 class="promo__headline">
+            <span>Contact</span><br />
+            <span class="brand">Our Team</span><br />
+            <span>Anytime</span>
+          </h3>
+          <p class="promo__desc">
+            Need help with bookings, cancellations, invoices, or partnerships?
+            Send us a message — we respond within 24 hours.
+          </p>
         </div>
-        <div class="form-group">
-            <label>To</label>
-            <select>
-                <option>Where To Next?</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label>Date of Journey</label>
-        <input type="date" placeholder="mm/dd/yyyy">
-    </div>
-    <div class="form-group">
-        <label>Date of Return (Optional)</label>
-        <input type="date" placeholder="mm/dd/yyyy">
-    </div>
-    <div class="form-row">
-        <div class="form-group">
-            <label>Guests</label>
-            <select>
-                <option>1 Person</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Budget</label>
-            <select>
-                <option>10 USD</option>
-            </select>
-        </div>
-    </div>
-    <a href="#" class="button">EXPLORE TRIP</a>
+
+        <!-- CARD styled like your mockup -->
+        <aside
+          class="form-card form-card--booking"
+          aria-labelledby="contactHeading"
+        >
+          <h1 id="contactHeading" class="form-title">
+            Contact<br />With Us
+            <!-- TODO: plane image you already have -->
+            <img src="../assets/images/plane.png" alt="" class="title-plane" />
+          </h1>
+
+          <form class="contact-form" action="#" method="post" novalidate>
+            <!-- Name / Email -->
+            <div class="row">
+              <label class="field">
+                <span class="label"
+                  ><i class="fa-solid fa-user"></i> Full Name</span
+                >
+                <input
+                  class="u-underline"
+                  type="text"
+                  name="name"
+                  placeholder="Your full name"
+                  required
+                />
+              </label>
+
+              <label class="field">
+                <span class="label"
+                  ><i class="fa-solid fa-envelope"></i> Email</span
+                >
+                <input
+                  class="u-underline"
+                  type="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </label>
+            </div>
+
+            <!-- Phone / Subject -->
+            <div class="row">
+              <label class="field">
+                <span class="label"
+                  ><i class="fa-solid fa-phone"></i> Phone</span
+                >
+                <input
+                  class="u-underline"
+                  type="tel"
+                  name="phone"
+                  placeholder="+84 ..."
+                />
+              </label>
+
+              <label class="field">
+                <span class="label"
+                  ><i class="fa-solid fa-tag"></i> Subject</span
+                >
+                <input
+                  class="u-underline"
+                  type="text"
+                  name="subject"
+                  placeholder="What is this about?"
+                  required
+                />
+              </label>
+            </div>
+
+            <!-- Message -->
+            <label class="field">
+              <span class="label"
+                ><i class="fa-solid fa-message"></i> Message</span
+              >
+              <textarea
+                class="u-underline u-underline--textarea"
+                name="message"
+                rows="4"
+                placeholder="Tell us how we can help..."
+                required
+              ></textarea>
+            </label>
+
+            <button class="btn-cta" type="submit">SEND MESSAGE</button>
+          </form>
+        </aside>
+      </div>
     </section>
-    </div>
 
-    <!-- Phần địa chỉ và bản đồ -->
-    <section class="map-section">
-      <div class="map-address">
-        Khu phố 34, Phường Linh Xuân, Thành phố Hồ Chí Minh
+    <!-- ===== MAP ===== -->
+    <section class="map">
+      <div class="map__address">
+        Linh Trung Ward, Thu Duc City, Ho Chi Minh City, Vietnam (UIT Campus)
       </div>
-      <div class="map-container">
+      <div class="map__frame">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.231171614195!2d106.7633553147492!3d10.865438992256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175270b0d4e6d37%3A0x7b0b8b7b0b8b7b8b!2sLinh%20Xu%C3%A2n%2C%20Th%E1%BB%A7%20%C4%90%E1%BB%A9c%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vi%E1%BB%87t%20Nam!5e0!3m2!1svi!2s!4v1697822400000!5m2!1svi!2s"
-          allowfullscreen
+          src="https://www.google.com/maps?q=University%20of%20Information%20Technology%20VNU-HCM&hl=en&z=15&output=embed"
+          allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
+          referrerpolicy="no-referrer-when-downgrade"
+        >
         </iframe>
       </div>
     </section>
-  </div>
 
-  <!-- Nút tròn cố định -->
-  <div class="fixed-buttons">
-    <a href="#" class="fixed-button" title="Facebook">
-      <i class="fab fa-facebook-f">✌️</i>
-    </a>
-    <a href="#" class="fixed-button" title="Zalo">
-      <i class="fas fa-comment-dots">❤️</i> 
-    </a>
-    <a href="#" class="fixed-button" title="Call">
-      <i class="fas fa-phone">😑</i>
-    </a>
-  </div>
-
-</body>
+    <!-- ===== FLOATING BUTTONS ===== -->
+    <div class="float-buttons">
+      <a class="float-btn fb" href="#" title="Facebook"
+        ><i class="fa-brands fa-facebook-f"></i
+      ></a>
+      <a class="float-btn zalo" href="#" title="Zalo"
+        ><i class="fa-solid fa-message"></i
+      ></a>
+      <a class="float-btn call" href="tel:+84000000000" title="Call"
+        ><i class="fa-solid fa-phone"></i
+      ></a>
+    </div>
+  </body>
 </html>
