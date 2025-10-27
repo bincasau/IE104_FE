@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
 
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,24 +20,20 @@
   </head>
   <body>
     <div class="blog-frame">
-      <!-- Nền màu -->
       <div class="blog-bg-color"></div>
 
-      <!-- Ảnh nền bên phải -->
       <img
         src="../assets/images/TourHeader - Copy.jpg"
         alt="Ảnh nền"
         class="blog-bg-img"
       />
 
-      <!-- Ảnh người đè lên -->
       <img
         src="../assets/images/TourHeaderPerson.jpg"
         alt="Người"
         class="blog-person"
       />
 
-      <!-- Text -->
       <div class="blog-text">
         <h1>CONTACT US</h1>
         <div class="breadcrumb">
@@ -49,7 +44,6 @@
       </div>
     </div>
 
-    <!-- ===== PROMO + BOOKING-LIKE CONTACT CARD ===== -->
     <section class="promo">
       <div class="promo__inner">
         <div class="promo__left">
@@ -65,19 +59,16 @@
           </p>
         </div>
 
-        <!-- CARD styled like your mockup -->
         <aside
           class="form-card form-card--booking"
           aria-labelledby="contactHeading"
         >
           <h1 id="contactHeading" class="form-title">
             Contact<br />With Us
-            <!-- TODO: plane image you already have -->
             <img src="../assets/images/plane.png" alt="" class="title-plane" />
           </h1>
 
-          <form class="contact-form" action="#" method="post" novalidate>
-            <!-- Name / Email -->
+          <form class="contact-form" id="contactForm" novalidate>
             <div class="row">
               <label class="field">
                 <span class="label"
@@ -106,7 +97,6 @@
               </label>
             </div>
 
-            <!-- Phone / Subject -->
             <div class="row">
               <label class="field">
                 <span class="label"
@@ -134,7 +124,6 @@
               </label>
             </div>
 
-            <!-- Message -->
             <label class="field">
               <span class="label"
                 ><i class="fa-solid fa-message"></i> Message</span
@@ -149,12 +138,12 @@
             </label>
 
             <button class="btn-cta" type="submit">SEND MESSAGE</button>
+            <p id="formMessage" class="form-msg"></p>
           </form>
         </aside>
       </div>
     </section>
 
-    <!-- ===== MAP ===== -->
     <section class="map">
       <div class="map__address">
         Linh Trung Ward, Thu Duc City, Ho Chi Minh City, Vietnam (UIT Campus)
@@ -170,7 +159,6 @@
       </div>
     </section>
 
-    <!-- ===== FLOATING BUTTONS ===== -->
     <div class="float-buttons">
       <a class="float-btn fb" href="#" title="Facebook"
         ><i class="fa-brands fa-facebook-f"></i
@@ -182,5 +170,32 @@
         ><i class="fa-solid fa-phone"></i
       ></a>
     </div>
+
+    <script>
+      const form = document.querySelector(".contact-form");
+      const messageBox = document.getElementById("formMessage");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const subject = form.subject.value.trim();
+        const message = form.message.value.trim();
+
+        // Kiểm tra validation
+        if (!name || !email || !subject || !message) {
+          messageBox.textContent = "Please fill in all required fields!";
+          messageBox.className = "form-msg error";
+          return;
+        }
+
+        // Báo thành công (giả lập)
+        messageBox.textContent = "Your message has been sent successfully!";
+        messageBox.className = "form-msg success";
+
+        form.reset();
+      });
+    </script>
   </body>
 </html>

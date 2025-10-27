@@ -344,7 +344,7 @@ body {
 
 .blog-text h1 {
   font-size: 45px;
-  font-weight: 900;
+  font-weight: 700;
   color: #000;
   margin-bottom: 40px;
   transform: translateX(80px);
@@ -545,4 +545,18 @@ body {
     transform: translateY(-2px);
   }
   /* === HẾT PHẦN BLOG-FRAME === */
+}
+.form-msg {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-msg.error {
+  color: #d20000; /* Red */
+}
+
+.form-msg.success {
+  color: #007a33; /* Green */
 }
