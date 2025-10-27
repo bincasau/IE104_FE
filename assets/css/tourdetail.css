@@ -1,51 +1,93 @@
-/* ================================
-   === BLOG FRAME (Banner đầu trang) ===
-================================ */
+:root {
+  --offset: 55px;
+  --frame-width: 1820px;
+  --frame-height: 530px;
+  --gap: 28px;
+  --radius: 14px;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --brand: #e4823d;
+  --card: #ffffff;
+  --bg: #f3f4f6; /* Nền dịu */
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f4f4f4; /* Nền dự phòng */
+}
+
+/* === KHUNG CHÍNH === */
 .blog-frame {
-  position: relative;
-  margin: 40px auto;
-  width: min(1820px, calc(100% - 100px));
-  height: 530px;
+  position: relative !important;
+  margin: var(--offset) auto !important;
+  margin-top: 20px;
+  width: min(var(--frame-width), calc(100% - 110px)) !important;
+  height: var(--frame-height);
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
+
+/* === NỀN MÀU TRÁI === */
 .blog-bg-color {
   position: absolute;
-  top: 0; left: 0;
-  width: 60%;
+  top: 0;
+  left: 0;
+  width: 60% !important;
+  /* phần nền trái */
   height: 100%;
-  background-color: #F5E2D3;
+  background-color: #f5e2d3;
   z-index: 1;
 }
+
+/* === ẢNH NỀN === */
 .blog-bg-img {
   position: absolute;
-  top: 0; right: 0;
-  width: 70%;
+  top: 0;
+  right: 0;
+  width: 1140px;
   height: 100%;
   object-fit: cover;
   z-index: 2;
 }
+
+/* === ẢNH NGƯỜI === */
 .blog-person {
   position: absolute;
-  bottom: 0; right: 290px;
+  bottom: 0;
+  right: 290px !important;
   height: 80%;
   object-fit: contain;
   z-index: 3;
 }
+
+/* === TEXT === */
 .blog-text {
   position: absolute;
-  top: 50%; left: 150px;
+  top: 50%;
+  left: 150px;
   transform: translateY(-50%);
   z-index: 4;
 }
+
 .blog-text h1 {
   font-size: 45px;
   font-weight: 900;
   color: #000;
   margin-bottom: 40px;
   transform: translateX(80px);
+  /* tràn qua phải */
 }
+
+/* Breadcrumb */
 .breadcrumb {
   display: inline-flex;
   align-items: center;
@@ -55,25 +97,30 @@
   background: transparent;
   gap: 10px;
   transform: translateX(80px);
+  /* tràn qua phải */
 }
-.breadcrumb .home { font-weight: 700; color: #000; }
+
+.breadcrumb .home {
+  font-weight: 700;
+  color: #000;
+}
+
 .breadcrumb .arrow {
   color: #ff7c28;
   font-weight: 700;
   font-size: 30px;
   transform: translateY(-3px);
 }
-.breadcrumb .current { color: #ffffff; font-weight: 600; }
+
+.breadcrumb .current {
+  color: #b6b3b2;
+  font-weight: 600;
+}
 
 /* ================================
    === RESET & BASE ===
 ================================ */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif ;
-}
+
 body {
   background: #f7f7f7;
   padding: 40px;

@@ -2,21 +2,20 @@
    GLOBAL STYLES & VARIABLES
 ========================================================= */
 :root {
-  --offset: 30px;
+  --offset: 55px;
   --frame-width: 1820px;
   --frame-height: 530px;
-  --radius: 25px;
+  --gap: 28px;
+  --radius: 14px;
   --border: #e5e7eb;
   --text: #111827;
   --muted: #6b7280;
-  --brand: #2563eb;
+  --brand: #e4823d;
   --card: #ffffff;
-  --bg: #fafafa;
+  --bg: #f3f4f6; /* Nền dịu */
 }
 
-/* =========================================================
-   GLOBAL RESET
-========================================================= */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -25,35 +24,35 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #fff;
-  color: var(--text);
-  line-height: 1.2;
+  background: #f4f4f4; /* Nền dự phòng */
 }
 
-/* =========================================================
-   HERO BANNER
-========================================================= */
-.hero-banner {
+/* === KHUNG CHÍNH === */
+.blog-frame {
   position: relative;
   margin: var(--offset) auto;
+  margin-top: 20px;
   width: min(var(--frame-width), calc(100% - 110px));
   height: var(--frame-height);
-  border-radius: var(--radius);
+  border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.hero-banner__bg {
+/* === NỀN MÀU TRÁI === */
+.blog-bg-color {
   position: absolute;
   top: 0;
   left: 0;
   width: 60%;
+  /* phần nền trái */
   height: 100%;
   background-color: #f5e2d3;
   z-index: 1;
 }
 
-.hero-banner__image {
+/* === ẢNH NỀN === */
+.blog-bg-img {
   position: absolute;
   top: 0;
   right: 0;
@@ -63,16 +62,18 @@ body {
   z-index: 2;
 }
 
-.hero-banner__person {
+/* === ẢNH NGƯỜI === */
+.blog-person {
   position: absolute;
   bottom: 0;
   right: 290px;
-  height: 60%;
+  height: 80%;
   object-fit: contain;
   z-index: 3;
 }
 
-.hero-banner__text {
+/* === TEXT === */
+.blog-text {
   position: absolute;
   top: 50%;
   left: 150px;
@@ -80,22 +81,48 @@ body {
   z-index: 4;
 }
 
-.hero-banner__text h1 {
+.blog-text h1 {
   font-size: 45px;
   font-weight: 900;
   color: #000;
   margin-bottom: 40px;
   transform: translateX(80px);
+  /* tràn qua phải */
 }
 
-.hero-banner__breadcrumb {
-  display: flex;
+/* Breadcrumb */
+.breadcrumb {
+  display: inline-flex;
   align-items: center;
+  border: 3px solid #eca871;
+  border-radius: 8px;
+  padding: 10px 22px;
+  background: transparent;
   gap: 10px;
-  font-size: 18px;
   transform: translateX(80px);
+  /* tràn qua phải */
 }
 
+.breadcrumb .home {
+  font-weight: 700;
+  color: #000;
+}
+
+.breadcrumb .arrow {
+  color: #ff7c28;
+  font-weight: 700;
+  font-size: 30px;
+  transform: translateY(-3px);
+}
+
+.breadcrumb .current {
+  color: #b6b3b2;
+  font-weight: 600;
+}
+
+* {
+  box-sizing: border-box;
+}
 /* =========================================================
    ABOUT INTRO — 3 CỘT NGANG
 ========================================================= */

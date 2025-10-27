@@ -294,6 +294,7 @@ body {
 .blog-frame {
   position: relative;
   margin: var(--offset) auto;
+  margin-top: 20px;
   width: min(var(--frame-width), calc(100% - 110px));
   height: var(--frame-height);
   border-radius: 25px;
