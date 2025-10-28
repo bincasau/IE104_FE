@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", async function () {
+export async function initPage() {
+  // document.addEventListener("DOMContentLoaded", async function () {
   // ===== Popup video =====
   const openBtn = document.getElementById("openVideo");
   const popup = document.getElementById("videoPopup");
@@ -39,8 +40,16 @@ document.addEventListener("DOMContentLoaded", async function () {
   // ===== Get selected tour ID =====
   const params = new URLSearchParams(window.location.search);
   const queryId = parseInt(params.get("id") || "", 10);
-  const storageId = parseInt(sessionStorage.getItem("selectedTourId") || "", 10);
-  const tourId = Number.isFinite(queryId) && queryId > 0 ? queryId : (Number.isFinite(storageId) ? storageId : null);
+  const storageId = parseInt(
+    sessionStorage.getItem("selectedTourId") || "",
+    10
+  );
+  const tourId =
+    Number.isFinite(queryId) && queryId > 0
+      ? queryId
+      : Number.isFinite(storageId)
+      ? storageId
+      : null;
 
   try {
     // ===== Load JSON =====
@@ -53,12 +62,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     // ===== Header title & breadcrumb =====
     document.querySelector(".tour-title").textContent = tour.title;
     const breadcrumbCurr = document.querySelectorAll(".breadcrumb .current");
-    if (breadcrumbCurr.length) breadcrumbCurr[breadcrumbCurr.length - 1].textContent = tour.title;
+    if (breadcrumbCurr.length)
+      breadcrumbCurr[breadcrumbCurr.length - 1].textContent = tour.title;
 
     // ===== Overview =====
     const overviewText = document.querySelector("#overview p");
     if (overviewText && tour.overview) overviewText.textContent = tour.overview;
-    const overviewItems = document.querySelectorAll(".overview-grid .overview-item");
+    const overviewItems = document.querySelectorAll(
+      ".overview-grid .overview-item"
+    );
     if (overviewItems.length >= 2) {
       overviewItems[0].innerHTML = `<i class="fa-solid fa-location-dot"></i> ${tour.location}`;
       overviewItems[1].innerHTML = `<i class="fa-regular fa-clock"></i> ${tour.duration} Days`;
@@ -76,11 +88,17 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // ===== Includes =====
     const includeList = document.querySelectorAll("#include .include-list")[0];
-    const notIncludeList = document.querySelectorAll("#include .include-list")[1];
+    const notIncludeList = document.querySelectorAll(
+      "#include .include-list"
+    )[1];
     if (includeList && tour.includes)
-      includeList.innerHTML = tour.includes.map((i) => `<li><i class="fa-solid fa-check check"></i> ${i}</li>`).join("");
+      includeList.innerHTML = tour.includes
+        .map((i) => `<li><i class="fa-solid fa-check check"></i> ${i}</li>`)
+        .join("");
     if (notIncludeList && tour.notIncludes)
-      notIncludeList.innerHTML = tour.notIncludes.map((i) => `<li><i class="fa-solid fa-xmark cross"></i> ${i}</li>`).join("");
+      notIncludeList.innerHTML = tour.notIncludes
+        .map((i) => `<li><i class="fa-solid fa-xmark cross"></i> ${i}</li>`)
+        .join("");
 
     // ===== Map =====
     const mapIframe = document.querySelector(".map-container iframe");
@@ -114,10 +132,20 @@ document.addEventListener("DOMContentLoaded", async function () {
                   <button class="mini-tab" data-tab="${id}-meals">Meals</button>
                   <button class="mini-tab" data-tab="${id}-accommodation">Accommodation</button>
                 </div>
-                <div class="tab-content active" id="${id}-overview"><p>${d.overview || ""}</p></div>
-                <div class="tab-content" id="${id}-schedule"><ul>${(d.schedule || []).map((s) => `<li>${s}</li>`).join("")}</ul></div>
-                <div class="tab-content" id="${id}-meals"><p>${d.meals || "—"}</p></div>
-                <div class="tab-content" id="${id}-accommodation"><p>${d.accommodation || "—"}</p></div>
+                <div class="tab-content active" id="${id}-overview"><p>${
+            d.overview || ""
+          }</p></div>
+                <div class="tab-content" id="${id}-schedule"><ul>${(
+            d.schedule || []
+          )
+            .map((s) => `<li>${s}</li>`)
+            .join("")}</ul></div>
+                <div class="tab-content" id="${id}-meals"><p>${
+            d.meals || "—"
+          }</p></div>
+                <div class="tab-content" id="${id}-accommodation"><p>${
+            d.accommodation || "—"
+          }</p></div>
               </div>
             </div>
           </div>`
@@ -137,8 +165,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       timeline.querySelectorAll(".mini-tab").forEach((tab) => {
         tab.addEventListener("click", () => {
           const parent = tab.closest(".day-right");
-          parent.querySelectorAll(".mini-tab").forEach((t) => t.classList.remove("active"));
-          parent.querySelectorAll(".tab-content").forEach((c) => c.classList.remove("active"));
+          parent
+            .querySelectorAll(".mini-tab")
+            .forEach((t) => t.classList.remove("active"));
+          parent
+            .querySelectorAll(".tab-content")
+            .forEach((c) => c.classList.remove("active"));
           tab.classList.add("active");
           parent.querySelector(`#${tab.dataset.tab}`).classList.add("active");
         });
@@ -147,7 +179,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // ===== Price calc =====
     const totalEl = document.querySelector(".form-bottom .price span");
-    const [adultInput, kidInput] = document.querySelectorAll(".guests .guest-inputs input");
+    const [adultInput, kidInput] = document.querySelectorAll(
+      ".guests .guest-inputs input"
+    );
     function updateTotal() {
       const adults = parseInt(adultInput.value || "1");
       const kids = parseInt(kidInput.value || "0");
@@ -158,9 +192,61 @@ document.addEventListener("DOMContentLoaded", async function () {
     kidInput.addEventListener("input", updateTotal);
     updateTotal();
 
-    document.querySelector(".book-btn").addEventListener("click", () => {
-      alert(`Booking successful!\nTour: ${tour.title}\nTotal: ${totalEl.textContent}`);
-    });
+    // ===== Form Validation & Booking =====
+    const bookBtn = document.querySelector(".book-btn");
+    if (bookBtn) {
+      bookBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // Lấy các giá trị trong form
+        const name = document.getElementById("name")?.value.trim();
+        const startDate = document.getElementById("start-date")?.value;
+        const adults = parseInt(
+          document.querySelector(".guest-inputs input[placeholder='Adults']")
+            ?.value || "0"
+        );
+        const kids = parseInt(
+          document.querySelector(".guest-inputs input[placeholder='Kids']")
+            ?.value || "0"
+        );
+        const facility = document.getElementById("facilities")?.value;
+
+        // Kiểm tra dữ liệu
+        if (
+          !name ||
+          !startDate ||
+          adults <= 0 ||
+          !facility ||
+          facility === "Choose..."
+        ) {
+          alert("⚠️ Please fill in all required information before booking!");
+          return;
+        }
+
+        // Nếu đầy đủ → tính tổng & thông báo thành công
+        const total = adults * tour.price + kids * tour.price * 0.5;
+        const totalFormatted = `$${total.toFixed(2)}`;
+
+        alert(
+          `✅ Booking successful!\n\n` +
+            `Tour: ${tour.title}\n` +
+            `Name: ${name}\n` +
+            `Start Date: ${startDate}\n` +
+            `Adults: ${adults}, Kids: ${kids}\n` +
+            `Extra: ${facility}\n` +
+            `Total: ${totalFormatted}`
+        );
+
+        console.log("Booking success:", {
+          name,
+          startDate,
+          adults,
+          kids,
+          facility,
+          total: totalFormatted,
+        });
+      });
+    }
 
     // ===== Others Tour =====
     const othersContainer = document.querySelector(".others-list");
@@ -192,7 +278,12 @@ document.addEventListener("DOMContentLoaded", async function () {
           e.preventDefault();
           sessionStorage.setItem("selectedTourId", String(t.id));
           if (typeof window.loadSection === "function") {
-            window.loadSection("content", "./pages/tourdetail.html", "./tourdetail.js", "Tour Detail");
+            window.loadSection(
+              "content",
+              "./pages/tourdetail.html",
+              "./tourdetail.js",
+              "Tour Detail"
+            );
           } else {
             window.location.href = `./tourdetail.html?id=${t.id}`;
           }
@@ -203,4 +294,4 @@ document.addEventListener("DOMContentLoaded", async function () {
   } catch (e) {
     console.error("Error loading tour detail", e);
   }
-});
+}
