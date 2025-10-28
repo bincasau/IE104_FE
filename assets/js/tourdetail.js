@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Back Button =====
-  const backBtn = document.querySelector(".back-btn");
+  const backBtn = document.querySelector(".back-btn-tour");
   if (backBtn) {
     backBtn.addEventListener("click", (e) => {
       e.preventDefault();
