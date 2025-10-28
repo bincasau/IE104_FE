@@ -103,4 +103,30 @@ export async function initHeader() {
   } else {
     console.warn("Không tìm thấy .hamburger-btn hoặc .nav-links");
   }
+
+  const langBtn = document.getElementById("langButton");
+  const langDropdown = document.getElementById("langDropdown");
+  const languageSelector = document.querySelector(".language-selector");
+
+  // Toggle dropdown
+  langBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    languageSelector.classList.toggle("show");
+  });
+
+  // Chọn cờ
+  langDropdown.querySelectorAll("li").forEach((item) => {
+    item.addEventListener("click", () => {
+      const flagSrc = item.getAttribute("data-flag");
+      langBtn.querySelector("img").src = flagSrc;
+      languageSelector.classList.remove("show");
+    });
+  });
+
+  // Ẩn dropdown khi click ra ngoài
+  document.addEventListener("click", (e) => {
+    if (!languageSelector.contains(e.target)) {
+      languageSelector.classList.remove("show");
+    }
+  });
 }

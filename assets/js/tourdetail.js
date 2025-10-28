@@ -1,6 +1,60 @@
+// ===============================
+// tourdetail.js (full SPA + Back + Other Tours click)
+// ===============================
 export async function initPage() {
-  // document.addEventListener("DOMContentLoaded", async function () {
-  // ===== Popup video =====
+  console.log("✅ Tour Detail JS initialized");
+
+  // Push state to history
+  if (!window.location.hash.includes("#tour-detail")) {
+    history.pushState({ page: "tour-detail" }, "", "#tour-detail");
+  }
+
+  window.onpopstate = () => {
+    if (typeof window.loadSection === "function") {
+      window.loadSection("content", "./pages/tour.html", "./Tour.js", "Tour");
+    } else {
+      window.location.href = "./tour.html";
+    }
+  };
+
+  // ===============================
+  // 🔙 Back Button
+  // ===============================
+  let backBtn = document.querySelector(".back-btn");
+  if (!backBtn) {
+    const header = document.querySelector(".blog-frame");
+    backBtn = document.createElement("button");
+    backBtn.className = "back-btn";
+    backBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Back`;
+    Object.assign(backBtn.style, {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "8px",
+      padding: "10px 20px",
+      border: "2px solid #4A90E2",
+      borderRadius: "10px",
+      color: "#4A90E2",
+      background: "#fff",
+      fontWeight: "600",
+      fontSize: "15px",
+      cursor: "pointer",
+      marginTop: "10px",
+      marginLeft: "20px",
+    });
+    if (header) header.insertAdjacentElement("afterend", backBtn);
+  }
+
+  backBtn.addEventListener("click", () => {
+    if (typeof window.loadSection === "function") {
+      window.loadSection("content", "./pages/tour.html", "./Tour.js", "Tour");
+    } else {
+      window.location.href = "./tour.html";
+    }
+  });
+
+  // ===============================
+  // 🎥 Video Popup
+  // ===============================
   const openBtn = document.getElementById("openVideo");
   const popup = document.getElementById("videoPopup");
   const closeBtn = document.getElementById("closePopup");
@@ -8,11 +62,239 @@ export async function initPage() {
 
   if (openBtn && popup && closeBtn && iframe) {
     openBtn.addEventListener("click", () => {
-      if (window.__currentTour && window.__currentTour.videoUrl) {
-        iframe.src = window.__currentTour.videoUrl;
-      } else {
-        iframe.src = "https://www.youtube.com/embed/Au6LqK1UH8g";
+      iframe.src = "https://www.youtube.com/embed/Au6LqK1UH8g";
+      popup.style.display = "flex";
+    });
+    const closeVideo = () => {
+      popup.style.display = "none";
+      iframe.src = "";
+    };
+    closeBtn.addEventListener("click", closeVideo);
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) closeVideo();
+    });
+  }
+
+  // ===============================
+  // SMOOTH SCROLL NAVIGATION FIX
+  // ===============================
+  document.querySelectorAll(".tour-nav a").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault(); // 🛑 chặn reload trang
+
+      const targetId = link.getAttribute("href").replace("#", "");
+      const targetSection = document.getElementById(targetId);
+
+      // Bỏ active cũ
+      document
+        .querySelectorAll(".tour-nav a")
+        .forEach((a) => a.classList.remove("active"));
+      link.classList.add("active");
+
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 100, // trừ chiều cao header
+          behavior: "smooth",
+        });
       }
+    });
+  });
+
+  // ===============================
+  // 📂 Accordion
+  // ===============================
+  document.querySelectorAll(".accordion-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("active");
+      const content = btn.parentElement.nextElementSibling;
+      content.classList.toggle("open");
+    });
+  });
+
+  // ===============================
+  // 🧭 Tabs
+  // ===============================
+  document.querySelectorAll(".mini-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const parent = tab.closest(".day-right");
+      parent
+        .querySelectorAll(".mini-tab")
+        .forEach((t) => t.classList.remove("active"));
+      parent
+        .querySelectorAll(".tab-content")
+        .forEach((c) => c.classList.remove("active"));
+      tab.classList.add("active");
+      parent.querySelector(`#${tab.dataset.tab}`).classList.add("active");
+    });
+  });
+
+  // ===============================
+  // 💰 Booking Form
+  // ===============================
+  const pricePerAdult = 299;
+  const adultInput = document.querySelector(
+    ".guest-inputs input[placeholder='Adults']"
+  );
+  const kidInput = document.querySelector(
+    ".guest-inputs input[placeholder='Kids']"
+  );
+  const totalEl = document.querySelector(".form-bottom .price span");
+  const bookBtn = document.querySelector(".book-btn");
+  const form = document.querySelector(".join-form");
+
+  const errorMsg = document.createElement("p");
+  errorMsg.style.color = "red";
+  errorMsg.style.fontSize = "14px";
+  errorMsg.style.textAlign = "center";
+  errorMsg.style.marginTop = "8px";
+  form.appendChild(errorMsg);
+
+  function updateTotal() {
+    const adults = parseInt(adultInput.value || "1");
+    const kids = parseInt(kidInput.value || "0");
+    const total = adults * pricePerAdult + kids * pricePerAdult * 0.5;
+    totalEl.textContent = `$${total.toFixed(2)}`;
+  }
+
+  adultInput.addEventListener("input", updateTotal);
+  kidInput.addEventListener("input", updateTotal);
+  updateTotal();
+
+  // ===============================
+  // ✅ Success Popup
+  // ===============================
+  const popupSuccess = document.createElement("div");
+  popupSuccess.className = "popup-success";
+  popupSuccess.innerHTML = `
+    <div class="popup-content">
+      <span class="popup-close">&times;</span>
+      <h3>Booking Successful!</h3>
+      <p>Thank you for choosing our tour 🎉</p>
+      <button id="okBtn">OK</button>
+    </div>
+  `;
+  document.body.appendChild(popupSuccess);
+
+  Object.assign(popupSuccess.style, {
+    display: "none",
+    position: "fixed",
+    inset: "0",
+    background: "rgba(0,0,0,0.6)",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: "1000",
+  });
+
+  const popupBox = popupSuccess.querySelector(".popup-content");
+  Object.assign(popupBox.style, {
+    background: "#fff",
+    padding: "40px 60px",
+    borderRadius: "12px",
+    textAlign: "center",
+    boxShadow: "0 5px 18px rgba(0,0,0,0.2)",
+    position: "relative",
+    width: "450px",
+    maxWidth: "90%",
+  });
+
+  const closeIcon = popupSuccess.querySelector(".popup-close");
+  Object.assign(closeIcon.style, {
+    position: "absolute",
+    top: "10px",
+    right: "15px",
+    fontSize: "24px",
+    color: "#888",
+    cursor: "pointer",
+  });
+
+  const okBtn = popupSuccess.querySelector("#okBtn");
+  okBtn.style.cssText = `
+    background: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 20px;
+  `;
+
+  const closePopup = () => (popupSuccess.style.display = "none");
+  closeIcon.addEventListener("click", closePopup);
+
+  okBtn.addEventListener("click", () => {
+    popupSuccess.style.display = "none";
+    if (typeof window.loadSection === "function") {
+      window.loadSection("content", "./pages/tour.html", "./Tour.js", "Tour");
+    } else {
+      window.location.href = "./tour.html";
+    }
+  });
+
+  // ===============================
+  // 🧳 Handle Book button
+  // ===============================
+  bookBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name")?.value.trim();
+    const startDate = document.getElementById("start-date")?.value;
+    const adults = parseInt(adultInput.value || "0");
+    const facility = document.getElementById("facilities")?.value;
+
+    if (
+      !name ||
+      !startDate ||
+      adults <= 0 ||
+      !facility ||
+      facility === "Choose..."
+    ) {
+      errorMsg.textContent = "⚠️ Please fill in all required fields!";
+      return;
+    }
+
+    errorMsg.textContent = "";
+    popupSuccess.style.display = "flex";
+  });
+
+  // ===============================
+  // 🧭 Other Tours click handler
+  // ===============================
+  document.querySelectorAll(".others-list a").forEach((link) => {
+    link.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const tourId = link.dataset.id || link.getAttribute("data-id");
+      if (!tourId) return;
+
+      // Lưu ID tour được chọn vào sessionStorage
+      sessionStorage.setItem("selectedTourId", tourId);
+
+      // Gọi lại chính trang tour detail
+      if (typeof window.loadSection === "function") {
+        await window.loadSection(
+          "content",
+          "./pages/tourdetail.html",
+          "./tourdetail.js",
+          "Tour Detail"
+        );
+      } else {
+        window.location.href = `./tourdetail.html`;
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ Tour Detail JS Loaded");
+
+  // ===== Video Popup =====
+  const openBtn = document.getElementById("openVideo");
+  const popup = document.getElementById("videoPopup");
+  const closeBtn = document.getElementById("closePopup");
+  const iframe = document.getElementById("videoFrame");
+
+  if (openBtn && popup && closeBtn && iframe) {
+    openBtn.addEventListener("click", () => {
+      iframe.src = "https://www.youtube.com/embed/Au6LqK1UH8g";
       popup.style.display = "flex";
     });
 
@@ -27,271 +309,69 @@ export async function initPage() {
     }
   }
 
-  // ===== Nav smooth scroll =====
-  document.querySelectorAll(".tour-nav a").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute("href"));
-      if (!target) return;
-      window.scrollTo({ top: target.offsetTop - 60, behavior: "smooth" });
+  // ===== Accordion =====
+  document.querySelectorAll(".accordion-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("active");
+      const content = btn.parentElement.nextElementSibling;
+      content.classList.toggle("open");
     });
   });
 
-  // ===== Get selected tour ID =====
-  const params = new URLSearchParams(window.location.search);
-  const queryId = parseInt(params.get("id") || "", 10);
-  const storageId = parseInt(
-    sessionStorage.getItem("selectedTourId") || "",
-    10
-  );
-  const tourId =
-    Number.isFinite(queryId) && queryId > 0
-      ? queryId
-      : Number.isFinite(storageId)
-      ? storageId
-      : null;
+  // ===== Tabs =====
+  document.querySelectorAll(".mini-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const parent = tab.closest(".day-right");
+      parent
+        .querySelectorAll(".mini-tab")
+        .forEach((t) => t.classList.remove("active"));
+      parent
+        .querySelectorAll(".tab-content")
+        .forEach((c) => c.classList.remove("active"));
+      tab.classList.add("active");
+      parent.querySelector(`#${tab.dataset.tab}`).classList.add("active");
+    });
+  });
 
-  try {
-    // ===== Load JSON =====
-    const res = await fetch("../data/tours.json");
-    const data = await res.json();
-    const tours = Array.isArray(data.tours) ? data.tours : [];
-    const tour = tours.find((t) => t.id === tourId) || tours[0];
-    window.__currentTour = tour;
-
-    // ===== Header title & breadcrumb =====
-    document.querySelector(".tour-title").textContent = tour.title;
-    const breadcrumbCurr = document.querySelectorAll(".breadcrumb .current");
-    if (breadcrumbCurr.length)
-      breadcrumbCurr[breadcrumbCurr.length - 1].textContent = tour.title;
-
-    // ===== Overview =====
-    const overviewText = document.querySelector("#overview p");
-    if (overviewText && tour.overview) overviewText.textContent = tour.overview;
-    const overviewItems = document.querySelectorAll(
-      ".overview-grid .overview-item"
-    );
-    if (overviewItems.length >= 2) {
-      overviewItems[0].innerHTML = `<i class="fa-solid fa-location-dot"></i> ${tour.location}`;
-      overviewItems[1].innerHTML = `<i class="fa-regular fa-clock"></i> ${tour.duration} Days`;
-    }
-
-    // ===== Gallery =====
-    const mainImg = document.querySelector(".gallery-left img");
-    const smallImgs = document.querySelectorAll(".gallery-right img");
-    if (tour.gallery && tour.gallery.length) {
-      if (mainImg) mainImg.src = tour.gallery[0];
-      smallImgs.forEach((img, i) => {
-        img.src = tour.gallery[i + 1] || tour.gallery[i] || img.src;
-      });
-    }
-
-    // ===== Includes =====
-    const includeList = document.querySelectorAll("#include .include-list")[0];
-    const notIncludeList = document.querySelectorAll(
-      "#include .include-list"
-    )[1];
-    if (includeList && tour.includes)
-      includeList.innerHTML = tour.includes
-        .map((i) => `<li><i class="fa-solid fa-check check"></i> ${i}</li>`)
-        .join("");
-    if (notIncludeList && tour.notIncludes)
-      notIncludeList.innerHTML = tour.notIncludes
-        .map((i) => `<li><i class="fa-solid fa-xmark cross"></i> ${i}</li>`)
-        .join("");
-
-    // ===== Map =====
-    const mapIframe = document.querySelector(".map-container iframe");
-    if (mapIframe && tour.mapEmbed) mapIframe.src = tour.mapEmbed;
-
-    // ===== Itinerary =====
-    const timeline = document.querySelector(".timeline");
-    if (timeline && tour.itinerary) {
-      timeline.innerHTML = "";
-      tour.itinerary.forEach((d) => {
-        const id = `day${d.day}`;
-        timeline.insertAdjacentHTML(
-          "beforeend",
-          `
-          <div class="timeline-day">
-            <div class="timeline-header">
-              <div class="day-label">Day ${d.day}</div>
-              <button class="accordion-btn">
-                ${d.title}
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-            </div>
-            <div class="accordion-content">
-              <div class="day-right">
-                <div class="day-image">
-                  <img src="${d.image || tour.image}" alt="Day ${d.day}" />
-                </div>
-                <div class="mini-nav">
-                  <button class="mini-tab active" data-tab="${id}-overview">Overview</button>
-                  <button class="mini-tab" data-tab="${id}-schedule">Schedule</button>
-                  <button class="mini-tab" data-tab="${id}-meals">Meals</button>
-                  <button class="mini-tab" data-tab="${id}-accommodation">Accommodation</button>
-                </div>
-                <div class="tab-content active" id="${id}-overview"><p>${
-            d.overview || ""
-          }</p></div>
-                <div class="tab-content" id="${id}-schedule"><ul>${(
-            d.schedule || []
-          )
-            .map((s) => `<li>${s}</li>`)
-            .join("")}</ul></div>
-                <div class="tab-content" id="${id}-meals"><p>${
-            d.meals || "—"
-          }</p></div>
-                <div class="tab-content" id="${id}-accommodation"><p>${
-            d.accommodation || "—"
-          }</p></div>
-              </div>
-            </div>
-          </div>`
-        );
-      });
-
-      // Accordion toggle
-      timeline.querySelectorAll(".accordion-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          btn.classList.toggle("active");
-          const content = btn.parentElement.nextElementSibling;
-          content.classList.toggle("open");
-        });
-      });
-
-      // Tabs
-      timeline.querySelectorAll(".mini-tab").forEach((tab) => {
-        tab.addEventListener("click", () => {
-          const parent = tab.closest(".day-right");
-          parent
-            .querySelectorAll(".mini-tab")
-            .forEach((t) => t.classList.remove("active"));
-          parent
-            .querySelectorAll(".tab-content")
-            .forEach((c) => c.classList.remove("active"));
-          tab.classList.add("active");
-          parent.querySelector(`#${tab.dataset.tab}`).classList.add("active");
-        });
-      });
-    }
-
-    // ===== Price calc =====
-    const totalEl = document.querySelector(".form-bottom .price span");
-    const [adultInput, kidInput] = document.querySelectorAll(
-      ".guests .guest-inputs input"
-    );
-    function updateTotal() {
-      const adults = parseInt(adultInput.value || "1");
-      const kids = parseInt(kidInput.value || "0");
-      const total = adults * tour.price + kids * tour.price * 0.5;
-      totalEl.textContent = `$${total.toFixed(2)}`;
-    }
-    adultInput.addEventListener("input", updateTotal);
-    kidInput.addEventListener("input", updateTotal);
-    updateTotal();
-
-    // ===== Form Validation & Booking =====
-    const bookBtn = document.querySelector(".book-btn");
-    if (bookBtn) {
-      bookBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        // Lấy các giá trị trong form
-        const name = document.getElementById("name")?.value.trim();
-        const startDate = document.getElementById("start-date")?.value;
-        const adults = parseInt(
-          document.querySelector(".guest-inputs input[placeholder='Adults']")
-            ?.value || "0"
-        );
-        const kids = parseInt(
-          document.querySelector(".guest-inputs input[placeholder='Kids']")
-            ?.value || "0"
-        );
-        const facility = document.getElementById("facilities")?.value;
-
-        // Kiểm tra dữ liệu
-        if (
-          !name ||
-          !startDate ||
-          adults <= 0 ||
-          !facility ||
-          facility === "Choose..."
-        ) {
-          alert("⚠️ Please fill in all required information before booking!");
-          return;
-        }
-
-        // Nếu đầy đủ → tính tổng & thông báo thành công
-        const total = adults * tour.price + kids * tour.price * 0.5;
-        const totalFormatted = `$${total.toFixed(2)}`;
-
-        alert(
-          `✅ Booking successful!\n\n` +
-            `Tour: ${tour.title}\n` +
-            `Name: ${name}\n` +
-            `Start Date: ${startDate}\n` +
-            `Adults: ${adults}, Kids: ${kids}\n` +
-            `Extra: ${facility}\n` +
-            `Total: ${totalFormatted}`
-        );
-
-        console.log("Booking success:", {
-          name,
-          startDate,
-          adults,
-          kids,
-          facility,
-          total: totalFormatted,
-        });
-      });
-    }
-
-    // ===== Others Tour =====
-    const othersContainer = document.querySelector(".others-list");
-    if (othersContainer && Array.isArray(tours)) {
-      othersContainer.innerHTML = "";
-      const others = tours.filter((t) => t.id !== tour.id);
-      const randomOthers = others.sort(() => 0.5 - Math.random()).slice(0, 4);
-      randomOthers.forEach((t) => {
-        const card = document.createElement("div");
-        card.classList.add("tour-card-vertical");
-        card.innerHTML = `
-          <img src="${t.image}" alt="${t.title}" />
-          <div class="tour-content">
-            <div class="top-row">
-              <h4>${t.title}</h4>
-              <p class="price">$${t.price}</p>
-            </div>
-            <div class="bottom-row">
-              <p><i class="fa-solid fa-location-dot"></i> ${t.location}</p>
-              <p><i class="fa-regular fa-clock"></i> ${t.duration} days</p>
-            </div>
-          </div>
-        `;
-        const link = document.createElement("a");
-        link.classList.add("tour-link");
-        link.href = "#";
-        link.appendChild(card);
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          sessionStorage.setItem("selectedTourId", String(t.id));
-          if (typeof window.loadSection === "function") {
-            window.loadSection(
-              "content",
-              "./pages/tourdetail.html",
-              "./tourdetail.js",
-              "Tour Detail"
-            );
-          } else {
-            window.location.href = `./tourdetail.html?id=${t.id}`;
-          }
-        });
-        othersContainer.appendChild(link);
-      });
-    }
-  } catch (e) {
-    console.error("Error loading tour detail", e);
+  // ===== Book Button Popup =====
+  const bookBtn = document.querySelector(".book-btn");
+  if (bookBtn) {
+    bookBtn.addEventListener("click", () => {
+      alert("✅ Booking successful! Thank you for joining this tour!");
+    });
   }
-}
+
+  // ===== Back Button =====
+  const backBtn = document.querySelector(".back-btn");
+  if (backBtn) {
+    backBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (typeof window.loadSection === "function") {
+        window.loadSection("content", "./pages/tour.html", "./Tour.js", "Tour");
+      } else {
+        window.location.href = "./tour.html";
+      }
+    });
+  }
+
+  // ===== Others Tours Click =====
+  document.querySelectorAll(".others-list a").forEach((link) => {
+    link.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const tourId = link.dataset.id;
+      if (!tourId) return;
+      sessionStorage.setItem("selectedTourId", tourId);
+
+      if (typeof window.loadSection === "function") {
+        await window.loadSection(
+          "content",
+          "./pages/tourdetail.html",
+          "./tourdetail.js",
+          "Tour Detail"
+        );
+      } else {
+        window.location.href = "./tourdetail.html";
+      }
+    });
+  });
+});

@@ -271,22 +271,17 @@ export async function initPage() {
     container
       .querySelectorAll(".tour-card .view-more")
       .forEach((btn, index) => {
-        btn.addEventListener("click", () => {
-          const selectedTour = pageTours[index];
+        btn.addEventListener("click", async () => {
+          const selectedTour = filteredTours[index];
           if (!selectedTour) return;
-          sessionStorage.setItem("selectedTourId", String(selectedTour.id));
+          sessionStorage.setItem("selectedTourId", selectedTour.id);
 
-          if (typeof window.loadSection === "function") {
-            window.loadSection(
-              "content",
-              "./pages/tourdetail.html",
-              "./tourdetail.js",
-              "Tour Detail"
-            );
-          } else {
-            // fallback to full navigation with query string
-            window.location.href = `../../pages/tourdetail.html?id=${selectedTour.id}`;
-          }
+          await window.loadSection(
+            "content",
+            "./pages/tourdetail.html",
+            "./tourdetail.js",
+            "Tour Detail"
+          );
         });
       });
 
