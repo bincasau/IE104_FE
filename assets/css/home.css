@@ -16,44 +16,39 @@ body {
    PHẦN 1: HERO SECTION (main-hero)
 ====================================================== */
 
+/* ========== HERO SECTION ========== */
 .main-hero {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  aspect-ratio: 1920 / 972.5;
-  overflow-x: hidden;
-  overflow-y: visible;
+  overflow: hidden;
 }
 
 /* Background + overlay */
 .hero-bg {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("../images/home/aerial-tropical-rock-beach.jpg") center/cover no-repeat;
   z-index: 0;
 }
 
-/* Nội dung hero */
+/* ========== CONTENT ========== */
 .hero-content {
   position: absolute;
-  left: 15.57vw;
-  top: 20.05vh;
-  width: 46.88vw;
-  height: 63vh;
+  left: 15%;
+  top: 18%;
+  width: 47%;
+  height: 63%;
   z-index: 10;
   display: flex;
   flex-direction: column;
 }
 
-/* Text section */
+/* --- TEXT --- */
 .hero-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 29.95vw;
-  height: 33.45vh;
+  position: relative;
+  width: 65%;
   color: #fff;
 }
 
@@ -61,27 +56,19 @@ body {
   font-family: cursive;
   font-size: 1.3vw;
   color: #eb662b;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .main-text {
-  position: absolute;
-  top: 17.6vh;
-  left: 0;
-  width: 29.95vw;
-  font-size: 0.94vw;
-  line-height: 1.5;
+  margin-top: 3vw;
+  font-size: 0.95vw;
+  line-height: 1.6;
 }
 
-/* Nút */
+/* --- BUTTON --- */
 .btn-tour {
-  position: absolute;
-  top: 27.6vh;
-  left: 0;
-  width: 9.38vw;
-  height: 5.76vh;
+  margin-top: 2.5vw;
+  width: 10vw;
+  height: 6vh;
   border: none;
   border-radius: 120px;
   background: #fad71b;
@@ -94,17 +81,16 @@ body {
 
 .btn-tour:hover {
   background: #ffe769;
-  transform: translateY(-0.4vh);
+  transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Form booking */
+/* --- FORM --- */
 .booking-form {
   position: absolute;
-  top: 46vh;
+  bottom: 6%;
   left: 0;
-  width: 55vw;
-  height: 15vh;
+  width: 90%;
   background: #fff;
   border-radius: 1vw;
   box-shadow: 0 1vh 3vw rgba(0, 0, 0, 0.25);
@@ -112,6 +98,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 2vh 2vw;
+  transform: translateX(-5%);
 }
 
 .form-group {
@@ -122,7 +109,7 @@ body {
 }
 
 .form-group label {
-  font-size: 0.7vw;
+  font-size: 0.75vw;
   color: #555;
 }
 
@@ -131,7 +118,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 0.5vw;
   font-size: 0.8vw;
-  max-width: 10vw;
+  width: 90%;
 }
 
 .btn-search {
@@ -144,56 +131,55 @@ body {
   font-size: 0.9vw;
 }
 
-/* Hình minh họa */
+/* ========== HERO IMAGES ========== */
 .hero-woman {
   position: absolute;
-  left: 37.8vw;
-  top: 10.54vh;
-  width: 42.18vw;
-  height: 83.3vh;
+  left: 38%;
+  top: 10%;
+  width: 42%;
+  height: auto;
   z-index: 3;
   object-fit: contain;
 }
 
 .hero-plane {
   position: absolute;
-  left: 71.46vw;
-  top: 10.8vh;
-  width: 25.31vw;
-  height: 25.81vh;
+  left: 70%;
+  top: 12%;
+  width: 25%;
+  height: auto;
   z-index: 2;
-  object-fit: contain;
   animation: planeFly 6s ease-in-out infinite alternate;
 }
 
 .hero-cloud {
   position: absolute;
-  width: 19.3vw;
-  height: 27.9vh;
+  width: 20%;
+  height: auto;
   object-fit: contain;
   z-index: 3;
   opacity: 0.85;
 }
 
 .cloud1 {
-  left: 76.3vw;
-  top: 14.9vh;
+  left: 76%;
+  top: 15%;
   animation: cloudDrift1 12s ease-in-out infinite alternate;
 }
 
 .cloud2 {
-  left: 79.1vw;
-  top: 13.96vh;
+  left: 80%;
+  top: 14%;
   animation: cloudDrift2 15s ease-in-out infinite alternate;
 }
 
-/* Ảnh chồng trang trí */
+/* --- PHOTO STACK --- */
 .photo-container {
   position: absolute;
-  left: 63.54vw;
-  top: 15vh;
-  width: 35.16vw;
-  height: 80vh;
+  left: 63%;
+  top: 15%;
+  width: 35%;
+  height: 80%;
   z-index: 1;
 }
 
@@ -206,34 +192,34 @@ body {
 .overwater {
   left: 0;
   top: 0;
-  width: 25.52vw;
-  height: 58.63vh;
+  width: 70%;
+  height: 60%;
   z-index: 1;
 }
 
 .couple {
   left: 0;
-  top: 44.02vh;
-  width: 18.75vw;
-  height: 36vh;
+  top: 45%;
+  width: 55%;
+  height: 40%;
   z-index: 2;
 }
 
 .colosseum {
-  left: 18.13vw;
-  top: 50vh;
-  width: 17.29vw;
-  height: 30.03vh;
+  left: 50%;
+  top: 50%;
+  width: 48%;
+  height: 35%;
   z-index: 3;
 }
 
-/* Hiệu ứng */
+/* ========== ANIMATION ========== */
 @keyframes planeFly {
   0% {
     transform: translateY(0) rotate(2deg);
   }
   50% {
-    transform: translateY(-1.5vh) rotate(-3deg);
+    transform: translateY(-2vh) rotate(-3deg);
   }
   100% {
     transform: translateY(0) rotate(2deg);
@@ -246,7 +232,7 @@ body {
     opacity: 0.9;
   }
   100% {
-    transform: translateX(-2vw) scale(1.05);
+    transform: translateX(-2%) scale(1.05);
     opacity: 1;
   }
 }
@@ -257,8 +243,46 @@ body {
     opacity: 0.8;
   }
   100% {
-    transform: translateX(2vw) scale(1.1);
+    transform: translateX(2%) scale(1.1);
     opacity: 0.95;
+  }
+}
+
+/* ========== PORTRAIT MODE (Dọc) ========== */
+@media (orientation: portrait) {
+  .main-hero {
+    width: 100%;
+    height: calc(100vw * 9 / 16); /* chuẩn tỉ lệ 16:9 */
+    overflow: hidden;
+    margin-top: 5%;
+  }
+
+  .btn-tour {
+    width: 40%;
+    height: 4vh;
+    font-size: 3.5%;
+  }
+
+  .hero-woman {
+    left: 30%;
+    top: 12%;
+    width: 70%;
+  }
+
+  .hero-plane {
+    left: 65%;
+    top: 8%;
+    width: 35%;
+  }
+
+  .photo-container {
+    left: 55%;
+    top: 20%;
+    width: 40%;
+    height: 70%;
+  }
+  .booking-form {
+    display: none;
   }
 }
 
@@ -266,6 +290,9 @@ body {
    PHẦN 2: FEATURE SECTION (main-feature)
 ====================================================== */
 
+/* ========================
+   FEATURE SECTION
+======================== */
 .main-feature {
   width: 100%;
   background: #fff;
@@ -275,6 +302,7 @@ body {
   padding: 10vh 0;
 }
 
+/* ========== CONTAINER ========== */
 .feature-container {
   width: 85%;
   max-width: 1400px;
@@ -285,12 +313,14 @@ body {
   position: relative;
 }
 
+/* LEFT SIDE */
 .feature-left {
   display: flex;
   flex-direction: column;
   gap: 4vh;
 }
 
+/* TEXT */
 .feature-text {
   display: flex;
   flex-direction: column;
@@ -300,7 +330,7 @@ body {
 .feature-text .subheading {
   font-family: cursive;
   color: #eb662b;
-  font-size: 1.2vw;
+  font-size: max(1.2vw, 20px);
 }
 
 .feature-text h2 {
@@ -317,7 +347,7 @@ body {
   padding-bottom: 20px;
 }
 
-/* Shape */
+/* SHAPE FLOATING */
 .feature-shape {
   position: absolute;
   left: 48%;
@@ -339,7 +369,7 @@ body {
   }
 }
 
-/* Grid thẻ */
+/* GRID CARD */
 .feature-grid {
   display: flex;
   justify-content: flex-start;
@@ -347,7 +377,7 @@ body {
   align-items: stretch;
 }
 
-/* Thẻ */
+/* CARD */
 .feature-card {
   flex: 1;
   background: #f6f6f6;
@@ -366,7 +396,7 @@ body {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
 }
 
-/* Nền trắng dưới ảnh */
+/* IMAGE BOX IN CARD */
 .img-wrapper {
   background: #fff;
   border-radius: 1vw;
@@ -404,7 +434,7 @@ body {
   flex: 1;
 }
 
-/* Màu từng thẻ */
+/* CARD COLORS */
 .feature-card.purple {
   background: #e7e6fb;
 }
@@ -415,7 +445,7 @@ body {
   background: #eaeaea;
 }
 
-/* Hình bên phải */
+/* RIGHT IMAGE */
 .feature-image {
   display: flex;
   justify-content: center;
@@ -436,24 +466,85 @@ body {
   transform: rotate(0deg) translateY(-1vh);
 }
 
-/* Responsive feature */
+/* ========================
+   RESPONSIVE
+======================== */
+
+/* Tablet: <= 1024px */
 @media (max-width: 1024px) {
   .feature-container {
-    grid-template-columns: 1fr;
-    gap: 6vh;
+    grid-template-columns: 2fr 1fr; /* vẫn 2 cột */
+    gap: 4vw;
   }
+
+  .feature-text h2 {
+    font-size: 4vw;
+  }
+
+  .feature-text h3 {
+    font-size: 3vw;
+  }
+
+  .feature-text .subheading {
+    font-size: 2vw;
+  }
+
+  .feature-grid {
+    gap: 2vw;
+  }
+
+  .feature-card {
+    padding: 3vh 2vw;
+    min-height: 35vh;
+  }
+
+  .feature-card h4 {
+    font-size: 2.5vw;
+  }
+
+  .feature-card p {
+    font-size: 2vw;
+  }
+
+  .feature-image img {
+    width: 28vw;
+  }
+}
+
+/* Mobile: <= 599.9px */
+@media (max-width: 599.9px) {
+  .feature-container {
+    grid-template-columns: 1fr; /* bỏ cột phải */
+  }
+
+  .feature-image {
+    display: none; /* ẩn ảnh bên phải */
+  }
+
+  .feature-text h2 {
+    font-size: 6vw;
+  }
+
+  .feature-text h3 {
+    font-size: 4.5vw;
+  }
+
   .feature-grid {
     flex-direction: column;
+    gap: 4vh;
   }
-  .feature-image img {
-    width: 60vw;
-    transform: none;
+
+  .feature-card {
+    padding: 4vh 5vw;
+    border-radius: 3vw;
   }
-  .feature-text h2 {
-    font-size: 5vw;
+
+  .feature-card h4 {
+    font-size: 4.5vw;
   }
-  .feature-text h3 {
-    font-size: 4vw;
+
+  .feature-card p {
+    font-size: 3.5vw;
   }
 }
 
@@ -498,7 +589,7 @@ body {
 
 .dest-text .subheading {
   font-family: cursive;
-  font-size: 1.2vw;
+  font-size: max(1.2vw, 20px);
   color: #eb662b;
   margin-bottom: 1vh;
 }
@@ -656,7 +747,7 @@ body {
 .about-header .subheading {
   font-family: "Popins", cursive;
   color: #eb662b;
-  font-size: 1.2vw;
+  font-size: max(1.2vw, 20px);
   margin-bottom: 1vh;
 }
 
@@ -836,6 +927,9 @@ body {
   .btn-about {
     font-size: 3vw;
   }
+  .about-right {
+    display: none;
+  }
 }
 
 /* =============================================
@@ -860,7 +954,7 @@ body {
 .recommend-header .subheading {
   font-family: cursive;
   color: #eb662b;
-  font-size: 1.2vw;
+  font-size: max(1.2vw, 20px);
   margin-bottom: 0.8vh;
 }
 
@@ -951,6 +1045,9 @@ body {
   .recommend-grid {
     grid-template-columns: 1fr 1fr;
   }
+  .recommend-grid .tour-card:nth-child(n + 5) {
+    display: none;
+  }
   .recommend-header h2 {
     font-size: 4vw;
   }
@@ -996,7 +1093,7 @@ body {
 .chooseus-content .subheading {
   font-family: cursive;
   color: #eb662b;
-  font-size: 1.1vw;
+  font-size: max(1.1vw, 20px);
 }
 
 .chooseus-content h2 {
@@ -1131,12 +1228,9 @@ body {
 }
 
 @media (max-width: 768px) {
-  .chooseus-img-right {
-    display: none; /* ẩn ảnh phải khi quá nhỏ */
-  }
-
+  .chooseus-img-right,
   .chooseus-img-left {
-    width: 60vw;
+    display: none; /* ẩn ảnh phải khi quá nhỏ */
   }
 
   .chooseus-container {
@@ -1149,6 +1243,9 @@ body {
 
   .chooseus-card p {
     font-size: 2.8vw;
+  }
+  .chooseus-content .subheading {
+    font-size: 20px;
   }
 }
 
@@ -1176,7 +1273,7 @@ body {
 .testimonials-header .subheading {
   font-family: cursive;
   color: #eb662b;
-  font-size: 1.2vw;
+  font-size: max(1.2vw, 20px);
   margin-bottom: 1vh;
 }
 
@@ -1211,7 +1308,7 @@ body {
 }
 
 .stars img {
-  width: 20px;
+  width: 100px;
   height: 20px;
   margin-right: 0.3vw;
 }
@@ -1360,6 +1457,34 @@ body {
   }
 }
 
+@media (orientation: portrait) {
+  .main-offer {
+    height: 300px; /* giảm từ 600 xuống cho vừa tỉ lệ dọc */
+    padding: 8vh 0; /* giảm padding để không bị quá dày */
+    background-position: top center;
+  }
+
+  .offer-content {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 80%;
+  }
+
+  .offer-content h2 {
+    font-size: 5vw;
+  }
+
+  .offer-content p {
+    font-size: 3.2vw;
+  }
+
+  .offer-discount {
+    width: 45vw;
+    margin: 2vh auto 0;
+  }
+}
+
 /* =============================================
    PHẦN 9: TRIP SHOWCASE SECTION (Gợi ý hành trình)
 ============================================= */
@@ -1382,7 +1507,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1.1fr 1fr;
   gap: 2vw;
-  align-items: stretch; /* 👈 3 cột cao bằng nhau */
+  align-items: stretch; /*  3 cột cao bằng nhau */
   width: 85%;
   max-width: 1300px;
 }
@@ -1476,8 +1601,13 @@ body {
   }
 
   .tripshowcase-center img {
-    width: 100%;
-    height: auto;
+    display: none;
+  }
+  .tripshowcase-left .trip-card:nth-child(n + 4) {
+    display: none;
+  }
+  .tripshowcase-right .trip-card:nth-child(n + 4) {
+    display: none;
   }
 }
 
@@ -1629,6 +1759,9 @@ body {
 
   .blog-author span {
     font-size: 2.8vw;
+  }
+  .blog-grid .blog-item:nth-child(n + 3) {
+    display: none;
   }
 }
 

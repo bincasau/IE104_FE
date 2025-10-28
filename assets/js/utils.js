@@ -66,6 +66,7 @@ export async function loadSection(
     console.error("Lỗi loadSection:", error);
   }
 }
+window.loadSection = loadSection;
 
 // ============================
 // Đặt favicon (logo trên tab)

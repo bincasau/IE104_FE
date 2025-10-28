@@ -68,13 +68,17 @@ export async function initPage() {
       renderList(provinces, destList, 4, showAllDest, "Destinations");
       renderList(activities, actList, 4, showAllAct, "Activities");
 
-      const maxPriceFound = tours.length ? Math.max(...tours.map((t) => t.price)) : 2000;
+      const maxPriceFound = tours.length
+        ? Math.max(...tours.map((t) => t.price))
+        : 2000;
       priceRange.max = Math.max(2000, maxPriceFound);
       priceRange.value = priceRange.max;
       priceMin.textContent = `$0`;
       priceMax.textContent = `$${priceRange.value}`;
 
-      const maxDurationFound = tours.length ? Math.max(...tours.map((t) => t.duration)) : 15;
+      const maxDurationFound = tours.length
+        ? Math.max(...tours.map((t) => t.duration))
+        : 15;
       durationRange.max = Math.max(15, maxDurationFound);
       durationRange.value = durationRange.max;
       durationMin.textContent = `1 day`;
@@ -90,7 +94,8 @@ export async function initPage() {
       });
     } catch (err) {
       console.error("Lỗi load tour:", err);
-      container.innerHTML = "<p style='text-align:center'>Không thể load data tours.json</p>";
+      container.innerHTML =
+        "<p style='text-align:center'>Không thể load data tours.json</p>";
     }
   }
 
@@ -106,10 +111,16 @@ export async function initPage() {
   function onDestChange(e) {
     const allCb = destList.querySelector('input[value="all"]');
     if (e.target.value === "all" && e.target.checked) {
-      destList.querySelectorAll('input[type="checkbox"]').forEach((c) => (c.checked = c === e.target));
+      destList
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach((c) => (c.checked = c === e.target));
     } else if (e.target.checked) {
       allCb.checked = false;
-    } else if (![...destList.querySelectorAll('input[type="checkbox"]')].some((c) => c.checked && c.value !== "all")) {
+    } else if (
+      ![...destList.querySelectorAll('input[type="checkbox"]')].some(
+        (c) => c.checked && c.value !== "all"
+      )
+    ) {
       allCb.checked = true;
     }
     applyFilters();
@@ -118,17 +129,25 @@ export async function initPage() {
   function onActChange(e) {
     const allCb = actList.querySelector('input[value="all"]');
     if (e.target.value === "all" && e.target.checked) {
-      actList.querySelectorAll('input[type="checkbox"]').forEach((c) => (c.checked = c === e.target));
+      actList
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach((c) => (c.checked = c === e.target));
     } else if (e.target.checked) {
       allCb.checked = false;
-    } else if (![...actList.querySelectorAll('input[type="checkbox"]')].some((c) => c.checked && c.value !== "all")) {
+    } else if (
+      ![...actList.querySelectorAll('input[type="checkbox"]')].some(
+        (c) => c.checked && c.value !== "all"
+      )
+    ) {
       allCb.checked = true;
     }
     applyFilters();
   }
 
   function getSelectedValues(container) {
-    return [...container.querySelectorAll('input[type="checkbox"]:checked')].map((c) => normalize(c.value));
+    return [
+      ...container.querySelectorAll('input[type="checkbox"]:checked'),
+    ].map((c) => normalize(c.value));
   }
 
   function applyFilters() {
@@ -158,8 +177,10 @@ export async function initPage() {
 
   function sortTours(arr) {
     const mode = sortSelect.value;
-    if (mode === "priceAsc") return arr.slice().sort((a, b) => a.price - b.price);
-    if (mode === "priceDesc") return arr.slice().sort((a, b) => b.price - a.price);
+    if (mode === "priceAsc")
+      return arr.slice().sort((a, b) => a.price - b.price);
+    if (mode === "priceDesc")
+      return arr.slice().sort((a, b) => b.price - a.price);
     return arr.slice().sort((a, b) => b.id - a.id);
   }
 
@@ -173,7 +194,8 @@ export async function initPage() {
     const pageTours = sorted.slice(start, start + toursPerPage);
 
     if (pageTours.length === 0) {
-      container.innerHTML = "<p style='text-align:center'>Không có tour nào phù hợp 🥲</p>";
+      container.innerHTML =
+        "<p style='text-align:center'>Không có tour nào phù hợp 🥲</p>";
       pagination.innerHTML = "";
       return;
     }
@@ -192,30 +214,46 @@ export async function initPage() {
         const b = tour.availability[1];
         availHTML = `<div class="date-range"><span class="date">${a}</span><span class="range-arrow">→</span><span class="date">${b}</span></div>`;
       } else {
-        availHTML = (tour.availability || []).map((d) => `<span class="avail-date">${d}</span>`).join("");
+        availHTML = (tour.availability || [])
+          .map((d) => `<span class="avail-date">${d}</span>`)
+          .join("");
       }
 
       container.innerHTML += `
         <div class="tour-card scroll-animate">
           <div class="tour-image-wrapper">
             <img src="${tour.image}" alt="${tour.title}" loading="lazy" />
-            ${tour.discount ? `<div class="discount-ribbon">${tour.discount}</div>` : ""}
+            ${
+              tour.discount
+                ? `<div class="discount-ribbon">${tour.discount}</div>`
+                : ""
+            }
           </div>
           <div class="tour-info">
             <h3>${tour.title}</h3>
             <p>${tour.shortDesc}</p>
-            <p class="location"><i class="fa-solid fa-map-marker-alt" style="color:#d9302f;font-size:18px;"></i> ${tour.location}</p>
+            <p class="location"><i class="fa-solid fa-map-marker-alt" style="color:#d9302f;font-size:18px;"></i> ${
+              tour.location
+            }</p>
             <div class="availability">${availHTML}</div>
           </div>
           <div class="tour-price">
             <div class="price-box">
               <div class="price-row">
-                ${tour.oldPrice ? `<div class="from-label">From $${tour.oldPrice}</div>` : ""}
+                ${
+                  tour.oldPrice
+                    ? `<div class="from-label">From $${tour.oldPrice}</div>`
+                    : ""
+                }
                 <div class="price">$${tour.price}</div>
               </div>
               <div class="price-row-bottom">
                 <div class="duration">${tour.duration} Days</div>
-                ${tour.oldPrice ? `<div class="save">Save $${saveAmount}</div>` : ""}
+                ${
+                  tour.oldPrice
+                    ? `<div class="save">Save $${saveAmount}</div>`
+                    : ""
+                }
               </div>
             </div>
             <button class="view-more">View More</button>
@@ -230,46 +268,67 @@ export async function initPage() {
     });
 
     // View More handler (SPA via loadSection if available, else redirect)
-    container.querySelectorAll(".tour-card .view-more").forEach((btn, index) => {
-      btn.addEventListener("click", () => {
-        const selectedTour = pageTours[index];
-        if (!selectedTour) return;
-        sessionStorage.setItem("selectedTourId", String(selectedTour.id));
+    container
+      .querySelectorAll(".tour-card .view-more")
+      .forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+          const selectedTour = pageTours[index];
+          if (!selectedTour) return;
+          sessionStorage.setItem("selectedTourId", String(selectedTour.id));
 
-        if (typeof window.loadSection === "function") {
-          window.loadSection("content", "./pages/tourdetail.html", "./tourdetail.js", "Tour Detail");
-        } else {
-          // fallback to full navigation with query string
-          window.location.href = `../../pages/tourdetail.html?id=${selectedTour.id}`;
-        }
+          if (typeof window.loadSection === "function") {
+            window.loadSection(
+              "content",
+              "./pages/tourdetail.html",
+              "./tourdetail.js",
+              "Tour Detail"
+            );
+          } else {
+            // fallback to full navigation with query string
+            window.location.href = `../../pages/tourdetail.html?id=${selectedTour.id}`;
+          }
+        });
       });
-    });
 
     // Pagination
     pagination.innerHTML = "";
     const prev = document.createElement("button");
     prev.textContent = "Prev";
     prev.disabled = currentPage === 1;
-    prev.addEventListener("click", () => { if (currentPage > 1) { currentPage--; renderTours(); } });
+    prev.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderTours();
+      }
+    });
     pagination.appendChild(prev);
 
     const maxButtons = 7;
     let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
     let endPage = Math.min(totalPages, startPage + maxButtons - 1);
-    if (endPage - startPage + 1 < maxButtons) startPage = Math.max(1, endPage - maxButtons + 1);
+    if (endPage - startPage + 1 < maxButtons)
+      startPage = Math.max(1, endPage - maxButtons + 1);
 
     for (let p = startPage; p <= endPage; p++) {
       const btn = document.createElement("button");
       btn.textContent = p;
       if (p === currentPage) btn.classList.add("active");
-      btn.addEventListener("click", () => { currentPage = p; renderTours(); });
+      btn.addEventListener("click", () => {
+        currentPage = p;
+        renderTours();
+      });
       pagination.appendChild(btn);
     }
 
     const next = document.createElement("button");
     next.textContent = "Next";
     next.disabled = currentPage === totalPages;
-    next.addEventListener("click", () => { if (currentPage < totalPages) { currentPage++; renderTours(); } });
+    next.addEventListener("click", () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderTours();
+      }
+    });
     pagination.appendChild(next);
   }
 
@@ -300,10 +359,79 @@ export async function initPage() {
     applyFilters();
   });
   durationRange.addEventListener("input", () => {
-    durationMax.textContent = `${durationRange.value} day${durationRange.value > 1 ? "s" : ""}`;
+    durationMax.textContent = `${durationRange.value} day${
+      durationRange.value > 1 ? "s" : ""
+    }`;
     applyFilters();
   });
+  // ==== Nhận dữ liệu searchCity từ trang Home ====
+  const savedCity = sessionStorage.getItem("searchCity");
+  if (savedCity) {
+    searchInput.value = savedCity;
 
+    // Xóa sau khi dùng để tránh lưu cho lần sau
+    sessionStorage.removeItem("searchCity");
+
+    // Sau khi tours load xong thì áp dụng filter tự động
+    // Vì loadTours() là async, ta sẽ chờ nó hoàn tất
+    const origLoadTours = loadTours;
+    loadTours = async function () {
+      await origLoadTours();
+      applyFilters(); // Lọc theo city đã nhập
+    };
+  }
+  // ==== Start ====
+  const selectedProvinceRaw = sessionStorage.getItem("selectedProvince");
+
+  async function start() {
+    await loadTours(); // tải tour + render danh sách ban đầu
+
+    if (selectedProvinceRaw) {
+      const selectedProvince = normalize(selectedProvinceRaw);
+
+      // Hàm tick tỉnh, có xử lý show more nếu cần
+      const tickProvince = () => {
+        const allCb = destList.querySelector('input[value="all"]');
+        if (allCb) allCb.checked = false;
+
+        const targetCb = Array.from(
+          destList.querySelectorAll('input[type="checkbox"]')
+        ).find((cb) => normalize(cb.value) === selectedProvince);
+
+        if (targetCb) {
+          targetCb.checked = true;
+          applyFilters();
+          console.log(" Đã tick tỉnh:", selectedProvinceRaw);
+        } else {
+          console.warn(" Không tìm thấy tỉnh:", selectedProvinceRaw);
+        }
+
+        sessionStorage.removeItem("selectedProvince");
+      };
+
+      // Nếu tỉnh chưa nằm trong list (có thể nằm trong phần Show More)
+      let hasProvince =
+        provinces.findIndex((p) => normalize(p) === selectedProvince) !== -1;
+
+      // Nếu có nhưng không hiển thị (vì showMoreDest = false)
+      const isHidden = !showAllDest && provinces.length > 4;
+
+      if (hasProvince && isHidden) {
+        // Mở rộng danh sách trước khi tick
+        showAllDest = true;
+        renderList(provinces, destList, 4, showAllDest, "Destinations");
+        attachFilterEvents();
+        showMoreDestBtn.textContent = "Show Less";
+
+        // Tick sau khi DOM đã update
+        setTimeout(tickProvince, 100);
+      } else {
+        // Trường hợp bình thường
+        setTimeout(tickProvince, 100);
+      }
+    }
+  }
+  start();
   loadTours();
 
   function setRangeProgress(inputEl) {

@@ -8,19 +8,38 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* ==== CHỐNG TRÀN TOÀN TRANG ==== */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ========== HEADER ========== */
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 18px 60px;
-  background: transparent; /* trong suốt ban đầu */
+  background: transparent;
   transition: background 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
+  box-sizing: border-box;
+  overflow-x: clip; /* tránh tràn ngang */
 }
 
 /* Khi cuộn xuống */
@@ -40,28 +59,29 @@
 .logo img {
   width: 50px;
   height: 50px;
+  object-fit: contain;
 }
 
 .logo span {
-  font-family: "Poppins";
   font-weight: 700;
   font-size: 22px;
-  color: #fff; /* mặc định trắng trên hero */
+  color: #fff;
   transition: color 0.3s ease;
 }
 
 .header.scrolled .logo span {
-  color: #000; /* đổi sang đen khi cuộn */
+  color: #000;
 }
 
 /* ========== NAV LINKS ========== */
 .nav-links {
   display: flex;
   gap: 50px;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
 .nav-links a {
-  font-family: "Poppins";
   text-decoration: none;
   color: #fff;
   font-size: 18px;
@@ -147,33 +167,66 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .icon-mail,
+  .contact-info,
+  .btn-explore {
+    display: none;
+  }
+
+  .header {
+    padding: 14px 20px;
+  }
+
+  /* Hamburger hiển thị */
+  .hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #f9c900;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 1100;
+  }
+
+  .hamburger-btn:hover {
+    background: #ffde59;
+  }
+
+  .hamburger-btn i {
+    font-size: 22px;
+    color: #000;
+  }
+
+  /* Ẩn menu mặc định */
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 80px;
     right: 10px;
-    width: 200px;
+    width: min(90%, 220px);
     background: #fff;
     padding: 15px 10px;
     border-radius: 16px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    overflow: hidden;
+    animation: fadeIn 0.3s ease;
   }
 
+  /* Hiện khi click hamburger */
   .nav-links.show {
     display: flex;
-    animation: fadeIn 0.3s ease;
   }
 
   .nav-links a {
     color: #333;
-    font-weight: 500;
     font-size: 18px;
+    font-weight: 500;
     padding: 10px 15px;
-    text-decoration: none;
     border-radius: 8px;
     transition: all 0.3s ease;
   }
@@ -186,34 +239,6 @@
   .nav-links a.active {
     color: #f9c900;
     font-weight: 600;
-  }
-
-  .hamburger-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: #f9c900;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  .hamburger-btn:hover {
-    background: #ffde59; /* vàng sáng hơn khi hover */
-  }
-
-  .hamburger-btn i {
-    font-size: 22px;
-    color: #000;
-    transition: transform 0.4s ease, opacity 0.3s ease;
-  }
-
-  */ .icon-mail,
-  .contact-info,
-  .btn-explore {
-    display: none;
   }
 }
 

@@ -1,10 +1,15 @@
 import { loadSection } from "./utils.js";
 export async function initPage() {
-  console.log("Hero section initialized");
+  console.log("Home page loaded");
 
   /* =============================================
    PHẦN 1: HERO SECTION (banner chính)
    ============================================== */
+
+  window.addEventListener("orientationchange", () => {
+    document.body.offsetHeight; // force reflow
+    window.scrollTo(0, 0); // tránh giật khung
+  });
 
   let btnTour = document.querySelector(".btn-tour");
   btnTour.addEventListener("click", async () => {
@@ -42,7 +47,7 @@ export async function initPage() {
     card.addEventListener("click", () => {
       const city = card.querySelector(".label span")?.textContent?.trim();
       if (!city) return;
-      sessionStorage.setItem("selectedProvince", city); // đổi key cho rõ nghĩa
+      sessionStorage.setItem("selectedProvince", city);
       loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
     });
   });
@@ -52,11 +57,65 @@ export async function initPage() {
   let btnAbout = document.querySelector(".btn-about");
   btnAbout.addEventListener("click", async () => {
     console.log("Đã click btn-about");
-    loadSection("content", "./pages/about.html", "./about.js", "About Us");
+    loadSection("content", "./pages/about.html", "./about.js", "About");
   });
   /* =============================================
    PHẦN 5: RECOMMENDED TRIPS SECTION (gợi ý tour)
    ============================================== */
+  try {
+    // Fetch dữ liệu
+    const res = await fetch("../data/tours.json");
+    if (!res.ok) throw new Error("Không thể tải danh sách tour");
+    const data = await res.json();
+
+    // Lấy ra 6 tour đầu tiên
+    const tours = data.tours.slice(0, 6);
+
+    // Lấy danh sách .tour-card trong trang home
+    const tourCards = document.querySelectorAll(".tour-card");
+
+    tourCards.forEach((card, i) => {
+      const t = tours[i];
+      if (!t) return; // đề phòng thiếu dữ liệu
+
+      const img = card.querySelector(".tour-img");
+      const title = card.querySelector("h4");
+      const location = card.querySelector(".location");
+      const meta = card.querySelector(".tour-meta");
+      const btn = card.querySelector(".btn-view");
+
+      img.src = t.image;
+      img.alt = t.title;
+      title.textContent = t.title;
+      location.textContent = `Location: ${t.location}`;
+      meta.innerHTML = `
+        <span>⏱ ${t.duration} Days</span>
+        <span>💲 $${t.price}</span>
+      `;
+      btn.dataset.id = t.id;
+    });
+
+    // Sự kiện click "View Tour"
+    document.querySelectorAll(".btn-view").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const id = btn.dataset.id;
+
+        // load sang trang chi tiết
+        await loadSection(
+          "content",
+          "./pages/tourdetail.html",
+          "./tourdetail.js",
+          "Tour Detail"
+        );
+
+        // thêm id lên URL
+        // history.pushState({}, "", `?id=${id}`);
+      });
+    });
+  } catch (err) {
+    console.error("Lỗi load tour ở home:", err);
+  }
+
   let btnMore = document.querySelector(".btn-more");
   btnMore.addEventListener("click", async () => {
     console.log("Đã click btn-more");

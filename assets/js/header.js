@@ -31,7 +31,7 @@ export async function initHeader() {
       const selected = pageMap[pageName];
       if (!selected) return console.warn("Trang không tồn tại:", pageName);
 
-      // ✅ Gọi loadSection mới (đã xử lý active + title + load JS)
+      //  Gọi loadSection mới (đã xử lý active + title + load JS)
       await loadSection("content", selected.html, selected.js, pageName);
 
       // Đóng menu khi chọn link (mobile)
