@@ -351,5 +351,104 @@
         </div>
       </div>
     </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const target = entry.target;
+
+        if (entry.isIntersecting) {
+          runAnimation(target);
+        } else {
+          resetAnimation(target);
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -100px 0px"
+    }
+  );
+
+  // === CHẠY HIỆU ỨNG ===
+  function runAnimation(target) {
+    // 1. BANNER
+    if (target.classList.contains("blog-frame")) {
+      const bgColor = target.querySelector(".blog-bg-color");
+      const bgImg = target.querySelector(".blog-bg-img");
+      const person = target.querySelector(".blog-person");
+      const text = target.querySelector(".blog-text");
+      const breadcrumb = target.querySelector(".breadcrumb");
+
+      setTimeout(() => bgColor?.classList.add("appear"), 200);
+      setTimeout(() => bgImg?.classList.add("appear"), 400);
+      setTimeout(() => person?.classList.add("appear"), 600);
+      setTimeout(() => text?.classList.add("appear"), 800);
+      setTimeout(() => breadcrumb?.classList.add("appear"), 1000);
+    }
+
+    // 2. ABOUT INTRO
+    if (target.classList.contains("about-intro")) {
+      const left = target.querySelector(".about-intro__left");
+      const middle = target.querySelector(".about-intro__middle");
+      const right = target.querySelector(".about-intro__right");
+      setTimeout(() => left?.classList.add("appear"), 100);
+      setTimeout(() => middle?.classList.add("appear"), 300);
+      setTimeout(() => right?.classList.add("appear"), 500);
+    }
+
+    // 3. TIMELINE
+    if (target.classList.contains("timeline")) {
+      const items = target.querySelectorAll(".timeline-item");
+      items.forEach((item, i) => setTimeout(() => item.classList.add("appear"), i * 350));
+    }
+
+    // 4. BOOKING FORM
+    if (target.classList.contains("booking-section")) {
+      const form = target.querySelector(".booking-form");
+      const plane = target.querySelector(".booking-form__plane");
+      setTimeout(() => form?.classList.add("appear"), 200);
+      setTimeout(() => plane?.classList.add("appear"), 500);
+    }
+
+    // 5. ABOUT HERO SECTION
+    if (target.classList.contains("about-hero")) {
+      const content = target.querySelector(".about-hero__content");
+      const features = target.querySelector(".about-hero__features");
+      const cta = target.querySelector(".about-hero__cta .btn-explore");
+      const avatars = target.querySelector(".avatars");
+
+      content?.classList.add("appear");
+      features?.classList.add("appear");
+      setTimeout(() => cta?.classList.add("appear"), 1000);
+      setTimeout(() => avatars?.classList.add("appear"), 1100);
+    }
+  }
+
+  // === RESET KHI RỜI MÀN HÌNH ===
+  function resetAnimation(target) {
+    const appearElements = target.querySelectorAll(".appear");
+    appearElements.forEach(el => el.classList.remove("appear"));
+  }
+
+  // === QUAN SÁT TẤT CẢ SECTION ===
+  const sections = [
+    ".blog-frame",
+    ".about-intro",
+    ".timeline",
+    ".booking-section",
+    ".about-hero"
+  ];
+
+  sections.forEach(selector => {
+    const el = document.querySelector(selector);
+    if (el) observer.observe(el);
+  });
+
+});
+</script>
+
   </body>
 </html>
