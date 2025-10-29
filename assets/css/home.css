@@ -2052,3 +2052,18 @@ body {
     font-size: 4vw;
   }
 }
+
+/* Hiệu ứng loading cho ảnh*/
+img.lazy {
+  opacity: 0;
+  transform: scale(1.1); /* phóng to hơn lúc đầu để tạo cảm giác nổi */
+  filter: blur(10px); /* mờ nhiều hơn khi chưa load */
+  transition: opacity 1.5s ease, /* lâu hơn 1.5s */ transform 1.8s ease,
+    /* zoom mượt hơn */ filter 1.2s ease; /* rõ nét dần */
+}
+
+img.lazy.loaded {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
