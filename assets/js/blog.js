@@ -70,11 +70,28 @@ export async function initPage() {
     $("#grid").innerHTML = list
       .map((b, i) => card(b, i === 0 && currentPage === 1))
       .join("");
+
     $$("#grid .card").forEach((c) => {
       c.onclick = () => {
         location.hash = c.dataset.slug;
       };
     });
+
+    // === Scroll Reveal ===
+    const cards = $$("#grid .card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
   }
 
   function renderPagination() {

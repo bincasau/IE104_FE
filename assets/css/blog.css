@@ -1218,3 +1218,14 @@ body {
     aspect-ratio: 16 / 10; /* Reset về tỉ lệ 16/10 như card thường */
   }
 }
+/* === SCROLL REVEAL ANIMATION === */
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
