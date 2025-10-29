@@ -127,7 +127,7 @@ body {
   justify-content: center;
   gap: 50px;
   align-items: flex-start;
-  padding: 80px 5%;
+  padding: 20px 5%;
 }
 
 /* ========== FILTER AREA (STICKY) ========== */
@@ -738,4 +738,17 @@ input[type="range"] {
     width: 100%;
     font-size: 18px;
   }
+}
+
+/* ========== LAZY LOAD EFFECT ========== */
+
+.tour-card.hidden-card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.tour-card.show-card {
+  opacity: 1;
+  transform: translateY(0);
 }

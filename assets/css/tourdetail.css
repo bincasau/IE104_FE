@@ -1003,3 +1003,12 @@ html, body {
 .accordion-content {
   text-align: left;
 }
+
+/* 🔸 Hiệu ứng chung cho các section */
+/* --- Lazy section mặc định --- */
+/* ============================
+   ✨ Lazy Loading Animation
+============================ */
+.lazy-hide { opacity: 0; transform: translateY(12px); }
+.lazy-show { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s ease; }
+img.lazy-loaded { filter: none; opacity: 1; transition: opacity .3s; }

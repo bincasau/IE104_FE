@@ -206,6 +206,7 @@ export async function initPage() {
       container.style.opacity = "1";
     }, 60);
 
+    // Thêm từng tour (giữ nguyên phần cũ)
     pageTours.forEach((tour) => {
       const saveAmount = tour.oldPrice ? tour.oldPrice - tour.price : 0;
       let availHTML = "";
@@ -220,54 +221,70 @@ export async function initPage() {
       }
 
       container.innerHTML += `
-        <div class="tour-card scroll-animate">
-          <div class="tour-image-wrapper">
-            <img src="${tour.image}" alt="${tour.title}" loading="lazy" />
-            ${
-              tour.discount
-                ? `<div class="discount-ribbon">${tour.discount}</div>`
-                : ""
-            }
-          </div>
-          <div class="tour-info">
-            <h3>${tour.title}</h3>
-            <p>${tour.shortDesc}</p>
-            <p class="location"><i class="fa-solid fa-map-marker-alt" style="color:#d9302f;font-size:18px;"></i> ${
-              tour.location
-            }</p>
-            <div class="availability">${availHTML}</div>
-          </div>
-          <div class="tour-price">
-            <div class="price-box">
-              <div class="price-row">
-                ${
-                  tour.oldPrice
-                    ? `<div class="from-label">From $${tour.oldPrice}</div>`
-                    : ""
-                }
-                <div class="price">$${tour.price}</div>
-              </div>
-              <div class="price-row-bottom">
-                <div class="duration">${tour.duration} Days</div>
-                ${
-                  tour.oldPrice
-                    ? `<div class="save">Save $${saveAmount}</div>`
-                    : ""
-                }
-              </div>
+      <div class="tour-card hidden-card">
+        <div class="tour-image-wrapper">
+          <img src="${tour.image}" alt="${tour.title}" loading="lazy" />
+          ${
+            tour.discount
+              ? `<div class="discount-ribbon">${tour.discount}</div>`
+              : ""
+          }
+        </div>
+        <div class="tour-info">
+          <h3>${tour.title}</h3>
+          <p>${tour.shortDesc}</p>
+          <p class="location">
+            <i class="fa-solid fa-map-marker-alt" style="color:#d9302f;font-size:18px;"></i> 
+            ${tour.location}
+          </p>
+          <div class="availability">${availHTML}</div>
+        </div>
+        <div class="tour-price">
+          <div class="price-box">
+            <div class="price-row">
+              ${
+                tour.oldPrice
+                  ? `<div class="from-label">From $${tour.oldPrice}</div>`
+                  : ""
+              }
+              <div class="price">$${tour.price}</div>
             </div>
-            <button class="view-more">View More</button>
+            <div class="price-row-bottom">
+              <div class="duration">${tour.duration} Days</div>
+              ${
+                tour.oldPrice
+                  ? `<div class="save">Save $${saveAmount}</div>`
+                  : ""
+              }
+            </div>
           </div>
-        </div>`;
+          <button class="view-more">View More</button>
+        </div>
+      </div>`;
     });
 
-    // Lazy load
+    // 🔥 Lazy animation khi scroll
+    const cards = container.querySelectorAll(".hidden-card");
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show-card");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    cards.forEach((card) => observer.observe(card));
+
+    // ✅ Lazy load ảnh (vẫn giữ nguyên)
     container.querySelectorAll("img[loading='lazy']").forEach((img) => {
       if (img.complete) img.classList.add("lazy-loaded");
       else img.addEventListener("load", () => img.classList.add("lazy-loaded"));
     });
 
-    // View More handler (SPA via loadSection if available, else redirect)
+    // ✅ View More handler (giữ nguyên)
     container
       .querySelectorAll(".tour-card .view-more")
       .forEach((btn, index) => {
@@ -275,17 +292,21 @@ export async function initPage() {
           const selectedTour = filteredTours[index];
           if (!selectedTour) return;
           sessionStorage.setItem("selectedTourId", selectedTour.id);
-
-          await window.loadSection(
-            "content",
-            "./pages/tourdetail.html",
-            "./tourdetail.js",
-            "Tour Detail"
-          );
+          // Nếu không có window.loadSection, chuyển hướng trang
+          if (window.loadSection) {
+            await window.loadSection(
+              "content",
+              "./pages/tourdetail.html",
+              "./tourdetail.js",
+              "TourDetail"
+            );
+          } else {
+            window.location.href = "./pages/tourdetail.html";
+          }
         });
       });
 
-    // Pagination
+    // ✅ Pagination (không đổi)
     pagination.innerHTML = "";
     const prev = document.createElement("button");
     prev.textContent = "Prev";
@@ -294,6 +315,7 @@ export async function initPage() {
       if (currentPage > 1) {
         currentPage--;
         renderTours();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     });
     pagination.appendChild(prev);
@@ -311,7 +333,9 @@ export async function initPage() {
       btn.addEventListener("click", () => {
         currentPage = p;
         renderTours();
+        window.scrollTo({ top: 0, behavior: "smooth" }); // 👈 cuộn lên đầu mượt
       });
+
       pagination.appendChild(btn);
     }
 
@@ -322,8 +346,10 @@ export async function initPage() {
       if (currentPage < totalPages) {
         currentPage++;
         renderTours();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     });
+
     pagination.appendChild(next);
   }
 

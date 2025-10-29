@@ -26,19 +26,33 @@ export async function loadSection(
     const html = await response.text();
     container.innerHTML = html;
 
-    // --- 3. Cập nhật trạng thái active cho nav ---
+    // --- 3. Cập nhật trạng thái active cho nav (chỉ 1 lần, KHÔNG lặp trùng) ---
     const allLinks = document.querySelectorAll(".nav-links a");
+
+    // Nhóm trang: menu chính -> các trang con cùng nhóm
+    const pageGroups = {
+      Home: ["Home"],
+      About: ["About"],
+      Tours: ["Tours", "TourDetail"],
+      Blog: ["Blog"], // có thể thêm sau
+      Contact: ["Contact"],
+    };
+
+    const normalize = (s) => String(s || "").toLowerCase().replace(/\s+/g, "");
+
     allLinks.forEach((link) => {
       const className = [...link.classList].find((c) => c !== "active");
-      if (pageName && className?.toLowerCase() === pageName.toLowerCase()) {
-        link.classList.add("active");
-      } else {
-        link.classList.remove("active");
-      }
+      const isActive =
+        pageName &&
+        Object.entries(pageGroups).some(([main, group]) => {
+          const inGroup = group.some((g) => normalize(g) === normalize(pageName));
+          return inGroup && normalize(className) === normalize(main);
+        });
+
+      link.classList.toggle("active", !!isActive);
     });
 
     // --- 4. Cuộn mượt về đầu trang ---
-    // ✅ Đặt ở đây để luôn cuộn kể cả khi không có scriptPath
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     // --- 5. Load JS tương ứng (nếu có) ---
@@ -48,24 +62,22 @@ export async function loadSection(
       if (oldScript) oldScript.remove();
 
       try {
+        // IMPORTANT: scriptPath đã là dạng "./tour.js" -> import(`./${scriptPath}`) => "././tour.js" vẫn OK
         const module = await import(`./${scriptPath}?v=${Date.now()}`);
-        // Gọi initPage() nếu có
         if (typeof module.initPage === "function") {
           module.initPage();
         }
       } catch (err) {
-        console.warn(
-          `Không thể import hoặc chạy initPage từ ${scriptPath}`,
-          err
-        );
+        console.warn(`Không thể import hoặc chạy initPage từ ${scriptPath}`, err);
       }
     }
 
-    return true; // để có thể await loadSection()
+    return true;
   } catch (error) {
     console.error("Lỗi loadSection:", error);
   }
 }
+
 window.loadSection = loadSection;
 
 // ============================

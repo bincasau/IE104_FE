@@ -1,5 +1,5 @@
 // ===============================
-// tourdetail.js (full SPA + Back + Other Tours click)
+// tourdetail.js (SPA + Lazy Loading + Scroll Animation)
 // ===============================
 export async function initPage() {
   console.log("✅ Tour Detail JS initialized");
@@ -9,48 +9,14 @@ export async function initPage() {
     history.pushState({ page: "tour-detail" }, "", "#tour-detail");
   }
 
+  // Handle back navigation
   window.onpopstate = () => {
     if (typeof window.loadSection === "function") {
-      window.loadSection("content", "./pages/tour.html", "./Tour.js", "Tour");
+      window.loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
     } else {
       window.location.href = "./tour.html";
     }
   };
-
-  // ===============================
-  // 🔙 Back Button
-  // ===============================
-  let backBtn = document.querySelector(".back-btn");
-  if (!backBtn) {
-    const header = document.querySelector(".blog-frame");
-    backBtn = document.createElement("button");
-    backBtn.className = "back-btn";
-    backBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Back`;
-    Object.assign(backBtn.style, {
-      display: "inline-flex",
-      alignItems: "center",
-      gap: "8px",
-      padding: "10px 20px",
-      border: "2px solid #4A90E2",
-      borderRadius: "10px",
-      color: "#4A90E2",
-      background: "#fff",
-      fontWeight: "600",
-      fontSize: "15px",
-      cursor: "pointer",
-      marginTop: "10px",
-      marginLeft: "20px",
-    });
-    if (header) header.insertAdjacentElement("afterend", backBtn);
-  }
-
-  backBtn.addEventListener("click", () => {
-    if (typeof window.loadSection === "function") {
-      window.loadSection("content", "./pages/tour.html", "./Tour.js", "Tour");
-    } else {
-      window.location.href = "./tour.html";
-    }
-  });
 
   // ===============================
   // 🎥 Video Popup
@@ -76,16 +42,15 @@ export async function initPage() {
   }
 
   // ===============================
-  // SMOOTH SCROLL NAVIGATION FIX
+  // 🧭 Smooth Scroll Navigation
   // ===============================
   document.querySelectorAll(".tour-nav a").forEach((link) => {
     link.addEventListener("click", (e) => {
-      e.preventDefault(); // 🛑 chặn reload trang
+      e.preventDefault();
 
       const targetId = link.getAttribute("href").replace("#", "");
       const targetSection = document.getElementById(targetId);
 
-      // Bỏ active cũ
       document
         .querySelectorAll(".tour-nav a")
         .forEach((a) => a.classList.remove("active"));
@@ -93,7 +58,7 @@ export async function initPage() {
 
       if (targetSection) {
         window.scrollTo({
-          top: targetSection.offsetTop - 100, // trừ chiều cao header
+          top: targetSection.offsetTop - 100,
           behavior: "smooth",
         });
       }
@@ -198,14 +163,14 @@ export async function initPage() {
   });
 
   const closeIcon = popupSuccess.querySelector(".popup-close");
-  Object.assign(closeIcon.style, {
-    position: "absolute",
-    top: "10px",
-    right: "15px",
-    fontSize: "24px",
-    color: "#888",
-    cursor: "pointer",
-  });
+  closeIcon.style.cssText = `
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #888;
+    cursor: pointer;
+  `;
 
   const okBtn = popupSuccess.querySelector("#okBtn");
   okBtn.style.cssText = `
@@ -225,7 +190,7 @@ export async function initPage() {
   okBtn.addEventListener("click", () => {
     popupSuccess.style.display = "none";
     if (typeof window.loadSection === "function") {
-      window.loadSection("content", "./pages/tour.html", "./Tour.js", "Tour");
+      window.loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
     } else {
       window.location.href = "./tour.html";
     }
@@ -264,114 +229,77 @@ export async function initPage() {
       e.preventDefault();
       const tourId = link.dataset.id || link.getAttribute("data-id");
       if (!tourId) return;
-
-      // Lưu ID tour được chọn vào sessionStorage
       sessionStorage.setItem("selectedTourId", tourId);
+      window.scrollTo({ top: 0, behavior: "smooth" });
 
-      // Gọi lại chính trang tour detail
       if (typeof window.loadSection === "function") {
         await window.loadSection(
           "content",
           "./pages/tourdetail.html",
           "./tourdetail.js",
-          "Tour Detail"
+          "Tours" // 👈 Keep Tours active in header
         );
       } else {
         window.location.href = `./tourdetail.html`;
       }
     });
   });
+
+  // ===============================
+  // ✨ Lazy Loading theo tầng: Ảnh → Tiêu đề → Overview (2 phần)
+  // ===============================
+
+  // 1️⃣ Phần tử cần lazy load
+  const lazyEls = {
+    gallery: document.querySelector(".tour-gallery"),
+    title: document.querySelector(".title-frame"),
+    nav: document.querySelector(".tour-nav"),
+    overviewText: document.querySelector("#overview p"),
+    overviewGrid: document.querySelector("#overview .overview-grid"),
+    include: document.querySelector(".include-wrapper"),
+    map: document.querySelector(".map-section"),
+    itinerary: document.querySelector(".itinerary-section"),
+    others: document.querySelector(".others-tour"),
+    form: document.querySelector(".info-right"),
+  };
+
+  // 2️⃣ Ẩn toàn bộ trước
+  Object.values(lazyEls).forEach((el) => {
+    if (el) el.classList.add("lazy-hide");
+  });
+
+  // 3️⃣ IntersectionObserver cho phần cuộn
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("lazy-show");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  // 4️⃣ Hiển thị theo tầng ngay sau khi initPage chạy
+  setTimeout(() => lazyEls.gallery?.classList.add("lazy-show"), 150);
+  setTimeout(() => {
+    lazyEls.title?.classList.add("lazy-show");
+    lazyEls.nav?.classList.add("lazy-show");
+  }, 500);
+  setTimeout(() => {
+    lazyEls.overviewText?.classList.add("lazy-show");
+  }, 800);
+  setTimeout(() => {
+    lazyEls.overviewGrid?.classList.add("lazy-show");
+  }, 1200);
+
+  // 5️⃣ Phần còn lại lazy khi scroll tới
+  [
+    lazyEls.include,
+    lazyEls.map,
+    lazyEls.itinerary,
+    lazyEls.others,
+    lazyEls.form,
+  ].forEach((sec) => sec && observer.observe(sec));
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("✅ Tour Detail JS Loaded");
-
-  // ===== Video Popup =====
-  const openBtn = document.getElementById("openVideo");
-  const popup = document.getElementById("videoPopup");
-  const closeBtn = document.getElementById("closePopup");
-  const iframe = document.getElementById("videoFrame");
-
-  if (openBtn && popup && closeBtn && iframe) {
-    openBtn.addEventListener("click", () => {
-      iframe.src = "https://www.youtube.com/embed/Au6LqK1UH8g";
-      popup.style.display = "flex";
-    });
-
-    closeBtn.addEventListener("click", closeVideo);
-    popup.addEventListener("click", (e) => {
-      if (e.target === popup) closeVideo();
-    });
-
-    function closeVideo() {
-      popup.style.display = "none";
-      iframe.src = "";
-    }
-  }
-
-  // ===== Accordion =====
-  document.querySelectorAll(".accordion-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      btn.classList.toggle("active");
-      const content = btn.parentElement.nextElementSibling;
-      content.classList.toggle("open");
-    });
-  });
-
-  // ===== Tabs =====
-  document.querySelectorAll(".mini-tab").forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const parent = tab.closest(".day-right");
-      parent
-        .querySelectorAll(".mini-tab")
-        .forEach((t) => t.classList.remove("active"));
-      parent
-        .querySelectorAll(".tab-content")
-        .forEach((c) => c.classList.remove("active"));
-      tab.classList.add("active");
-      parent.querySelector(`#${tab.dataset.tab}`).classList.add("active");
-    });
-  });
-
-  // ===== Book Button Popup =====
-  const bookBtn = document.querySelector(".book-btn");
-  if (bookBtn) {
-    bookBtn.addEventListener("click", () => {
-      alert("✅ Booking successful! Thank you for joining this tour!");
-    });
-  }
-
-  // ===== Back Button =====
-  const backBtn = document.querySelector(".back-btn-tour");
-  if (backBtn) {
-    backBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (typeof window.loadSection === "function") {
-        window.loadSection("content", "./pages/tour.html", "./Tour.js", "Tour");
-      } else {
-        window.location.href = "./tour.html";
-      }
-    });
-  }
-
-  // ===== Others Tours Click =====
-  document.querySelectorAll(".others-list a").forEach((link) => {
-    link.addEventListener("click", async (e) => {
-      e.preventDefault();
-      const tourId = link.dataset.id;
-      if (!tourId) return;
-      sessionStorage.setItem("selectedTourId", tourId);
-
-      if (typeof window.loadSection === "function") {
-        await window.loadSection(
-          "content",
-          "./pages/tourdetail.html",
-          "./tourdetail.js",
-          "Tour Detail"
-        );
-      } else {
-        window.location.href = "./tourdetail.html";
-      }
-    });
-  });
-});
