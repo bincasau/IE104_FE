@@ -4,7 +4,9 @@ export async function initHeader() {
   console.log("Header initialized");
 
   const navLinksContainer = document.querySelector(".nav-links");
-  const navLinks = navLinksContainer ? navLinksContainer.querySelectorAll("a") : [];
+  const navLinks = navLinksContainer
+    ? navLinksContainer.querySelectorAll("a")
+    : [];
 
   // === CLICK MENU LINKS ===
   navLinks.forEach((link) => {
@@ -26,11 +28,23 @@ export async function initHeader() {
       const selected = pageMap[pageName];
       if (!selected) return console.warn("Trang không tồn tại:", pageName);
 
+      // 🧹 Nếu còn handler của Tour Detail, xoá NGAY trước khi chuyển trang
+      if (window._tourPopHandler) {
+        window.removeEventListener("popstate", window._tourPopHandler);
+        delete window._tourPopHandler;
+      }
+
       if (location.hash) {
-        history.pushState(null, "", location.pathname);
+        history.replaceState(null, "", location.pathname);
       }
 
       await loadSection("content", selected.html, selected.js, pageName);
+
+      // 🧹 Khi chuyển sang trang khác, xóa handler của TourDetail nếu còn
+      if (window._tourPopHandler) {
+        window.removeEventListener("popstate", window._tourPopHandler);
+        delete window._tourPopHandler;
+      }
 
       // Đóng menu khi chọn link (mobile)
       if (navLinksContainer) navLinksContainer.classList.remove("show");
@@ -49,7 +63,9 @@ export async function initHeader() {
       const email = "infor@company.com";
       const subject = "Tư vấn chuyến đi cùng Travel VN";
       const body = "Xin chào Travel VN, tôi muốn được tư vấn về tour...";
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
     });
   }
 
@@ -59,6 +75,12 @@ export async function initHeader() {
     btnExplore.addEventListener("click", async (e) => {
       e.preventDefault();
       await loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
+
+      // 🧹 Cleanup handler TourDetail (phòng lỗi khi click Explore từ trang detail)
+      if (window._tourPopHandler) {
+        window.removeEventListener("popstate", window._tourPopHandler);
+        delete window._tourPopHandler;
+      }
     });
   }
 
@@ -68,6 +90,12 @@ export async function initHeader() {
     logo.addEventListener("click", async (e) => {
       e.preventDefault();
       await loadSection("content", "./pages/home.html", "./home.js", "Home");
+
+      // 🧹 Cleanup handler TourDetail
+      if (window._tourPopHandler) {
+        window.removeEventListener("popstate", window._tourPopHandler);
+        delete window._tourPopHandler;
+      }
     });
   }
 
@@ -97,7 +125,7 @@ export async function initHeader() {
     console.warn("Không tìm thấy .hamburger-btn hoặc .nav-links");
   }
 
-  // === LANGUAGE DROPDOWN (thêm null-check để tránh crash) ===
+  // === LANGUAGE DROPDOWN ===
   const langBtn = document.getElementById("langButton");
   const langDropdown = document.getElementById("langDropdown");
   const languageSelector = document.querySelector(".language-selector");
