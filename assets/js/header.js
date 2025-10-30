@@ -38,7 +38,18 @@ export async function initHeader() {
         history.replaceState(null, "", location.pathname);
       }
 
+      // 🧹 Xoá handler của Tour Detail trước khi chuyển trang
+      if (window._tourPopHandler) {
+        window.removeEventListener("popstate", window._tourPopHandler);
+        delete window._tourPopHandler;
+      }
+
+      if (location.hash) {
+        history.replaceState(null, "", location.pathname);
+      }
+
       await loadSection("content", selected.html, selected.js, pageName);
+
 
       // 🧹 Khi chuyển sang trang khác, xóa handler của TourDetail nếu còn
       if (window._tourPopHandler) {

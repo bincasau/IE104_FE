@@ -9,15 +9,23 @@ export async function initPage() {
     history.replaceState({ page: "tour-detail" }, "", "#tour-detail");
   }
 
-  // --- Gắn event popstate có thể gỡ được ---
+  // --- Gắn event popstate có thể gỡ được (chống stack) ---
+  if (window._tourPopHandler) {
+    // Gỡ handler cũ nếu có, phòng trường hợp mở TourDetail nhiều lần (Others Tour)
+    window.removeEventListener("popstate", window._tourPopHandler);
+  }
+
   window._tourPopHandler = (e) => {
-    if (e.state?.page === "tour-detail") return;
+    // Chỉ xử lý khi rời khỏi trạng thái tour-detail thực sự
+    if (e?.state?.page === "tour-detail") return;
+
     if (typeof window.loadSection === "function") {
       window.loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
     } else {
       window.location.href = "./tour.html";
     }
   };
+
   window.addEventListener("popstate", window._tourPopHandler);
 
   // --- Nút Back ---
@@ -26,7 +34,12 @@ export async function initPage() {
     backBtn.addEventListener("click", async (e) => {
       e.preventDefault();
       if (typeof window.loadSection === "function") {
-        await window.loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
+        await window.loadSection(
+          "content",
+          "./pages/tour.html",
+          "./tour.js",
+          "Tours"
+        );
       } else {
         window.location.href = "./tour.html";
       }
@@ -98,7 +111,10 @@ export async function initPage() {
         .forEach((a) => a.classList.remove("active"));
       link.classList.add("active");
       if (targetSection) {
-        window.scrollTo({ top: targetSection.offsetTop - 100, behavior: "smooth" });
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: "smooth",
+        });
       }
     });
   });
@@ -120,8 +136,12 @@ export async function initPage() {
   document.querySelectorAll(".mini-tab").forEach((tab) => {
     tab.addEventListener("click", () => {
       const parent = tab.closest(".day-right");
-      parent.querySelectorAll(".mini-tab").forEach((t) => t.classList.remove("active"));
-      parent.querySelectorAll(".tab-content").forEach((c) => c.classList.remove("active"));
+      parent
+        .querySelectorAll(".mini-tab")
+        .forEach((t) => t.classList.remove("active"));
+      parent
+        .querySelectorAll(".tab-content")
+        .forEach((c) => c.classList.remove("active"));
       tab.classList.add("active");
       parent.querySelector(`#${tab.dataset.tab}`).classList.add("active");
     });
@@ -131,8 +151,12 @@ export async function initPage() {
   // 💰 Booking Form
   // ===============================
   const pricePerAdult = 299;
-  const adultInput = document.querySelector(".guest-inputs input[placeholder='Adults']");
-  const kidInput = document.querySelector(".guest-inputs input[placeholder='Kids']");
+  const adultInput = document.querySelector(
+    ".guest-inputs input[placeholder='Adults']"
+  );
+  const kidInput = document.querySelector(
+    ".guest-inputs input[placeholder='Kids']"
+  );
   const totalEl = document.querySelector(".form-bottom .price span");
   const bookBtn = document.querySelector(".book-btn");
   const form = document.querySelector(".join-form");
@@ -239,7 +263,12 @@ export async function initPage() {
       sessionStorage.setItem("selectedTourId", tourId);
       window.scrollTo({ top: 0, behavior: "smooth" });
       if (typeof window.loadSection === "function") {
-        await window.loadSection("content", "./pages/tourdetail.html", "./tourdetail.js", "Tours");
+        await window.loadSection(
+          "content",
+          "./pages/tourdetail.html",
+          "./tourdetail.js",
+          "Tours"
+        );
       } else {
         window.location.href = `./tourdetail.html`;
       }
@@ -264,12 +293,13 @@ export async function initPage() {
 
   Object.values(lazyEls).forEach((el) => el?.classList.add("lazy-hide"));
   const observer = new IntersectionObserver(
-    (entries) => entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("lazy-show");
-        observer.unobserve(entry.target);
-      }
-    }),
+    (entries) =>
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("lazy-show");
+          observer.unobserve(entry.target);
+        }
+      }),
     { threshold: 0.2 }
   );
   setTimeout(() => lazyEls.gallery?.classList.add("lazy-show"), 150);
@@ -279,7 +309,11 @@ export async function initPage() {
   }, 500);
   setTimeout(() => lazyEls.overviewText?.classList.add("lazy-show"), 800);
   setTimeout(() => lazyEls.overviewGrid?.classList.add("lazy-show"), 1200);
-  [lazyEls.include, lazyEls.map, lazyEls.itinerary, lazyEls.others, lazyEls.form].forEach(
-    (sec) => sec && observer.observe(sec)
-  );
+  [
+    lazyEls.include,
+    lazyEls.map,
+    lazyEls.itinerary,
+    lazyEls.others,
+    lazyEls.form,
+  ].forEach((sec) => sec && observer.observe(sec));
 }
