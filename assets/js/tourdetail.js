@@ -1,5 +1,5 @@
 // ===============================
-// tourdetail.js (FINAL FIX - no blog redirect)
+// tourdetail.js (FINAL FIX - Stable + Booking Popup đẹp)
 // ===============================
 export async function initPage() {
   console.log("✅ Tour Detail JS initialized");
@@ -11,12 +11,10 @@ export async function initPage() {
 
   // --- Gắn event popstate có thể gỡ được (chống stack) ---
   if (window._tourPopHandler) {
-    // Gỡ handler cũ nếu có, phòng trường hợp mở TourDetail nhiều lần (Others Tour)
     window.removeEventListener("popstate", window._tourPopHandler);
   }
 
   window._tourPopHandler = (e) => {
-    // Chỉ xử lý khi rời khỏi trạng thái tour-detail thực sự
     if (e?.state?.page === "tour-detail") return;
 
     if (typeof window.loadSection === "function") {
@@ -25,7 +23,6 @@ export async function initPage() {
       window.location.href = "./tour.html";
     }
   };
-
   window.addEventListener("popstate", window._tourPopHandler);
 
   // --- Nút Back ---
@@ -46,7 +43,7 @@ export async function initPage() {
     });
   }
 
-  // --- Dọn dẹp event khi rời trang (mọi trường hợp) ---
+  // --- Dọn dẹp event khi rời trang ---
   const removeTourHandlers = () => {
     if (window._tourPopHandler) {
       window.removeEventListener("popstate", window._tourPopHandler);
@@ -55,7 +52,7 @@ export async function initPage() {
     }
   };
 
-  // Dọn dẹp khi click link trong header (menu / logo / explore)
+  // Dọn dẹp khi click menu, logo, explore
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a, button");
     if (!link) return;
@@ -72,7 +69,6 @@ export async function initPage() {
     }
   });
 
-  // Dọn khi unload (rời trang)
   window.addEventListener("beforeunload", removeTourHandlers);
 
   // ===============================
@@ -182,75 +178,132 @@ export async function initPage() {
   updateTotal();
 
   // ===============================
-  // ✅ Success Popup
+  // 🩵 Booking Popup đẹp
   // ===============================
-  const popupSuccess = document.createElement("div");
-  popupSuccess.className = "popup-success";
-  popupSuccess.innerHTML = `
-    <div class="popup-content">
-      <span class="popup-close">&times;</span>
-      <h3>Booking Successful!</h3>
-      <p>Thank you for choosing our tour 🎉</p>
-      <button id="okBtn">OK</button>
-    </div>
-  `;
-  document.body.appendChild(popupSuccess);
+  if (bookBtn) {
+    bookBtn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-  Object.assign(popupSuccess.style, {
-    display: "none",
-    position: "fixed",
-    inset: "0",
-    background: "rgba(0,0,0,0.6)",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: "1000",
-  });
+      const name = document.getElementById("name")?.value.trim();
+      const startDate = document.getElementById("start-date")?.value;
+      const adults = parseInt(adultInput.value || "0");
+      const facility = document.getElementById("facilities")?.value;
 
-  const popupBox = popupSuccess.querySelector(".popup-content");
-  Object.assign(popupBox.style, {
-    background: "#fff",
-    padding: "40px 60px",
-    borderRadius: "12px",
-    textAlign: "center",
-    boxShadow: "0 5px 18px rgba(0,0,0,0.2)",
-    position: "relative",
-    width: "450px",
-    maxWidth: "90%",
-  });
+      if (!name || !startDate || adults <= 0 || !facility || facility === "Choose...") {
+        errorMsg.textContent = "⚠️ Please fill in all required fields!";
+        return;
+      }
+      errorMsg.textContent = "";
 
-  const closeIcon = popupSuccess.querySelector(".popup-close");
-  closeIcon.style.cssText = `
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    color: #888;
-    cursor: pointer;
-  `;
+      const popup = document.createElement("div");
+      popup.className = "booking-popup";
+      popup.innerHTML = `
+        <div class="popup-overlay"></div>
+        <div class="popup-box">
+          <span class="popup-close">&times;</span>
+          <div class="popup-content">
+            <div class="popup-icon">✅</div>
+            <h2>Booking Confirmed!</h2>
+            <p>
+              Thank you, <strong>${name}</strong>!<br>
+              Your booking for <strong>Ha Long Bay Luxury Cruise Tour</strong> has been received.<br>
+              We'll contact you soon to confirm the details.
+            </p>
+            <button class="popup-ok">OK</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(popup);
 
-  const okBtn = popupSuccess.querySelector("#okBtn");
-  okBtn.style.cssText = `
-    background: #4A90E2;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 20px;
-  `;
+      // === CSS inline (giao diện đẹp)
+      const style = document.createElement("style");
+      style.textContent = `
+        .booking-popup {
+          position: fixed;
+          inset: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+          font-family: 'Poppins', sans-serif;
+        }
+        .popup-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.55);
+          animation: fadeIn 0.3s ease;
+        }
+        .popup-box {
+          position: relative;
+          background: #fff;
+          border-radius: 18px;
+          padding: 40px 50px;
+          max-width: 480px;
+          width: 90%;
+          text-align: center;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+          animation: scaleIn 0.3s ease;
+        }
+        .popup-close {
+          position: absolute;
+          top: 10px;
+          right: 15px;
+          font-size: 24px;
+          color: #999;
+          cursor: pointer;
+          transition: 0.2s;
+        }
+        .popup-close:hover { color: #333; }
+        .popup-icon {
+          font-size: 42px;
+          margin-bottom: 12px;
+          animation: pop 0.4s ease;
+        }
+        .popup-content h2 {
+          color: #2b6cb0;
+          margin-bottom: 10px;
+        }
+        .popup-content p {
+          color: #444;
+          font-size: 15px;
+          line-height: 1.6;
+        }
+        .popup-ok {
+          margin-top: 20px;
+          background: linear-gradient(135deg, #4A90E2, #357ABD);
+          color: white;
+          border: none;
+          padding: 10px 24px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: 600;
+          transition: background 0.3s;
+        }
+        .popup-ok:hover {
+          background: linear-gradient(135deg, #357ABD, #2b6cb0);
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; } to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+          from { transform: scale(0.8); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes pop {
+          0% { transform: scale(0.5); opacity: 0; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+      `;
+      document.head.appendChild(style);
 
-  const closePopup = () => (popupSuccess.style.display = "none");
-  closeIcon.addEventListener("click", closePopup);
-  okBtn.addEventListener("click", () => {
-    popupSuccess.style.display = "none";
-    if (typeof window.loadSection === "function") {
-      removeTourHandlers();
-      window.loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
-    } else {
-      window.location.href = "./tour.html";
-    }
-  });
+      // === Đóng popup ===
+      const closePopup = () => popup.remove();
+      popup.querySelector(".popup-close").addEventListener("click", closePopup);
+      popup.querySelector(".popup-overlay").addEventListener("click", closePopup);
+      popup.querySelector(".popup-ok").addEventListener("click", closePopup);
+    });
+  }
 
   // ===============================
   // 🧭 Other Tours click handler
@@ -302,6 +355,7 @@ export async function initPage() {
       }),
     { threshold: 0.2 }
   );
+
   setTimeout(() => lazyEls.gallery?.classList.add("lazy-show"), 150);
   setTimeout(() => {
     lazyEls.title?.classList.add("lazy-show");

@@ -1012,3 +1012,111 @@ html, body {
 .lazy-hide { opacity: 0; transform: translateY(12px); }
 .lazy-show { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s ease; }
 img.lazy-loaded { filter: none; opacity: 1; transition: opacity .3s; }
+
+
+@media (max-width: 992px) {
+  .blog-frame {
+    /* Thu nhỏ banner 1 chút */
+    height: 420px;
+    width: calc(100% - 60px);
+    margin: var(--offset) auto;
+  }
+
+  .blog-bg-img {
+    /* Đảm bảo ảnh nền không bị co giãn quá */
+    width: 800px;
+  }
+
+  .blog-person {
+    /* Di chuyển người vào trong */
+    right: 40px;
+    height: 75%;
+  }
+
+  .blog-text {
+    /* Di chuyển text vào trong */
+    left: 80px;
+    transform: translateY(-50%);
+  }
+
+  .blog-text h1,
+  .breadcrumb {
+    /* Bỏ transform lệch */
+    transform: none;
+  }
+
+  .blog-text h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+}
+
+/* --- Mobile (Dưới 767px) --- */
+@media (max-width: 767px) {
+  .blog-frame {
+    /* Cho banner full-width và lùn hơn */
+    height: 280px;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .blog-bg-color {
+    /* Nền màu chiếm hết */
+    width: 100%;
+  }
+
+  .blog-bg-img {
+    /* Ảnh nền full-width, căn giữa */
+    width: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: 0.5; /* Làm mờ ảnh để nổi text */
+  }
+
+  .blog-person {
+    /* Ẩn người đi cho đỡ rối */
+    display: none;
+  }
+
+  .blog-text {
+    /* Căn giữa text */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+  }
+
+  .blog-text h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    /* Thêm viền/bóng để đọc chữ trên ảnh */
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .breadcrumb {
+    /* Căn giữa breadcrumb */
+    justify-content: center;
+    padding: 8px 16px;
+    border-width: 2px;
+    /* Đổi màu chữ cho dễ đọc */
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .breadcrumb .home,
+  .breadcrumb .current,
+  .breadcrumb .arrow {
+    color: #fff;
+  }
+
+  /* --- Layout chính --- */
+  .container {
+    /* Giảm padding và gap trên mobile */
+    padding: 0 15px;
+    margin-top: 24px;
+    gap: 24px;
+  }
+
+}
