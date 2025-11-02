@@ -9,8 +9,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
 
-
-
     <link rel="stylesheet" href="../assets/css/about.css" />
   </head>
   <body>
@@ -35,11 +33,11 @@
 
       <!-- Text -->
       <div class="blog-text">
-        <h1>ABOUT US</h1>
+        <h1 data-key="about_header_title">ABOUT US</h1>
         <div class="breadcrumb">
-          <span class="home">HOME</span>
+          <span class="home" data-key="about_breadcrumb_home">HOME</span>
           <span class="arrow">›</span>
-          <span class="current">ABOUT</span>
+          <span class="current" data-key="about_breadcrumb_current">ABOUT</span>
         </div>
       </div>
     </div>
@@ -48,8 +46,12 @@
       <!-- BÊN TRÁI: ảnh + tiêu đề -->
       <div class="about-intro__left">
         <div class="about-intro__title-box">
-          <div class="agency-name">Vacation Agency</div>
-          <h1 class="about-intro__title">Explore Nearby</h1>
+          <div class="agency-name" data-key="about_intro_agency">
+            Vacation Agency
+          </div>
+          <h1 class="about-intro__title" data-key="about_intro_title">
+            Explore Nearby
+          </h1>
         </div>
         <div class="about-intro__image">
           <img
@@ -61,7 +63,7 @@
 
       <!-- Ở GIỮA: mô tả + 2 feature items -->
       <div class="about-intro__middle">
-        <p class="about-intro__desc">
+        <p class="about-intro__desc" data-key="about_intro_desc">
           No one shall be subjected to arbitrary arrest, detention or exile.<br />
           Everyone is entitled in full equality to a fair and public hearing by
           an independent and impartial tribunal.<br />
@@ -75,8 +77,16 @@
               <i class="fa-solid fa-car"></i>
             </div>
             <div class="feature-item__content">
-              <div class="feature-item__title">Trusted Travel Guide</div>
-              <p class="feature-item__desc">
+              <div
+                class="feature-item__title"
+                data-key="about_intro_feature1_title"
+              >
+                Trusted Travel Guide
+              </div>
+              <p
+                class="feature-item__desc"
+                data-key="about_intro_feature1_desc"
+              >
                 One shall be subjected to arbitrary arrest<br />detention or
                 exile.
               </p>
@@ -88,8 +98,16 @@
               <i class="fa-solid fa-map-location-dot"></i>
             </div>
             <div class="feature-item__content">
-              <div class="feature-item__title">Personalized Trips</div>
-              <p class="feature-item__desc">
+              <div
+                class="feature-item__title"
+                data-key="about_intro_feature2_title"
+              >
+                Personalized Trips
+              </div>
+              <p
+                class="feature-item__desc"
+                data-key="about_intro_feature2_desc"
+              >
                 One shall be subjected to arbitrary arrest,<br />detention or
                 exile.
               </p>
@@ -98,7 +116,9 @@
         </div>
 
         <div class="about-intro__button">
-          <button class="btn-more">MORE ABOUT US</button>
+          <button class="btn-more" data-key="about_intro_button">
+            MORE ABOUT US
+          </button>
         </div>
       </div>
 
@@ -106,7 +126,10 @@
       <div class="about-intro__right">
         <div class="about-intro__suitcase">
           <img src="../assets/images/about/XNb.png" alt="Suitcase" />
-          <div class="about-intro__suitcase-text">
+          <div
+            class="about-intro__suitcase-text"
+            data-key="about_intro_right_text"
+          >
             Beautiful Places Around The World.
           </div>
         </div>
@@ -115,17 +138,22 @@
 
     <!-- ========== TRAVEL EXPERIENCE ========== -->
     <div class="travel-experience">
-      <h1>John's Best Holidays<br />Start Here!</h1>
+      <h1 data-key="about_experience_title">
+        John's Best Holidays<br />Start Here!
+      </h1>
 
       <div class="timeline">
         <div class="timeline-item left">
           <div class="timeline-content">
-            <h3>Traveling on a Budget</h3>
-            <p>
+            <h3 data-key="about_experience_item_title">
+              Traveling on a Budget
+            </h3>
+            <p data-key="about_experience_item_desc">
               No one shall be subjected to arbitrary arrest, detention or exile.
               Everyone is entitled in full equality.
             </p>
-            <img class="timeline-image"
+            <img
+              class="timeline-image"
               src="../assets/images/about/THB.png"
               alt="Traveling on a Budget"
             />
@@ -134,12 +162,15 @@
 
         <div class="timeline-item right">
           <div class="timeline-content">
-            <h3>Traveling on a Budget</h3>
-            <p>
+            <h3 data-key="about_experience_item_title">
+              Traveling on a Budget
+            </h3>
+            <p data-key="about_experience_item_desc">
               No one shall be subjected to arbitrary arrest, detention or exile.
               Everyone is entitled in full equality.
             </p>
-            <img class="timeline-image"
+            <img
+              class="timeline-image"
               src="../assets/images/about/THB.png"
               alt="Traveling on a Budget"
             />
@@ -148,12 +179,14 @@
 
         <div class="timeline-item left">
           <div class="timeline-content">
-            <h3>Traveling on a Budget</h3>
-            <p>
+            <h3 data-key="about_experience_item_title">
+              Traveling on a Budget
+            </h3>
+            <p data-key="about_experience_item_desc">
               No one shall be subjected to arbitrary arrest, detention or exile.
               Everyone is entitled in full equality.
             </p>
-            <img 
+            <img
               src="../assets/images/about/THB.png"
               alt="Traveling on a Budget"
             />
@@ -166,7 +199,9 @@
     <div class="booking-section">
       <div class="booking-section__form-wrapper">
         <form class="booking-form">
-          <h3 class="booking-form__title">Find Your Ticket Now</h3>
+          <h3 class="booking-form__title" data-key="about_booking_title">
+            Find Your Ticket Now
+          </h3>
           <img
             src="../assets/images/home/plane.png"
             alt="Plane"
@@ -176,15 +211,21 @@
           <div class="form-group">
             <div class="form-row">
               <div>
-                <label for="from">From</label>
+                <label for="from" data-key="about_booking_label_from"
+                  >From</label
+                >
                 <select id="from">
-                  <option>Where To Next? ▼</option>
+                  <option data-key="about_booking_option_where">
+                    Where To Next? ▼
+                  </option>
                 </select>
               </div>
               <div>
-                <label for="to">To</label>
+                <label for="to" data-key="about_booking_label_to">To</label>
                 <select id="to">
-                  <option>Where To Next? ▼</option>
+                  <option data-key="about_booking_option_where">
+                    Where To Next? ▼
+                  </option>
                 </select>
               </div>
             </div>
@@ -193,11 +234,15 @@
           <div class="form-group">
             <div class="form-row">
               <div>
-                <label for="depart">Date of Journey</label>
+                <label for="depart" data-key="about_booking_label_depart"
+                  >Date of Journey</label
+                >
                 <input type="text" id="depart" placeholder="mm/dd/yy " />
               </div>
               <div>
-                <label for="return">Date of Return (Optional)</label>
+                <label for="return" data-key="about_booking_label_return"
+                  >Date of Return (Optional)</label
+                >
                 <input type="text" id="return" placeholder="mm/dd/yy " />
               </div>
             </div>
@@ -206,19 +251,31 @@
           <div class="form-group">
             <div class="form-row">
               <div>
-                <label for="guests">Guests</label>
+                <label for="guests" data-key="about_booking_label_guests"
+                  >Guests</label
+                >
                 <select id="guests">
-                  <option>1 Person ▼</option>
+                  <option data-key="about_booking_option_person">
+                    1 Person ▼
+                  </option>
                 </select>
               </div>
               <div>
-                <label for="budget">Budget</label>
+                <label for="budget" data-key="about_booking_label_budget"
+                  >Budget</label
+                >
                 <select id="budget">
                   <option>10 USD ▼</option>
                 </select>
               </div>
             </div>
-            <button type="submit" class="btn-explore">EXPLORE TRIP</button>
+            <button
+              type="submit"
+              class="btn-explore"
+              data-key="about_booking_button"
+            >
+              EXPLORE TRIP
+            </button>
           </div>
         </form>
       </div>
@@ -228,37 +285,43 @@
     <div class="about-hero">
       <section class="about-hero__content">
         <div class="about-hero__left">
-          <h3 class="agency-name">Vacation Agenc<span>y</span></h3>
-          <h1>Building destination to<br />Get things done</h1>
-          <p class="about-hero__subtitle">
+          <h3 class="agency-name" data-key="about_hero_agency">
+            Vacation Agency
+          </h3>
+          <h1 data-key="about_hero_title">
+            Building destination to<br />Get things done
+          </h1>
+          <p class="about-hero__subtitle" data-key="about_hero_subtitle">
             No one shall be subjected to arbitrary arrest, detention or exile.
             Everyone is entitled in full equality.
           </p>
 
           <div class="about-hero__box">
             <div class="about-hero__features">
-              <div class="feature-item">
+              <div class="feature-item" data-key="about_hero_feature1">
                 <span>⭐</span> Trusted, Local Travel Experts
               </div>
-              <div class="feature-item">
+              <div class="feature-item" data-key="about_hero_feature2">
                 <span>⭐</span> Flexible, Hassle-Free Bookings
               </div>
-              <div class="feature-item">
+              <div class="feature-item" data-key="about_hero_feature3">
                 <span>⭐</span> Real-Time Itinerary Updates
               </div>
-              <div class="feature-item">
+              <div class="feature-item" data-key="about_hero_feature1">
                 <span>⭐</span> Trusted, Local Travel Experts
               </div>
-              <div class="feature-item">
+              <div class="feature-item" data-key="about_hero_feature4">
                 <span>⭐</span> Various versions have evolved over
               </div>
-              <div class="feature-item">
+              <div class="feature-item" data-key="about_hero_feature3">
                 <span>⭐</span> Real-Time Itinerary Updates
               </div>
             </div>
 
             <div class="about-hero__cta">
-              <a href="#" class="btn-explore">EXPLORE TRIP</a>
+              <a href="#" class="btn-explore" data-key="about_hero_button"
+                >EXPLORE TRIP</a
+              >
               <div class="avatars">
                 <img src="../assets/images/about/Avatar.jpg" alt="avatar 1" />
                 <img src="../assets/images/about/Avatar.jpg" alt="avatar 2" />
@@ -274,7 +337,7 @@
 
     <!-- ========== TEAM SECTION ========== -->
     <div class="team-section">
-      <h2>MEET OUR TEAM</h2>
+      <h2 data-key="about_team_title">MEET OUR TEAM</h2>
       <div class="team-section__grid">
         <div class="team-section__card">
           <div class="team-section__image-box">
@@ -355,6 +418,5 @@
     </div>
 
     <script src="../assets/js/about.js"></script>
-
   </body>
 </html>

@@ -1,6 +1,7 @@
 // ============================
 // utils.js
 // ============================
+import { applyTranslations, setLanguage } from "./lang.js";
 
 export async function loadSection(
   id,
@@ -16,9 +17,7 @@ export async function loadSection(
     }
 
     // --- 1. Cập nhật title ---
-    if (pageName) {
-      document.title = `Travel VN | ${pageName}`;
-    }
+    if (pageName) document.title = `Travel VN | ${pageName}`;
 
     // --- 2. Load HTML ---
     const response = await fetch(filePath);
@@ -26,49 +25,51 @@ export async function loadSection(
     const html = await response.text();
     container.innerHTML = html;
 
-    // --- 3. Cập nhật trạng thái active cho nav (chỉ 1 lần, KHÔNG lặp trùng) ---
-    const allLinks = document.querySelectorAll(".nav-links a");
+    // --- 3. Dịch phần vừa được chèn ---
+    applyTranslations(container);
 
-    // Nhóm trang: menu chính -> các trang con cùng nhóm
+    // --- 4. Cập nhật trạng thái active cho nav ---
+    const allLinks = document.querySelectorAll(".nav-links a");
     const pageGroups = {
       Home: ["Home"],
       About: ["About"],
       Tours: ["Tours", "TourDetail"],
-      Blog: ["Blog"], // có thể thêm sau
+      Blog: ["Blog"],
       Contact: ["Contact"],
     };
-
-    const normalize = (s) => String(s || "").toLowerCase().replace(/\s+/g, "");
-
+    const normalize = (s) =>
+      String(s || "")
+        .toLowerCase()
+        .replace(/\s+/g, "");
     allLinks.forEach((link) => {
       const className = [...link.classList].find((c) => c !== "active");
       const isActive =
         pageName &&
         Object.entries(pageGroups).some(([main, group]) => {
-          const inGroup = group.some((g) => normalize(g) === normalize(pageName));
+          const inGroup = group.some(
+            (g) => normalize(g) === normalize(pageName)
+          );
           return inGroup && normalize(className) === normalize(main);
         });
-
       link.classList.toggle("active", !!isActive);
     });
 
-    // --- 4. Cuộn mượt về đầu trang ---
+    // --- 5. Cuộn lên đầu ---
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // --- 5. Load JS tương ứng (nếu có) ---
+    // --- 6. Load script tương ứng ---
     if (scriptPath) {
-      // Xóa module cũ nếu có (tránh cache)
-      const oldScript = document.querySelector(`script[src^="${scriptPath}"]`);
-      if (oldScript) oldScript.remove();
+      const old = document.querySelector(`script[src^="${scriptPath}"]`);
+      if (old) old.remove();
 
       try {
-        // IMPORTANT: scriptPath đã là dạng "./tour.js" -> import(`./${scriptPath}`) => "././tour.js" vẫn OK
         const module = await import(`./${scriptPath}?v=${Date.now()}`);
-        if (typeof module.initPage === "function") {
-          module.initPage();
-        }
+        if (typeof module.initPage === "function") module.initPage();
       } catch (err) {
-        console.warn(`Không thể import hoặc chạy initPage từ ${scriptPath}`, err);
+        console.warn(
+          `Không thể import hoặc chạy initPage từ ${scriptPath}`,
+          err
+        );
       }
     }
 

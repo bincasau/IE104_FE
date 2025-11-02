@@ -3,51 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tour Detail</title>
+    <title data-key="tourdetail_header_title">Tour Detail</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-
     <link rel="stylesheet" href="../assets/css/tourdetail.css" />
   </head>
   <body>
     <div class="blog-frame">
-      <!-- Nền màu -->
       <div class="blog-bg-color"></div>
-
-      <!-- Ảnh nền bên phải -->
       <img
         src="../assets/images/TourHeader - Copy.jpg"
         alt="Ảnh nền"
         class="blog-bg-img"
       />
-
-      <!-- Ảnh người đè lên -->
       <img
         src="../assets/images/TourHeaderPerson.jpg"
         alt="Người"
         class="blog-person"
       />
 
-      <!-- Text -->
       <div class="blog-text">
-        <h1>TOUR DETAIL</h1>
+        <h1 data-key="tourdetail_header_title">TOUR DETAIL</h1>
         <div class="breadcrumb">
-          <span class="home">HOME</span>
+          <span class="home" data-key="tourdetail_breadcrumb_home">HOME</span>
           <span class="arrow">›</span>
-          <span class="home">TOUR</span>
+          <span class="home" data-key="tourdetail_breadcrumb_tour">TOUR</span>
           <span class="arrow">›</span>
-          <span class="current">TourDetail</span>
+          <span class="current" data-key="tourdetail_breadcrumb_current"
+            >TourDetail</span
+          >
         </div>
       </div>
     </div>
 
     <div class="others-actions">
-      <button class="back-btn-tour">
+      <button class="back-btn-tour" data-key="tourdetail_back_btn">
         <i class="fa-solid fa-arrow-left"></i> Back
       </button>
     </div>
+
     <section class="tour-gallery">
       <div class="gallery-left">
         <img
@@ -69,13 +65,14 @@
         <div class="small-img last">
           <img src="../assets/images/detailTour/detailTour5.jpg" alt="" />
           <div class="overlay">
-            <button class="btn" id="openVideo">🎥 Video</button>
+            <button class="btn" id="openVideo" data-key="tourdetail_video_btn">
+              🎥 Video
+            </button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 🔽 Popup video đặt ngoài section -->
     <div class="video-popup" id="videoPopup">
       <div class="video-content">
         <span class="close-btn" id="closePopup">&times;</span>
@@ -97,40 +94,24 @@
             <h1 class="tour-title">Ha Long Bay Luxury Cruise Tour</h1>
           </div>
           <div class="tour-nav">
-            <a href="#overview">Overview</a>
-            <a href="#include">Included</a>
-            <a href="#map">Map</a>
-            <a href="#itinerary">Itinerary</a>
-            <a href="#tour">Others Tour</a>
+            <a href="#overview" data-key="tourdetail_nav_overview">Overview</a>
+            <a href="#include" data-key="tourdetail_nav_include">Included</a>
+            <a href="#map" data-key="tourdetail_nav_map">Map</a>
+            <a href="#itinerary" data-key="tourdetail_nav_itinerary"
+              >Itinerary</a
+            >
+            <a href="#tour" data-key="tourdetail_nav_others">Others Tour</a>
           </div>
         </div>
-        <div id="overview" class="overview-section">
-          <h3 class="section-title">Overview</h3>
 
+        <div id="overview" class="overview-section">
+          <h3 class="section-title" data-key="tourdetail_overview_title">
+            Overview
+          </h3>
           <p>
             Located in the Gulf of Tonkin, Ha Long Bay is one of Vietnam’s most
-            magnificent natural wonders and a UNESCO World Heritage site. With
-            over 1,600 limestone islands and islets rising dramatically from
-            emerald-green waters, the bay creates a surreal seascape that seems
-            to come straight out of a dream.
-
-            <br /><br />
-            On this 3-day journey, travelers will sail through the peaceful
-            waters on a luxurious cruise, explore hidden caves like Sung Sot
-            (Surprise Cave), and kayak through the quiet lagoons surrounded by
-            towering cliffs. Enjoy freshly caught seafood served on board, watch
-            the sunset from the sundeck, and experience the calm beauty of Ha
-            Long Bay at night under a sky filled with stars.
-
-            <br /><br />
-            The trip also includes visits to local floating fishing villages,
-            giving you a glimpse into the daily lives of fishermen who have
-            called this bay home for generations. Whether you are seeking
-            adventure, relaxation, or a romantic escape, Ha Long Bay promises an
-            unforgettable journey through one of the world’s most spectacular
-            landscapes.
+            magnificent natural wonders...
           </p>
-
           <div class="overview-grid">
             <div class="overview-item">
               <i class="fa-solid fa-location-dot"></i> Hanoi, Vietnam
@@ -147,12 +128,12 @@
           </div>
         </div>
 
-        <!-- 🔹 Include & Not Include Section -->
-        <!-- 🔹 Include & Not Include Section -->
         <div id="include" class="include-wrapper">
           <div class="include-section">
             <div class="include-column">
-              <h3 class="section-title">Include</h3>
+              <h3 class="section-title" data-key="tourdetail_include_title">
+                Include
+              </h3>
               <ul class="include-list">
                 <li>
                   <i class="fa-solid fa-check check"></i> Transportation by bus
@@ -187,7 +168,9 @@
             </div>
 
             <div class="include-column">
-              <h3 class="section-title">Not Include</h3>
+              <h3 class="section-title" data-key="tourdetail_not_include_title">
+                Not Include
+              </h3>
               <ul class="include-list">
                 <li>
                   <i class="fa-solid fa-xmark cross"></i> Personal expenses
@@ -210,41 +193,36 @@
         </div>
 
         <div id="map" class="map-section">
-          <div class="map-section">
-            <h3 class="section-title">Maps</h3>
-            <p>
-              Ha Long Bay, located in Quang Ninh Province, Vietnam — a UNESCO
-              World Heritage Site known for its emerald waters and thousands of
-              limestone islands topped by rainforests.
-            </p>
-            <div class="map-container">
-              <iframe
-                width="100%"
-                height="400"
-                style="border: 0; border-radius: 10px"
-                loading="lazy"
-                allowfullscreen
-                src="https://maps.google.com/maps?q=Vịnh%20Hạ%20Long&t=&z=14&ie=UTF8&iwloc=&output=embed"
-              >
-              </iframe>
-            </div>
+          <h3 class="section-title" data-key="tourdetail_map_title">Maps</h3>
+          <p>
+            Ha Long Bay, located in Quang Ninh Province, Vietnam — a UNESCO
+            World Heritage Site known for its emerald waters...
+          </p>
+          <div class="map-container">
+            <iframe
+              width="100%"
+              height="400"
+              style="border: 0; border-radius: 10px"
+              loading="lazy"
+              allowfullscreen
+              src="https://maps.google.com/maps?q=Vịnh%20Hạ%20Long&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            ></iframe>
           </div>
         </div>
 
         <section id="itinerary" class="itinerary-section">
-          <h3 class="section-title">Itinerary</h3>
-
+          <h3 class="section-title" data-key="tourdetail_itinerary_title">
+            Itinerary
+          </h3>
           <div class="timeline">
             <!-- 🔹 DAY 1 -->
             <div class="timeline-day">
               <div class="timeline-header">
                 <div class="day-label">Day 1</div>
                 <button class="accordion-btn">
-                  Hanoi → Ha Long Bay
-                  <i class="fa-solid fa-chevron-down"></i>
+                  Hanoi → Ha Long Bay <i class="fa-solid fa-chevron-down"></i>
                 </button>
               </div>
-
               <div class="accordion-content">
                 <div class="day-right">
                   <div class="day-image">
@@ -253,7 +231,6 @@
                       alt="Day 1"
                     />
                   </div>
-
                   <div class="mini-nav">
                     <button class="mini-tab active" data-tab="overview1">
                       Overview
@@ -266,14 +243,12 @@
                       Accommodation
                     </button>
                   </div>
-
                   <div class="tab-content active" id="overview1">
                     <p>
                       Begin your journey from Hanoi to Ha Long Bay. Cruise
                       across emerald waters and admire limestone islands.
                     </p>
                   </div>
-
                   <div class="tab-content" id="schedule1">
                     <ul>
                       <li>08:00 – Depart from Hanoi</li>
@@ -282,14 +257,12 @@
                       <li>19:00 – Dinner onboard</li>
                     </ul>
                   </div>
-
                   <div class="tab-content" id="meals1">
                     <p>
                       Lunch and dinner with fresh seafood. Vegetarian options
                       available.
                     </p>
                   </div>
-
                   <div class="tab-content" id="accommodation1">
                     <p>
                       Stay in a luxury cruise cabin with private balcony and
@@ -299,7 +272,6 @@
                 </div>
               </div>
             </div>
-
             <!-- 🔹 DAY 2 -->
             <div class="timeline-day">
               <div class="timeline-header">
@@ -309,7 +281,6 @@
                   <i class="fa-solid fa-chevron-down"></i>
                 </button>
               </div>
-
               <div class="accordion-content">
                 <div class="day-right">
                   <div class="day-image">
@@ -318,7 +289,6 @@
                       alt="Day 2"
                     />
                   </div>
-
                   <div class="mini-nav">
                     <button class="mini-tab active" data-tab="overview2">
                       Overview
@@ -331,14 +301,12 @@
                       Accommodation
                     </button>
                   </div>
-
                   <div class="tab-content active" id="overview2">
                     <p>
                       Explore Luon Cave by kayak and visit hidden lagoons
                       surrounded by cliffs.
                     </p>
                   </div>
-
                   <div class="tab-content" id="schedule2">
                     <ul>
                       <li>06:30 – Morning Tai Chi on deck</li>
@@ -347,11 +315,9 @@
                       <li>16:00 – Sunset party and dinner</li>
                     </ul>
                   </div>
-
                   <div class="tab-content" id="meals2">
                     <p>Breakfast buffet, seafood lunch, BBQ dinner onboard.</p>
                   </div>
-
                   <div class="tab-content" id="accommodation2">
                     <p>Overnight on cruise, enjoy peaceful night in the bay.</p>
                   </div>
@@ -360,12 +326,11 @@
             </div>
           </div>
         </section>
-        <!-- 🔹 OTHERS TOUR SECTION -->
-        <!-- ...toàn bộ phần bạn gửi giữ nguyên đến đoạn Others Tour ... -->
 
-        <!-- 🔹 OTHERS TOUR SECTION -->
         <section id="tour" class="others-tour">
-          <h3 class="section-title">Others Tour</h3>
+          <h3 class="section-title" data-key="tourdetail_others_title">
+            Others Tour
+          </h3>
           <div class="others-list">
             <a href="#" class="tour-link" data-id="1">
               <div class="tour-card-vertical">
@@ -383,12 +348,14 @@
                       <i class="fa-solid fa-location-dot"></i> Ninh Binh,
                       Vietnam
                     </p>
-                    <p><i class="fa-regular fa-clock"></i> 2 days</p>
+                    <p>
+                      <i class="fa-regular fa-clock"></i> 2
+                      <span data-key="tour_days">days</span>
+                    </p>
                   </div>
                 </div>
               </div>
             </a>
-
             <a href="#" class="tour-link" data-id="2">
               <div class="tour-card-vertical">
                 <img
@@ -404,12 +371,14 @@
                     <p>
                       <i class="fa-solid fa-location-dot"></i> Da Nang, Vietnam
                     </p>
-                    <p><i class="fa-regular fa-clock"></i> 3 days</p>
+                    <p>
+                      <i class="fa-regular fa-clock"></i> 3
+                      <span data-key="tour_days">days</span>
+                    </p>
                   </div>
                 </div>
               </div>
             </a>
-
             <a href="#" class="tour-link" data-id="3">
               <div class="tour-card-vertical">
                 <img src="../assets/images/detailTour/tour3/2.jpg" alt="Sapa" />
@@ -422,12 +391,14 @@
                     <p>
                       <i class="fa-solid fa-location-dot"></i> Sapa, Vietnam
                     </p>
-                    <p><i class="fa-regular fa-clock"></i> 3 days</p>
+                    <p>
+                      <i class="fa-regular fa-clock"></i> 3
+                      <span data-key="tour_days">days</span>
+                    </p>
                   </div>
                 </div>
               </div>
             </a>
-
             <a href="#" class="tour-link" data-id="4">
               <div class="tour-card-vertical">
                 <img
@@ -443,7 +414,10 @@
                     <p>
                       <i class="fa-solid fa-location-dot"></i> Phu Quoc, Vietnam
                     </p>
-                    <p><i class="fa-regular fa-clock"></i> 4 days</p>
+                    <p>
+                      <i class="fa-regular fa-clock"></i> 4
+                      <span data-key="tour_days">days</span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -467,39 +441,80 @@
         </div>
 
         <form class="join-form">
-          <h3>Join Us Tour</h3>
+          <h3 data-key="tourdetail_join_title">Join Us Tour</h3>
+
           <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="Enter your full name" />
+            <label for="name" data-key="tourdetail_form_name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your full name"
+              data-key-placeholder="tourdetail_placeholder_name"
+            />
           </div>
 
           <div class="form-group">
-            <label for="start-date">Starting Date</label>
+            <label for="start-date" data-key="tourdetail_form_startdate"
+              >Starting Date</label
+            >
             <input type="date" id="start-date" />
           </div>
 
           <div class="form-group guests">
-            <label>Guests</label>
+            <label data-key="tourdetail_form_guests">Guests</label>
             <div class="guest-inputs">
-              <input type="number" min="1" placeholder="Adults" />
-              <input type="number" min="0" placeholder="Kids" />
+              <input
+                type="number"
+                min="1"
+                placeholder="Adults"
+                data-key-placeholder="tourdetail_placeholder_adults"
+              />
+              <input
+                type="number"
+                min="0"
+                placeholder="Kids"
+                data-key-placeholder="tourdetail_placeholder_kids"
+              />
             </div>
           </div>
 
           <div class="form-group">
-            <label for="facilities">Extra Facilities</label>
+            <label for="facilities" data-key="tourdetail_form_facilities"
+              >Extra Facilities</label
+            >
             <select id="facilities">
-              <option selected disabled>Choose...</option>
-              <option value="meals">Meals Included</option>
-              <option value="pickup">Airport Pickup</option>
-              <option value="guide">Private Guide</option>
-              <option value="insurance">Travel Insurance</option>
+              <option selected disabled data-key="tourdetail_facilities_choose">
+                Choose...
+              </option>
+              <option value="meals" data-key="tourdetail_facility_meals">
+                Meals Included
+              </option>
+              <option value="pickup" data-key="tourdetail_facility_pickup">
+                Airport Pickup
+              </option>
+              <option value="guide" data-key="tourdetail_facility_guide">
+                Private Guide
+              </option>
+              <option
+                value="insurance"
+                data-key="tourdetail_facility_insurance"
+              >
+                Travel Insurance
+              </option>
             </select>
           </div>
 
           <div class="form-bottom">
-            <p class="price">Total: <span>$299</span></p>
-            <button type="button" class="book-btn">Book This Tour</button>
+            <p class="price">
+              <span data-key="tourdetail_total">Total:</span> <span>$0</span>
+            </p>
+            <button
+              type="button"
+              class="book-btn"
+              data-key="tourdetail_book_btn"
+            >
+              Book This Tour
+            </button>
           </div>
         </form>
       </div>

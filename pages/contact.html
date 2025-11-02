@@ -35,11 +35,13 @@
       />
 
       <div class="blog-text">
-        <h1>CONTACT US</h1>
+        <h1 data-key="contact_header_title">CONTACT US</h1>
         <div class="breadcrumb">
-          <span class="home">HOME</span>
+          <span class="home" data-key="contact_breadcrumb_home">HOME</span>
           <span class="arrow">›</span>
-          <span class="current">CONTACT</span>
+          <span class="current" data-key="contact_breadcrumb_current"
+            >CONTACT</span
+          >
         </div>
       </div>
     </div>
@@ -47,13 +49,17 @@
     <section class="promo">
       <div class="promo__inner">
         <div class="promo__left">
-          <h2 class="promo__kicker">We're here to assist</h2>
+          <h2 class="promo__kicker" data-key="contact_promo_kicker">
+            We're here to assist
+          </h2>
           <h3 class="promo__headline">
-            <span>Contact</span><br />
-            <span class="brand">Our Team</span><br />
-            <span>Anytime</span>
+            <span data-key="contact_promo_headline_contact">Contact</span><br />
+            <span class="brand" data-key="contact_promo_headline_ourteam"
+              >Our Team</span
+            ><br />
+            <span data-key="contact_promo_headline_anytime">Anytime</span>
           </h3>
-          <p class="promo__desc">
+          <p class="promo__desc" data-key="contact_promo_desc">
             Need help with bookings, cancellations, invoices, or partnerships?
             Send us a message — we respond within 24 hours.
           </p>
@@ -64,7 +70,8 @@
           aria-labelledby="contactHeading"
         >
           <h1 id="contactHeading" class="form-title">
-            Contact<br />With Us
+            <span data-key="contact_form_title_1"> Contact </span> <br />
+            <span data-key="contact_form_title_2"> With Us </span>
             <img src="../assets/images/plane.png" alt="" class="title-plane" />
           </h1>
 
@@ -72,12 +79,17 @@
             <div class="row">
               <label class="field">
                 <span class="label"
-                  ><i class="fa-solid fa-user"></i> Full Name</span
+                  ><i class="fa-solid fa-user"></i>
+                  <span data-key="contact_form_label_name"
+                    >Full Name</span
+                  ></span
                 >
                 <input
                   class="u-underline"
                   type="text"
                   name="name"
+                  data-key-placeholder="contact_form_placeholder_name"
+                  ="contact_form_placeholder_name"
                   placeholder="Your full name"
                   required
                 />
@@ -100,7 +112,8 @@
             <div class="row">
               <label class="field">
                 <span class="label"
-                  ><i class="fa-solid fa-phone"></i> Phone</span
+                  ><i class="fa-solid fa-phone"></i
+                  ><span data-key="contact_form_label_phone">Phone </span></span
                 >
                 <input
                   class="u-underline"
@@ -112,12 +125,14 @@
 
               <label class="field">
                 <span class="label"
-                  ><i class="fa-solid fa-tag"></i> Subject</span
-                >
+                  ><i class="fa-solid fa-tag"></i>
+                  <span data-key="contact_form_label_subject">Subject</span>
+                </span>
                 <input
                   class="u-underline"
                   type="text"
                   name="subject"
+                  data-key-placeholder="contact_form_placeholder_subject"
                   placeholder="What is this about?"
                   required
                 />
@@ -126,18 +141,26 @@
 
             <label class="field">
               <span class="label"
-                ><i class="fa-solid fa-message"></i> Message</span
-              >
+                ><i class="fa-solid fa-message"></i>
+                <span data-key="contact_form_label_message">Message</span>
+              </span>
               <textarea
                 class="u-underline u-underline--textarea"
                 name="message"
                 rows="4"
+                data-key-placeholder="contact_form_placeholder_message"
                 placeholder="Tell us how we can help..."
                 required
               ></textarea>
             </label>
 
-            <button class="btn-cta" type="submit">SEND MESSAGE</button>
+            <button
+              class="btn-cta"
+              type="submit"
+              data-key="contact_form_button"
+            >
+              SEND MESSAGE
+            </button>
             <p id="formMessage" class="form-msg"></p>
           </form>
         </aside>
@@ -145,7 +168,7 @@
     </section>
 
     <section class="map">
-      <div class="map__address">
+      <div class="map__address" data-key="contact_map_address">
         Linh Trung Ward, Thu Duc City, Ho Chi Minh City, Vietnam (UIT Campus)
       </div>
       <div class="map__frame">

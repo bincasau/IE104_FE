@@ -1,5 +1,6 @@
 export async function initPage() {
-  console.log("Tour.js loaded (enhanced)");
+  console.log("Tour.js loaded (v2.5 final — auto translate + fixed lazy load)");
+
   const destList = document.getElementById("destinationList");
   const actList = document.getElementById("activityList");
   const showMoreDestBtn = document.getElementById("showMoreDest");
@@ -24,6 +25,29 @@ export async function initPage() {
   let currentPage = 1;
   const toursPerPage = 5;
 
+  // ===== Hàm lấy text dịch =====
+  function t(key, fallback) {
+    if (window.__translations && window.__translations[key]) {
+      return window.__translations[key];
+    }
+    const el = document.querySelector(`[data-key="${key}"]`);
+    return el?.textContent?.trim() || fallback;
+  }
+
+  // ===== Load ngôn ngữ hiện tại ngay khi vào trang =====
+  await (async () => {
+    const lang = localStorage.getItem("lang") || "en";
+    try {
+      const res = await fetch(`../../lang/${lang}.json`);
+      if (res.ok) {
+        const translations = await res.json();
+        window.__translations = translations;
+      }
+    } catch (err) {
+      console.warn("Không thể load bản dịch ban đầu:", err);
+    }
+  })();
+
   const normalize = (s) =>
     String(s ?? "")
       .toLowerCase()
@@ -32,7 +56,7 @@ export async function initPage() {
       .replace(/\s+/g, " ")
       .trim();
 
-  function renderList(arr, container, limit, showAll, typeLabel) {
+  function renderList(arr, container, limit, showAll, typeLabel, allKey) {
     container.innerHTML = "";
     const allLabel = document.createElement("label");
     const allCb = document.createElement("input");
@@ -40,7 +64,10 @@ export async function initPage() {
     allCb.value = "all";
     allCb.checked = true;
     allLabel.appendChild(allCb);
-    allLabel.appendChild(document.createTextNode(" All " + (typeLabel || "")));
+    const allText = document.createElement("span");
+    allText.setAttribute("data-key", allKey);
+    allText.textContent = t(allKey, "All " + (typeLabel || ""));
+    allLabel.appendChild(allText);
     container.appendChild(allLabel);
 
     const items = showAll ? arr : arr.slice(0, limit);
@@ -57,7 +84,6 @@ export async function initPage() {
 
   async function loadTours() {
     try {
-      // keep the same structure you had: ../../data/tours.json
       const res = await fetch("../../data/tours.json");
       const data = await res.json();
       tours = Array.isArray(data.tours) ? data.tours : [];
@@ -65,8 +91,22 @@ export async function initPage() {
       provinces = [...new Set(tours.map((t) => t.location))];
       activities = [...new Set(tours.flatMap((t) => t.activities || []))];
 
-      renderList(provinces, destList, 4, showAllDest, "Destinations");
-      renderList(activities, actList, 4, showAllAct, "Activities");
+      renderList(
+        provinces,
+        destList,
+        4,
+        showAllDest,
+        "Destinations",
+        "tour_all_destination"
+      );
+      renderList(
+        activities,
+        actList,
+        4,
+        showAllAct,
+        "Activities",
+        "tour_all_activity"
+      );
 
       const maxPriceFound = tours.length
         ? Math.max(...tours.map((t) => t.price))
@@ -81,8 +121,11 @@ export async function initPage() {
         : 15;
       durationRange.max = Math.max(15, maxDurationFound);
       durationRange.value = durationRange.max;
-      durationMin.textContent = `1 day`;
-      durationMax.textContent = `${durationRange.value} days`;
+      durationMin.textContent = t("tour_duration_min", "1 day");
+      durationMax.textContent = `${durationRange.value} ${t(
+        "tour_duration_day_label",
+        "days"
+      )}`;
 
       attachFilterEvents();
       filteredTours = [...tours];
@@ -94,18 +137,20 @@ export async function initPage() {
       });
     } catch (err) {
       console.error("Lỗi load tour:", err);
-      container.innerHTML =
-        "<p style='text-align:center'>Không thể load data tours.json</p>";
+      container.innerHTML = `<p style='text-align:center'>${t(
+        "tour_no_result",
+        "Unable to load tours 🥲"
+      )}</p>`;
     }
   }
 
   function attachFilterEvents() {
-    destList.querySelectorAll("input[type='checkbox']").forEach((cb) => {
-      cb.addEventListener("change", onDestChange);
-    });
-    actList.querySelectorAll("input[type='checkbox']").forEach((cb) => {
-      cb.addEventListener("change", onActChange);
-    });
+    destList
+      .querySelectorAll("input[type='checkbox']")
+      .forEach((cb) => cb.addEventListener("change", onDestChange));
+    actList
+      .querySelectorAll("input[type='checkbox']")
+      .forEach((cb) => cb.addEventListener("change", onActChange));
   }
 
   function onDestChange(e) {
@@ -194,8 +239,10 @@ export async function initPage() {
     const pageTours = sorted.slice(start, start + toursPerPage);
 
     if (pageTours.length === 0) {
-      container.innerHTML =
-        "<p style='text-align:center'>Không có tour nào phù hợp 🥲</p>";
+      container.innerHTML = `<p style='text-align:center'>${t(
+        "tour_no_result",
+        "No matching tours found 🥲"
+      )}</p>`;
       pagination.innerHTML = "";
       return;
     }
@@ -206,9 +253,9 @@ export async function initPage() {
       container.style.opacity = "1";
     }, 60);
 
-    // Thêm từng tour (giữ nguyên phần cũ)
     pageTours.forEach((tour) => {
       const saveAmount = tour.oldPrice ? tour.oldPrice - tour.price : 0;
+      const imgPath = tour.image.replace("../../", "../");
       let availHTML = "";
       if (Array.isArray(tour.availability) && tour.availability.length === 2) {
         const a = tour.availability[0];
@@ -223,7 +270,7 @@ export async function initPage() {
       container.innerHTML += `
       <div class="tour-card hidden-card">
         <div class="tour-image-wrapper">
-          <img src="${tour.image}" alt="${tour.title}" loading="lazy" />
+          <img src="${imgPath}" alt="${tour.title}" loading="lazy" />
           ${
             tour.discount
               ? `<div class="discount-ribbon">${tour.discount}</div>`
@@ -233,10 +280,9 @@ export async function initPage() {
         <div class="tour-info">
           <h3>${tour.title}</h3>
           <p>${tour.shortDesc}</p>
-          <p class="location">
-            <i class="fa-solid fa-map-marker-alt" style="color:#d9302f;font-size:18px;"></i> 
-            ${tour.location}
-          </p>
+          <p class="location"><i class="fa-solid fa-map-marker-alt" style="color:#d9302f;font-size:18px;"></i> ${
+            tour.location
+          }</p>
           <div class="availability">${availHTML}</div>
         </div>
         <div class="tour-price">
@@ -244,26 +290,96 @@ export async function initPage() {
             <div class="price-row">
               ${
                 tour.oldPrice
-                  ? `<div class="from-label">From $${tour.oldPrice}</div>`
+                  ? `<div class="from-label">${t("tour_from_label", "From")} $${
+                      tour.oldPrice
+                    }</div>`
                   : ""
               }
               <div class="price">$${tour.price}</div>
             </div>
             <div class="price-row-bottom">
-              <div class="duration">${tour.duration} Days</div>
+              <div class="duration">${tour.duration} ${
+        tour.duration > 1
+          ? t("tour_days_label", "Days")
+          : t("tour_day_label", "Day")
+      }</div>
               ${
                 tour.oldPrice
-                  ? `<div class="save">Save $${saveAmount}</div>`
+                  ? `<div class="save">${t(
+                      "tour_save_label",
+                      "Save"
+                    )} $${saveAmount}</div>`
                   : ""
               }
             </div>
           </div>
-          <button class="view-more">View More</button>
+          <button class="view-more" data-key="tour_view_more">${t(
+            "tour_view_more",
+            "View More"
+          )}</button>
         </div>
       </div>`;
     });
+    container
+      .querySelectorAll(".tour-card .view-more")
+      .forEach((btn, index) => {
+        btn.addEventListener("click", async () => {
+          const selectedTour = filteredTours[index];
+          if (!selectedTour) return;
+          sessionStorage.setItem("selectedTourId", selectedTour.id);
+          if (window.loadSection) {
+            await window.loadSection(
+              "content",
+              "./pages/tourdetail.html",
+              "./tourdetail.js",
+              "TourDetail"
+            );
+          } else {
+            window.location.href = "./pages/tourdetail.html";
+          }
+        });
+      });
+    // ===== PHÂN TRANG =====
+    pagination.innerHTML = "";
+    if (totalPages > 1) {
+      const prevBtn = document.createElement("button");
+      prevBtn.textContent = t("tour_prev_btn", "Prev");
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderTours();
+          window.scrollTo({ top: 200, behavior: "smooth" });
+        }
+      });
+      pagination.appendChild(prevBtn);
 
-    // 🔥 Lazy animation khi scroll
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add("active");
+        btn.addEventListener("click", () => {
+          currentPage = i;
+          renderTours();
+          window.scrollTo({ top: 200, behavior: "smooth" });
+        });
+        pagination.appendChild(btn);
+      }
+
+      const nextBtn = document.createElement("button");
+      nextBtn.textContent = t("tour_next_btn", "Next");
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.addEventListener("click", () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderTours();
+          window.scrollTo({ top: 200, behavior: "smooth" });
+        }
+      });
+      pagination.appendChild(nextBtn);
+    }
+
+    // Lazy animation
     const cards = container.querySelectorAll(".hidden-card");
     const observer = new IntersectionObserver(
       (entries, obs) => {
@@ -278,93 +394,49 @@ export async function initPage() {
     );
     cards.forEach((card) => observer.observe(card));
 
-    // ✅ Lazy load ảnh (vẫn giữ nguyên)
+    // Lazy load ảnh (hiển thị dần + fallback)
     container.querySelectorAll("img[loading='lazy']").forEach((img) => {
-      if (img.complete) img.classList.add("lazy-loaded");
-      else img.addEventListener("load", () => img.classList.add("lazy-loaded"));
-    });
-
-    // ✅ View More handler (giữ nguyên)
-    container
-      .querySelectorAll(".tour-card .view-more")
-      .forEach((btn, index) => {
-        btn.addEventListener("click", async () => {
-          const selectedTour = filteredTours[index];
-          if (!selectedTour) return;
-          sessionStorage.setItem("selectedTourId", selectedTour.id);
-          // Nếu không có window.loadSection, chuyển hướng trang
-          if (window.loadSection) {
-            await window.loadSection(
-              "content",
-              "./pages/tourdetail.html",
-              "./tourdetail.js",
-              "TourDetail"
-            );
-          } else {
-            window.location.href = "./pages/tourdetail.html";
-          }
-        });
-      });
-
-    // ✅ Pagination (không đổi)
-    pagination.innerHTML = "";
-    const prev = document.createElement("button");
-    prev.textContent = "Prev";
-    prev.disabled = currentPage === 1;
-    prev.addEventListener("click", () => {
-      if (currentPage > 1) {
-        currentPage--;
-        renderTours();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      if (img.complete) {
+        img.classList.add("lazy-loaded");
+      } else {
+        img.addEventListener("load", () => img.classList.add("lazy-loaded"));
       }
+      // fallback sau 1s
+      setTimeout(() => img.classList.add("lazy-loaded"), 1000);
     });
-    pagination.appendChild(prev);
-
-    const maxButtons = 7;
-    let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
-    let endPage = Math.min(totalPages, startPage + maxButtons - 1);
-    if (endPage - startPage + 1 < maxButtons)
-      startPage = Math.max(1, endPage - maxButtons + 1);
-
-    for (let p = startPage; p <= endPage; p++) {
-      const btn = document.createElement("button");
-      btn.textContent = p;
-      if (p === currentPage) btn.classList.add("active");
-      btn.addEventListener("click", () => {
-        currentPage = p;
-        renderTours();
-        window.scrollTo({ top: 0, behavior: "smooth" }); // 👈 cuộn lên đầu mượt
-      });
-
-      pagination.appendChild(btn);
-    }
-
-    const next = document.createElement("button");
-    next.textContent = "Next";
-    next.disabled = currentPage === totalPages;
-    next.addEventListener("click", () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        renderTours();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    });
-
-    pagination.appendChild(next);
   }
 
+  // --- Các nút filter và điều khiển ---
   showMoreDestBtn.addEventListener("click", () => {
     showAllDest = !showAllDest;
-    renderList(provinces, destList, 4, showAllDest, "Destinations");
-    showMoreDestBtn.textContent = showAllDest ? "Show Less" : "Show More";
+    renderList(
+      provinces,
+      destList,
+      4,
+      showAllDest,
+      "Destinations",
+      "tour_all_destination"
+    );
+    showMoreDestBtn.textContent = showAllDest
+      ? "Show Less"
+      : t("tour_filter_show_more", "Show More");
     attachFilterEvents();
     applyFilters();
   });
 
   showMoreActBtn.addEventListener("click", () => {
     showAllAct = !showAllAct;
-    renderList(activities, actList, 4, showAllAct, "Activities");
-    showMoreActBtn.textContent = showAllAct ? "Show Less" : "Show More";
+    renderList(
+      activities,
+      actList,
+      4,
+      showAllAct,
+      "Activities",
+      "tour_all_activity"
+    );
+    showMoreActBtn.textContent = showAllAct
+      ? "Show Less"
+      : t("tour_filter_show_more", "Show More");
     attachFilterEvents();
     applyFilters();
   });
@@ -380,80 +452,44 @@ export async function initPage() {
     applyFilters();
   });
   durationRange.addEventListener("input", () => {
-    durationMax.textContent = `${durationRange.value} day${
-      durationRange.value > 1 ? "s" : ""
-    }`;
+    durationMax.textContent = `${durationRange.value} ${t(
+      "tour_duration_day_label",
+      "days"
+    )}`;
     applyFilters();
   });
-  // ==== Nhận dữ liệu searchCity từ trang Home ====
-  const savedCity = sessionStorage.getItem("searchCity");
-  if (savedCity) {
-    searchInput.value = savedCity;
 
-    // Xóa sau khi dùng để tránh lưu cho lần sau
-    sessionStorage.removeItem("searchCity");
-
-    // Sau khi tours load xong thì áp dụng filter tự động
-    // Vì loadTours() là async, ta sẽ chờ nó hoàn tất
-    const origLoadTours = loadTours;
-    loadTours = async function () {
-      await origLoadTours();
-      applyFilters(); // Lọc theo city đã nhập
-    };
-  }
   // ==== Start ====
-  const selectedProvinceRaw = sessionStorage.getItem("selectedProvince");
+  await loadTours();
 
-  async function start() {
-    await loadTours(); // tải tour + render danh sách ban đầu
-
-    if (selectedProvinceRaw) {
-      const selectedProvince = normalize(selectedProvinceRaw);
-
-      // Hàm tick tỉnh, có xử lý show more nếu cần
-      const tickProvince = () => {
-        const allCb = destList.querySelector('input[value="all"]');
-        if (allCb) allCb.checked = false;
-
-        const targetCb = Array.from(
-          destList.querySelectorAll('input[type="checkbox"]')
-        ).find((cb) => normalize(cb.value) === selectedProvince);
-
-        if (targetCb) {
-          targetCb.checked = true;
-          applyFilters();
-          console.log(" Đã tick tỉnh:", selectedProvinceRaw);
-        } else {
-          console.warn(" Không tìm thấy tỉnh:", selectedProvinceRaw);
-        }
-
-        sessionStorage.removeItem("selectedProvince");
-      };
-
-      // Nếu tỉnh chưa nằm trong list (có thể nằm trong phần Show More)
-      let hasProvince =
-        provinces.findIndex((p) => normalize(p) === selectedProvince) !== -1;
-
-      // Nếu có nhưng không hiển thị (vì showMoreDest = false)
-      const isHidden = !showAllDest && provinces.length > 4;
-
-      if (hasProvince && isHidden) {
-        // Mở rộng danh sách trước khi tick
-        showAllDest = true;
-        renderList(provinces, destList, 4, showAllDest, "Destinations");
-        attachFilterEvents();
-        showMoreDestBtn.textContent = "Show Less";
-
-        // Tick sau khi DOM đã update
-        setTimeout(tickProvince, 100);
-      } else {
-        // Trường hợp bình thường
-        setTimeout(tickProvince, 100);
-      }
+  // ==== Re-translate khi đổi ngôn ngữ ====
+  window.addEventListener("retranslate", async () => {
+    renderList(
+      provinces,
+      destList,
+      4,
+      showAllDest,
+      "Destinations",
+      "tour_all_destination"
+    );
+    renderList(
+      activities,
+      actList,
+      4,
+      showAllAct,
+      "Activities",
+      "tour_all_activity"
+    );
+    try {
+      const lang = localStorage.getItem("lang") || "en";
+      const res = await fetch(`../../lang/${lang}.json`);
+      const translations = await res.json();
+      window.__translations = translations;
+    } catch (err) {
+      console.warn("Không thể load lại file ngôn ngữ:", err);
     }
-  }
-  start();
-  loadTours();
+    renderTours();
+  });
 
   function setRangeProgress(inputEl) {
     const min = Number(inputEl.min || 0);

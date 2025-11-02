@@ -17,33 +17,44 @@
       <!-- Text + Form đặt tour -->
       <div class="hero-content">
         <div class="hero-text">
-          <p class="welcome">Welcome to Travel VN</p>
-          <p class="main-text">
+          <p class="welcome" data-key="hero_welcome">Welcome to Travel VN</p>
+          <p class="main-text" data-key="hero_main_text">
             Discover your next great adventure and uncover unforgettable moments
             waiting just around the corner.
           </p>
-          <button class="btn-tour">All Tours</button>
+          <button class="btn-tour" data-key="hero_btn_tour">All Tours</button>
         </div>
 
         <!-- Form booking -->
         <form class="booking-form">
           <div class="form-group">
-            <label>Select a city</label>
-            <input id="city-input" type="text" placeholder="Where To Next?" />
+            <label data-key="select_city">Select a city</label>
+            <input
+              id="city-input"
+              type="text"
+              placeholder="Where To Next?"
+              data-key-placeholder="where_to_placeholder"
+            />
           </div>
+
           <div class="form-group">
-            <label>Check in</label>
-            <input type="date" />
+            <label data-key="check_in">Check in</label>
+            <input type="date" data-key="check_in_input" />
           </div>
+
           <div class="form-group">
-            <label>Check out</label>
-            <input type="date" />
+            <label data-key="check_out">Check out</label>
+            <input type="date" data-key="check_out_input" />
           </div>
+
           <div class="form-group">
-            <label>Guests</label>
-            <input type="number" value="1" min="1" />
+            <label data-key="guests">Guests</label>
+            <input type="number" value="1" min="1" data-key="guests_input" />
           </div>
-          <button type="submit" class="btn-search">🔍 Search</button>
+
+          <button type="submit" class="btn-search" data-key="search_btn">
+            🔍 Search
+          </button>
         </form>
       </div>
 
@@ -98,12 +109,12 @@
         <div class="feature-left">
           <!-- Tiêu đề -->
           <div class="feature-text">
-            <p class="subheading">Travel VN Feature</p>
-            <h2>
+            <p class="subheading" data-key="feature_sub">Travel VN Feature</p>
+            <h2 data-key="feature_title">
               Seamless Travel <br />
               Planning
             </h2>
-            <h3><em>Made Easy.</em></h3>
+            <h3><em data-key="feature_made_easy">Made Easy.</em></h3>
           </div>
 
           <!-- Hình shape -->
@@ -117,8 +128,8 @@
           <div class="feature-grid">
             <!-- Thẻ 1 -->
             <div class="feature-card purple">
-              <h4>Lot of Choices</h4>
-              <p>
+              <h4 data-key="feature_card1_title">Lot of Choices</h4>
+              <p data-key="feature_card1_text">
                 With countless choices at your fingertips, the perfect
                 experience.
               </p>
@@ -133,8 +144,8 @@
 
             <!-- Thẻ 2 -->
             <div class="feature-card yellow">
-              <h4>Professional Guide</h4>
-              <p>
+              <h4 data-key="feature_card2_title">Professional Guide</h4>
+              <p data-key="feature_card2_text">
                 Enjoy unbeatable deals and exclusive discounts on flights,
                 hotels, and tours.
               </p>
@@ -149,8 +160,8 @@
 
             <!-- Thẻ 3 -->
             <div class="feature-card gray">
-              <h4>Exclusive Trip</h4>
-              <p>
+              <h4 data-key="feature_card3_title">Exclusive Trip</h4>
+              <p data-key="feature_card3_text">
                 Experience an exclusive trip tailored just for you, with premium
                 services.
               </p>
@@ -180,26 +191,27 @@
          PHẦN 3: DESTINATIONS SECTION (điểm đến nổi bật)
     ============================================== -->
     <section class="main-destinations">
-      <!-- Cột trái: Text giới thiệu -->
       <div class="dest-left">
         <div class="bg-overlay"></div>
-
         <div class="dest-text">
-          <p class="subheading">Best Tours</p>
-          <h2>Featured Destinations to Inspire <em>Your Journey</em></h2>
-          <p class="desc">
+          <p class="subheading" data-key="dest_sub">Best Tours</p>
+          <h2 data-key="dest_title">
+            Featured Destinations to Inspire <em>Your Journey</em>
+          </h2>
+          <p class="desc" data-key="dest_desc">
             Discover breathtaking destinations handpicked for unforgettable
             experiences. From tropical beaches to cultural landmarks, your next
             adventure awaits.
           </p>
-          <button class="btn-destination">All Destinations</button>
+          <button class="btn-destination" data-key="dest_btn">
+            All Destinations
+          </button>
         </div>
       </div>
 
       <!-- Cột phải: Lưới ảnh điểm đến -->
       <div class="dest-right">
         <div class="dest-grid">
-          <!-- Ảnh 1 -->
           <div class="dest-card">
             <img
               data-src="../assets/images/tour/tour_1.jpg"
@@ -207,11 +219,11 @@
               class="lazy"
             />
             <div class="label">
-              <span>Quảng Ninh</span> <span class="arrow">➜</span>
+              <span data-key="dest_quangninh">Quảng Ninh</span>
+              <span class="arrow">➜</span>
             </div>
           </div>
 
-          <!-- Ảnh 2 -->
           <div class="dest-card tall">
             <img
               data-src="../assets/images/tour/tour_6.jpg"
@@ -219,11 +231,11 @@
               class="lazy"
             />
             <div class="label">
-              <span>Thừa Thiên Huế</span> <span class="arrow">➜</span>
+              <span data-key="dest_hue">Thừa Thiên Huế</span>
+              <span class="arrow">➜</span>
             </div>
           </div>
 
-          <!-- Ảnh 3 -->
           <div class="dest-card">
             <img
               data-src="../assets/images/tour/tour_7.jpg"
@@ -231,11 +243,11 @@
               class="lazy"
             />
             <div class="label">
-              <span>Khánh Hòa</span> <span class="arrow">➜</span>
+              <span data-key="dest_khanhhoa">Khánh Hòa</span>
+              <span class="arrow">➜</span>
             </div>
           </div>
 
-          <!-- Ảnh 4 -->
           <div class="dest-card">
             <img
               data-src="../assets/images/tour/tour_9.jpg"
@@ -243,11 +255,11 @@
               class="lazy"
             />
             <div class="label">
-              <span>Cần Thơ</span> <span class="arrow">➜</span>
+              <span data-key="dest_cantho">Cần Thơ</span>
+              <span class="arrow">➜</span>
             </div>
           </div>
 
-          <!-- Ảnh 5 -->
           <div class="dest-card">
             <img
               data-src="../assets/images/tour/tour_8.jpg"
@@ -255,7 +267,8 @@
               class="lazy"
             />
             <div class="label">
-              <span>Hà Nội</span> <span class="arrow">➜</span>
+              <span data-key="dest_hanoi">Hà Nội</span>
+              <span class="arrow">➜</span>
             </div>
           </div>
         </div>
@@ -269,8 +282,8 @@
       <div class="about-container">
         <!-- Hàng 1: tiêu đề & mô tả -->
         <div class="about-header">
-          <p class="subheading">About Us Travel VN</p>
-          <h2>
+          <p class="subheading" data-key="about_sub">About Us Travel VN</p>
+          <h2 data-key="about_title">
             Our Trusted Travel Partner for <br />
             Unforgettable <em>Journeys Worldwide.</em>
           </h2>
@@ -294,7 +307,7 @@
 
           <!-- Cột giữa -->
           <div class="about-middle">
-            <p class="desc">
+            <p class="desc" data-key="about_desc">
               Discover breathtaking destinations handpicked for unforgettable
               experiences. From tropical beaches to cultural landmarks, your
               next adventure starts here.
@@ -307,8 +320,8 @@
                   class="icon lazy"
                 />
                 <div class="text">
-                  <h4>Best Travel Agency</h4>
-                  <p>
+                  <h4 data-key="about_card1_title">Best Travel Agency</h4>
+                  <p data-key="about_card1_text">
                     Discover unparalleled journeys with the best travel agency.
                   </p>
                 </div>
@@ -321,8 +334,8 @@
                   class="icon lazy"
                 />
                 <div class="text">
-                  <h4>Visa Get in 3 Days</h4>
-                  <p>
+                  <h4 data-key="about_card2_title">Visa Get in 3 Days</h4>
+                  <p data-key="about_card2_text">
                     Secure your visa in just 3 days with our efficient and
                     reliable service.
                   </p>
@@ -330,7 +343,9 @@
               </div>
             </div>
 
-            <button class="btn-about">Know About Us</button>
+            <button class="btn-about" data-key="about_btn">
+              Know About Us
+            </button>
           </div>
 
           <!-- Cột phải -->
@@ -352,8 +367,8 @@
       <div class="recommend-container">
         <!-- Tiêu đề -->
         <div class="recommend-header">
-          <p class="subheading">Best Tours</p>
-          <h2>Recommended Trips For Your</h2>
+          <p class="subheading" data-key="recommend_sub">Best Tours</p>
+          <h2 data-key="recommend_title">Recommended Trips For Your</h2>
         </div>
 
         <!-- Lưới tour -->
@@ -369,7 +384,9 @@
               <h4></h4>
               <p class="location"></p>
               <div class="tour-meta"></div>
-              <button class="btn-view">View Tour</button>
+              <button class="btn-view" data-key="recommend_view">
+                View Tour
+              </button>
             </div>
           </div>
 
@@ -383,7 +400,9 @@
               <h4></h4>
               <p class="location"></p>
               <div class="tour-meta"></div>
-              <button class="btn-view">View Tour</button>
+              <button class="btn-view" data-key="recommend_view">
+                View Tour
+              </button>
             </div>
           </div>
 
@@ -397,7 +416,9 @@
               <h4></h4>
               <p class="location"></p>
               <div class="tour-meta"></div>
-              <button class="btn-view">View Tour</button>
+              <button class="btn-view" data-key="recommend_view">
+                View Tour
+              </button>
             </div>
           </div>
 
@@ -411,7 +432,9 @@
               <h4></h4>
               <p class="location"></p>
               <div class="tour-meta"></div>
-              <button class="btn-view">View Tour</button>
+              <button class="btn-view" data-key="recommend_view">
+                View Tour
+              </button>
             </div>
           </div>
 
@@ -425,7 +448,9 @@
               <h4></h4>
               <p class="location"></p>
               <div class="tour-meta"></div>
-              <button class="btn-view">View Tour</button>
+              <button class="btn-view" data-key="recommend_view">
+                View Tour
+              </button>
             </div>
           </div>
 
@@ -439,14 +464,18 @@
               <h4></h4>
               <p class="location"></p>
               <div class="tour-meta"></div>
-              <button class="btn-view">View Tour</button>
+              <button class="btn-view" data-key="recommend_view">
+                View Tour
+              </button>
             </div>
           </div>
         </div>
 
         <!-- Nút xem thêm -->
         <div class="btn-center">
-          <button class="btn-more">View All Tour</button>
+          <button class="btn-more" data-key="recommend_btn">
+            View All Tour
+          </button>
         </div>
       </div>
     </section>
@@ -468,14 +497,14 @@
           />
           <div class="experience-box">
             <h3>21+</h3>
-            <p>Years of Experience</p>
+            <p data-key="chooseus_exp_years">Years of Experience</p>
           </div>
         </div>
 
         <!-- Cột giữa - nội dung chính -->
         <div class="chooseus-content">
-          <p class="subheading">Why Choose Travlia</p>
-          <h2>
+          <p class="subheading" data-key="chooseus_sub">Why Choose Travel VN</p>
+          <h2 data-key="chooseus_title">
             Why Travelers Trust <br />
             <span>Travlia</span> for Seamless <em>Travel Experiences</em>
           </h2>
@@ -490,8 +519,8 @@
                 class="lazy"
               />
               <div class="text">
-                <h4>Best Travel Agents</h4>
-                <p>
+                <h4 data-key="chooseus_card1_title">Best Travel Agents</h4>
+                <p data-key="chooseus_card1_text">
                   We begin by understanding your vision, goals, and market to
                   craft a tailored strategy.
                 </p>
@@ -505,8 +534,8 @@
                 class="lazy"
               />
               <div class="text">
-                <h4>Safety First Always</h4>
-                <p>
+                <h4 data-key="chooseus_card2_title">Safety First Always</h4>
+                <p data-key="chooseus_card2_text">
                   User-centric design and interactive prototypes bring your
                   product idea to life.
                 </p>
@@ -520,8 +549,8 @@
                 class="lazy"
               />
               <div class="text">
-                <h4>Best Price Guarantee</h4>
-                <p>
+                <h4 data-key="chooseus_card3_title">Best Price Guarantee</h4>
+                <p data-key="chooseus_card3_text">
                   Agile development ensures a scalable, secure product with
                   continuous testing for quality.
                 </p>
@@ -535,8 +564,8 @@
                 class="lazy"
               />
               <div class="text">
-                <h4>24/7 Customer Support</h4>
-                <p>
+                <h4 data-key="chooseus_card4_title">24/7 Customer Support</h4>
+                <p data-key="chooseus_card4_text">
                   We deploy, optimize, and support your startup as it grows and
                   scales in the market.
                 </p>
@@ -563,8 +592,8 @@
       <div class="testimonials-container">
         <!-- Tiêu đề -->
         <div class="testimonials-header">
-          <p class="subheading">Our Testimonials</p>
-          <h2>What’s Our Customers Say About Us!</h2>
+          <p class="subheading" data-key="testi_sub">Our Testimonials</p>
+          <h2 data-key="testi_title">What’s Our Customers Say About Us!</h2>
         </div>
 
         <!-- Nội dung đánh giá -->
@@ -604,7 +633,9 @@
 
         <!-- Dãy logo thương hiệu -->
         <div class="testimonials-brands">
-          <p>Trusted By 15,000+ Founders & Business Owners</p>
+          <p data-key="testi_brands">
+            Trusted By 15,000+ Founders & Business Owners
+          </p>
           <img
             data-src="../assets/images/home/testimonials_brands.png"
             alt="Trusted Brands"
@@ -619,12 +650,12 @@
     ================================================ -->
     <section class="main-offer">
       <div class="offer-content">
-        <h2>Get Special Offer</h2>
-        <p>
+        <h2 data-key="offer_title">Get Special Offer</h2>
+        <p data-key="offer_desc">
           Embark on an unforgettable journey with our exclusive tour special
           offer — seize the moment and create lasting memories.
         </p>
-        <button class="btn-offer">Booking Now</button>
+        <button class="btn-offer" data-key="offer_btn">Booking Now</button>
 
         <img
           data-src="../assets/images/home/offer_discount_40.svg"
@@ -644,7 +675,9 @@
         <!-- Cột trái -->
         <div class="tripshowcase-col tripshowcase-left">
           <div class="trip-card-group">
-            <h4 class="trip-title">Recommended for you</h4>
+            <h4 class="trip-title" data-key="trip_left_title">
+              Recommended for you
+            </h4>
 
             <div class="trip-card">
               <img
@@ -708,7 +741,7 @@
         <!-- Cột phải -->
         <div class="tripshowcase-col tripshowcase-right">
           <div class="trip-card-group">
-            <h4 class="trip-title">Family Trip</h4>
+            <h4 class="trip-title" data-key="trip_right_title">Family Trip</h4>
 
             <div class="trip-card">
               <img
@@ -768,8 +801,10 @@
     <section class="main-blog">
       <div class="blog-container">
         <div class="blog-header">
-          <span class="blog-subtitle">Blog & News</span>
-          <h2>Learn Something More From<br />Our Latest Blogs.</h2>
+          <span class="blog-subtitle" data-key="blog_sub">Blog & News</span>
+          <h2 data-key="blog_title">
+            Learn Something More From<br />Our Latest Blogs.
+          </h2>
         </div>
 
         <div class="blog-grid">
@@ -858,28 +893,40 @@
     <section class="main-newsletter">
       <div class="newsletter-overlay">
         <div class="newsletter-content">
-          <h2>Subscribe to Our Newsletter &<br />Join Travlia Go.</h2>
+          <h2 data-key="newsletter_title">
+            Subscribe to Our Newsletter &<br />Join Travlia Go.
+          </h2>
 
           <div class="newsletter-benefits">
-            <p>
-              <i class="fa-solid fa-circle-check"></i> The Best Travel Deals
-            </p>
-            <p><i class="fa-solid fa-circle-check"></i> Exclusive Promotions</p>
-            <p><i class="fa-solid fa-circle-check"></i> Expert Travel Tips</p>
+            <div>
+              <i class="fa-solid fa-circle-check"></i>
+              <span data-key="newsletter_benefit1">The Best Travel Deals</span>
+            </div>
+            <div>
+              <i class="fa-solid fa-circle-check"></i>
+              <span data-key="newsletter_benefit2">Exclusive Promotions</span>
+            </div>
+            <div>
+              <i class="fa-solid fa-circle-check"></i>
+              <span data-key="newsletter_benefit3">Expert Travel Tips</span>
+            </div>
           </div>
 
           <form class="newsletter-form">
             <input
               type="text"
               id="newsletterEmail"
+              data-key-placeholder="newsletter_placeholder"
               placeholder="Enter Your Email"
               required
             />
-            <button type="submit">
+            <button type="submit" data-key="newsletter_btn">
               Subscribe <i class="fa-solid fa-arrow-right"></i>
             </button>
           </form>
-          <small class="error-msg"></small>
+          <small class="error-msg" data-key="newsletter_error_invalid">
+            Please enter a valid email address.
+          </small>
         </div>
       </div>
 
@@ -889,9 +936,11 @@
           <div class="thank-icon">
             <i class="fa-solid fa-paper-plane"></i>
           </div>
-          <h3>Thank You!</h3>
-          <p>You’ve successfully subscribed to our newsletter.</p>
-          <button id="closePopup">Close</button>
+          <h3 data-key="thank_title">Thank You!</h3>
+          <p data-key="thank_msg">
+            You’ve successfully subscribed to our newsletter.
+          </p>
+          <button id="closePopup" data-key="thank_close">Close</button>
         </div>
       </div>
     </section>

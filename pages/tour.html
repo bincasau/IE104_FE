@@ -39,11 +39,11 @@
 
       <!-- Text -->
       <div class="blog-text">
-        <h1>TOUR RECENT</h1>
+        <h1 data-key="tour_header_title">TOUR RECENT</h1>
         <div class="breadcrumb">
-          <span class="home">HOME</span>
+          <span class="home" data-key="tour_breadcrumb_home">HOME</span>
           <span class="arrow">›</span>
-          <span class="current">TOUR</span>
+          <span class="current" data-key="tour_breadcrumb_current">TOUR</span>
         </div>
       </div>
     </div>
@@ -52,16 +52,22 @@
     <main class="main-layout">
       <!-- === FILTER AREA === -->
       <aside class="filter-area scroll-animate">
-        <h2>Criteria</h2>
+        <h2 data-key="tour_filter_title">Criteria</h2>
 
         <div class="criteria-section">
-          <h3>Destination</h3>
+          <h3 data-key="tour_filter_destination">Destination</h3>
           <div id="destinationList"></div>
-          <button id="showMoreDest" class="show-more">Show More</button>
+          <button
+            id="showMoreDest"
+            class="show-more"
+            data-key="tour_filter_show_more"
+          >
+            Show More
+          </button>
         </div>
 
         <div class="criteria-section">
-          <h3>Price</h3>
+          <h3 data-key="tour_filter_price">Price</h3>
           <div class="range-wrapper">
             <input type="range" id="priceRange" min="0" max="2000" value="0" />
             <div class="range-values">
@@ -72,20 +78,26 @@
         </div>
 
         <div class="criteria-section">
-          <h3>Duration</h3>
+          <h3 data-key="tour_filter_duration">Duration</h3>
           <div class="range-wrapper">
             <input type="range" id="durationRange" min="1" max="15" value="1" />
             <div class="range-values">
-              <span id="durationMin">1 day</span>
-              <span id="durationMax">15 days</span>
+              <span id="durationMin" data-key="tour_duration_min">1 day</span>
+              <span id="durationMax" data-key="tour_duration_max">15 days</span>
             </div>
           </div>
         </div>
 
         <div class="criteria-section">
-          <h3>Activities</h3>
+          <h3 data-key="tour_filter_activities">Activities</h3>
           <div id="activityList"></div>
-          <button id="showMoreAct" class="show-more">Show More</button>
+          <button
+            id="showMoreAct"
+            class="show-more"
+            data-key="tour_filter_show_more"
+          >
+            Show More
+          </button>
         </div>
       </aside>
 
@@ -98,6 +110,7 @@
               type="text"
               id="searchInput"
               class="search-box"
+              data-key-placeholder="tour_search_placeholder"
               placeholder="Search for tours..."
               aria-label="Search for tours"
             />
@@ -105,9 +118,15 @@
 
           <div class="sort-box">
             <select id="sortSelect" aria-label="Sort tours">
-              <option value="recent">Recently Added</option>
-              <option value="priceAsc">Price: Low → High</option>
-              <option value="priceDesc">Price: High → Low</option>
+              <option value="recent" data-key="tour_sort_recent">
+                Recently Added
+              </option>
+              <option value="priceAsc" data-key="tour_sort_price_asc">
+                Price: Low → High
+              </option>
+              <option value="priceDesc" data-key="tour_sort_price_desc">
+                Price: High → Low
+              </option>
             </select>
           </div>
         </div>

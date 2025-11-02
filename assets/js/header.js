@@ -1,7 +1,8 @@
 import { loadSection } from "./utils.js";
-
+import { setLanguage, applyTranslations, enableAutoTranslate } from "./lang.js";
 export async function initHeader() {
   console.log("Header initialized");
+  enableAutoTranslate();
 
   const navLinksContainer = document.querySelector(".nav-links");
   const navLinks = navLinksContainer
@@ -12,7 +13,7 @@ export async function initHeader() {
   navLinks.forEach((link) => {
     link.addEventListener("click", async (e) => {
       e.preventDefault();
-
+      history.replaceState(null, "", location.pathname);
       const pageName = [...link.classList].find((c) => c !== "active");
       if (!pageName) return;
 
@@ -49,7 +50,6 @@ export async function initHeader() {
       }
 
       await loadSection("content", selected.html, selected.js, pageName);
-
 
       // 🧹 Khi chuyển sang trang khác, xóa handler của TourDetail nếu còn
       if (window._tourPopHandler) {
@@ -163,5 +163,47 @@ export async function initHeader() {
     });
   } else {
     // Không có language selector trên 1 số layout -> bỏ qua
+  }
+  // ===== FETCH NGÔN NGỮ VÀ CẬP NHẬT TEXT =====
+  // --- Khi chọn cờ ---
+  langDropdown.querySelectorAll("li").forEach((item) => {
+    item.addEventListener("click", async () => {
+      const flagSrc = item.getAttribute("data-flag");
+      const img = langBtn.querySelector("img");
+      if (img) img.src = flagSrc;
+
+      //  Lấy tên file thật (vd: eng.jpg -> eng)
+      const filename = flagSrc.split("/").pop().split(".")[0];
+      let lang = "en";
+      if (filename === "vi") lang = "vi";
+      else if (filename === "jp") lang = "jp";
+      else if (filename === "cn") lang = "cn";
+
+      await setLanguage(lang);
+      localStorage.setItem("lang", lang); // Lưu lại để reload giữ ngôn ngữ
+      languageSelector.classList.remove("show");
+    });
+  });
+
+  // --- Tự động load ngôn ngữ đã lưu ---
+  const savedLang = localStorage.getItem("lang") || "en";
+  await setLanguage(savedLang);
+
+  //  Cập nhật lại hình cờ đúng theo ngôn ngữ đã lưu
+  const img = langBtn.querySelector("img");
+  if (img) {
+    switch (savedLang) {
+      case "vi":
+        img.src = "../assets/images/header/vi.jpg";
+        break;
+      case "jp":
+        img.src = "../assets/images/header/jp.jpg";
+        break;
+      case "cn":
+        img.src = "../assets/images/header/cn.jpg";
+        break;
+      default:
+        img.src = "../assets/images/header/eng.jpg";
+    }
   }
 }

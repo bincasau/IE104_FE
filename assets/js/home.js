@@ -75,8 +75,16 @@ export async function initPage() {
     if (!res.ok) throw new Error("Không thể tải danh sách tour");
     const data = await res.json();
 
+    // Lấy ngôn ngữ hiện tại
+    const lang = localStorage.getItem("lang") || "en";
+    const langRes = await fetch(`../../lang/${lang}.json`);
+    const translations = await langRes.json();
+
     const tours = data.tours.slice(0, 6);
     const tourCards = document.querySelectorAll(".tour-card");
+
+    const locLabel = translations.tour_location || "Location";
+    const dayLabel = translations.tour_days || "Days";
 
     tourCards.forEach((card, i) => {
       const t = tours[i];
@@ -88,21 +96,29 @@ export async function initPage() {
       const meta = card.querySelector(".tour-meta");
       const btn = card.querySelector(".btn-view");
 
+      // Ảnh
       if (img) {
-        img.dataset.src = t.image;
+        img.src = t.image;
         img.alt = t.title;
       }
+
+      // Tiêu đề
       if (title) title.textContent = t.title;
-      if (location) location.textContent = `Location: ${t.location}`;
+
+      // Địa điểm
+      if (location) location.textContent = `${locLabel}: ${t.location}`;
+
+      // Thời lượng và giá
       if (meta)
         meta.innerHTML = `
-          <span>⏱ ${t.duration} Days</span>
-          <span>💲 $${t.price}</span>
-        `;
+        <span>⏱ ${t.duration} ${dayLabel}</span>
+        <span> $${t.price}</span>
+      `;
+
       if (btn) btn.dataset.id = t.id;
     });
 
-    // Gán sự kiện click “View Tour”
+    // Sự kiện “View Tour”
     document.querySelectorAll(".btn-view").forEach((btn) => {
       btn.addEventListener("click", async () => {
         const id = btn.dataset.id;
@@ -237,6 +253,14 @@ export async function initPage() {
   const popup = document.getElementById("thankPopup");
   const closePopup = document.getElementById("closePopup");
 
+  let translations = {};
+
+  (async () => {
+    const lang = localStorage.getItem("lang") || "en";
+    const res = await fetch(`../../lang/${lang}.json`);
+    translations = await res.json();
+  })();
+
   if (form && emailInput && errorMsg && popup) {
     popup.style.display = "none";
     popup.classList.add("hidden");
@@ -249,16 +273,20 @@ export async function initPage() {
       const email = emailInput.value.trim();
 
       if (!validateEmail(email)) {
-        errorMsg.textContent = "Please enter a valid email address.";
+        errorMsg.textContent =
+          translations.newsletter_error_invalid ||
+          "Please enter a valid email address.";
         errorMsg.classList.add("show");
         emailInput.style.border = "2px solid #ff3b3b";
         return;
       }
 
+      // Ẩn lỗi nếu hợp lệ
       errorMsg.classList.remove("show");
       emailInput.style.border = "none";
       emailInput.value = "";
 
+      // Hiện popup cảm ơn
       popup.style.display = "flex";
       popup.classList.remove("hidden");
       requestAnimationFrame(() => popup.classList.add("show"));

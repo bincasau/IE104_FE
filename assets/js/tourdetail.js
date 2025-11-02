@@ -1,6 +1,8 @@
 // ===============================
 // tourdetail.js (FINAL FIX - Stable + Booking Popup đẹp)
 // ===============================
+import { I18N, applyTranslations } from "./lang.js";
+
 export async function initPage() {
   console.log("✅ Tour Detail JS initialized");
 
@@ -147,15 +149,17 @@ export async function initPage() {
   // 💰 Booking Form
   // ===============================
   const pricePerAdult = 299;
-  const adultInput = document.querySelector(
-    ".guest-inputs input[placeholder='Adults']"
-  );
-  const kidInput = document.querySelector(
-    ".guest-inputs input[placeholder='Kids']"
-  );
-  const totalEl = document.querySelector(".form-bottom .price span");
+  const guestInputs = document.querySelectorAll(".guest-inputs input");
+  const adultInput = guestInputs[0];
+  const kidInput = guestInputs[1];
+  const totalEl = document.querySelector(".form-bottom .price span:last-child");
   const bookBtn = document.querySelector(".book-btn");
   const form = document.querySelector(".join-form");
+
+  if (!adultInput || !kidInput || !form || !bookBtn) {
+    console.warn("⚠️ Booking form elements not found.");
+    return;
+  }
 
   const errorMsg = document.createElement("p");
   Object.assign(errorMsg.style, {
@@ -181,7 +185,7 @@ export async function initPage() {
   // 🩵 Booking Popup đẹp
   // ===============================
   if (bookBtn) {
-    bookBtn.addEventListener("click", (e) => {
+    bookBtn.addEventListener("click", async (e) => {
       e.preventDefault();
 
       const name = document.getElementById("name")?.value.trim();
@@ -189,31 +193,62 @@ export async function initPage() {
       const adults = parseInt(adultInput.value || "0");
       const facility = document.getElementById("facilities")?.value;
 
-      if (!name || !startDate || adults <= 0 || !facility || facility === "Choose...") {
-        errorMsg.textContent = "⚠️ Please fill in all required fields!";
+      // === Lấy ngôn ngữ & bản dịch ===
+      const lang = localStorage.getItem("lang") || "en";
+      let t = (key) => key;
+      try {
+        const res = await fetch(`../../lang/${lang}.json`);
+        if (res.ok) {
+          const trans = await res.json();
+          t = (key) => trans[key] || key;
+        }
+      } catch (e) {
+        console.warn("⚠️ Translation not loaded:", e);
+      }
+
+      // === Kiểm tra dữ liệu ===
+      if (
+        !name ||
+        !startDate ||
+        adults <= 0 ||
+        !facility ||
+        facility === "Choose..."
+      ) {
+        errorMsg.textContent = t("tourdetail_booking_fill_error");
         return;
       }
       errorMsg.textContent = "";
 
+      // === Popup xác nhận ===
       const popup = document.createElement("div");
       popup.className = "booking-popup";
       popup.innerHTML = `
-        <div class="popup-overlay"></div>
-        <div class="popup-box">
-          <span class="popup-close">&times;</span>
-          <div class="popup-content">
-            <div class="popup-icon">✅</div>
-            <h2>Booking Confirmed!</h2>
-            <p>
-              Thank you, <strong>${name}</strong>!<br>
-              Your booking for <strong>Ha Long Bay Luxury Cruise Tour</strong> has been received.<br>
-              We'll contact you soon to confirm the details.
-            </p>
-            <button class="popup-ok">OK</button>
-          </div>
+      <div class="popup-overlay"></div>
+      <div class="popup-box">
+        <span class="popup-close">&times;</span>
+        <div class="popup-content">
+          <div class="popup-icon">✅</div>
+          <h2>${t("tourdetail_booking_success_title")}</h2>
+          <p>
+            ${t(
+              "tourdetail_booking_success_msg1"
+            )} <strong>${name}</strong>!<br>
+            ${t(
+              "tourdetail_booking_success_msg2"
+            )} <strong>Ha Long Bay Luxury Cruise Tour</strong> ${t(
+        "tourdetail_booking_success_msg3"
+      )}
+          </p>
+          <button class="popup-ok">${t("tourdetail_booking_ok_btn")}</button>
         </div>
-      `;
+      </div>
+    `;
       document.body.appendChild(popup);
+      // === Xóa dữ liệu form sau khi gửi ===
+      form.reset();
+      adultInput.value = "";
+      kidInput.value = "";
+      updateTotal();
 
       // === CSS inline (giao diện đẹp)
       const style = document.createElement("style");
@@ -300,7 +335,9 @@ export async function initPage() {
       // === Đóng popup ===
       const closePopup = () => popup.remove();
       popup.querySelector(".popup-close").addEventListener("click", closePopup);
-      popup.querySelector(".popup-overlay").addEventListener("click", closePopup);
+      popup
+        .querySelector(".popup-overlay")
+        .addEventListener("click", closePopup);
       popup.querySelector(".popup-ok").addEventListener("click", closePopup);
     });
   }

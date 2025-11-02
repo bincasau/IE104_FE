@@ -119,7 +119,11 @@ body {
   border: 1px solid #ddd;
   border-radius: 0.5vw;
   font-size: 0.8vw;
-  width: 90%;
+  width: 95%;
+}
+
+.booking-form .form-group:first-child {
+  flex-grow: 1.5;
 }
 
 .btn-search {
@@ -1864,6 +1868,7 @@ body {
 /* ===== THÔNG BÁO LỖI ===== */
 .error-msg {
   position: absolute;
+  display: none;
   bottom: -28px;
   left: 1.5rem;
   color: #ff3b3b;
@@ -1873,6 +1878,7 @@ body {
 }
 
 .error-msg.show {
+  display: block;
   opacity: 1;
 }
 

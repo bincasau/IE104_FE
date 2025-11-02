@@ -5,11 +5,11 @@
   </div>
 
   <nav class="nav-links">
-    <a class="Home active" href="">Home </a>
-    <a class="About" href="">About</a>
-    <a class="Tours" href="">Tours </a>
-    <a class="Blog" href="">Blog </a>
-    <a class="Contact" href="">Contact</a>
+    <a class="Home active" href="#" data-key="header_home"> Home</a>
+    <a class="About" href="#" data-key="header_about">About</a>
+    <a class="Tours" href="#" data-key="header_tours">Tours</a>
+    <a class="Blog" href="#" data-key="header_blog">Blog</a>
+    <a class="Contact" href="#" data-key="header_contact">Contact</a>
   </nav>
 
   <div class="header-right">
@@ -18,11 +18,11 @@
     </div>
 
     <div class="contact-info">
-      <p class="small">Let's Build!</p>
+      <p class="small" data-key="header_subtext">Travel With Us</p>
       <p class="email">Infor@company.com</p>
     </div>
 
-    <button class="btn-explore">EXPLORE TRIP</button>
+    <button class="btn-explore" data-key="header_explore">EXPLORE TRIP</button>
 
     <!-- Hamburger icon -->
     <div class="icon-circle yellow hamburger-btn">
@@ -36,6 +36,13 @@
       </button>
 
       <ul class="lang-dropdown" id="langDropdown">
+        <li data-flag="../assets/images/header/vi.jpg">
+          <img
+            src="../assets/images/header/vi.jpg"
+            alt="Vietnamese"
+            class="flag"
+          />
+        </li>
         <li data-flag="../assets/images/header/eng.jpg">
           <img
             src="../assets/images/header/eng.jpg"
@@ -43,10 +50,17 @@
             class="flag"
           />
         </li>
-        <li data-flag="../assets/images/header/vi.jpg">
+        <li data-flag="../assets/images/header/cn.jpg">
           <img
-            src="../assets/images/header/vi.jpg"
-            alt="Vietnamese"
+            src="../assets/images/header/cn.jpg"
+            alt="Chinese"
+            class="flag"
+          />
+        </li>
+        <li data-flag="../assets/images/header/jp.jpg">
+          <img
+            src="../assets/images/header/jp.jpg"
+            alt="Japanese"
             class="flag"
           />
         </li>
