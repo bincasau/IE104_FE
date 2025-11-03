@@ -934,99 +934,281 @@ select {
 /* =========================================================
    RESPONSIVE — MOBILE TỐI ƯU (<= 768px)
 ========================================================= */
-@media (max-width: 768px) {
 
-  /* 1️⃣ Ẩn ảnh người & vali */
-  .blog-person,
-  .about-intro__suitcase {
-    display: none !important;
+/* Tablet */
+@media (max-width: 992px) {
+  /* --- HERO BANNER  --- */
+  .blog-frame {
+    height: 420px;
+    width: calc(100% - 60px);
+    margin: var(--offset) auto;
   }
 
-  /* 2️⃣ Làm mờ ảnh background và nền trái */
   .blog-bg-img {
-    filter: blur(6px) brightness(0.8);
-    transform: scale(1.1);
-  }
-  .blog-bg-color {
-    background-color: rgba(0, 0, 0, 0.3);
+    width: 800px;
   }
 
-  /* 3️⃣ Chữ "About Us" chuyển màu trắng */
-  .blog-text h1 {
-    color: #fff !important;
-    font-size: 32px;
-    transform: none;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  .blog-person {
+    right: 40px;
+    height: 75%;
   }
+
+  .blog-text {
+    left: 10px;
+    transform: translateY(-50%);
+  }
+
+  .blog-text h1,
   .breadcrumb {
-    border-color: #fff;
-  }
-  .breadcrumb .home,
-  .breadcrumb .arrow,
-  .breadcrumb .current {
-    color: #fff;
+    transform: none;
   }
 
-  /* 4️⃣ Timeline hiển thị 1 cột, ảnh nhỏ gọn và xếp dọc */
-  .timeline {
-    padding: 20px 0;
+  .blog-text h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
   }
-  .timeline::before {
-    display: none;
+
+  /* --- TRAVEL EXPERIENCE --- */
+  .travel-experience {
+    max-width: 90%;
+    margin: 80px auto;
   }
-  .timeline-item {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    left: 0 !important;
-  }
-  .timeline-item::before {
-    display: none;
-  }
+
   .timeline-item.left .timeline-content img,
   .timeline-item.right .timeline-content img {
     width: 90%;
-    max-width: 300px;
-    transform: none !important;
-    margin: 0 auto;
+    max-width: 420px;
+    transform: none;
+    margin: 20px auto;
     display: block;
   }
+}
 
-  /* 5️⃣ Thu nhỏ chữ và khoảng cách */
-  .about-intro {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 30px;
-    padding: 30px 20px;
+/* --- Mobile (Dưới 767px) --- */
+@media (max-width: 767px) {
+  /* --- HERO BANNER (About Hero giống blog-frame mobile) --- */
+  .blog-frame {
+    height: 280px;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
-  .about-intro__title {
-    font-size: 30px;
+  .blog-bg-color {
+    width: 100%;
   }
 
-  .about-intro__desc {
+  .blog-bg-img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: 0.5; /* Làm mờ ảnh */
+  }
+
+  .blog-person {
+    display: none;
+  }
+
+  .blog-text {
+    left: 40%;
+    transform: translate(-40%, -60%);
+    /* text-align: center; */
+    width: 100%;
+  }
+
+  .blog-text h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .breadcrumb {
+    justify-content: center;
+    padding: 8px 16px;
+    border-width: 2px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .breadcrumb .home,
+  .breadcrumb .current,
+  .breadcrumb .arrow {
+    color: #fff;
+  }
+
+  /* --- TRAVEL EXPERIENCE --- */
+.timeline::before,
+  .timeline-item::before {
+    display: none !important;
+  }
+
+  /* Tất cả item full width, không left/right */
+  .timeline-item {
+    position: relative !important;
+    width: 100% !important;
+    left: 0 !important;
+    text-align: center !important;
+    padding: 30px 15px !important;
+    margin-bottom: 80px !important; /* Khoảng cách đều */
+    box-sizing: border-box;
+  }
+
+  /* Bỏ mọi margin-top âm hoặc dịch ngang */
+  .timeline-item.right {
+    margin-top: 0 !important;
+  }
+
+  /* Nội dung căn giữa */
+  .timeline-content {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+
+  .timeline-content p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* ẢNH: XẾP DỌC — width 70%, max 300px, căn giữa */
+  .timeline-item.left .timeline-content img,
+  .timeline-item.right .timeline-content img {
+    width: 70% !important;
+    max-width: 300px !important;
+    height: auto;
+    margin: 30px auto !important; /* Cách trên/dưới, căn giữa */
+    display: block !important;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: none !important; /* Không dịch ngang */
+  }
+
+  /* Item cuối không margin-bottom */
+  .timeline-item:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Animation visible: fade lên từ dưới */
+  .timeline-item.visible .timeline-content {
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  .about-hero {
+    max-width: 100%;
+    margin: 60px auto; /* Giảm từ 100px */
+    padding: 0 15px;
+  }
+
+  /* Content: stack dọc, giảm padding */
+  .about-hero__content {
+    flex-direction: column !important; /* DỌC HOÀN TOÀN */
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px; /* Giảm từ 60px 120px */
+    text-align: center; /* Căn giữa text */
+    gap: 30px; /* Giảm từ 40px */
+    background-image: url(../images/about/Container_backgroung_abs.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px; /* Bo góc nhẹ */
+  }
+
+  /* Left: full width */
+  .about-hero__left {
+    flex: none;
+    max-width: 100% !important; /* Full màn hình */
+  }
+
+  /* Title: thu nhỏ font */
+  .about-hero__left h1 {
+    font-size: 32px !important; /* Từ 46px → 32px */
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .about-hero__subtitle {
     font-size: 14px;
+    margin-bottom: 24px; /* Giảm từ 40px */
     line-height: 1.6;
   }
 
-  .booking-section__form-wrapper {
-    padding: 30px 15px;
-    flex-direction: column;
-    height: auto;
+  /* Box: padding nhỏ hơn */
+  .about-hero__box {
+    padding: 16px;
+    background-image: url(../images/about/Background_abs.png);
+    background-size: cover;
+    border-radius: 16px;
   }
 
-  .booking-form {
-    width: 95%;
-    padding: 20px;
+ 
+  .about-hero__features {
+    grid-template-columns: repeat(2, 1fr) !important; /* GIỮ 2 CỘT */
+    gap: 12px 30px !important; /* Giảm từ 14px 50px */
+    margin-bottom: 30px;
   }
 
-  .team-section h2 {
-    font-size: 2em;
+ 
+  .about-hero__features > div {
+    font-size: 14px;
   }
 
-  .team-section__card {
-    width: 160px;
-    padding: 12px;
+
+  .about-hero__cta {
+    flex-direction: row; 
+    justify-content: center;
+    gap: 18px; 
+    flex-wrap: wrap;
+  }
+
+  /* Button: thu nhỏ */
+  .about-hero__cta .btn-explore {
+    padding: 12px 22px !important; /* Nhỏ hơn */
+    font-size: 14px;
+    border-radius: 6px;
+  }
+
+
+  .avatars,.avatar-plus
+ {
+    width: 48px !important;
+    height: 48px !important;
+    margin-left: -18px !important;
+  }
+  .avatars img:first-child
+ {
+    margin-left: 0 !important;
+  }
+
+  .avatar-plus {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    background-color: #ff6b35 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    font-size: 16px; /* Font vừa chữ + */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-left: -18px !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    overflow: hidden; /* Đảm bảo không tràn */
+  }
+
+
+  .about-hero__content,
+  .about-hero__box {
+    background-attachment: scroll; /* Không fixed trên mobile */
   }
 }
+
+
