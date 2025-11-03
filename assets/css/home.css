@@ -253,44 +253,6 @@ body {
   }
 }
 
-/* ========== PORTRAIT MODE (Dọc) ========== */
-@media (orientation: portrait) {
-  .main-hero {
-    width: 100%;
-    height: calc(100vw * 9 / 16); /* chuẩn tỉ lệ 16:9 */
-    overflow: hidden;
-    margin-top: 5%;
-  }
-
-  .btn-tour {
-    width: 40%;
-    height: 4vh;
-    font-size: 3.5%;
-  }
-
-  .hero-woman {
-    left: 30%;
-    top: 12%;
-    width: 70%;
-  }
-
-  .hero-plane {
-    left: 65%;
-    top: 8%;
-    width: 35%;
-  }
-
-  .photo-container {
-    left: 55%;
-    top: 20%;
-    width: 40%;
-    height: 70%;
-  }
-  .booking-form {
-    display: none;
-  }
-}
-
 /* ======================================================
    PHẦN 2: FEATURE SECTION (main-feature)
 ====================================================== */
@@ -471,88 +433,6 @@ body {
   transform: rotate(0deg) translateY(-1vh);
 }
 
-/* ========================
-   RESPONSIVE
-======================== */
-
-/* Tablet: <= 1024px */
-@media (max-width: 1024px) {
-  .feature-container {
-    grid-template-columns: 2fr 1fr; /* vẫn 2 cột */
-    gap: 4vw;
-  }
-
-  .feature-text h2 {
-    font-size: 4vw;
-  }
-
-  .feature-text h3 {
-    font-size: 3vw;
-  }
-
-  .feature-text .subheading {
-    font-size: 2vw;
-  }
-
-  .feature-grid {
-    gap: 2vw;
-  }
-
-  .feature-card {
-    padding: 3vh 2vw;
-    min-height: 35vh;
-  }
-
-  .feature-card h4 {
-    font-size: 2.5vw;
-  }
-
-  .feature-card p {
-    font-size: 2vw;
-  }
-
-  .feature-image img {
-    width: 28vw;
-  }
-}
-
-/* Mobile: <= 599.9px */
-@media (max-width: 599.9px) {
-  .feature-container {
-    grid-template-columns: 1fr; /* bỏ cột phải */
-  }
-
-  .feature-image {
-    display: none; /* ẩn ảnh bên phải */
-  }
-
-  .feature-text h2 {
-    font-size: 6vw;
-  }
-
-  .feature-text h3 {
-    font-size: 4.5vw;
-  }
-
-  .feature-grid {
-    flex-direction: column;
-    gap: 4vh;
-  }
-
-  .feature-card {
-    padding: 4vh 5vw;
-    border-radius: 3vw;
-  }
-
-  .feature-card h4 {
-    font-size: 4.5vw;
-  }
-
-  .feature-card p {
-    font-size: 3.5vw;
-  }
-}
-
 /* ======================================================
    PHẦN 3: DESTINATIONS SECTION (main-destinations)
 ====================================================== */
@@ -704,25 +584,6 @@ body {
   background: #fad71b;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .main-destinations {
-    grid-template-columns: 1fr;
-  }
-  .dest-left {
-    min-height: 50vh;
-  }
-  .dest-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .dest-text h2 {
-    font-size: 6vw;
-  }
-  .dest-text .desc {
-    font-size: 2.6vw;
-  }
-}
-
 /* =============================================
    PHẦN 4: ABOUT SECTION (giới thiệu thương hiệu)
 ============================================== */
@@ -829,7 +690,7 @@ body {
 }
 .about-middle .desc {
   font-size: 1vw;
-  color: #555;
+  color: #333;
   line-height: 1.6;
   max-width: 650px;
   margin: 0 auto;
@@ -910,30 +771,6 @@ body {
   }
   100% {
     transform: translateY(-1.5vh);
-  }
-}
-
-/* ====== Responsive ====== */
-@media (max-width: 1024px) {
-  .about-header h2 {
-    font-size: 5vw;
-  }
-  .about-row {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 5vh;
-  }
-  .about-img {
-    width: 40vw;
-  }
-  .feature-box {
-    justify-content: center;
-  }
-  .btn-about {
-    font-size: 3vw;
-  }
-  .about-right {
-    display: none;
   }
 }
 
@@ -1043,19 +880,6 @@ body {
 
 .btn-center {
   margin-top: 6vh;
-}
-
-/* --- Responsive --- */
-@media (max-width: 1024px) {
-  .recommend-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .recommend-grid .tour-card:nth-child(n + 5) {
-    display: none;
-  }
-  .recommend-header h2 {
-    font-size: 4vw;
-  }
 }
 
 /* ============================================
@@ -1209,51 +1033,6 @@ body {
   object-fit: contain;
 }
 
-/* --- Responsive --- */
-@media (max-width: 1024px) {
-  .chooseus-content {
-    text-align: center;
-  }
-
-  .chooseus-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .chooseus-img-left {
-    width: 35vw;
-  }
-
-  .chooseus-img-right {
-    width: 38vw;
-  }
-
-  .chooseus-container {
-    padding-bottom: 14vh;
-  }
-}
-
-@media (max-width: 768px) {
-  .chooseus-img-right,
-  .chooseus-img-left {
-    display: none; /* ẩn ảnh phải khi quá nhỏ */
-  }
-
-  .chooseus-container {
-    padding-bottom: 12vh;
-  }
-
-  .chooseus-card h4 {
-    font-size: 3.5vw;
-  }
-
-  .chooseus-card p {
-    font-size: 2.8vw;
-  }
-  .chooseus-content .subheading {
-    font-size: 20px;
-  }
-}
-
 /* =====================================================
    PHẦN 7: TESTIMONIALS SECTION (Đánh giá khách hàng)
    ===================================================== */
@@ -1354,26 +1133,6 @@ body {
   object-fit: contain;
 }
 
-/* --- Responsive --- */
-@media (max-width: 1024px) {
-  .testimonial-box {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .testimonial-right {
-    text-align: center;
-  }
-
-  .testimonials-header h2 {
-    font-size: 5vw;
-  }
-
-  .brands-img {
-    width: 90%;
-  }
-}
-
 /* =====================================================
    PHẦN 8: SPECIAL OFFER SECTION (Ưu đãi đặc biệt)
    ===================================================== */
@@ -1381,11 +1140,21 @@ body {
 .main-offer {
   width: 100%;
   height: 600px;
-  background: url("../images/home/offer_bg.png") center/cover no-repeat;
   font-family: "Poppins", sans-serif;
   padding: 12vh 0;
   position: relative;
   overflow: hidden;
+}
+
+/* ĐÃ SỬA: Thêm ::before để làm mờ nền */
+.main-offer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/home/offer_bg.png") center/cover no-repeat;
+  filter: blur(5px);
+  transform: scale(1.05); /* Phóng to để che viền mờ */
+  z-index: 1;
 }
 
 /* --- Nội dung text và discount --- */
@@ -1397,6 +1166,7 @@ body {
   text-align: left;
   color: #111;
   max-width: 380px;
+  /* ĐÃ SỬA: Thêm z-index để nổi lên trên nền mờ */
   z-index: 2;
 }
 
@@ -1437,59 +1207,6 @@ body {
   height: auto;
 }
 
-/* --- Responsive --- */
-@media (max-width: 1024px) {
-  .main-offer {
-    background-position: center center;
-  }
-
-  .offer-content {
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  .offer-content h2 {
-    font-size: 6vw;
-  }
-
-  .offer-content p {
-    font-size: 2.8vw;
-  }
-
-  .offer-discount {
-    width: 40vw;
-  }
-}
-
-@media (orientation: portrait) {
-  .main-offer {
-    height: 300px; /* giảm từ 600 xuống cho vừa tỉ lệ dọc */
-    padding: 8vh 0; /* giảm padding để không bị quá dày */
-    background-position: top center;
-  }
-
-  .offer-content {
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    max-width: 80%;
-  }
-
-  .offer-content h2 {
-    font-size: 5vw;
-  }
-
-  .offer-content p {
-    font-size: 3.2vw;
-  }
-
-  .offer-discount {
-    width: 45vw;
-    margin: 2vh auto 0;
-  }
-}
-
 /* =============================================
    PHẦN 9: TRIP SHOWCASE SECTION (Gợi ý hành trình)
 ============================================= */
@@ -1512,7 +1229,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1.1fr 1fr;
   gap: 2vw;
-  align-items: stretch; /*  3 cột cao bằng nhau */
+  align-items: stretch; /* 3 cột cao bằng nhau */
   width: 85%;
   max-width: 1300px;
 }
@@ -1584,36 +1301,6 @@ body {
   height: 100%;
   object-fit: cover; /* giúp ảnh luôn vừa khung */
   border-radius: 1vw; /* bo nhẹ  */
-}
-
-/* === Responsive === */
-@media (max-width: 1024px) {
-  .tripshowcase-container {
-    grid-template-columns: 1fr;
-    gap: 4vh;
-  }
-
-  .tripshowcase-col {
-    padding: 4vh 5vw;
-  }
-
-  .trip-info h5 {
-    font-size: 3.5vw;
-  }
-
-  .trip-info p {
-    font-size: 3vw;
-  }
-
-  .tripshowcase-center img {
-    display: none;
-  }
-  .tripshowcase-left .trip-card:nth-child(n + 4) {
-    display: none;
-  }
-  .tripshowcase-right .trip-card:nth-child(n + 4) {
-    display: none;
-  }
 }
 
 /* ===========================
@@ -1736,38 +1423,6 @@ body {
 .blog-author span {
   font-size: 0.9vw;
   color: #555;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .blog-grid {
-    grid-template-columns: 1fr;
-    gap: 4vh;
-  }
-
-  .blog-header h2 {
-    font-size: 6vw;
-  }
-
-  .blog-date {
-    font-size: 2.5vw;
-    padding: 0.5rem 0.9rem;
-  }
-
-  .blog-date span {
-    font-size: 3vw;
-  }
-
-  .blog-title {
-    font-size: 3.5vw;
-  }
-
-  .blog-author span {
-    font-size: 2.8vw;
-  }
-  .blog-grid .blog-item:nth-child(n + 3) {
-    display: none;
-  }
 }
 
 /* ===============================
@@ -1958,107 +1613,6 @@ body {
   background: #1b4fdc;
 }
 
-/* ===============================
-   RESPONSIVE
-   =============================== */
-
-/* === Tablet === */
-@media (max-width: 1024px) {
-  .main-newsletter {
-    height: 50vh;
-  }
-
-  .newsletter-content h2 {
-    font-size: 4vw;
-  }
-
-  .newsletter-benefits {
-    gap: 3vw;
-  }
-
-  .newsletter-benefits p {
-    font-size: 1.6vw;
-  }
-
-  .newsletter-form {
-    width: 90%;
-    flex-direction: column;
-    border-radius: 1vw;
-  }
-
-  .newsletter-form input {
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    border-radius: 0;
-  }
-
-  .newsletter-form button {
-    width: 100%;
-    border-radius: 0;
-    font-size: 1rem;
-  }
-
-  .error-msg {
-    position: static;
-    margin-top: 5px;
-    font-size: 0.85rem;
-  }
-}
-
-/* === Mobile (≤768px) === */
-@media (max-width: 768px) {
-  .main-newsletter {
-    height: auto;
-    padding: 60px 0;
-  }
-
-  .newsletter-content h2 {
-    font-size: 6vw;
-    margin-bottom: 20px;
-  }
-
-  .newsletter-benefits {
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 25px;
-  }
-
-  .newsletter-benefits p {
-    font-size: 4vw;
-  }
-
-  .newsletter-form {
-    flex-direction: column;
-    width: 100%;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-  }
-
-  .newsletter-form input {
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    font-size: 0.95rem;
-  }
-
-  .newsletter-form button {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1rem;
-  }
-
-  .thank-box {
-    width: 90%;
-    padding: 25px 20px;
-  }
-
-  .thank-box h3 {
-    font-size: 5vw;
-  }
-
-  .thank-box p {
-    font-size: 4vw;
-  }
-}
-
 /* Hiệu ứng loading cho ảnh*/
 img.lazy {
   opacity: 0;
@@ -2072,4 +1626,827 @@ img.lazy.loaded {
   opacity: 1;
   transform: scale(1);
   filter: blur(0);
+}
+
+/******************************************************
+ *
+ * BẮT ĐẦU PHẦN RESPONSIVE ĐÃ SỬA
+ *
+ ******************************************************/
+
+/* =============================================
+   CÀI ĐẶT RESPONSIVE CƠ BẢN
+============================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px; /* 1rem = 15px */
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* 1rem = 14px (chữ sẽ nhỏ hơn 1 chút) */
+  }
+}
+/* =============================================
+   PHẦN 1: HERO (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .hero-content {
+    left: 10%; /* Gần lề hơn */
+    width: 60%;
+  }
+
+  .hero-text .welcome {
+    font-size: 2rem; /* Cỡ chữ cố định */
+  }
+
+  .main-text {
+    font-size: 1rem; /* Cỡ chữ cố định */
+  }
+
+  .btn-tour {
+    width: 150px; /* Cỡ nút cố định */
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  .booking-form {
+    width: 100%; /* Form chiếm hết chiều rộng container */
+    transform: translateX(0);
+    padding: 1.5vh 1.5vw;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+  .form-group input {
+    font-size: 0.9rem;
+  }
+
+  .hero-woman {
+    left: 45%;
+    width: 55%;
+  }
+
+  .photo-container {
+    left: 70%;
+    width: 30%;
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-hero {
+    /* ĐÃ SỬA: Giảm chiều cao */
+    height: 65vh;
+    margin-top: 70px;
+  }
+
+  .hero-content {
+    left: 50%; /* Căn giữa */
+    top: 20%;
+    width: 90%; /* Chiếm 90% màn hình */
+    transform: translateX(-50%); /* Kỹ thuật căn giữa */
+    height: auto;
+    align-items: center; /* Căn giữa nội dung */
+  }
+
+  .hero-text {
+    width: 100%;
+    text-align: center; /* Căn giữa chữ */
+  }
+
+  .welcome {
+    font-size: 1.8rem;
+  }
+
+  .main-text {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .btn-tour {
+    width: 160px;
+    height: 48px;
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* Ẩn các chi tiết phức tạp */
+  .booking-form,
+  .hero-woman,
+  .hero-plane,
+  .hero-cloud,
+  .photo-container {
+    display: none;
+  }
+}
+/* =============================================
+   PHẦN 2: FEATURE (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .feature-container {
+    grid-template-columns: 2fr 1fr;
+    gap: 2vw;
+  }
+
+  .feature-text h2 {
+    font-size: 2.5rem;
+  }
+  .feature-text h3 {
+    font-size: 1.8rem;
+  }
+  .feature-text .subheading {
+    font-size: 1.2rem;
+  }
+
+  .feature-card h4 {
+    font-size: 1.15rem;
+  }
+  .feature-card p {
+    font-size: 0.95rem;
+  }
+
+  /* Sửa ảnh bên phải */
+  .feature-image {
+    width: 100%;
+    max-width: none; /* Bỏ max-width để nó fill theo grid */
+    align-self: center; /* Căn giữa theo chiều dọc */
+  }
+  .feature-image img {
+    width: 100%; /* Ảnh tự co giãn */
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-feature {
+    padding: 5vh 0;
+  }
+  .feature-container {
+    grid-template-columns: 1fr; /* 1 cột */
+  }
+
+  .feature-image {
+    display: none; /* Ẩn ảnh phải */
+  }
+
+  .feature-text {
+    text-align: center; /* Căn giữa tiêu đề */
+  }
+  .feature-text h2 {
+    font-size: 2rem;
+  }
+  .feature-text h3 {
+    font-size: 1.5rem;
+  }
+
+  .feature-grid {
+    flex-direction: column; /* Xếp dọc */
+    gap: 3vh;
+  }
+
+  .feature-card {
+    padding: 3vh 5vw;
+    border-radius: 3vw;
+  }
+  .feature-card h4 {
+    font-size: 1.3rem;
+  }
+  .feature-card p {
+    font-size: 1rem;
+  }
+
+  .feature-shape {
+    display: none; /* Ẩn đường bay cong */
+  }
+}
+/* =============================================
+   PHẦN 3: DESTINATIONS (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .main-destinations {
+    grid-template-columns: 1fr; /* 1 cột */
+  }
+  .dest-left {
+    min-height: 50vh;
+    padding: 5vh 8vw;
+    text-align: center; /* Căn giữa text */
+  }
+  .dest-text {
+    max-width: 600px;
+  }
+
+  .dest-text h2 {
+    font-size: 2.2rem;
+  }
+  .dest-text .desc {
+    font-size: 1rem;
+  }
+  .main-destinations .btn-destination {
+    font-size: 1rem;
+  }
+
+  .dest-right {
+    padding: 5vh 3vw;
+  }
+  .dest-grid {
+    /* Vẫn giữ 3 cột trên tablet */
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .dest-card .label {
+    font-size: 1rem;
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .dest-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    gap: 3vw;
+  }
+
+  /* ĐÃ SỬA: Đặt chiều cao cố định cho TẤT CẢ card */
+  .dest-card {
+    height: 180px;
+  }
+
+  /* ĐÃ SỬA: Ghi đè cho card .tall để nó giống card thường */
+  .dest-card.tall {
+    grid-row: span 1; /* Bỏ span 2 row */
+    grid-column: span 1;
+    height: 180px; /* Cùng chiều cao */
+  }
+
+  /* ĐÃ SỬA: Ghi đè cho card số 3 (Khánh Hòa) */
+  .dest-grid .dest-card:nth-child(3) {
+    grid-column: span 2; /* Cho nó full-width */
+    height: 180px; /* Giữ cùng chiều cao */
+  }
+
+  .dest-card .label {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+/* =============================================
+   PHẦN 4: ABOUT (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .about-container {
+    width: 90%;
+  }
+  .about-header {
+    text-align: center;
+  }
+  .about-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .about-row {
+    grid-template-columns: 1fr; /* 1 cột */
+    gap: 5vh;
+  }
+
+  .about-left {
+    margin-top: 2vh;
+    /* ĐÃ SỬA: Thêm z-index và làm mờ */
+    position: relative;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  .about-img {
+    width: 40vw; /* Ảnh to hơn */
+  }
+
+  .about-middle {
+    align-items: center; /* Căn giữa các box */
+    /* ĐÃ SỬA: Thêm z-index */
+    position: relative;
+    z-index: 2;
+  }
+  .about-middle .desc {
+    font-size: 1rem;
+    text-align: center;
+    max-width: 600px;
+    /* ĐÃ SỬA: Chữ đậm hơn */
+    font-weight: 800;
+  }
+
+  .feature-box {
+    width: 100%;
+    max-width: 450px;
+  }
+  .feature-box .icon {
+    width: 40px;
+  }
+  .feature-box h4 {
+    font-size: 1.1rem;
+  }
+  .feature-box p {
+    font-size: 0.95rem;
+  }
+
+  .btn-about {
+    font-size: 1rem;
+  }
+
+  .about-right {
+    display: none; /* Ẩn ảnh vali */
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-about {
+    padding: 5vh 0;
+  }
+  .about-left {
+    display: block; /* Đổi display */
+    position: relative;
+    height: 250px; /* Cần set chiều cao cố định */
+    width: 100%;
+  }
+  .about-img {
+    position: absolute;
+    width: 60%; /* Giảm kích thước ảnh */
+  }
+  .img-1 {
+    width: 65%;
+    left: 0;
+    top: 0;
+  }
+  .img-2 {
+    width: 55%;
+    right: 0;
+    top: 20%;
+    margin-left: 0;
+  }
+}
+/* =============================================
+   PHẦN 5: RECOMMENDED (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .recommend-container {
+    width: 90%;
+  }
+  .recommend-header h2 {
+    font-size: 2rem;
+  }
+
+  .recommend-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    gap: 4vw;
+  }
+
+  /* Ẩn bớt 2 tour */
+  .recommend-grid .tour-card:nth-child(n + 5) {
+    display: none;
+  }
+
+  .tour-card {
+    border-radius: 2vw;
+  }
+  .tour-info h4 {
+    font-size: 1.1rem;
+  }
+  .tour-info .location {
+    font-size: 0.9rem;
+  }
+  .tour-meta {
+    font-size: 0.9rem;
+  }
+  .btn-view,
+  .btn-more {
+    font-size: 0.95rem;
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-recommend {
+    padding: 5vh 0;
+  }
+  .recommend-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 4vh;
+  }
+  .recommend-grid {
+    grid-template-columns: 1fr; /* 1 cột */
+    gap: 4vh;
+  }
+
+  /* Chỉ hiện 3 tour */
+  .recommend-grid .tour-card:nth-child(n + 4) {
+    display: none;
+  }
+}
+/* =============================================
+   PHẦN 6: CHOOSE US (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .chooseus-container {
+    width: 95%;
+    padding: 8vh 0 14vh;
+  }
+  .chooseus-content {
+    text-align: center;
+    max-width: 600px;
+  }
+  .chooseus-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .chooseus-grid {
+    grid-template-columns: 1fr; /* 1 cột */
+    gap: 1vh;
+  }
+  .chooseus-card {
+    text-align: left; /* Chữ vẫn căn trái */
+  }
+  .chooseus-card h4 {
+    font-size: 1.1rem;
+  }
+  .chooseus-card p {
+    font-size: 0.95rem;
+  }
+
+  .chooseus-img-left {
+    width: 35vw;
+  }
+
+  /* ĐÃ SỬA: Dịch box 21+ sang phải */
+  .experience-box {
+    right: 10%;
+  }
+
+  .experience-box h3 {
+    font-size: 2rem;
+  }
+  .experience-box p {
+    font-size: 0.9rem;
+  }
+  .chooseus-img-right {
+    width: 38vw;
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-chooseus {
+    padding-bottom: 8vh;
+  }
+  .chooseus-container {
+    padding: 5vh 0;
+  }
+  /* Ẩn 2 ảnh 2 bên */
+  .chooseus-img-right,
+  .chooseus-img-left {
+    display: none;
+  }
+  .chooseus-content h2 {
+    font-size: 1.8rem;
+  }
+  .chooseus-grid {
+    grid-template-columns: 1fr; /* Đảm bảo 1 cột */
+  }
+  .chooseus-card {
+    padding: 1vh 0;
+  }
+}
+/* =============================================
+   PHẦN 7: TESTIMONIALS (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .main-testimonials {
+    padding: 8vh 0;
+  }
+  .testimonials-header h2 {
+    font-size: 2rem;
+  }
+
+  .testimonial-box {
+    flex-direction: column; /* Xếp dọc */
+    text-align: center;
+    gap: 3vh;
+  }
+
+  .testimonial-left img {
+    width: 200px; /* Ảnh nhỏ lại */
+  }
+
+  .testimonial-right {
+    text-align: center; /* Căn giữa */
+    max-width: 600px;
+  }
+  .stars {
+    justify-content: center;
+  }
+  .testimonial-text {
+    font-size: 1rem;
+  }
+  .testimonial-info h4 {
+    font-size: 1.1rem;
+  }
+  .testimonial-info p {
+    font-size: 0.95rem;
+  }
+
+  .testimonials-brands p {
+    font-size: 1rem;
+  }
+  .brands-img {
+    width: 90%;
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-testimonials {
+    padding: 5vh 0;
+  }
+  .testimonials-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 4vh;
+  }
+  .testimonial-left img {
+    width: 150px;
+  }
+  .testimonial-text {
+    font-size: 0.95rem;
+  }
+}
+/* =============================================
+   PHẦN 8: OFFER (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .main-offer {
+    height: 400px; /* Giảm chiều cao */
+    padding: 8vh 0;
+  }
+
+  /* Hiệu ứng mờ vẫn áp dụng */
+  .main-offer::before {
+    background-position: center center;
+  }
+
+  .offer-content {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .offer-content h2 {
+    font-size: 2.2rem;
+  }
+  .offer-content p {
+    font-size: 1rem;
+  }
+  .btn-offer {
+    font-size: 1rem;
+  }
+
+  .offer-discount {
+    width: 200px; /* Kích thước cố định */
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-offer {
+    height: 350px;
+  }
+
+  .main-offer::before {
+    background-position: 70% center; /* Di chuyển nền sang phải */
+  }
+
+  .offer-content {
+    left: 50%;
+    width: 90%;
+  }
+  .offer-content h2 {
+    font-size: 1.8rem;
+  }
+  .offer-content p {
+    font-size: 0.95rem;
+  }
+  .offer-discount {
+    width: 180px;
+  }
+}
+/* =============================================
+   PHẦN 9: TRIP SHOWCASE (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .main-tripshowcase {
+    padding: 8vh 0;
+  }
+  .tripshowcase-container {
+    grid-template-columns: 1fr 1fr; /* 2 cột */
+    width: 90%;
+    gap: 4vw;
+  }
+
+  .tripshowcase-center {
+    display: none; /* Ẩn ảnh giữa */
+  }
+
+  .tripshowcase-col {
+    padding: 3vh 4vw;
+  }
+
+  .trip-title {
+    font-size: 1.2rem;
+  }
+  .trip-info h5 {
+    font-size: 1rem;
+  }
+  .trip-info p {
+    font-size: 0.9rem;
+  }
+
+  /* Ẩn bớt 1 card ở mỗi cột */
+  .tripshowcase-left .trip-card:nth-child(n + 5),
+  .tripshowcase-right .trip-card:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-tripshowcase {
+    padding: 5vh 0;
+  }
+  .tripshowcase-container {
+    grid-template-columns: 1fr; /* 1 cột */
+    gap: 4vh;
+  }
+  /* Ẩn bớt 2 card */
+  .tripshowcase-left .trip-card:nth-child(n + 4),
+  .tripshowcase-right .trip-card:nth-child(n + 4) {
+    display: none;
+  }
+}
+/* =============================================
+   PHẦN 10: BLOG (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .blog-container {
+    width: 90%;
+  }
+  .blog-header h2 {
+    font-size: 2rem;
+  }
+  .blog-header span.blog-subtitle {
+    font-size: 1rem;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr; /* 1 cột */
+    gap: 4vh;
+    max-width: 500px; /* Giới hạn chiều rộng */
+    margin: 0 auto;
+  }
+
+  /* Chỉ hiện 2 bài */
+  .blog-grid .blog-item:nth-child(n + 3) {
+    display: none;
+  }
+
+  .blog-date {
+    font-size: 0.9rem;
+  }
+  .blog-date span {
+    font-size: 1.1rem;
+  }
+
+  .blog-category {
+    font-size: 0.9rem;
+  }
+  .blog-title {
+    font-size: 1.15rem;
+  }
+  .blog-author span {
+    font-size: 0.95rem;
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-blog {
+    padding: 5vh 0;
+  }
+  .blog-header h2 {
+    font-size: 1.8rem;
+  }
+  /* Chỉ hiện 1 bài */
+  .blog-grid .blog-item:nth-child(n + 2) {
+    display: none;
+  }
+  .blog-img img {
+    height: 250px; /* Giảm chiều cao ảnh */
+  }
+}
+/* =============================================
+   PHẦN 11: NEWSLETTER (RESPONSIVE)
+============================================= */
+
+/* === Tablet (<= 1024px) === */
+@media (max-width: 1024px) {
+  .main-newsletter {
+    height: auto; /* Chiều cao tự động */
+    padding: 8vh 0;
+  }
+
+  .newsletter-content h2 {
+    font-size: 2rem;
+  }
+
+  .newsletter-benefits {
+    gap: 1.5rem 2rem;
+  }
+  .newsletter-benefits div {
+    font-size: 1rem;
+  }
+
+  .newsletter-form {
+    width: 90%;
+    flex-direction: column; /* Xếp dọc */
+    border-radius: 1vw;
+  }
+
+  .newsletter-form input {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    border-radius: 1vw 1vw 0 0;
+    text-align: center;
+  }
+
+  .newsletter-form button {
+    width: 100%;
+    border-radius: 0 0 1vw 1vw;
+    font-size: 1rem;
+  }
+
+  .error-msg {
+    position: static;
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* === Mobile (<= 768px) === */
+@media (max-width: 768px) {
+  .main-newsletter {
+    padding: 6vh 0;
+  }
+  .newsletter-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .newsletter-benefits {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center; /* Căn giữa */
+  }
+  .newsletter-benefits div {
+    font-size: 0.95rem;
+  }
+
+  .thank-box {
+    width: 90%;
+    padding: 25px 20px;
+  }
+  .thank-box h3 {
+    font-size: 1.3rem;
+  }
+  .thank-box p {
+    font-size: 1rem;
+  }
 }

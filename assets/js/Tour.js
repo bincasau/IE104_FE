@@ -56,13 +56,25 @@ export async function initPage() {
       .replace(/\s+/g, " ")
       .trim();
 
-  function renderList(arr, container, limit, showAll, typeLabel, allKey) {
+  // THAY THẾ HÀM NÀY (BẮT ĐẦU TỪ DÒNG 64)
+  function renderList(
+    arr,
+    container,
+    limit,
+    showAll,
+    typeLabel,
+    allKey,
+    preSelectedValue = null // <-- THÊM THAM SỐ MỚI NÀY
+  ) {
     container.innerHTML = "";
     const allLabel = document.createElement("label");
     const allCb = document.createElement("input");
     allCb.type = "checkbox";
     allCb.value = "all";
-    allCb.checked = true;
+
+    // SỬA DÒNG NÀY: Chỉ check "All" nếu KHÔNG có giá trị được chọn trước
+    allCb.checked = !preSelectedValue;
+
     allLabel.appendChild(allCb);
     const allText = document.createElement("span");
     allText.setAttribute("data-key", allKey);
@@ -70,18 +82,28 @@ export async function initPage() {
     allLabel.appendChild(allText);
     container.appendChild(allLabel);
 
+    // THÊM DÒNG NÀY: Chuẩn hóa giá trị được chọn trước
+    const normalizedPreSelected = normalize(preSelectedValue);
+
     const items = showAll ? arr : arr.slice(0, limit);
     items.forEach((name) => {
       const label = document.createElement("label");
       const cb = document.createElement("input");
       cb.type = "checkbox";
       cb.value = name;
+
+      // THÊM LOGIC NÀY: Tự động check vào ô nếu nó khớp
+      if (preSelectedValue && normalize(name) === normalizedPreSelected) {
+        cb.checked = true;
+      }
+
       label.appendChild(cb);
       label.appendChild(document.createTextNode(" " + name));
       container.appendChild(label);
     });
   }
 
+  // THAY THẾ HÀM NÀY (BẮT ĐẦU TỪ DÒNG 88)
   async function loadTours() {
     try {
       const res = await fetch("../../data/tours.json");
@@ -91,13 +113,23 @@ export async function initPage() {
       provinces = [...new Set(tours.map((t) => t.location))];
       activities = [...new Set(tours.flatMap((t) => t.activities || []))];
 
+      // === PHẦN SỬA BẮT ĐẦU TẠI ĐÂY ===
+
+      // 1. Lấy tỉnh thành đã lưu từ trang chủ
+      const preSelectedProvince = sessionStorage.getItem("selectedProvince");
+      if (preSelectedProvince) {
+        sessionStorage.removeItem("selectedProvince"); // Xóa đi để không bị lọc lại ở lần sau
+      }
+
+      // 2. Truyền giá trị này vào renderList cho Destinations
       renderList(
         provinces,
         destList,
         4,
         showAllDest,
         "Destinations",
-        "tour_all_destination"
+        "tour_all_destination",
+        preSelectedProvince // <-- Truyền vào đây
       );
       renderList(
         activities,
@@ -106,8 +138,10 @@ export async function initPage() {
         showAllAct,
         "Activities",
         "tour_all_activity"
+        // (Không cần cho activity)
       );
 
+      // (Các cài đặt priceRange và durationRange vẫn giữ nguyên)
       const maxPriceFound = tours.length
         ? Math.max(...tours.map((t) => t.price))
         : 2000;
@@ -127,9 +161,13 @@ export async function initPage() {
         "days"
       )}`;
 
+      // 3. THAY ĐỔI QUAN TRỌNG:
+      // Thay vì render tất cả tour, hãy gọi applyFilters()
+      // để nó tự đọc các checkbox đã được check (bao gồm cả ô tỉnh thành)
       attachFilterEvents();
-      filteredTours = [...tours];
-      renderTours();
+      applyFilters(); // <-- THAY THẾ CHO 2 DÒNG (filteredTours = ... và renderTours())
+
+      // === PHẦN SỬA KẾT THÚC ===
 
       [priceRange, durationRange].forEach((r) => {
         setRangeProgress(r);

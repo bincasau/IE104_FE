@@ -455,10 +455,6 @@ body {
   .blog-bg-color {
     width: 100%; /* Nền màu chiếm toàn bộ */
   }
-  .blog-bg-img,
-  .blog-person {
-    display: none; /* Ẩn ảnh và người */
-  }
   .blog-text {
     left: 50%;
     transform: translate(-50%, -50%); /* Căn giữa */
@@ -560,4 +556,99 @@ body {
 
 .form-msg.success {
   color: #007a33; /* Green */
+}
+/* === BỔ SUNG RESPONSIVE CHO .blog-frame GIỐNG BLOG === */
+@media (max-width: 992px) {
+  .blog-frame {
+    height: 420px;
+    width: calc(100% - 60px);
+    margin: var(--offset) auto;
+  }
+
+  .blog-bg-img {
+    width: 800px;
+  }
+
+  .blog-person {
+    right: 40px;
+    height: 75%;
+  }
+
+  .blog-text {
+    left: 80px;
+    transform: translateY(-50%);
+  }
+
+  .blog-text h1,
+  .breadcrumb {
+    transform: none;
+  }
+
+  .blog-text h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .blog-frame {
+    height: 280px;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .blog-bg-color {
+    width: 100%;
+  }
+
+  .blog-bg-img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: 0.5;
+  }
+
+  .blog-person {
+    display: none;
+  }
+
+  .blog-text {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+  }
+
+  .blog-text h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .breadcrumb {
+    justify-content: center;
+    padding: 8px 16px;
+    border-width: 2px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .breadcrumb .home,
+  .breadcrumb .current,
+  .breadcrumb .arrow {
+    color: #fff;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-text h1 {
+    font-size: 26px;
+  }
+
+  .breadcrumb {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
 }
