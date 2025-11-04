@@ -200,7 +200,7 @@ body {
 
 .travel-experience h1 {
   font-size: 2.5em;
-  margin-bottom: 60px;
+  margin-bottom: 200px;
   font-weight: 800;
 }
 
@@ -232,19 +232,20 @@ body {
 .timeline-item.left {
   left: 0;
   text-align: right;
+  margin-top: -200px;
 }
 
 .timeline-item.right {
   left: 50%;
   text-align: left;
-  margin-top: -200px;
+  margin-top: -350px;
 }
 
 /* --- chấm tròn --- */
 .timeline-item::before {
   content: "";
   position: absolute;
-  top: 15px;
+  top: 200px;
   right: -10px;
   width: 18px;
   height: 18px;
@@ -256,6 +257,7 @@ body {
 
 .timeline-item.right::before {
   left: -10px;
+  margin-top: 70px;
   right: auto;
 }
 
@@ -1207,4 +1209,17 @@ select {
     padding: 6px 10px;
     font-size: 14px;
   }
+}
+/* Chỉ áp cho trang About */
+.page-about .blog-text h1,
+.page-about .breadcrumb {
+  transform: none !important; /* gỡ translateX(...) của blog */
+}
+
+.page-about .blog-text {
+  left: 0 !important;
+  right: 0;
+  margin: 0 auto;
+  transform: translateY(-50%) !important; /* chỉ giữ căn giữa theo trục dọc */
+  max-width: 90vw; /* tránh tràn trên mobile */
 }
