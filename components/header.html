@@ -24,11 +24,6 @@
 
     <button class="btn-explore" data-key="header_explore">EXPLORE TRIP</button>
 
-    <!-- Hamburger icon -->
-    <div class="icon-circle yellow hamburger-btn">
-      <i class="fas fa-bars"></i>
-    </div>
-
     <!-- 🌍 Language Selector (Rectangle Style) -->
     <div class="language-selector">
       <button class="lang-btn" id="langButton">
@@ -66,7 +61,20 @@
         </li>
       </ul>
     </div>
+    <!-- Hamburger icon -->
+    <div class="icon-circle yellow hamburger-btn">
+      <i class="fas fa-bars"></i>
+    </div>
   </div>
 </header>
+<!-- Overlay khi bấm logo -->
+<div id="logo-overlay" aria-hidden="true">
+  <div class="overlay-bg"></div>
+  <img
+    src="../assets/images/header/plane.png"
+    alt="Plane"
+    class="overlay-plane"
+  />
+</div>
 
 <link rel="stylesheet" href="../assets/css/header.css" />

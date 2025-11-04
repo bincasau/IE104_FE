@@ -95,18 +95,39 @@ export async function initHeader() {
     });
   }
 
-  // === CLICK LOGO => HOME ===
+  // === CLICK LOGO => overlay + về HOME ===
   const logo = document.querySelector(".logo");
   if (logo) {
     logo.addEventListener("click", async (e) => {
       e.preventDefault();
-      await loadSection("content", "./pages/home.html", "./home.js", "Home");
 
-      // 🧹 Cleanup handler TourDetail
-      if (window._tourPopHandler) {
-        window.removeEventListener("popstate", window._tourPopHandler);
-        delete window._tourPopHandler;
+      const overlay = document.getElementById("logo-overlay");
+      if (!overlay) {
+        // fallback nếu chưa chèn overlay
+        await loadSection("content", "./pages/home.html", "./home.js", "Home");
+        return;
       }
+
+      // Hiện overlay + chạy animation
+      overlay.classList.add("show");
+
+      const plane = overlay.querySelector(".overlay-plane");
+      let done = false;
+
+      const goHome = async () => {
+        if (done) return;
+        done = true;
+        await loadSection("content", "./pages/home.html", "./home.js", "Home");
+        overlay.classList.remove("show");
+      };
+
+      // Khi máy bay bay xong thì điều hướng về Home
+      if (plane) {
+        plane.addEventListener("animationend", goHome, { once: true });
+      }
+
+      // Fallback an toàn (phòng khi animation bị cancel)
+      setTimeout(goHome, 1500);
     });
   }
 

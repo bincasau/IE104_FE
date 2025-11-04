@@ -73,7 +73,7 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 .icon-mail {
@@ -294,10 +294,57 @@
 .language-selector.show .lang-dropdown {
   display: block;
 }
+/* ===== Overlay click logo ===== */
+#logo-overlay {
+  position: fixed;
+  inset: 0;
+  display: none; /* ẩn mặc định */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* cao hơn header/menu */
+  pointer-events: none; /* ngăn chặn click khi ẩn */
+}
+#logo-overlay.show {
+  display: flex;
+  pointer-events: auto;
+}
 
-/* Ẩn ở mobile */
-@media (max-width: 992px) {
-  .language-selector {
-    display: none;
+#logo-overlay .overlay-bg {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  animation: logoFadeIn 0.2s ease forwards;
+}
+
+#logo-overlay .overlay-plane {
+  position: absolute;
+  top: 50%;
+  right: -20%; /* bắt đầu từ phải */
+  transform: translate(50%, -50%) rotate(8deg);
+  width: clamp(180px, 22vw, 320px); /* TO HƠN */
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
+  animation: planeFlyReverse 1.4s ease-in-out forwards;
+}
+
+@keyframes logoFadeIn {
+  to {
+    opacity: 0.85;
+  }
+}
+
+/* Bay từ phải sang trái */
+@keyframes planeFlyReverse {
+  0% {
+    right: -20%;
+    transform: translate(50%, -50%) rotate(8deg) scale(0.95);
+  }
+  60% {
+    right: 50%;
+    transform: translate(50%, -50%) rotate(0deg) scale(1.1);
+  }
+  100% {
+    right: 120%;
+    transform: translate(50%, -50%) rotate(-10deg) scale(1.25);
   }
 }
