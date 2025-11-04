@@ -1144,18 +1144,12 @@ body {
   padding: 12vh 0;
   position: relative;
   overflow: hidden;
+
+  /* ĐÃ SỬA: Đưa background về đây, BỎ blur ở base */
+  background: url("../images/home/offer_bg.png") center/cover no-repeat;
 }
 
-/* ĐÃ SỬA: Thêm ::before để làm mờ nền */
-.main-offer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("../images/home/offer_bg.png") center/cover no-repeat;
-  filter: blur(5px);
-  transform: scale(1.05); /* Phóng to để che viền mờ */
-  z-index: 1;
-}
+/* BỎ ::before ở code gốc */
 
 /* --- Nội dung text và discount --- */
 .offer-content {
@@ -1166,8 +1160,7 @@ body {
   text-align: left;
   color: #111;
   max-width: 380px;
-  /* ĐÃ SỬA: Thêm z-index để nổi lên trên nền mờ */
-  z-index: 2;
+  z-index: 2; /* Giữ z-index để luôn nổi lên trên ::before (khi responsive) */
 }
 
 .offer-content h2 {
@@ -2203,18 +2196,20 @@ img.lazy.loaded {
   .main-offer {
     height: 400px; /* Giảm chiều cao */
     padding: 8vh 0;
-  }
-
-  /* Hiệu ứng mờ vẫn áp dụng */
-  .main-offer::before {
     background-position: center center;
   }
+
+  /* KHÔNG BLUR Ở TABLET */
 
   .offer-content {
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
     max-width: 90%;
+
+    /* ĐÃ SỬA: Dùng Flexbox để căn giữa và xếp chồng (đúng thứ tự) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .offer-content h2 {
@@ -2229,6 +2224,7 @@ img.lazy.loaded {
 
   .offer-discount {
     width: 200px; /* Kích thước cố định */
+    margin-top: 3vh; /* Đảm bảo có khoảng cách sau nút */
   }
 }
 
@@ -2236,15 +2232,27 @@ img.lazy.loaded {
 @media (max-width: 768px) {
   .main-offer {
     height: 350px;
+    /* Xóa background ở đây để ::before quản lý */
+    background: none;
   }
 
+  /* ĐÃ SỬA: Thêm ::before VÀO ĐÂY để blur chỉ trên mobile */
   .main-offer::before {
-    background-position: 70% center; /* Di chuyển nền sang phải */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../images/home/offer_bg.png") 70% center/cover no-repeat; /* Di chuyển nền sang phải */
+    filter: blur(4px); /* Blur nhẹ */
+    transform: scale(1.05);
+    z-index: 1;
   }
 
   .offer-content {
     left: 50%;
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .offer-content h2 {
     font-size: 1.8rem;
@@ -2254,6 +2262,7 @@ img.lazy.loaded {
   }
   .offer-discount {
     width: 180px;
+    margin-top: 3vh; /* Đảm bảo có khoảng cách sau nút */
   }
 }
 /* =============================================
