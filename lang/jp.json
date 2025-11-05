@@ -191,8 +191,12 @@
   "about_intro_right_text": "世界中の美しい場所へ。",
 
   "about_experience_title": "ジョンの最高の休日はここから！",
-  "about_experience_item_title": "お得に旅をする",
-  "about_experience_item_desc": "誰もが平等に公正な機会を持つべきです。",
+  "about_experience_item_title_1": "お得に旅をする",
+  "about_experience_item_desc_1": ">格安航空券を探したり、家庭的な宿に泊まったり、地元の人のように食事を楽しんだりして、世界をお得に旅する方法を学びましょう。",
+  "about_experience_item_title_2": "文化体験の旅",
+  "about_experience_item_desc_2": "地域の祭り、芸術、料理、伝統音楽を通して、さまざまな文化に触れ、世界中の人々とつながりましょう。",
+  "about_experience_item_title_3": "お得に旅をする",
+  "about_experience_item_desc_3": "環境に優しい目的地を選び、プラスチックの使用を減らし、地域社会を支援することで、責任ある旅をしましょう。",
 
   "about_booking_title": "今すぐチケットを探す",
   "about_booking_label_from": "出発地",

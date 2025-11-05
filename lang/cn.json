@@ -191,8 +191,12 @@
   "about_intro_right_text": "探索世界上最美的地方。",
 
   "about_experience_title": "约翰的美好假期从这里开始！",
-  "about_experience_item_title": "经济旅行",
-  "about_experience_item_desc": "每个人都有平等获得公正审判的权利。",
+  "about_experience_item_title_1": "经济旅行",
+  "about_experience_item_desc_1": "每个人都有平等获得公正审判的权利。",
+  "about_experience_item_title_2": "文化之旅",
+  "about_experience_item_desc_2": "通过当地的节日、艺术、美食和传统音乐，深入体验不同文化，感受世界的多样与魅力。",
+  "about_experience_item_title_3": "可持续旅行",
+  "about_experience_item_desc_3": "以负责任的方式旅行，选择环保目的地，减少塑料使用，并支持当地社区的发展。",
 
   "about_booking_title": "立即查找您的机票",
   "about_booking_label_from": "出发地",

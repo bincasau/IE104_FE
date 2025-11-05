@@ -9,11 +9,47 @@ export async function initPage() {
   let currentPage = 1,
     activeTag = null;
 
+  // ✅ Cờ (flag) để check lần tải trang đầu tiên
+  let isInitialLoad = true;
+
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => Array.from(document.querySelectorAll(s));
   const paginate = (arr, p = 1, size = PAGE_SIZE) =>
     arr.slice((p - 1) * size, p * size);
   const uniq = (arr) => Array.from(new Set(arr));
+
+  // ✅ Định nghĩa chiều cao Header ở đây để dùng chung
+  const HEADER_OFFSET = 96;
+
+  // ✅ TẠO HÀM CUỘN DÙNG CHUNG
+  // Hàm này sẽ cuộn đến đầu danh sách bài viết (ngay trên chữ "RECENT BLOGS")
+  // và chừa ra 96px cho header
+  const scrollToGridTop = () => {
+    const target = $(".section-title") || $(".main");
+    if (target) {
+      const elementPosition =
+        target.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - HEADER_OFFSET;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // ✅ Vấn đề 3: Thêm hàm Debounce (cho tìm kiếm live)
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func.apply(this, args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
 
   // ====== SIDEBAR ======
   function renderTags(blogs) {
@@ -31,7 +67,7 @@ export async function initPage() {
 
   function renderPopular(blogs) {
     $("#popular").innerHTML = blogs
-      .slice(0, 7)
+      .slice(0, 6)
       .map(
         (b) => `
         <a class="item" href="#${b.slug}">
@@ -108,11 +144,13 @@ export async function initPage() {
         currentPage === total ? "disabled" : ""
       }></button>`;
 
+    // ✅ CHỈ GỌI HÀM CUỘN KHI NHẤN NÚT PHÂN TRANG
     nav.querySelector(".prev").onclick = () => {
       if (currentPage > 1) {
         currentPage--;
         renderGrid();
         renderPagination();
+        scrollToGridTop(); // ✅ Cuộn mượt
       }
     };
     nav.querySelector(".next").onclick = () => {
@@ -120,18 +158,21 @@ export async function initPage() {
         currentPage++;
         renderGrid();
         renderPagination();
+        scrollToGridTop(); // ✅ Cuộn mượt
       }
     };
     $$("#pagination .page").forEach(
       (b) =>
         (b.onclick = () => {
-          currentPage = +b.dataset.page;
+          const newPage = +b.dataset.page;
+          if (newPage === currentPage) return;
+          currentPage = newPage;
           renderGrid();
           renderPagination();
+          scrollToGridTop(); // ✅ Cuộn mượt
         })
     );
 
-    // ✅ dịch Prev / Next ngay khi render
     import("./lang.js").then(({ applyTranslations }) => applyTranslations(nav));
   }
 
@@ -149,6 +190,9 @@ export async function initPage() {
     currentPage = 1;
     renderGrid();
     renderPagination();
+
+    // ✅ Thêm lại: Cuộn mượt khi lọc
+    scrollToGridTop();
   }
 
   // ====== DETAIL ======
@@ -156,7 +200,6 @@ export async function initPage() {
     const post = details.find((p) => p.slug === slug);
     if (!post) return;
 
-    // ✅ Cập nhật breadcrumb -> "Chi tiết bài viết"
     const currentCrumb = $(".breadcrumb .current");
     if (currentCrumb) {
       currentCrumb.setAttribute("data-key", "blog_breadcrumb_detail");
@@ -308,7 +351,14 @@ export async function initPage() {
       note.scrollIntoView({ behavior: "smooth", block: "nearest" });
     };
 
-    box.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Cuộn khi xem chi tiết (vẫn giữ nguyên)
+    const elementPosition = box.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - HEADER_OFFSET;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
   }
 
   // ====== ROUTER ======
@@ -332,7 +382,14 @@ export async function initPage() {
     if (pag) pag.style.display = "";
     if (ttl) ttl.style.display = "";
 
-    if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: "instant" });
+    // ✅ SỬA LỖI CUỘN CỦA NÚT "BACK"
+    if (isInitialLoad) {
+      // Khi mới tải trang lần đầu -> không cuộn, chỉ nhảy lên top 0
+      if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: "instant" });
+    } else {
+      // Khi nhấn "Back" (hoặc tag) -> cuộn mượt
+      scrollToGridTop();
+    }
   }
 
   function handleRoute() {
@@ -345,7 +402,7 @@ export async function initPage() {
     if (!slug) {
       showListView();
       if (window.filterAfterHashChange) {
-        applyFilter();
+        applyFilter(); // Filter này đã tự gọi scrollToGridTop()
         window.filterAfterHashChange = false;
       }
       return;
@@ -368,13 +425,10 @@ export async function initPage() {
     renderGrid();
     renderPagination();
 
-    $("#searchBtn").onclick = applyFilter;
-    $("#searchInput").onkeydown = (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        applyFilter();
-      }
-    };
+    // ✅ Thêm lại tìm kiếm "live" (debounce)
+    const debouncedApplyFilter = debounce(applyFilter, 400);
+    $("#searchInput").oninput = debouncedApplyFilter;
+    $("#searchBtn").onclick = applyFilter; // Giữ lại nút click
 
     $("#tags").onclick = (e) => {
       const b = e.target.closest(".tag");
@@ -389,7 +443,9 @@ export async function initPage() {
     };
 
     window.addEventListener("hashchange", handleRoute);
-    handleRoute();
+    handleRoute(); // ✅ Lần tải trang đầu tiên chạy ở đây
+
+    isInitialLoad = false; // ✅ Sau khi chạy xong lần đầu, tắt cờ
   })();
 }
 
