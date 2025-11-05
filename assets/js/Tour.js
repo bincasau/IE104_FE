@@ -1,5 +1,5 @@
 export async function initPage() {
-  console.log("Tour.js loaded (v2.5 final — auto translate + fixed lazy load)");
+  console.log("Tour.js loaded ");
 
   const destList = document.getElementById("destinationList");
   const actList = document.getElementById("activityList");
@@ -56,7 +56,6 @@ export async function initPage() {
       .replace(/\s+/g, " ")
       .trim();
 
-  // THAY THẾ HÀM NÀY (BẮT ĐẦU TỪ DÒNG 64)
   function renderList(
     arr,
     container,
@@ -64,7 +63,7 @@ export async function initPage() {
     showAll,
     typeLabel,
     allKey,
-    preSelectedValue = null // <-- THÊM THAM SỐ MỚI NÀY
+    preSelectedValue = null
   ) {
     container.innerHTML = "";
     const allLabel = document.createElement("label");
@@ -103,7 +102,7 @@ export async function initPage() {
     });
   }
 
-  // THAY THẾ HÀM NÀY (BẮT ĐẦU TỪ DÒNG 88)
+  // THAY THẾ HÀM NÀY
   async function loadTours() {
     try {
       const res = await fetch("../../data/tours.json");
@@ -113,34 +112,97 @@ export async function initPage() {
       provinces = [...new Set(tours.map((t) => t.location))];
       activities = [...new Set(tours.flatMap((t) => t.activities || []))];
 
-      // === PHẦN SỬA BẮT ĐẦU TẠI ĐÂY ===
+      // 1️⃣ Lấy dữ liệu từ Home
+      const searchCity = sessionStorage.getItem("searchCity");
+      const selectedProvinceRaw = sessionStorage.getItem("selectedProvince");
 
-      // 1. Lấy tỉnh thành đã lưu từ trang chủ
-      const preSelectedProvince = sessionStorage.getItem("selectedProvince");
-      if (preSelectedProvince) {
-        sessionStorage.removeItem("selectedProvince"); // Xóa đi để không bị lọc lại ở lần sau
+      // Xoá sau khi dùng để tránh giữ state
+      if (searchCity) sessionStorage.removeItem("searchCity");
+      if (selectedProvinceRaw) sessionStorage.removeItem("selectedProvince");
+
+      // 2️⃣ Nếu có searchCity → điền vào thanh tìm kiếm
+      if (searchCity && searchInput) {
+        searchInput.value = searchCity;
       }
 
-      // 2. Truyền giá trị này vào renderList cho Destinations
-      renderList(
-        provinces,
-        destList,
-        4,
-        showAllDest,
-        "Destinations",
-        "tour_all_destination",
-        preSelectedProvince // <-- Truyền vào đây
-      );
-      renderList(
-        activities,
-        actList,
-        4,
-        showAllAct,
-        "Activities",
-        "tour_all_activity"
-        // (Không cần cho activity)
-      );
+      // 3️⃣ Xử lý tick tỉnh (nếu có selectedProvince)
+      if (selectedProvinceRaw) {
+        const selectedProvince = normalize(selectedProvinceRaw);
 
+        // Nếu tỉnh nằm trong danh sách
+        const hasProvince = provinces.some(
+          (p) => normalize(p) === selectedProvince
+        );
+
+        // Nếu có nhưng hiện chưa hiển thị (chưa bật Show More)
+        const isHidden = hasProvince && !showAllDest && provinces.length > 4;
+
+        // Hàm tick sau khi render xong
+        const tickProvince = () => {
+          const allCb = destList.querySelector('input[value="all"]');
+          if (allCb) allCb.checked = false;
+
+          const targetCb = Array.from(
+            destList.querySelectorAll('input[type="checkbox"]')
+          ).find((cb) => normalize(cb.value) === selectedProvince);
+
+          if (targetCb) {
+            targetCb.checked = true;
+            applyFilters();
+            console.log("✅ Đã tick tỉnh:", selectedProvinceRaw);
+          } else {
+            console.warn("⚠️ Không tìm thấy tỉnh:", selectedProvinceRaw);
+          }
+        };
+
+        // Nếu cần mở rộng list để tick
+        if (isHidden) {
+          showAllDest = true;
+          renderList(
+            provinces,
+            destList,
+            4,
+            showAllDest,
+            "Destinations",
+            "tour_all_destination"
+          );
+          attachFilterEvents();
+          showMoreDestBtn.textContent = "Show Less";
+
+          // Tick sau khi DOM update
+          setTimeout(tickProvince, 80);
+        } else {
+          // Render bình thường rồi tick
+          renderList(
+            provinces,
+            destList,
+            4,
+            showAllDest,
+            "Destinations",
+            "tour_all_destination"
+          );
+          attachFilterEvents();
+          setTimeout(tickProvince, 80);
+        }
+      } else {
+        // Không có selectedProvince → render list bình thường
+        renderList(
+          provinces,
+          destList,
+          4,
+          showAllDest,
+          "Destinations",
+          "tour_all_destination"
+        );
+        renderList(
+          activities,
+          actList,
+          4,
+          showAllAct,
+          "Activities",
+          "tour_all_activity"
+        );
+      }
       // (Các cài đặt priceRange và durationRange vẫn giữ nguyên)
       const maxPriceFound = tours.length
         ? Math.max(...tours.map((t) => t.price))
@@ -161,11 +223,8 @@ export async function initPage() {
         "days"
       )}`;
 
-      // 3. THAY ĐỔI QUAN TRỌNG:
-      // Thay vì render tất cả tour, hãy gọi applyFilters()
-      // để nó tự đọc các checkbox đã được check (bao gồm cả ô tỉnh thành)
       attachFilterEvents();
-      applyFilters(); // <-- THAY THẾ CHO 2 DÒNG (filteredTours = ... và renderTours())
+      applyFilters();
 
       // === PHẦN SỬA KẾT THÚC ===
 
@@ -526,6 +585,10 @@ export async function initPage() {
     } catch (err) {
       console.warn("Không thể load lại file ngôn ngữ:", err);
     }
+    durationMax.textContent = `${durationRange.value} ${t(
+      "tour_duration_day_label",
+      "days"
+    )}`;
     renderTours();
   });
 

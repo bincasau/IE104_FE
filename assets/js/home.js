@@ -51,7 +51,7 @@ export async function initPage() {
   const destCards = document.querySelectorAll(".dest-card");
   destCards.forEach((card) => {
     card.addEventListener("click", () => {
-      const city = card.querySelector(".label span")?.textContent?.trim();
+      const city = card.getAttribute("data-province-en");
       if (!city) return;
       sessionStorage.setItem("selectedProvince", city);
       loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
