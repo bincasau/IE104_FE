@@ -30,7 +30,7 @@ body {
   position: absolute;
   inset: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("../images/home/aerial-tropical-rock-beach.jpg") center/cover no-repeat;
+    url("../images/home/aerial-tropical-rock-beach.webp") center/cover no-repeat;
   z-index: 0;
 }
 
@@ -1256,6 +1256,7 @@ body {
   gap: 1vw;
   padding-bottom: 2vh;
   border-bottom: 1px solid #eee;
+  cursor: pointer;
 }
 
 .trip-card:last-child {
@@ -1343,6 +1344,7 @@ body {
   overflow: hidden;
   transition: all 0.3s ease;
   text-align: left;
+  cursor: pointer;
 }
 
 .blog-item:hover {
@@ -1697,7 +1699,7 @@ img.lazy.loaded {
 @media (max-width: 768px) {
   .main-hero {
     /* ĐÃ SỬA: Giảm chiều cao */
-    height: 65vh;
+    height: 55vh;
     margin-top: 70px;
   }
 

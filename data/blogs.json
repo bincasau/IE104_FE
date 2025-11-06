@@ -7,7 +7,7 @@
       "author": "Admin Angus Smith",
       "date": "August 15, 2025",
       "avatar": "https://i.pravatar.cc/40?img=12",
-      "image": "../assets/images/blog/blog1_1.jpg",
+      "image": "../assets/images/blog/blog1_1.webp",
       "slug": "10-must-see-attractions-santorini"
     },
     {
@@ -17,7 +17,7 @@
       "author": "Admin Marta K.",
       "date": "July 10, 2025",
       "avatar": "https://i.pravatar.cc/40?img=5",
-      "image": "../assets/images/blog/blog2_1.jpg",
+      "image": "../assets/images/blog/blog2_1.webp",
       "slug": "beginners-guide-hiking-swiss-alps"
     },
     {
@@ -27,7 +27,7 @@
       "author": "Admin A. Nguyen",
       "date": "June 18, 2025",
       "avatar": "https://i.pravatar.cc/40?img=9",
-      "image": "../assets/images/blog/blog3_1.jpg",
+      "image": "../assets/images/blog/blog3_1.webp",
       "slug": "solo-travel-best-thing"
     },
     {
@@ -37,7 +37,7 @@
       "author": "Admin Ho Lan",
       "date": "April 22, 2025",
       "avatar": "https://i.pravatar.cc/40?img=3",
-      "image": "../assets/images/blog/blog4_1.jpg",
+      "image": "../assets/images/blog/blog4_1.webp",
       "slug": "family-fun-vacation-tips"
     },
     {
@@ -47,7 +47,7 @@
       "author": "Admin Celine",
       "date": "March 10, 2025",
       "avatar": "https://i.pravatar.cc/40?img=7",
-      "image": "../assets/images/blog/blog5_1.jpg",
+      "image": "../assets/images/blog/blog5_1.webp",
       "slug": "thanksgiving-in-canada"
     },
     {
@@ -57,7 +57,7 @@
       "author": "Admin Kay Tran",
       "date": "February 17, 2025",
       "avatar": "https://i.pravatar.cc/40?img=2",
-      "image": "../assets/images/blog/blog6_1.jpg",
+      "image": "../assets/images/blog/blog6_1.webp",
       "slug": "3-national-parks-beaches"
     },
     {
@@ -67,7 +67,7 @@
       "author": "Admin Quang",
       "date": "January 8, 2025",
       "avatar": "https://i.pravatar.cc/40?img=4",
-      "image": "../assets/images/blog/blog7_1.jpg",
+      "image": "../assets/images/blog/blog7_1.webp",
       "slug": "budget-travel-offseason"
     },
     {
@@ -77,7 +77,7 @@
       "author": "Admin julis Pham",
       "date": "May 5, 2025",
       "avatar": "https://i.pravatar.cc/40?img=13",
-      "image": "../assets/images/blog/blog8_1.jpg",
+      "image": "../assets/images/blog/blog8_1.webp",
       "slug": "exploring-vietnam"
     },
     {
@@ -87,7 +87,7 @@
       "author": "Admin Henry Do",
       "date": "May 29, 2025",
       "avatar": "https://i.pravatar.cc/40?img=15",
-      "image": "../assets/images/blog/blog9_1.jpg",
+      "image": "../assets/images/blog/blog9_1.webp",
       "slug": "eco-travel-2025"
     },
     {
@@ -97,7 +97,7 @@
       "author": "Admin Thao Le",
       "date": "April 12, 2025",
       "avatar": "https://i.pravatar.cc/40?img=6",
-      "image": "../assets/images/blog/blog10_1.jpg",
+      "image": "../assets/images/blog/blog10_1.webp",
       "slug": "street-foods-bangkok"
     }
   ],
@@ -109,27 +109,31 @@
       "author": "Angus Smith",
       "date": "August 15, 2025",
       "category": "Travel",
-      "cover": "../assets/images/blog/blog1_1.jpg",
+      "cover": "../assets/images/blog/blog1_1.webp",
       "intro": "Santorini – the white-and-blue jewel of Greece, famous for its romantic sunsets, cliffside views, and Cycladic charm. This island is not just a destination; it's an enchanting experience that captures the heart.",
       "sections": [
         {
           "heading": "1) Oia Village",
-          "image": "../assets/images/blog/blog1_2.jpg",
+          "image": "../assets/images/blog/blog1_2.webp",
           "text": "A fairytale village perched on the northern tip of the island, Oia is world-renowned for its iconic blue-domed churches, whitewashed houses, and cobblestone streets. Winding through its narrow alleys reveals charming art galleries, boutique shops, and hidden cafes. As the sun begins to set, crowds gather to witness the legendary spectacle, where the sky explodes in hues of orange, pink, and purple, casting a magical glow over the Aegean Sea. It is a moment of pure, breathtaking beauty that defines the Santorini experience."
         },
         {
           "heading": "2) Red Beach",
-          "image": "../assets/images/blog/blog1_3.jpg",
+          "image": "../assets/images/blog/blog1_3.webp",
           "text": "Known for its unique and dramatic landscape, Red Beach feels like stepping onto another planet. The towering, rust-colored cliffs, formed by volcanic activity, create a stunning contrast against the deep blue waters of the sea. The sand itself is a mix of red and black pebbles. While swimming is popular here, many visitors come simply to admire the otherworldly scenery and capture incredible photographs. A short and slightly rocky path leads down to the shore, making the journey itself a small adventure."
         },
         {
           "heading": "3) Fira Town",
-          "image": "../assets/images/blog/blog1_4.jpg",
+          "image": "../assets/images/blog/blog1_4.webp",
           "text": "The island’s bustling capital, Fira, is a vibrant hub of activity filled with chic cafés, high-end shops, and lively bars. It clings to the edge of the caldera, offering panoramic views that are simply unforgettable. Visitors can explore the Museum of Prehistoric Thera, take a thrilling cable car ride down to the old port, or simply wander the energetic streets. Fira perfectly balances the island's serene beauty with a dynamic and cosmopolitan atmosphere, making it the heart of Santorini's social life."
         }
       ],
       "quote": "“Every sunset in Santorini feels like a masterpiece painted just for you.”",
-      "gallery": ["../assets/images/blog/blog1_2.jpg", "../assets/images/blog/blog1_3.jpg", "../assets/images/blog/blog1_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog1_2.webp",
+        "../assets/images/blog/blog1_3.webp",
+        "../assets/images/blog/blog1_4.webp"
+      ]
     },
     {
       "slug": "beginners-guide-hiking-swiss-alps",
@@ -137,27 +141,31 @@
       "author": "Marta K.",
       "date": "July 10, 2025",
       "category": "Guide",
-      "cover": "../assets/images/blog/blog2_1.jpg",
+      "cover": "../assets/images/blog/blog2_1.webp",
       "intro": "The Swiss Alps are a hiker’s dream come true. With their majestic peaks, crystal-clear lakes, and lush green meadows, they offer some of the most stunning trails in the world. Here’s how to start your first mountain adventure safely and confidently.",
       "sections": [
         {
           "heading": "1) Prepare Your Body and Gear",
-          "image": "../assets/images/blog/blog2_2.jpg",
+          "image": "../assets/images/blog/blog2_2.webp",
           "text": "Even for easy trails, basic physical preparation is key. Engage in light cardio, like jogging or cycling, a few weeks before your trip to build stamina. Most importantly, invest in a pair of sturdy, comfortable hiking boots and break them in beforehand to avoid blisters. Pack clothing in layers—a moisture-wicking base layer, an insulating mid-layer like fleece, and a waterproof outer shell—as mountain weather is notoriously unpredictable. Don't forget energy snacks, plenty of water, and sun protection."
         },
         {
           "heading": "2) Choose a Beginner-Friendly Route",
-          "image": "../assets/images/blog/blog2_3.jpg",
+          "image": "../assets/images/blog/blog2_3.webp",
           "text": "Trails like the path from Lauterbrunnen to Wengen or the Gornergrat hike near Zermatt are ideal for first-timers, offering rewarding scenery without extreme difficulty. These routes are well-marked and provide breathtaking views of famous landmarks like the Eiger or the Matterhorn. Before you go, research trail options, check their difficulty ratings, and consider the elevation gain. Starting with a manageable trail will build your confidence and ensure a positive first experience."
         },
         {
           "heading": "3) Stay Safe and Aware",
-          "image": "../assets/images/blog/blog2_4.jpg",
+          "image": "../assets/images/blog/blog2_4.webp",
           "text": "Safety should always be your top priority. Check local weather forecasts right before you start your hike, as conditions can change rapidly in the mountains. Always respect trail signs and markers, as they are there to guide you safely. For remote areas, bringing offline maps on your phone or a physical map and compass is crucial. Finally, let someone know your planned route and estimated return time, just in case."
         }
       ],
       "quote": "“The summit isn’t the goal — the journey is.”",
-      "gallery": ["../assets/images/blog/blog2_2.jpg", "../assets/images/blog/blog2_3.jpg", "../assets/images/blog/blog2_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog2_2.webp",
+        "../assets/images/blog/blog2_3.webp",
+        "../assets/images/blog/blog2_4.webp"
+      ]
     },
     {
       "slug": "solo-travel-best-thing",
@@ -165,27 +173,31 @@
       "author": "A. Nguyen",
       "date": "June 18, 2025",
       "category": "Inspiration",
-      "cover": "../assets/images/blog/blog3_1.jpg",
+      "cover": "../assets/images/blog/blog3_1.webp",
       "intro": "Traveling alone can be a profoundly life-changing experience — a chance to rediscover yourself, gain unshakable confidence, and embrace true independence. You learn to rely on yourself, navigate challenges, and open up to the world in a way that is simply not possible when traveling with others.",
       "sections": [
         {
           "heading": "1) Embrace Self-Discovery",
-          "image": "../assets/images/blog/blog3_2.jpg",
+          "image": "../assets/images/blog/blog3_2.webp",
           "text": "Being alone provides you with the invaluable space to reflect, listen to your own thoughts, and appreciate who you are without external distractions or compromises. You are the master of your itinerary, free to spend an entire day in a museum, sit in a cafe for hours, or change your plans on a whim. This freedom allows you to connect with your own desires and passions on a deeper level."
         },
         {
           "heading": "2) Safety Comes First",
-          "image": "../assets/images/blog/blog3_3.jpg",
+          "image": "../assets/images/blog/blog3_3.webp",
           "text": "While solo travel is empowering, it's essential to be smart about safety. Before you leave, share your detailed itinerary with someone you trust back home. While exploring, always stay alert and aware of your surroundings and belongings, especially in crowded tourist areas. Most importantly, trust your instincts—if a situation or a person feels off, remove yourself from it immediately. Researching safe neighborhoods for your accommodation is also a wise step."
         },
         {
           "heading": "3) Connect with Locals",
-          "image": "../assets/images/blog/blog3_4.jpg",
+          "image": "../assets/images/blog/blog3_4.webp",
           "text": "Traveling alone makes you more approachable and open to new connections. Enrich your journey by joining local tours, taking a cooking class, or eating at family-run restaurants instead of tourist traps. Striking up a conversation with a shopkeeper or a fellow traveler can lead to wonderful insights and unexpected friendships. These authentic interactions often become the most cherished memories of your trip."
         }
       ],
       "quote": "“Solo travel isn’t loneliness — it’s freedom.”",
-      "gallery": ["../assets/images/blog/blog3_2.jpg", "../assets/images/blog/blog3_3.jpg", "../assets/images/blog/blog3_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog3_2.webp",
+        "../assets/images/blog/blog3_3.webp",
+        "../assets/images/blog/blog3_4.webp"
+      ]
     },
     {
       "slug": "family-fun-vacation-tips",
@@ -193,27 +205,31 @@
       "author": "Ho Lan",
       "date": "April 22, 2025",
       "category": "Tips & Tricks",
-      "cover": "../assets/images/blog/blog4_1.jpg",
+      "cover": "../assets/images/blog/blog4_1.webp",
       "intro": "Family trips can be exciting and memorable if you plan them right. With a bit of foresight, you can minimize stress and maximize fun, creating cherished memories for everyone. Here are 7 practical tips for stress-free travel with kids.",
       "sections": [
         {
           "heading": "1) Plan Flexible Schedules",
-          "image": "../assets/images/blog/blog4_2.jpg",
+          "image": "../assets/images/blog/blog4_2.webp",
           "text": "Children thrive on routine but can also get tired and overwhelmed easily. Avoid packing too many activities into one day. A good rule of thumb is to plan one major activity for the morning and leave the afternoon open for rest, play, or spontaneous discoveries. A flexible schedule reduces pressure and allows everyone, including the parents, to enjoy the vacation at a more relaxed pace."
         },
         {
           "heading": "2) Pack Smart",
-          "image": "../assets/images/blog/blog4_3.jpg",
+          "image": "../assets/images/blog/blog4_3.webp",
           "text": "Beyond the essentials, packing smart means anticipating needs. Bring a variety of snacks and drinks to handle sudden hunger pangs. Pack a small bag of familiar toys, books, or games to keep them entertained during long journeys or waits. A basic first-aid kit with items like bandages, antiseptic wipes, and children's pain reliever can be a lifesaver for handling minor surprises on the road."
         },
         {
           "heading": "3) Choose Family-Friendly Accommodation",
-          "image": "../assets/images/blog/blog4_4.jpg",
+          "image": "../assets/images/blog/blog4_4.webp",
           "text": "Where you stay can make or break a family vacation. Apartments with kitchens or aparthotels offer the convenience of preparing simple meals and having more space to spread out. Hotels that offer kids’ clubs, playgrounds, or swimming pools can provide built-in entertainment and give parents a much-needed break. Check for amenities like cribs or extra beds when booking to make everything easier upon arrival."
         }
       ],
       "quote": "“The best trips are the ones filled with laughter and patience.”",
-      "gallery": ["../assets/images/blog/blog4_2.jpg", "../assets/images/blog/blog4_3.jpg", "../assets/images/blog/blog4_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog4_2.webp",
+        "../assets/images/blog/blog4_3.webp",
+        "../assets/images/blog/blog4_4.webp"
+      ]
     },
     {
       "slug": "thanksgiving-in-canada",
@@ -221,27 +237,31 @@
       "author": "Celine",
       "date": "March 10, 2025",
       "category": "Food",
-      "cover": "../assets/images/blog/blog5_1.jpg",
+      "cover": "../assets/images/blog/blog5_1.webp",
       "intro": "Canadian Thanksgiving, celebrated in early October, is a warm and heartfelt celebration of gratitude, family, and of course, delicious food. It’s a time to embrace the autumn harvest, gather with loved ones, and reflect on the blessings of the past year.",
       "sections": [
         {
           "heading": "1) The Iconic Roast Turkey",
-          "image": "../assets/images/blog/blog5_2.jpg",
+          "image": "../assets/images/blog/blog5_2.webp",
           "text": "A juicy, golden-brown roast turkey served with tangy cranberry sauce and rich gravy is the undeniable heart of every Thanksgiving dinner. This centerpiece is often accompanied by a host of classic side dishes, such as creamy mashed potatoes, savory stuffing, roasted root vegetables, and sweet potato casserole. It's a feast that embodies comfort, tradition, and abundance."
         },
         {
           "heading": "2) Pumpkin Pie Delight",
-          "image": "../assets/images/blog/blog5_3.jpg",
+          "image": "../assets/images/blog/blog5_3.webp",
           "text": "No Thanksgiving meal is complete without the perfect autumn dessert: a rich, spiced pumpkin pie topped with a generous dollop of whipped cream. Its warm flavors of cinnamon, nutmeg, and ginger capture the essence of the season. This beloved treat is a sweet and satisfying conclusion to the festive meal, leaving everyone feeling content and grateful."
         },
         {
           "heading": "3) The Festive Atmosphere",
-          "image": "../assets/images/blog/blog5_4.jpg",
+          "image": "../assets/images/blog/blog5_4.webp",
           "text": "Beyond the dining table, the holiday is marked by a truly heartwarming atmosphere. Farmers' markets burst with colorful autumn produce, community parades fill the streets with music and cheer, and families often spend the long weekend enjoying outdoor activities like hiking amidst the fall foliage. It's a celebration that brings communities together and reminds everyone to slow down and appreciate what they have."
         }
       ],
       "quote": "“Thanksgiving reminds us to slow down and appreciate what we have.”",
-      "gallery": ["../assets/images/blog/blog5_2.jpg", "../assets/images/blog/blog5_3.jpg", "../assets/images/blog/blog5_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog5_2.webp",
+        "../assets/images/blog/blog5_3.webp",
+        "../assets/images/blog/blog5_4.webp"
+      ]
     },
     {
       "slug": "3-national-parks-beaches",
@@ -249,27 +269,31 @@
       "author": "Mai Tran",
       "date": "February 17, 2025",
       "category": "Travel",
-      "cover": "../assets/images/blog/blog6_1.jpg",
+      "cover": "../assets/images/blog/blog6_1.webp",
       "intro": "For nature lovers and adventure seekers, these three destinations offer unforgettable landscapes and profound outdoor experiences. They are places of immense natural beauty that deserve a spot on everyone's bucket list, promising to inspire awe and create lifelong memories.",
       "sections": [
         {
           "heading": "1) Yosemite National Park, USA",
-          "image": "../assets/images/blog/blog6_2.jpg",
+          "image": "../assets/images/blog/blog6_2.webp",
           "text": "Home to majestic granite cliffs like El Capitan and Half Dome, towering ancient sequoia groves, and powerful waterfalls that thunder down into pristine valleys, Yosemite is a testament to nature's grandeur. Whether you're an avid hiker tackling challenging trails or a casual visitor enjoying a scenic drive, the park's dramatic landscapes and awe-inspiring vistas will leave you breathless."
         },
         {
           "heading": "2) Yellowstone National Park, USA",
-          "image": "../assets/images/blog/blog6_3.jpg",
+          "image": "../assets/images/blog/blog6_3.webp",
           "text": "As the world's first national park, Yellowstone is a geothermal wonderland of geysers, colorful hot springs, and bubbling mud pots. Witnessing the iconic Old Faithful erupt is a classic experience, but the park also offers incredible opportunities for wildlife viewing. Watch for herds of bison roaming freely, listen for the howl of a wolf, or catch a glimpse of a grizzly bear in its natural habitat."
         },
         {
           "heading": "3) Maldives Beaches",
-          "image": "../assets/images/blog/blog6_4.jpg",
+          "image": "../assets/images/blog/blog6_4.webp",
           "text": "For the ultimate tropical paradise, nothing compares to the Maldives. This island nation is composed of coral atolls with crystal-clear turquoise waters, powdery white sands, and a serene sense of luxury. It's a premier destination for snorkeling and diving among vibrant coral reefs teeming with marine life. Staying in an overwater bungalow and waking up to the gentle lapping of waves is an experience of pure bliss and relaxation."
         }
       ],
       "quote": "“National parks are the treasures of our planet.”",
-      "gallery": ["../assets/images/blog/blog6_2.jpg", "../assets/images/blog/blog6_3.jpg", "../assets/images/blog/blog6_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog6_2.webp",
+        "../assets/images/blog/blog6_3.webp",
+        "../assets/images/blog/blog6_4.webp"
+      ]
     },
     {
       "slug": "budget-travel-offseason",
@@ -277,27 +301,31 @@
       "author": "Quang",
       "date": "January 8, 2025",
       "category": "Tips & Tricks",
-      "cover": "../assets/images/blog/blog7_1.jpg",
+      "cover": "../assets/images/blog/blog7_1.webp",
       "intro": "Off-season travel is the savvy traveler's best-kept secret. It means exploring the world with fewer crowds, enjoying significantly lower prices, and gaining a more authentic and intimate experience of a destination. It's about traveling smarter, not cheaper.",
       "sections": [
         {
           "heading": "1) Save Big on Costs",
-          "image": "../assets/images/blog/blog7_2.jpg",
+          "image": "../assets/images/blog/blog7_2.webp",
           "text": "The most significant advantage of off-season travel is the financial savings. Hotels and flights are often 20–40% cheaper, and sometimes even more, outside of peak season. This allows your budget to stretch further, meaning you can afford a longer stay, a nicer hotel, or more unique local experiences that might have been too expensive otherwise."
         },
-        { 
+        {
           "heading": "2) Enjoy Peace and Space",
-          "image": "../assets/images/blog/blog7_3.jpg",
+          "image": "../assets/images/blog/blog7_3.webp",
           "text": "Imagine visiting the Colosseum or walking the Great Wall without being jostled by huge crowds. Off-season travel lets you explore popular attractions freely without the stress of long queues and crowded spaces. You can take your time, absorb the atmosphere, and capture photos without countless strangers in the background, leading to a much more meaningful connection with the place."
         },
         {
           "heading": "3) Travel Smarter",
-          "image": "../assets/images/blog/blog7_4.jpg",
+          "image": "../assets/images/blog/blog7_4.webp",
           "text": "To maximize your off-season benefits, book your flights and accommodation several months in advance to lock in the best prices. Use fare alerts from travel websites to notify you when prices drop. Furthermore, consider midweek travel—flying on a Tuesday or Wednesday is almost always cheaper than on a Friday or Sunday. This strategic planning can lead to substantial extra deals."
         }
       ],
       "quote": "“The best adventures often happen when the crowds are gone.”",
-      "gallery": ["../assets/images/blog/blog7_2.jpg", "../assets/images/blog/blog7_3.jpg", "../assets/images/blog/blog7_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog7_2.webp",
+        "../assets/images/blog/blog7_3.webp",
+        "../assets/images/blog/blog7_4.webp"
+      ]
     },
     {
       "slug": "exploring-vietnam",
@@ -305,27 +333,31 @@
       "author": "Lan Pham",
       "date": "May 5, 2025",
       "category": "Destination",
-      "cover": "../assets/images/blog/blog8_1.jpg",
+      "cover": "../assets/images/blog/blog8_1.webp",
       "intro": "Vietnam is a land of breathtaking contrasts — from the majestic, rugged mountains in the north to the pristine, palm-fringed beaches in the south. Its rich history, vibrant culture, and world-famous cuisine make it a captivating destination for any traveler.",
       "sections": [
         {
           "heading": "1) Ha Giang Loop",
-          "image": "../assets/images/blog/blog8_2.jpg",
+          "image": "../assets/images/blog/blog8_2.webp",
           "text": "For the ultimate adventure, the Ha Giang Loop is a thrilling motorbike route through some of Northern Vietnam's most spectacular scenery. This journey takes you through dramatic limestone mountains, deep canyons, and past terraced rice paddies. Along the way, you'll encounter the rich cultures of local ethnic villages, making it a truly immersive and unforgettable experience."
         },
         {
           "heading": "2) Hoi An & Da Nang",
-          "image": "../assets/images/blog/blog8_3.jpg",
+          "image": "../assets/images/blog/blog8_3.webp",
           "text": "This region offers a perfect blend of history, culture, and beachside relaxation. Hoi An's Ancient Town, a UNESCO World Heritage site, is famous for its well-preserved architecture and magical lantern-lit nights. Just a short drive away, Da Nang is a modern coastal city with beautiful beaches like My Khe, the iconic Dragon Bridge, and easy access to the scenic Marble Mountains."
         },
         {
           "heading": "3) Phu Quoc Island",
-          "image": "../assets/images/blog/blog8_4.jpg",
+          "image": "../assets/images/blog/blog8_4.webp",
           "text": "Known as the 'Pearl Island,' Phu Quoc is Vietnam's tropical paradise. Its crystal-clear waters, vibrant coral reefs, and dense forests make it ideal for snorkeling, diving, and exploring. After a day of adventure, you can relax on stunning beaches like Sao Beach, known for its powdery white sand, and enjoy some of the freshest seafood in Vietnam at the lively night markets."
         }
       ],
       "quote": "“Vietnam — where every road leads to a new discovery.”",
-      "gallery": ["../assets/images/blog/blog8_2.jpg", "../assets/images/blog/blog8_3.jpg", "../assets/images/blog/blog8_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog8_2.webp",
+        "../assets/images/blog/blog8_3.webp",
+        "../assets/images/blog/blog8_4.webp"
+      ]
     },
     {
       "slug": "eco-travel-2025",
@@ -333,27 +365,31 @@
       "author": "Henry Do",
       "date": "May 29, 2025",
       "category": "Inspiration",
-      "cover": "../assets/images/blog/blog9_1.jpg",
+      "cover": "../assets/images/blog/blog9_1.webp",
       "intro": "Sustainable travel is no longer just a niche trend — it’s a global responsibility. Every choice we make as travelers has an impact. Here’s how to make your next trip eco-friendly, protect the planet's natural beauty, and support local communities for a more meaningful journey.",
       "sections": [
         {
           "heading": "1) Travel by Green Transport",
-          "image": "../assets/images/blog/blog9_2.jpg",
+          "image": "../assets/images/blog/blog9_2.webp",
           "text": "One of the most effective ways to reduce your carbon footprint is by choosing greener modes of transportation. Whenever possible, opt for trains instead of short-haul flights, as they are significantly more energy-efficient. In cities, explore by walking, renting bicycles, or using electric vehicles. These methods not only benefit the environment but also allow for a more intimate and immersive travel experience."
         },
         {
           "heading": "2) Stay at Eco-Friendly Places",
-          "image": "../assets/images/blog/blog9_3.jpg",
+          "image": "../assets/images/blog/blog9_3.webp",
           "text": "Support the sustainability movement by choosing hotels, lodges, and homestays that are committed to eco-friendly practices and community development. Look for certifications or places that explicitly mention their use of renewable energy, water conservation programs, and waste reduction efforts. Staying at such places ensures your money is contributing positively to the local environment and economy."
         },
         {
           "heading": "3) Consume Responsibly",
-          "image": "../assets/images/blog/blog9_4.jpg",
+          "image": "../assets/images/blog/blog9_4.webp",
           "text": "Make a conscious effort to reduce waste on your travels. Avoid single-use plastics by carrying a refillable water bottle and a reusable shopping bag. Say no to plastic straws and disposable coffee cups. Furthermore, support the local economy by eating at locally-owned restaurants and buying authentic, locally-made souvenirs instead of mass-produced trinkets. This ensures your spending directly benefits the community you are visiting."
         }
       ],
       "quote": "“Travel responsibly — the planet thanks you.”",
-      "gallery": ["../assets/images/blog/blog9_2.jpg", "../assets/images/blog/blog9_3.jpg", "../assets/images/blog/blog9_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog9_2.webp",
+        "../assets/images/blog/blog9_3.webp",
+        "../assets/images/blog/blog9_4.webp"
+      ]
     },
     {
       "slug": "street-foods-bangkok",
@@ -361,27 +397,31 @@
       "author": "Thao Le",
       "date": "April 12, 2025",
       "category": "Food",
-      "cover": "../assets/images/blog/blog10_1.jpg",
+      "cover": "../assets/images/blog/blog10_1.webp",
       "intro": "Bangkok is a paradise for food lovers, and its street food scene is legendary. The city's sidewalks are a culinary theater, alive with the sizzle of woks and the fragrant aroma of spices. These 8 dishes are essential to understanding Thailand’s vibrant street food culture.",
       "sections": [
         {
           "heading": "1) Pad Thai",
-          "image": "../assets/images/blog/blog10_2.jpg",
+          "image": "../assets/images/blog/blog10_2.webp",
           "text": "The classic stir-fried noodle dish that has become famous worldwide. A perfect Pad Thai achieves a delicate balance of sweet, sour, and savory flavors. Thin rice noodles are expertly stir-fried in a hot wok with shrimp or tofu, bean sprouts, chives, and a sauce made from tamarind, fish sauce, and palm sugar. It's typically served with crushed peanuts, chili flakes, and a wedge of lime for a final burst of flavor."
         },
         {
           "heading": "2) Mango Sticky Rice",
-          "image": "../assets/images/blog/blog10_3.jpg",
+          "image": "../assets/images/blog/blog10_3.webp",
           "text": "A quintessential Thai dessert and a tropical favorite, especially when mangoes are in season. This deceptively simple dish consists of perfectly ripe, sweet mango slices served alongside soft, glutinous rice that has been steamed with coconut milk. A final drizzle of a sweet and slightly salty coconut sauce and a sprinkle of toasted mung beans for crunch make this dessert an unforgettable treat."
         },
         {
           "heading": "3) Tom Yum Goong",
-          "image": "../assets/images/blog/blog10_4.jpg",
+          "image": "../assets/images/blog/blog10_4.webp",
           "text": "A hot, spicy, and sour shrimp soup that defines the very essence of Thai comfort food. The broth is a fragrant and explosive infusion of classic Thai herbs: lemongrass, galangal, kaffir lime leaves, and fiery chilies. Juicy prawns and mushrooms complete the soup, which is often enriched with coconut milk for a creamier version (Tom Yum Goong Nam Khon). It's a flavor explosion in every spoonful."
         }
       ],
       "quote": "“You haven’t truly tasted Thailand until you’ve eaten on the street.”",
-      "gallery": ["../assets/images/blog/blog10_2.jpg", "../assets/images/blog/blog10_3.jpg", "../assets/images/blog/blog10_4.jpg"]
+      "gallery": [
+        "../assets/images/blog/blog10_2.webp",
+        "../assets/images/blog/blog10_3.webp",
+        "../assets/images/blog/blog10_4.webp"
+      ]
     }
   ]
 }
