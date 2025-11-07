@@ -34,7 +34,7 @@ export async function loadSection(
       Home: ["Home"],
       About: ["About"],
       Tours: ["Tours", "TourDetail"],
-      Blog: ["Blog"],
+      Blog: ["Blog", "BlogDetail"],
       Contact: ["Contact"],
     };
     const normalize = (s) =>

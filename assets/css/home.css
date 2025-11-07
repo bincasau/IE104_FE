@@ -30,7 +30,7 @@ body {
   position: absolute;
   inset: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("../images/home/aerial-tropical-rock-beach.jpg") center/cover no-repeat;
+    url("../images/home/aerial-tropical-rock-beach.webp") center/cover no-repeat;
   z-index: 0;
 }
 
@@ -447,7 +447,7 @@ body {
       rgba(0, 0, 0, 0.65) 0%,
       rgba(0, 0, 0, 0.2) 100%
     ),
-    url("../images/home/mainthird_bg.png") center/cover no-repeat;
+    url("../images/home/mainthird_bg.webp") center/cover no-repeat;
   overflow: hidden;
 }
 
@@ -589,7 +589,7 @@ body {
 ============================================== */
 .main-about {
   width: 100%;
-  background: url("../images/home/about_bg.png") center/cover no-repeat;
+  background: url("../images/home/about_bg.webp") center/cover no-repeat;
   padding: 10vh 0;
   display: flex;
   justify-content: center;
@@ -778,7 +778,7 @@ body {
      PHẦN 5: RECOMMENDED TRIPS SECTION (gợi ý tour)
 ============================================== --> */
 .main-recommend {
-  background: url("../images/home/recommendations_bg.png") center/cover
+  background: url("../images/home/recommendations_bg.webp") center/cover
     no-repeat;
   width: 100%;
   padding: 10vh 0;
@@ -896,7 +896,7 @@ body {
 .chooseus-bg {
   position: absolute;
   inset: 0;
-  background: url("../images/home/chooseus_bg.png") center/cover no-repeat;
+  background: url("../images/home/chooseus_bg.webp") center/cover no-repeat;
   z-index: 0;
 }
 
@@ -1040,7 +1040,7 @@ body {
 .main-testimonials {
   position: relative;
   width: 100%;
-  background: url("../images/home/testimonials_bg.png") center/cover no-repeat;
+  background: url("../images/home/testimonials_bg.webp") center/cover no-repeat;
   padding: 10vh 0;
   text-align: center;
   color: #111;
@@ -1146,7 +1146,7 @@ body {
   overflow: hidden;
 
   /* ĐÃ SỬA: Đưa background về đây, BỎ blur ở base */
-  background: url("../images/home/offer_bg.png") center/cover no-repeat;
+  background: url("../images/home/offer_bg.webp") center/cover no-repeat;
 }
 
 /* BỎ ::before ở code gốc */
@@ -1207,7 +1207,7 @@ body {
 .main-tripshowcase {
   position: relative;
   width: 100%;
-  background: url("../images/home/tripshowcase_bg.png") center/cover no-repeat;
+  background: url("../images/home/tripshowcase_bg.webp") center/cover no-repeat;
   font-family: "Poppins", sans-serif;
   padding: 10vh 0;
   display: flex;
@@ -1256,6 +1256,7 @@ body {
   gap: 1vw;
   padding-bottom: 2vh;
   border-bottom: 1px solid #eee;
+  cursor: pointer;
 }
 
 .trip-card:last-child {
@@ -1343,6 +1344,7 @@ body {
   overflow: hidden;
   transition: all 0.3s ease;
   text-align: left;
+  cursor: pointer;
 }
 
 .blog-item:hover {
@@ -1423,7 +1425,7 @@ body {
    =============================== */
 .main-newsletter {
   position: relative;
-  background: url("../images/home/newsletter_bg.png") center/cover no-repeat;
+  background: url("../images/home/newsletter_bg.webp") center/cover no-repeat;
   height: 65vh;
   display: flex;
   align-items: center;
@@ -1697,7 +1699,7 @@ img.lazy.loaded {
 @media (max-width: 768px) {
   .main-hero {
     /* ĐÃ SỬA: Giảm chiều cao */
-    height: 65vh;
+    height: 55vh;
     margin-top: 70px;
   }
 
@@ -2241,7 +2243,7 @@ img.lazy.loaded {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../images/home/offer_bg.png") 70% center/cover no-repeat; /* Di chuyển nền sang phải */
+    background: url("../images/home/offer_bg.webp") 70% center/cover no-repeat; /* Di chuyển nền sang phải */
     filter: blur(4px); /* Blur nhẹ */
     transform: scale(1.05);
     z-index: 1;

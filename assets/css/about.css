@@ -468,7 +468,7 @@ select {
   font-size: 1em;
 }
 
-.booking-form .btn-explore {
+.booking-form .btn-explore-trip {
   background-color: #333;
   color: #fff;
   padding: 14px 20px;
@@ -479,7 +479,7 @@ select {
   transition: 0.2s;
 }
 
-.booking-form .btn-explore:hover {
+.booking-form .btn-explore-trip:hover {
   background-color: #555;
 }
 
@@ -537,7 +537,7 @@ select {
   gap: 25px;
 }
 
-.about-hero__cta .btn-explore {
+.about-hero__cta .btn-explore-trip {
   background-color: #ffc107;
   color: #000;
   font-weight: 600;
@@ -547,7 +547,7 @@ select {
   transition: all 0.3s ease;
 }
 
-.about-hero__cta .btn-explore:hover {
+.about-hero__cta .btn-explore-trip:hover {
   background-color: #e0a800;
 }
 
@@ -844,11 +844,12 @@ select {
     left: 0 !important;
     text-align: center !important;
     padding: 30px 15px !important;
+    margin-top: 0 !important; /* <-- ĐÃ SỬA LỖI */
     margin-bottom: 80px !important;
     box-sizing: border-box;
   }
   .timeline-item.right {
-    margin-top: 0 !important;
+    /* margin-top: 0 !important; <-- Đã chuyển lên .timeline-item chung */
   }
   .timeline-content {
     display: block;
@@ -956,7 +957,7 @@ select {
     gap: 18px;
     flex-wrap: wrap;
   }
-  .about-hero__cta .btn-explore {
+  .about-hero__cta .btn-explore-trip {
     padding: 12px 22px !important;
     font-size: 14px;
     border-radius: 6px;
@@ -1291,4 +1292,31 @@ select {
   .team-section__grid:hover .team-section__card:hover{
     transform:none; opacity:1;
   }
+
+/* =========================================================
+   THÔNG BÁO TOAST (CHO NÚT CHƯA PHÁT TRIỂN)
+========================================================= */
+#feature-toast {
+  position: fixed;
+  bottom: -100px; /* Ẩn ở dưới màn hình */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222; /* Màu tối */
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 2000; /* Nổi lên trên cùng */
+  opacity: 0;
+  transition: all 0.4s ease-in-out; /* Hiệu ứng mượt */
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  white-space: nowrap; /* Đảm bảo không vỡ dòng */
+}
+
+/* Khi toast có class .show, nó sẽ trượt lên */
+#feature-toast.show {
+  bottom: 30px; /* Trượt lên vị trí này */
+  opacity: 1;
+}
 }

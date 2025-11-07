@@ -138,7 +138,7 @@ body {
   background: rgba(255, 255, 255, 0); /* nền trắng mờ, chìm nhẹ */
   border-radius: 16px;
   padding: 22px 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.0); /* đổ bóng nhẹ hơn */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0); /* đổ bóng nhẹ hơn */
   backdrop-filter: blur(6px); /* hiệu ứng mờ đẹp mắt */
   height: max-content;
   align-self: flex-start;
@@ -575,7 +575,6 @@ input[type="range"] {
 
 /* Màu chữ criteria section */
 
-
 /* Container của price range */
 .price-range-wrapper {
   position: relative;
@@ -612,7 +611,6 @@ input[type="range"] {
   transition: background 0.3s ease;
 }
 
-
 .from-label {
   text-decoration: line-through;
   color: #888; /* hoặc đổi sang màu bạn thích, ví dụ #F5E2D3 */
@@ -636,7 +634,7 @@ input[type="range"] {
     max-height: none;
     order: -1; /* đưa phần filter lên trên */
     width: 100%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     backdrop-filter: none;
     background: #fff;
   }
@@ -665,7 +663,8 @@ input[type="range"] {
     height: 250px;
   }
 
-  .tour-info h3, .tour-info p {
+  .tour-info h3,
+  .tour-info p {
     max-width: 100%;
   }
 
@@ -858,4 +857,3 @@ input[type="range"] {
     gap: 24px;
   }
 }
-
