@@ -1171,3 +1171,140 @@ img.lazy-loaded {
     gap: 24px;
   }
 }
+
+/* ===== Gallery: base reset để không vỡ khi co giãn ===== */
+.tour-gallery{
+  align-items: stretch;
+}
+.gallery-left,
+.gallery-right,
+.gallery-left img,
+.gallery-right img{
+  display:block;
+  width:100%;
+}
+
+/* ảnh trái giữ tỉ lệ 4:3, không bị méo */
+.gallery-left img{
+  aspect-ratio: 4 / 3;
+  height:auto;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* ảnh nhỏ bên phải hiển thị dạng ô vuông */
+.gallery-right{
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+.gallery-right .small-img img{
+  aspect-ratio: 1 / 1;
+  height:auto;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+@media (max-width:767px){
+  .tour-gallery{
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 16px;
+  }
+  .gallery-left img{ aspect-ratio: 16/10; }       /* banner chính thấp hơn một chút để đỡ dài */
+  .gallery-right{ grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .gallery-right .small-img img{ aspect-ratio: 1/1; }
+  .overlay{ bottom: 6px; right: 6px; }
+}
+
+/* Tablet */
+@media (min-width:768px) and (max-width:1024px){
+  .blog-frame{ height: 460px; width: min(1100px, 96%); }
+  .blog-bg-img{ width: 100%; right: 0; opacity: .65; }
+  .blog-person{ right: 40px; height: 70%; }
+  .blog-text{ left: 64px; transform: translateY(-50%); text-align: left; }
+  .blog-text h1{ font-size: 44px; }
+}
+
+/* Mobile */
+@media (max-width:767px){
+  .blog-frame{ height: 300px; width: 100%; margin: 0; border-radius: 0; box-shadow:none; }
+  .blog-bg-color{ width:100%; }
+  .blog-bg-img{ width:100%; opacity:.5; object-fit:cover; object-position:center 30%; }
+  .blog-person{ display:none; }                     /* ẩn để không che chữ */
+  .blog-text{ left:50%; top:50%; transform:translate(-50%,-50%); width:90%; text-align:center; }
+  .blog-text h1{ font-size:32px; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,.4); }
+  .breadcrumb{ justify-content:center; background:rgba(255,255,255,.2); border-width:2px; }
+  .breadcrumb .home,.breadcrumb .current,.breadcrumb .arrow{ color:#fff; }
+}
+
+/* Giới hạn chiều rộng và thứ tự cho tablet/mobile */
+@media (max-width:1024px){
+  .tour-info{ flex-direction: column; gap: 24px; }
+  .info-right{ position: static; order: -1; width:100%; }
+  .video-frame, .join-form{ max-width: 560px; width: 100%; }
+  .video-frame video{ width:100%; height:auto; }
+}
+
+/* đảm bảo iframe không cao quá màn hình nhỏ */
+.video-content{ max-height: 80vh; }
+.video-content iframe{ height: min(540px, 70vh); }
+@media (max-width:767px){
+  .video-content{ width: 92%; }
+  .video-content iframe{ height: 56vw; } /* ~16:9 theo bề rộng */
+}
+
+/* ===============================
+   GALLERY — RESPONSIVE ONLY
+   (PC giữ nguyên, Mobile xếp ảnh lớn trên)
+================================ */
+
+/* 🖥️ Desktop (>=1025px) — giữ nguyên layout cũ */
+@media (min-width: 1025px) {
+  .tour-gallery { display: flex; align-items: center; gap: 15px; }
+  .gallery-left img { width: 820px; height: 520px; object-fit: cover; border-radius: var(--radius); }
+  .gallery-right { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .gallery-right img { width: 250px; height: 250px; object-fit: cover; border-radius: var(--radius); }
+}
+
+/* 📲 Tablet (768–1024px) — vẫn 2 cột, co giãn theo tỉ lệ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .tour-gallery { display: flex; align-items: stretch; gap: 16px; padding: 0 20px; }
+  .gallery-left { flex: 1 1 60%; }
+  .gallery-right { flex: 1 1 40%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .gallery-left img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+  .gallery-right img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+}
+
+/* 📱 Mobile (<=767px) — ảnh lớn lên trên, ảnh nhỏ 2 cột bên dưới */
+@media (max-width: 767px) {
+  .tour-gallery { display: block; width: 100%; padding: 0 16px; }
+
+  /* Ảnh lớn (trên cùng) */
+  .gallery-left { margin-bottom: 12px; }
+  .gallery-left img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;   /* banner chính thấp một chút */
+    object-fit: cover;
+    border-radius: var(--radius);
+    display: block;
+  }
+
+  /* Nhóm ảnh nhỏ (bên dưới) */
+  .gallery-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .gallery-right img,
+  .gallery-right .small-img img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;     /* ô vuông đẹp */
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  /* Nút overlay nếu có */
+  .overlay { bottom: 6px; right: 6px; }
+}
+
