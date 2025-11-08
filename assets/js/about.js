@@ -9,8 +9,8 @@ export function initPage() {
   const notDevelopedMessages = {
     en: "This feature is under development. Please check back later!",
     vi: "Chức năng này đang được phát triển. Vui lòng thử lại sau!",
-    cn: "此功能正在开发中。请稍后再来！", // Tiếng Trung
-    jp: "この機能は開発中です。後ほど再試行してください。", // Tiếng Nhật
+    cn: "此功能正在开发中。请稍后再来！",
+    jp: "この機能は開発中です。後ほど再試行してください。",
   };
 
   // 2. Hàm hiển thị toast

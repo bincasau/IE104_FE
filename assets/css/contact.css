@@ -290,101 +290,9 @@ body {
   background: #25d366;
 }
 
-/* ===== .blog-frame (Khúc đầu) ===== */
-.blog-frame {
-  position: relative;
-  margin: var(--offset) auto;
-  margin-top: 90px;
-  width: min(var(--frame-width), calc(100% - 110px));
-  height: var(--frame-height);
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* === NỀN MÀU TRÁI === */
-.blog-bg-color {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
-  height: 100%;
-  background-color: #f5e2d3;
-  z-index: 1;
-}
-
-/* === ẢNH NỀN === */
-.blog-bg-img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1140px;
-  height: 100%;
-  object-fit: cover;
-  z-index: 2;
-}
-
-/* === ẢNH NGƯỜI === */
-.blog-person {
-  position: absolute;
-  bottom: 0;
-  right: 290px;
-  height: 80%;
-  object-fit: contain;
-  z-index: 3;
-}
-
-/* === TEXT === */
-.blog-text {
-  position: absolute;
-  top: 50%;
-  left: 150px;
-  transform: translateY(-50%);
-  z-index: 4;
-}
-
-.blog-text h1 {
-  font-size: 45px;
-  font-weight: 700;
-  color: #000;
-  margin-bottom: 40px;
-  transform: translateX(80px);
-  /* tràn qua phải */
-}
-
-/* Breadcrumb */
-.breadcrumb {
-  display: inline-flex;
-  align-items: center;
-  border: 3px solid #eca871;
-  border-radius: 8px;
-  padding: 10px 22px;
-  background: transparent;
-  gap: 10px;
-  transform: translateX(80px);
-  /* tràn qua phải */
-}
-
-.breadcrumb .home {
-  font-weight: 700;
-  color: #000;
-}
-
-.breadcrumb .arrow {
-  color: #ff7c28;
-  font-weight: 700;
-  font-size: 30px;
-  transform: translateY(-3px);
-}
-
-.breadcrumb .current {
-  color: #b6b3b2;
-  font-weight: 600;
-}
-
 /* === Background cho .promo (chồng lên cái cũ) === */
 .promo {
-  background-image: url("../../assets/images/contact/bg.png");
+  background-image: url("../../assets/images/contact/bg.webp");
   background-size: cover;
   background-position: center;
   border: 4px;
@@ -417,10 +325,6 @@ body {
   }
   .blog-bg-img {
     width: 800px; /* Thu nhỏ ảnh nền */
-  }
-  .blog-person {
-    right: 120px; /* Kéo người sang trái */
-    height: 75%;
   }
   .blog-text {
     left: 80px; /* Kéo text sang trái */
@@ -569,11 +473,6 @@ body {
     width: 800px;
   }
 
-  .blog-person {
-    right: 40px;
-    height: 75%;
-  }
-
   .blog-text {
     left: 80px;
     transform: translateY(-50%);
@@ -651,4 +550,96 @@ body {
     padding: 6px 10px;
     font-size: 14px;
   }
+}
+
+/* ===== .blog-frame (Khúc đầu) ===== */
+.blog-frame {
+  position: relative;
+  margin: var(--offset) auto;
+  margin-top: 90px;
+  width: min(var(--frame-width), calc(100% - 110px));
+  height: var(--frame-height);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* === NỀN MÀU TRÁI === */
+.blog-bg-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background-color: #f5e2d3;
+  z-index: 1;
+}
+
+/* === ẢNH NỀN === */
+.blog-bg-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1140px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+/* === ẢNH NGƯỜI === */
+.blog-person {
+  position: absolute;
+  bottom: 0;
+  right: 290px;
+  height: 80%;
+  object-fit: contain;
+  z-index: 3;
+}
+
+/* === TEXT === */
+.blog-text {
+  position: absolute;
+  top: 50%;
+  left: 150px;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+
+.blog-text h1 {
+  font-size: 45px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 40px;
+  transform: translateX(80px);
+  /* tràn qua phải */
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  border: 3px solid #eca871;
+  border-radius: 8px;
+  padding: 10px 22px;
+  background: transparent;
+  gap: 10px;
+  transform: translateX(80px);
+  /* tràn qua phải */
+}
+
+.breadcrumb .home {
+  font-weight: 700;
+  color: #000;
+}
+
+.breadcrumb .arrow {
+  color: #ff7c28;
+  font-weight: 700;
+  font-size: 30px;
+  transform: translateY(-3px);
+}
+
+.breadcrumb .current {
+  color: #b6b3b2;
+  font-weight: 600;
 }

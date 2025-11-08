@@ -846,8 +846,7 @@ body {
 }
 
 /* Nếu container/cha có set overflow, nhớ tắt để sticky hoạt động */
-.container,
-.blog-frame {
+.container {
   overflow: visible;
 }
 

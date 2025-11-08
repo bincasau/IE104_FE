@@ -412,7 +412,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-image: url(../images/about/Background_about.png);
+  background-image: url(../images/about/Background_about.webp);
   background-size: cover;
 }
 
@@ -497,7 +497,7 @@ select {
   align-items: center;
   justify-content: space-between;
   padding: 60px 120px;
-  background-image: url(../images/about/Container_backgroung_abs.png);
+  background-image: url(../images/about/Container_backgroung_abs.webp);
   gap: 40px;
 }
 
@@ -519,7 +519,7 @@ select {
 }
 
 .about-hero__box {
-  background-image: url(../images/about/Background_abs.png);
+  background-image: url(../images/about/Background_abs.webp);
   padding: 20px;
   border-radius: 20px;
 }
@@ -1217,7 +1217,8 @@ select {
   font-style: normal;
   font-weight: 900;
   font-display: swap; /* 👈 thêm dòng này */
-  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-solid-900.woff2") format("woff2");
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-solid-900.woff2")
+    format("woff2");
 }
 
 /* =========================================================
@@ -1225,98 +1226,185 @@ select {
    Dán CUỐI FILE để override
 ========================================================= */
 @media (min-width: 768px) and (max-width: 880px) {
-
   /* ===== HERO/BLOG FRAME: bỏ chia 2 bên, ảnh phủ full ===== */
-  .blog-frame{ height: 440px; width: min(1100px, 96%); }
-  .blog-bg-color{ width: 100%; }                     /* bỏ 60% */
-  .blog-bg-img{ width: 100%; right: 0; opacity: .65; object-fit: cover; }
-  .blog-person{ right: 24px; height: 62%; max-width: 34%; } /* thu nhỏ để không che chữ */
-  .blog-text{ left: 56px; top: 50%; transform: translateY(-50%); text-align: left; }
-  .blog-text h1{ font-size: 40px; margin-bottom: 26px; transform: none; }
-  .breadcrumb{ transform: none; background: rgba(255,255,255,.25); border-color:#fff; }
+  .blog-frame {
+    height: 440px;
+    width: min(1100px, 96%);
+  }
+  .blog-bg-color {
+    width: 100%;
+  } /* bỏ 60% */
+  .blog-bg-img {
+    width: 100%;
+    right: 0;
+    opacity: 0.65;
+    object-fit: cover;
+  }
+  .blog-person {
+    right: 24px;
+    height: 62%;
+    max-width: 34%;
+  } /* thu nhỏ để không che chữ */
+  .blog-text {
+    left: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+  }
+  .blog-text h1 {
+    font-size: 40px;
+    margin-bottom: 26px;
+    transform: none;
+  }
+  .breadcrumb {
+    transform: none;
+    background: rgba(255, 255, 255, 0.25);
+    border-color: #fff;
+  }
 
   /* ===== ABOUT INTRO: 2 cột gọn gàng ===== */
-  .about-intro{
-    grid-template-columns: 1fr 1fr;    /* trái + giữa */
+  .about-intro {
+    grid-template-columns: 1fr 1fr; /* trái + giữa */
     gap: 36px;
     padding: 40px 44px;
     width: calc(100% - 60px);
   }
-  .about-intro__right{                 /* vali sang hàng mới */
+  .about-intro__right {
+    /* vali sang hàng mới */
     grid-column: 1 / -1;
     align-items: center;
     transform: none;
   }
-  .about-intro__suitcase{ width: 260px; }
-  .about-intro__title{ font-size: 42px; }
+  .about-intro__suitcase {
+    width: 260px;
+  }
+  .about-intro__title {
+    font-size: 42px;
+  }
 
   /* ===== TIMELINE: một cột, không tràn ===== */
-  .travel-experience{ max-width: 94%; margin: 70px auto; }
-  .timeline::before{ display:none; }
-  .timeline-item{
-    width: 100%; left: 0; text-align: left;
-    padding: 22px 0; margin-top: 0;
+  .travel-experience {
+    max-width: 94%;
+    margin: 70px auto;
   }
-  .timeline-item::before{ display:none; }
+  .timeline::before {
+    display: none;
+  }
+  .timeline-item {
+    width: 100%;
+    left: 0;
+    text-align: left;
+    padding: 22px 0;
+    margin-top: 0;
+  }
+  .timeline-item::before {
+    display: none;
+  }
   .timeline-item.left .timeline-content img,
-  .timeline-item.right .timeline-content img{
-    width: 100%; max-width: 520px; height:auto; margin: 14px 0; transform:none;
+  .timeline-item.right .timeline-content img {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    margin: 14px 0;
+    transform: none;
     border-radius: 14px;
   }
 
   /* ===== BOOKING SECTION: form xuống dưới, full-width ===== */
-  .booking-section__form-wrapper{
-    padding: 32px; height: auto; flex-direction: column; background-image: none;
+  .booking-section__form-wrapper {
+    padding: 32px;
+    height: auto;
+    flex-direction: column;
+    background-image: none;
   }
-  .booking-form{ width: 100%; max-width: 560px; gap: 20px; }
-  .booking-form__plane{ display:none; }
-  .form-row{ gap: 16px; }
+  .booking-form {
+    width: 100%;
+    max-width: 560px;
+    gap: 20px;
+  }
+  .booking-form__plane {
+    display: none;
+  }
+  .form-row {
+    gap: 16px;
+  }
 
   /* ===== ABOUT HERO: xếp dọc, padding gọn ===== */
-  .about-hero{ padding: 0 24px; }
-  .about-hero__content{
-    flex-direction: column; gap: 28px; padding: 40px 32px;
-    text-align: center; background-image: none; background-color: #fff; border-radius: 16px;
+  .about-hero {
+    padding: 0 24px;
   }
-  .about-hero__left{ max-width: 100%; }
-  .about-hero__left h1{ font-size: 40px; }
-  .about-hero__features{ grid-template-columns: repeat(2,1fr); gap: 12px 28px; }
-  .about-hero__cta{ justify-content: center; flex-wrap: wrap; gap: 18px; }
-  .avatars img{ width: 40px; height: 40px; }
-  .avatar-plus{ width: 40px; height: 40px; font-size: 14px; }
+  .about-hero__content {
+    flex-direction: column;
+    gap: 28px;
+    padding: 40px 32px;
+    text-align: center;
+    background-image: none;
+    background-color: #fff;
+    border-radius: 16px;
+  }
+  .about-hero__left {
+    max-width: 100%;
+  }
+  .about-hero__left h1 {
+    font-size: 40px;
+  }
+  .about-hero__features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 28px;
+  }
+  .about-hero__cta {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .avatars img {
+    width: 40px;
+    height: 40px;
+  }
+  .avatar-plus {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
 
   /* ===== TEAM: thẻ to vừa, không nhảy ===== */
-  .team-section__grid{ gap: 28px; }
-  .team-section__card{ width: 200px; transform:none !important; }
+  .team-section__grid {
+    gap: 28px;
+  }
+  .team-section__card {
+    width: 200px;
+    transform: none !important;
+  }
   .team-section__grid:hover .team-section__card,
-  .team-section__grid:hover .team-section__card:hover{
-    transform:none; opacity:1;
+  .team-section__grid:hover .team-section__card:hover {
+    transform: none;
+    opacity: 1;
   }
 
-/* =========================================================
+  /* =========================================================
    THÔNG BÁO TOAST (CHO NÚT CHƯA PHÁT TRIỂN)
 ========================================================= */
-#feature-toast {
-  position: fixed;
-  bottom: -100px; /* Ẩn ở dưới màn hình */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #222; /* Màu tối */
-  color: white;
-  padding: 16px 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 2000; /* Nổi lên trên cùng */
-  opacity: 0;
-  transition: all 0.4s ease-in-out; /* Hiệu ứng mượt */
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  white-space: nowrap; /* Đảm bảo không vỡ dòng */
-}
+  #feature-toast {
+    position: fixed;
+    bottom: -100px; /* Ẩn ở dưới màn hình */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #222; /* Màu tối */
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 2000; /* Nổi lên trên cùng */
+    opacity: 0;
+    transition: all 0.4s ease-in-out; /* Hiệu ứng mượt */
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    white-space: nowrap; /* Đảm bảo không vỡ dòng */
+  }
 
-/* Khi toast có class .show, nó sẽ trượt lên */
-#feature-toast.show {
-  bottom: 30px; /* Trượt lên vị trí này */
-  opacity: 1;
-}
+  /* Khi toast có class .show, nó sẽ trượt lên */
+  #feature-toast.show {
+    bottom: 30px; /* Trượt lên vị trí này */
+    opacity: 1;
+  }
 }
