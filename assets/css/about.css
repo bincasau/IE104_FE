@@ -746,6 +746,14 @@ select {
     text-align: left;
     padding-left: 40px;
   }
+
+  /* === SỬA LỖI TRÀN MÀN HÌNH (FIX 1) === */
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content {
+    transform: none;
+  }
+  /* === HẾT SỬA LỖI === */
+
   .timeline-item::before {
     left: 0;
   }
@@ -847,9 +855,6 @@ select {
     margin-top: 0 !important; /* <-- ĐÃ SỬA LỖI */
     margin-bottom: 80px !important;
     box-sizing: border-box;
-  }
-  .timeline-item.right {
-    /* margin-top: 0 !important; <-- Đã chuyển lên .timeline-item chung */
   }
   .timeline-content {
     display: block;
@@ -1025,192 +1030,6 @@ select {
 @media (max-width: 480px) {
   /* CSS cho banner đã bị xóa */
 }
-/* ===== .blog-frame (Khúc đầu) ===== */
-.blog-frame {
-  position: relative;
-  margin: var(--offset) auto;
-  margin-top: 90px;
-  width: min(var(--frame-width), calc(100% - 110px));
-  height: var(--frame-height);
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* === NỀN MÀU TRÁI === */
-.blog-bg-color {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
-  height: 100%;
-  background-color: #f5e2d3;
-  z-index: 1;
-}
-
-/* === ẢNH NỀN === */
-.blog-bg-img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1140px;
-  height: 100%;
-  object-fit: cover;
-  z-index: 2;
-}
-
-/* === ẢNH NGƯỜI === */
-.blog-person {
-  position: absolute;
-  bottom: 0;
-  right: 290px;
-  height: 80%;
-  object-fit: contain;
-  z-index: 3;
-}
-
-/* === TEXT === */
-.blog-text {
-  position: absolute;
-  top: 50%;
-  left: 150px;
-  transform: translateY(-50%);
-  z-index: 4;
-}
-
-.blog-text h1 {
-  font-size: 45px;
-  font-weight: 700;
-  color: #000;
-  margin-bottom: 40px;
-  transform: translateX(80px);
-  /* tràn qua phải */
-}
-
-/* Breadcrumb */
-.breadcrumb {
-  display: inline-flex;
-  align-items: center;
-  border: 3px solid #eca871;
-  border-radius: 8px;
-  padding: 10px 22px;
-  background: transparent;
-  gap: 10px;
-  transform: translateX(80px);
-  /* tràn qua phải */
-}
-
-.breadcrumb .home {
-  font-weight: 700;
-  color: #000;
-}
-
-.breadcrumb .arrow {
-  color: #ff7c28;
-  font-weight: 700;
-  font-size: 30px;
-  transform: translateY(-3px);
-}
-
-.breadcrumb .current {
-  color: #b6b3b2;
-  font-weight: 600;
-}
-/* === BỔ SUNG RESPONSIVE CHO .blog-frame GIỐNG BLOG === */
-@media (max-width: 992px) {
-  .blog-frame {
-    height: 420px;
-    width: calc(100% - 60px);
-    margin: var(--offset) auto;
-  }
-
-  .blog-bg-img {
-    width: 800px;
-  }
-
-  .blog-person {
-    right: 40px;
-    height: 75%;
-  }
-
-  .blog-text {
-    left: 80px;
-    transform: translateY(-50%);
-  }
-
-  .blog-text h1,
-  .breadcrumb {
-    transform: none;
-  }
-
-  .blog-text h1 {
-    font-size: 40px;
-    margin-bottom: 30px;
-  }
-}
-
-@media (max-width: 767px) {
-  .blog-frame {
-    height: 280px;
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .blog-bg-color {
-    width: 100%;
-  }
-
-  .blog-bg-img {
-    width: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    opacity: 0.5;
-  }
-
-  .blog-person {
-    display: none;
-  }
-
-  .blog-text {
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 90%;
-  }
-
-  .blog-text h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #fff;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-  }
-
-  .breadcrumb {
-    justify-content: center;
-    padding: 8px 16px;
-    border-width: 2px;
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  .breadcrumb .home,
-  .breadcrumb .current,
-  .breadcrumb .arrow {
-    color: #fff;
-  }
-}
-
-@media (max-width: 480px) {
-  .blog-text h1 {
-    font-size: 26px;
-  }
-
-  .breadcrumb {
-    padding: 6px 10px;
-    font-size: 14px;
-  }
-}
 
 @font-face {
   font-family: "Font Awesome 6 Free";
@@ -1226,42 +1045,6 @@ select {
    Dán CUỐI FILE để override
 ========================================================= */
 @media (min-width: 768px) and (max-width: 880px) {
-  /* ===== HERO/BLOG FRAME: bỏ chia 2 bên, ảnh phủ full ===== */
-  .blog-frame {
-    height: 440px;
-    width: min(1100px, 96%);
-  }
-  .blog-bg-color {
-    width: 100%;
-  } /* bỏ 60% */
-  .blog-bg-img {
-    width: 100%;
-    right: 0;
-    opacity: 0.65;
-    object-fit: cover;
-  }
-  .blog-person {
-    right: 24px;
-    height: 62%;
-    max-width: 34%;
-  } /* thu nhỏ để không che chữ */
-  .blog-text {
-    left: 56px;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: left;
-  }
-  .blog-text h1 {
-    font-size: 40px;
-    margin-bottom: 26px;
-    transform: none;
-  }
-  .breadcrumb {
-    transform: none;
-    background: rgba(255, 255, 255, 0.25);
-    border-color: #fff;
-  }
-
   /* ===== ABOUT INTRO: 2 cột gọn gàng ===== */
   .about-intro {
     grid-template-columns: 1fr 1fr; /* trái + giữa */
@@ -1297,6 +1080,14 @@ select {
     padding: 22px 0;
     margin-top: 0;
   }
+
+  /* === SỬA LỖI TRÀN MÀN HÌNH (FIX 1) === */
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content {
+    transform: none;
+  }
+  /* === HẾT SỬA LỖI === */
+
   .timeline-item::before {
     display: none;
   }
@@ -1406,5 +1197,301 @@ select {
   #feature-toast.show {
     bottom: 30px; /* Trượt lên vị trí này */
     opacity: 1;
+  }
+}
+/* === KHUNG CHÍNH === */
+.blog-frame {
+  position: relative;
+  margin: var(--offset) auto;
+  margin-top: 90px;
+  width: min(var(--frame-width), calc(100% - 110px));
+  height: var(--frame-height);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* === NỀN MÀU TRÁI === */
+.blog-bg-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  /* phần nền trái */
+  height: 100%;
+  background-color: #f5e2d3;
+  z-index: 1;
+}
+
+/* === ẢNH NỀN === */
+.blog-bg-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1140px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+/* === ẢNH NGƯỜI === */
+.blog-person {
+  position: absolute;
+  bottom: 0;
+  right: 290px;
+  height: 80%;
+  object-fit: contain;
+  z-index: 3;
+}
+
+/* === TEXT === */
+.blog-text {
+  position: absolute;
+  top: 50%;
+  left: 150px;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+
+.blog-text h1 {
+  font-size: 45px;
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 40px;
+  transform: translateX(80px);
+  /* tràn qua phải */
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  border: 3px solid #eca871;
+  border-radius: 8px;
+  padding: 10px 22px;
+  background: transparent;
+  gap: 10px;
+  transform: translateX(80px);
+  /* tràn qua phải */
+}
+
+.breadcrumb .home {
+  font-weight: 700;
+  color: #000;
+}
+
+.breadcrumb .arrow {
+  color: #ff7c28;
+  font-weight: 700;
+  font-size: 30px;
+  transform: translateY(-3px);
+}
+
+.breadcrumb .current {
+  color: #b6b3b2;
+  font-weight: 600;
+}
+
+/* ================================================
+   PHẦN RESPONSIVE CHO BANNER (ĐÃ THAY THẾ)
+================================================ */
+
+/* === Responsive (Tablet - 1024px, 1336px) === */
+@media (max-width: 1366px) {
+  .blog-frame {
+    /* Áp dụng style ảnh mờ, căn giữa */
+    height: 420px; /* Chiều cao cho tablet */
+    width: 100%;
+    margin: 0; /* Xóa margin cũ */
+    margin-bottom: var(--offset); /* Thêm margin-bottom để đẩy nội dung xuống */
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .blog-bg-color {
+    /* Nền màu chiếm hết */
+    width: 100%;
+  }
+
+  .blog-bg-img {
+    /* Ảnh nền full-width, căn giữa */
+    width: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: 0.5; /* Làm mờ ảnh để nổi text */
+  }
+
+  .blog-person {
+    /* Ẩn người đi cho đỡ rối */
+    display: none;
+  }
+
+  .blog-text {
+    /* Căn giữa text */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+  }
+
+  .blog-text h1 {
+    /* Ẩn theo yêu cầu */
+    display: none;
+  }
+
+  .breadcrumb {
+    /* Căn giữa breadcrumb */
+    justify-content: center;
+    padding: 8px 16px;
+    border-width: 2px;
+    /* Đổi màu chữ cho dễ đọc */
+    background: rgba(255, 255, 255, 0.2);
+    transform: none; /* Bỏ transform lệch */
+  }
+
+  .breadcrumb .home,
+  .breadcrumb .current,
+  .breadcrumb .arrow {
+    color: #fff;
+    /* Thêm bóng mờ để nổi bật giống ảnh mẫu */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Tăng cỡ chữ breadcrumb cho tablet */
+  .breadcrumb .home,
+  .breadcrumb .current {
+    font-size: 18px; /* Tăng cỡ chữ */
+  }
+}
+
+/* --- Mobile (Dưới 767px) --- */
+@media (max-width: 767px) {
+  .blog-frame {
+    /* Chỉ cần ghi đè chiều cao cho mobile */
+    height: 280px;
+    margin-bottom: 40px; /* Giảm khoảng cách cho mobile 1 chút */
+  }
+
+  /* Giảm cỡ chữ breadcrumb cho mobile */
+  .breadcrumb .home,
+  .breadcrumb .current {
+    font-size: 16px; /* Trả về cỡ chữ nhỏ hơn cho mobile */
+  }
+}
+
+/* =========================
+   HOTFIX: Tablet overflow + Timeline đẹp gọn
+   (DÁN CUỐI FILE about.css)
+========================= */
+
+/* Tablet chung: reset mọi khả năng gây tràn ngang */
+@media (max-width: 992px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden; /* “cửa chặn” an toàn, nhưng ta vẫn sửa tận gốc bên dưới */
+  }
+
+  /* ---- TIMELINE về 1 cột, bỏ mọi chồng lớp từ desktop ---- */
+  .timeline::before {
+    display: none !important;
+  }
+
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    width: 100% !important;
+    left: 0 !important;
+    text-align: left !important;
+    padding: 22px 0 !important;
+    margin-top: 0 !important; /* <-- QUAN TRỌNG: bỏ -200px/-350px */
+    box-sizing: border-box;
+  }
+
+  .timeline-item::before {
+    display: none !important;
+  }
+
+  .timeline-item .timeline-content {
+    transform: none !important; /* bỏ hiệu ứng lệch 2 phía */
+    max-width: 100% !important;
+  }
+
+  /* Ảnh không vượt khung trên tablet */
+  .timeline-item.left .timeline-content img,
+  .timeline-item.right .timeline-content img,
+  .timeline-content img {
+    width: 100% !important;
+    max-width: 520px !important;
+    height: auto !important;
+    margin: 14px 0 !important;
+    transform: none !important;
+  }
+}
+
+/* Ngưỡng “tablet lớn” cũng ép ảnh không tràn (tránh 130%) */
+@media (max-width: 1200px) {
+  .timeline-item.right .timeline-content img {
+    width: 100% !important; /* thay vì 130% ở desktop */
+  }
+}
+
+/* Banner/breadcrumb: chắc chắn không bị đẩy trên tablet */
+@media (max-width: 992px) {
+  .blog-text h1,
+  .breadcrumb {
+    transform: none !important; /* loại bỏ translateX(80px) còn sót */
+  }
+}
+
+/* (Không bắt buộc) – bảo hiểm chống tràn từ phần tử bất kỳ lỡ tay > 100vw */
+@supports (overflow: clip) {
+  body {
+    overflow-x: clip;
+  } /* clip mượt hơn hidden nếu browser hỗ trợ */
+}
+/* ====== Timeline căng giữa cho TABLET ====== */
+@media (min-width: 768px) and (max-width: 992px) {
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* canh giữa timeline */
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .timeline-item {
+    width: 100%;
+    max-width: 700px; /* cố định chiều rộng cho cân */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 40px auto !important;
+  }
+
+  .timeline-item .timeline-content {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .timeline-item .timeline-content img {
+    width: 100%;
+    height: auto;
+    margin: 16px 0;
+  }
+
+  /* Bỏ hiệu ứng lệch 2 bên nếu còn */
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0 !important;
+    transform: none !important;
+  }
+
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
   }
 }

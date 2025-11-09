@@ -64,7 +64,9 @@ export function initPage() {
   const bookingFormButton = document.querySelector(
     ".booking-form .btn-explore-trip"
   );
-  const heroCtaButton = document.querySelector(".about-hero__cta .btn-explore");
+  const heroCtaButton = document.querySelector(
+    ".about-hero__cta .btn-explore-trip"
+  );
 
   if (bookingFormButton) {
     bookingFormButton.addEventListener("click", showNotDevelopedToast);

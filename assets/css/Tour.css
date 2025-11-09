@@ -618,7 +618,7 @@ input[type="range"] {
 }
 
 /* =============================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (CHO CONTENT)
 ============================= */
 
 /* Tablet */
@@ -679,52 +679,10 @@ input[type="range"] {
   .view-more {
     width: 80%;
   }
-
-  /* Header chỉnh ảnh */
-  .tour-frame {
-    height: 420px;
-  }
-
-  .tour-person {
-    right: 50%;
-    transform: translateX(50%);
-    height: 85%;
-  }
-
-  .tour-text {
-    text-align: center;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .tour-text h1 {
-    font-size: 32px;
-  }
-
-  .breadcrumb {
-    justify-content: center;
-  }
 }
 
 /* Mobile nhỏ */
 @media (max-width: 576px) {
-  .tour-frame {
-    height: 350px;
-  }
-
-  .tour-person {
-    height: 70%;
-  }
-
-  .tour-text h1 {
-    font-size: 26px;
-  }
-
-  .breadcrumb {
-    font-size: 13px;
-    padding: 8px 16px;
-  }
-
   .main-layout {
     padding: 50px 5%;
   }
@@ -752,50 +710,18 @@ input[type="range"] {
   transform: translateY(0);
 }
 
-@media (max-width: 992px) {
+/* ================================================
+   PHẦN RESPONSIVE CHO BANNER (ĐÃ CẬP NHẬT)
+================================================ */
+
+/* === Responsive (Tablet - 1024px, 1336px) === */
+@media (max-width: 1366px) {
   .blog-frame {
-    /* Thu nhỏ banner 1 chút */
-    height: 420px;
-    width: calc(100% - 60px);
-    margin: var(--offset) auto;
-  }
-
-  .blog-bg-img {
-    /* Đảm bảo ảnh nền không bị co giãn quá */
-    width: 800px;
-  }
-
-  .blog-person {
-    /* Di chuyển người vào trong */
-    right: 40px;
-    height: 75%;
-  }
-
-  .blog-text {
-    /* Di chuyển text vào trong */
-    left: 80px;
-    transform: translateY(-50%);
-  }
-
-  .blog-text h1,
-  .breadcrumb {
-    /* Bỏ transform lệch */
-    transform: none;
-  }
-
-  .blog-text h1 {
-    font-size: 40px;
-    margin-bottom: 30px;
-  }
-}
-
-/* --- Mobile (Dưới 767px) --- */
-@media (max-width: 767px) {
-  .blog-frame {
-    /* Cho banner full-width và lùn hơn */
-    height: 280px;
+    /* Áp dụng style ảnh mờ, căn giữa */
+    height: 420px; /* Chiều cao cho tablet */
     width: 100%;
-    margin: 0;
+    margin: 0; /* Xóa margin cũ */
+    margin-bottom: var(--offset); /* Thêm margin-bottom để đẩy nội dung xuống */
     border-radius: 0;
     box-shadow: none;
   }
@@ -827,11 +753,8 @@ input[type="range"] {
   }
 
   .blog-text h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    /* Thêm viền/bóng để đọc chữ trên ảnh */
-    color: #fff;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    /* Ẩn theo yêu cầu */
+    display: none;
   }
 
   .breadcrumb {
@@ -841,19 +764,50 @@ input[type="range"] {
     border-width: 2px;
     /* Đổi màu chữ cho dễ đọc */
     background: rgba(255, 255, 255, 0.2);
+    transform: none; /* Bỏ transform lệch */
   }
 
   .breadcrumb .home,
   .breadcrumb .current,
   .breadcrumb .arrow {
     color: #fff;
+    /* Thêm bóng mờ để nổi bật giống ảnh mẫu */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   }
 
-  /* --- Layout chính --- */
-  .container {
-    /* Giảm padding và gap trên mobile */
-    padding: 0 15px;
-    margin-top: 24px;
-    gap: 24px;
+  /* Tăng cỡ chữ breadcrumb cho tablet */
+  .breadcrumb .home,
+  .breadcrumb .current {
+    font-size: 18px; /* Tăng cỡ chữ */
   }
+}
+
+/* --- Mobile (Dưới 767px) --- */
+@media (max-width: 767px) {
+  .blog-frame {
+    /* Chỉ cần ghi đè chiều cao cho mobile */
+    height: 280px;
+    margin-bottom: 40px; /* Giảm khoảng cách cho mobile 1 chút */
+  }
+
+  /* Giảm cỡ chữ breadcrumb cho mobile */
+  .breadcrumb .home,
+  .breadcrumb .current {
+    font-size: 16px; /* Trả về cỡ chữ nhỏ hơn cho mobile */
+  }
+}
+
+/* ===== FIX NGĂN KÉO NGANG ===== */
+/* Chặn cuộn ngang toàn trang */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Grid/Container không gây tràn do min-content */
+.main-layout,
+.tour-section {
+  min-width: 0;
 }

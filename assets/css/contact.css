@@ -302,6 +302,7 @@ body {
 /* ======= Responsive ======= */
 
 @media (max-width: 1200px) {
+  /* Các style này cho .hero, không phải .blog-frame */
   .hero {
     grid-template-columns: 1fr;
     height: 460px;
@@ -316,65 +317,10 @@ body {
   .promo__inner {
     grid-template-columns: 1fr 0.95fr;
   }
-
-  /* === RESPONSIVE CHO BLOG-FRAME === */
-  .blog-frame {
-    height: 460px;
-    margin: 40px 24px;
-    width: auto; /* Để margin xử lý chiều rộng */
-  }
-  .blog-bg-img {
-    width: 800px; /* Thu nhỏ ảnh nền */
-  }
-  .blog-text {
-    left: 80px; /* Kéo text sang trái */
-  }
-  .blog-text h1 {
-    transform: translateX(0); /* Bỏ transform */
-    font-size: 40px;
-  }
-  .breadcrumb {
-    transform: translateX(0); /* Bỏ transform */
-  }
-  /* === HẾT PHẦN BLOG-FRAME === */
-}
-
-@media (max-width: 992px) {
-  .promo__inner {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-  .form-card {
-    width: min(680px, 100%);
-    justify-self: center;
-  }
-  .promo__left {
-    padding-left: 16px;
-  }
-
-  /* === RESPONSIVE CHO BLOG-FRAME === */
-  .blog-frame {
-    height: 300px; /* Giảm chiều cao */
-  }
-  .blog-bg-color {
-    width: 100%; /* Nền màu chiếm toàn bộ */
-  }
-  .blog-text {
-    left: 50%;
-    transform: translate(-50%, -50%); /* Căn giữa */
-    width: 90%;
-    text-align: center;
-  }
-  .blog-text h1 {
-    margin-bottom: 24px;
-  }
-  .breadcrumb {
-    display: inline-flex; /* Giữ cho nó căn giữa */
-  }
-  /* === HẾT PHẦN BLOG-FRAME === */
 }
 
 @media (max-width: 768px) {
+  /* Các style này cho form và map, không phải banner */
   .contact-form .row {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -385,19 +331,10 @@ body {
   .hero {
     margin: 28px 16px;
   }
-
-  /* === RESPONSIVE CHO BLOG-FRAME === */
-  .blog-frame {
-    margin: 28px 16px; /* Giống .hero */
-    height: 260px;
-  }
-  .blog-text h1 {
-    font-size: 36px;
-  }
-  /* === HẾT PHẦN BLOG-FRAME === */
 }
 
 @media (max-width: 560px) {
+  /* Các style này cho form và map, không phải banner */
   .form-card--booking {
     padding: 26px 20px;
   } /* Contact form tweaks */
@@ -426,26 +363,6 @@ body {
   .map__frame {
     height: 320px;
   }
-
-  /* === RESPONSIVE CHO BLOG-FRAME === */
-  .blog-frame {
-    height: 240px;
-    border-radius: 20px;
-  }
-  .blog-text {
-    width: 95%; /* Gần full */
-  }
-  .blog-text h1 {
-    font-size: 32px;
-  }
-  .breadcrumb {
-    padding: 8px 16px;
-  }
-  .breadcrumb .arrow {
-    font-size: 24px;
-    transform: translateY(-2px);
-  }
-  /* === HẾT PHẦN BLOG-FRAME === */
 }
 .form-msg {
   margin-top: 10px;
@@ -461,98 +378,57 @@ body {
 .form-msg.success {
   color: #007a33; /* Green */
 }
-/* === BỔ SUNG RESPONSIVE CHO .blog-frame GIỐNG BLOG === */
+
+/* --- Promo (Form & Text) --- */
 @media (max-width: 992px) {
-  .blog-frame {
-    height: 420px;
-    width: calc(100% - 60px);
-    margin: var(--offset) auto;
-  }
-
-  .blog-bg-img {
-    width: 800px;
-  }
-
-  .blog-text {
-    left: 80px;
-    transform: translateY(-50%);
-  }
-
-  .blog-text h1,
-  .breadcrumb {
-    transform: none;
-  }
-
-  .blog-text h1 {
-    font-size: 40px;
-    margin-bottom: 30px;
-  }
-}
-
-@media (max-width: 767px) {
-  .blog-frame {
-    height: 280px;
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .blog-bg-color {
-    width: 100%;
-  }
-
-  .blog-bg-img {
-    width: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    opacity: 0.5;
-  }
-
-  .blog-person {
-    display: none;
-  }
-
-  .blog-text {
-    left: 50%;
-    transform: translate(-50%, -50%);
+  /* Giữ lại breakpoint 992px cho phần promo form */
+  .promo__inner {
+    grid-template-columns: 1fr; /* 1 cột giữa màn hình */
+    justify-items: center;
     text-align: center;
+    gap: 40px;
+  }
+
+  .promo__left {
+    padding-left: 0;
+  }
+
+  .promo__headline {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .promo__desc {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .form-card {
+    width: min(640px, 100%);
+    margin: 0 auto;
+  }
+
+  .form-title {
+    text-align: center;
+  }
+
+  .title-plane {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
+    opacity: 0.4;
+  }
+
+  /* --- Map Section --- */
+  .map__frame {
+    height: 380px;
     width: 90%;
-  }
-
-  .blog-text h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #fff;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-  }
-
-  .breadcrumb {
-    justify-content: center;
-    padding: 8px 16px;
-    border-width: 2px;
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  .breadcrumb .home,
-  .breadcrumb .current,
-  .breadcrumb .arrow {
-    color: #fff;
+    margin: 0 auto;
   }
 }
 
-@media (max-width: 480px) {
-  .blog-text h1 {
-    font-size: 26px;
-  }
-
-  .breadcrumb {
-    padding: 6px 10px;
-    font-size: 14px;
-  }
-}
-
-/* ===== .blog-frame (Khúc đầu) ===== */
+/* === KHUNG CHÍNH (BANNER) === */
 .blog-frame {
   position: relative;
   margin: var(--offset) auto;
@@ -570,6 +446,7 @@ body {
   top: 0;
   left: 0;
   width: 60%;
+  /* phần nền trái */
   height: 100%;
   background-color: #f5e2d3;
   z-index: 1;
@@ -607,7 +484,7 @@ body {
 
 .blog-text h1 {
   font-size: 45px;
-  font-weight: 700;
+  font-weight: 900;
   color: #000;
   margin-bottom: 40px;
   transform: translateX(80px);
@@ -642,4 +519,117 @@ body {
 .breadcrumb .current {
   color: #b6b3b2;
   font-weight: 600;
+}
+
+/* === Responsive (Tablet - 1024px, 1336px) - ĐÃ SỬA THEO YÊU CẦU === */
+@media (max-width: 1366px) {
+  /* **THAY ĐỔI BREAKPOINT TỪ 992px LÊN 1366px** */
+  .blog-frame {
+    /* Áp dụng style ảnh mờ, căn giữa */
+    height: 420px; /* Chiều cao cho tablet */
+    width: 100%;
+    margin: 0; /* Xóa margin cũ */
+    margin-bottom: var(
+      --offset
+    ); /* **THAY ĐỔI MỚI: Thêm margin-bottom để đẩy nội dung xuống** */
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .blog-bg-color {
+    /* Nền màu chiếm hết */
+    width: 100%;
+  }
+
+  .blog-bg-img {
+    /* Ảnh nền full-width, căn giữa */
+    width: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: 0.5; /* Làm mờ ảnh để nổi text */
+  }
+
+  .blog-person {
+    /* Ẩn người đi cho đỡ rối */
+    display: none;
+  }
+
+  .blog-text {
+    /* Căn giữa text */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+  }
+
+  .blog-text h1 {
+    /* Ẩn theo yêu cầu */
+    display: none;
+  }
+
+  .breadcrumb {
+    /* Căn giữa breadcrumb */
+    justify-content: center;
+    padding: 8px 16px;
+    border-width: 2px;
+    /* Đổi màu chữ cho dễ đọc */
+    background: rgba(255, 255, 255, 0.2);
+    transform: none; /* Bỏ transform lệch */
+  }
+
+  .breadcrumb .home,
+  .breadcrumb .current,
+  .breadcrumb .arrow {
+    color: #fff;
+    /* Thêm bóng mờ để nổi bật giống ảnh mẫu */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Tăng cỡ chữ breadcrumb cho tablet */
+  .breadcrumb .home,
+  .breadcrumb .current {
+    font-size: 18px; /* Tăng cỡ chữ (có thể đổi thành 20px, 22px...) */
+  }
+}
+
+/* --- Mobile (Dưới 767px) --- */
+@media (max-width: 767px) {
+  .blog-frame {
+    /* Chỉ cần ghi đè chiều cao cho mobile */
+    height: 280px;
+    margin-bottom: 40px; /* **THAY ĐỔI MỚI: Giảm khoảng cách cho mobile 1 chút** */
+  }
+
+  /* Các quy tắc khác đã được kế thừa từ 1366px */
+
+  /* Giảm cỡ chữ breadcrumb cho mobile (nếu 18px quá to) */
+  .breadcrumb .home,
+  .breadcrumb .current {
+    font-size: 16px; /* Trả về cỡ chữ nhỏ hơn cho mobile */
+  }
+}
+
+/* ===== FIX LỖI KÉO NGANG TRANG ===== */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* chặn kéo ngang */
+}
+
+/* Kiểm soát vùng transform để không tràn viewport */
+.blog-frame,
+.hero,
+.promo,
+.map,
+footer,
+header {
+  overflow-x: hidden;
+}
+
+/* Nếu có phần tử dùng transform bị lệch (vd: translateX) */
+.blog-text,
+.breadcrumb {
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
