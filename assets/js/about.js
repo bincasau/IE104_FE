@@ -28,7 +28,6 @@ export function initPage() {
     document.body.appendChild(toast);
 
     // Animate (cho vào/ra)
-    // Dùng requestAnimationFrame để đảm bảo trình duyệt sẵn sàng cho transition
     requestAnimationFrame(() => {
       toast.classList.add("show");
     });
@@ -36,43 +35,39 @@ export function initPage() {
     // Tự động ẩn sau 3 giây
     setTimeout(() => {
       toast.classList.remove("show");
-    }, 3000); // Hiển thị 3 giây
+    }, 3000);
 
-    // Xóa hoàn toàn khỏi DOM sau khi transition kết thúc (3s + 0.4s)
+    // Xóa khỏi DOM sau khi ẩn
     setTimeout(() => {
       if (toast.parentElement) {
         toast.parentElement.removeChild(toast);
       }
-    }, 3400); // 3000ms (hiển thị) + 400ms (thời gian transition trong CSS)
+    }, 3400);
   }
 
-  // 3. Hàm xử lý sự kiện click
-  const showNotDevelopedToast = (event) => {
-    event.preventDefault(); // Ngăn form submit hoặc chuyển link (#)
+  // 3. Gán sự kiện cho nút Explore Trip & form
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-explore-trip");
+    if (!btn) return;
 
-    // Lấy ngôn ngữ hiện tại từ localStorage, mặc định là 'en'
+    e.preventDefault();
+    e.stopPropagation();
+
     const lang = localStorage.getItem("lang") || "en";
-
-    // Lấy câu thông báo, nếu không tìm thấy lang thì fallback về 'en'
     const message = notDevelopedMessages[lang] || notDevelopedMessages.en;
-
-    // Hiển thị toast
     showToast(message);
-  };
+  });
 
-  // 4. Gán sự kiện cho 2 nút "EXPLORE TRIP"
-  const bookingFormButton = document.querySelector(
-    ".booking-form .btn-explore-trip"
-  );
-  const heroCtaButton = document.querySelector(
-    ".about-hero__cta .btn-explore-trip"
-  );
+  const bookingForm = document.querySelector(".booking-form");
+  if (bookingForm) {
+    bookingForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-  if (bookingFormButton) {
-    bookingFormButton.addEventListener("click", showNotDevelopedToast);
-  }
-  if (heroCtaButton) {
-    heroCtaButton.addEventListener("click", showNotDevelopedToast);
+      const lang = localStorage.getItem("lang") || "en";
+      const message = notDevelopedMessages[lang] || notDevelopedMessages.en;
+      showToast(message);
+    });
   }
 
   /* =============================================
@@ -105,11 +100,11 @@ export function initPage() {
   selectors.forEach((sel) => {
     document.querySelectorAll(sel).forEach((el) => {
       observer.observe(el);
-      // Sửa lỗi: Kiểm tra xem el đã ở trong viewport khi tải trang chưa
+
+      // Kiểm tra nếu phần tử đã hiển thị sẵn khi load trang
       const rect = el.getBoundingClientRect();
       const inView = rect.top <= window.innerHeight && rect.bottom >= 0;
 
-      // Nếu đã trong viewport (ví dụ: phần tử ở đầu trang)
       if (inView && getComputedStyle(el).opacity === "0") {
         el.classList.add("visible");
         observer.unobserve(el);
