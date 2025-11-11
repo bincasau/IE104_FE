@@ -3,6 +3,9 @@
 // ============================
 import { applyTranslations, setLanguage } from "./lang.js";
 
+// Bộ nhớ tạm để tránh load lại CSS
+const loadedCSS = new Set();
+
 export async function loadSection(
   id,
   filePath,
@@ -14,6 +17,25 @@ export async function loadSection(
     if (!container) {
       console.error(`Không tìm thấy phần tử #${id}`);
       return;
+    }
+
+    // --- 0. Tự động load CSS tương ứng (chỉ 1 lần) ---
+    try {
+      const cssName = filePath.split("/").pop().replace(".html", ".css");
+      const cssPath = `assets/css/${cssName}`;
+
+      if (
+        !loadedCSS.has(cssName) &&
+        !document.querySelector(`link[href*="${cssName}"]`)
+      ) {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = `${cssPath}?v=${Date.now()}`; // ép reload 1 lần duy nhất
+        document.head.appendChild(link);
+        loadedCSS.add(cssName);
+      }
+    } catch (e) {
+      console.warn("Không thể tự load CSS:", e);
     }
 
     // --- 1. Cập nhật title ---
@@ -80,6 +102,17 @@ export async function loadSection(
 }
 
 window.loadSection = loadSection;
+
+//Khôi phục ngôn ngữ
+window.addEventListener("DOMContentLoaded", async () => {
+  const savedLang = localStorage.getItem("lang") || "en";
+  try {
+    await setLanguage(savedLang);
+    console.log("Khôi phục ngôn ngữ:", savedLang);
+  } catch (err) {
+    console.warn("Không thể khôi phục ngôn ngữ:", err);
+  }
+});
 
 // ============================
 // Đặt favicon (logo trên tab)
