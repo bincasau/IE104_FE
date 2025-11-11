@@ -296,3 +296,20 @@ footer {
     gap: 20px;
   }
 }
+
+/* ===== BẮT ĐẦU CSS MỚI ===== */
+/* Thêm CSS cho thẻ <a> bên trong .footer-links li 
+ để chúng kế thừa màu của <li> và bỏ gạch chân
+*/
+.footer-links li a {
+  color: inherit; /* Kế thừa màu #d1d1d1 từ <li> */
+  text-decoration: none; /* Bỏ gạch chân */
+  transition: color 0.2s ease;
+}
+
+/* Thêm hiệu ứng hover cho đẹp */
+.footer-links li a:hover {
+  color: #fff; /* Chuyển màu trắng khi hover */
+  text-decoration: underline; /* Thêm gạch chân khi hover */
+}
+/* ===== KẾT THÚC CSS MỚI ===== */
