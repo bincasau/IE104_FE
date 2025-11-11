@@ -19,21 +19,31 @@ export async function loadSection(
       return;
     }
 
-    // --- 0. Tự động load CSS tương ứng (chỉ 1 lần) ---
+    // --- 0. Quản lý CSS động theo trang (chống đè chéo) ---
     try {
       const cssName = filePath.split("/").pop().replace(".html", ".css");
       const cssPath = `assets/css/${cssName}`;
 
-      if (
-        !loadedCSS.has(cssName) &&
-        !document.querySelector(`link[href*="${cssName}"]`)
-      ) {
+      // Xóa các CSS động cũ (trừ global/common)
+      document
+        .querySelectorAll('link[data-page-style="true"]')
+        .forEach((link) => link.remove());
+
+      // Thêm CSS mới cho trang hiện tại
+      const preload = document.createElement("link");
+      preload.rel = "preload";
+      preload.as = "style";
+      preload.href = cssPath;
+      preload.onload = () => {
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `${cssPath}?v=${Date.now()}`; // ép reload 1 lần duy nhất
+        link.href = cssPath;
+        link.setAttribute("data-page-style", "true"); // đánh dấu để dễ xoá sau
         document.head.appendChild(link);
         loadedCSS.add(cssName);
-      }
+      };
+      preload.onerror = () => console.warn("Không preload được:", cssName);
+      document.head.appendChild(preload);
     } catch (e) {
       console.warn("Không thể tự load CSS:", e);
     }
@@ -102,17 +112,6 @@ export async function loadSection(
 }
 
 window.loadSection = loadSection;
-
-//Khôi phục ngôn ngữ
-window.addEventListener("DOMContentLoaded", async () => {
-  const savedLang = localStorage.getItem("lang") || "en";
-  try {
-    await setLanguage(savedLang);
-    console.log("Khôi phục ngôn ngữ:", savedLang);
-  } catch (err) {
-    console.warn("Không thể khôi phục ngôn ngữ:", err);
-  }
-});
 
 // ============================
 // Đặt favicon (logo trên tab)
