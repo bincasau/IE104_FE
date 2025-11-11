@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TravelEasy Tour</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/Tour.css" />
+    <link rel="stylesheet" href="../assets/css/common.css" />
+    <link rel="stylesheet" href="../assets/css/global.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
       rel="stylesheet"
@@ -18,39 +19,31 @@
   </head>
 
   <body>
-    <!-- ========== HEADER ========== -->
-    <div class="blog-frame">
-      <!-- Nền màu -->
-      <div class="blog-bg-color"></div>
+    <div class="page-hero">
+      <div class="page-hero-bg-color"></div>
 
-      <!-- Ảnh nền bên phải -->
       <img
         src="../assets/images/TourHeader-Copy.webp"
         alt="Ảnh nền"
-        class="blog-bg-img"
+        class="page-hero-bg-img"
       />
 
-      <!-- Ảnh người đè lên -->
       <img
         src="../assets/images/TourHeaderPerson.webp"
         alt="Người"
-        class="blog-person"
+        class="page-hero-person"
       />
 
-      <!-- Text -->
-      <div class="blog-text">
+      <div class="page-hero-text">
         <h1 data-key="tour_header_title">TOUR RECENT</h1>
-        <div class="breadcrumb">
+        <div class="page-hero-breadcrumb">
           <span class="home" data-key="tour_breadcrumb_home">HOME</span>
           <span class="arrow">›</span>
           <span class="current" data-key="tour_breadcrumb_current">TOUR</span>
         </div>
       </div>
     </div>
-
-    <!-- ========== MAIN CONTENT ========== -->
     <main class="main-layout">
-      <!-- === FILTER AREA === -->
       <aside class="filter-area scroll-animate">
         <h2 data-key="tour_filter_title">Criteria</h2>
 
@@ -101,7 +94,6 @@
         </div>
       </aside>
 
-      <!-- === TOUR LIST AREA === -->
       <section class="tour-section">
         <h2 class="section-title">Available Tours</h2>
         <div class="criteria-controls scroll-animate">
@@ -134,7 +126,6 @@
 
         <div class="tour-list scroll-animate" id="tour-list"></div>
         <div class="pagination scroll-animate" id="pagination"></div>
-        <!-- 🔽 Vùng chi tiết riêng -->
         <div id="tour-detail"></div>
       </section>
     </main>

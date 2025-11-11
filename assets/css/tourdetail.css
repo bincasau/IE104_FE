@@ -1,123 +1,3 @@
-/* ===============================
-   GLOBAL VARIABLES & RESET
-=============================== */
-:root {
-  --brand: #4a90e2;
-  --accent: #ff7c28;
-  --light-bg: #f5e2d3;
-  --text: #111827;
-  --muted: #6b7280;
-  --radius: 16px;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  font-family: "Poppins", sans-serif;
-  background: #f7f7f7;
-  color: var(--text);
-  /* ===== FIX KÉO NGANG ===== */
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* ===============================
-   BLOG HEADER FRAME
-=============================== */
-.blog-frame {
-  position: relative;
-  margin: 90px auto 60px;
-  width: min(1820px, calc(100% - 100px));
-  height: 550px;
-  border-radius: 28px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: var(--shadow);
-}
-
-/* nền màu trái */
-.blog-bg-color {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 55%;
-  height: 100%;
-  background-color: var(--light-bg);
-  z-index: 1;
-}
-
-/* ảnh nền bên phải */
-.blog-bg-img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1150px;
-  height: 100%;
-  object-fit: cover;
-  z-index: 2;
-}
-
-/* người */
-.blog-person {
-  position: absolute;
-  bottom: 0;
-  right: 280px;
-  height: 85%;
-  object-fit: contain;
-  z-index: 3;
-}
-
-/* text và breadcrumb */
-.blog-text {
-  position: absolute;
-  top: 50%;
-  left: 130px;
-  transform: translateY(-50%);
-  z-index: 4;
-}
-
-.blog-text h1 {
-  font-size: 54px;
-  font-weight: 900;
-  color: #000;
-  margin-bottom: 40px;
-}
-
-.breadcrumb {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border: 3px solid #eca871;
-  border-radius: 8px;
-  padding: 10px 22px;
-  background: transparent;
-}
-
-.breadcrumb .home {
-  font-weight: 700;
-  color: #000;
-}
-.breadcrumb .arrow {
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 26px;
-  transform: translateY(-2px);
-}
-.breadcrumb .current {
-  color: #b6b3b2;
-  font-weight: 600;
-}
-
-/* ===============================
-   GALLERY SECTION
-=============================== */
 .tour-gallery {
   display: flex;
   align-items: center;
@@ -147,7 +27,6 @@ body {
   border-radius: var(--radius);
 }
 
-/* overlay nút video */
 .last {
   position: relative;
 }
@@ -172,9 +51,6 @@ body {
   color: #fff;
 }
 
-/* ===============================
-   VIDEO POPUP (TO ĐẸP)
-=============================== */
 .video-popup {
   display: none;
   position: fixed;
@@ -232,9 +108,6 @@ body {
   }
 }
 
-/* ===============================
-   TOUR INFO SECTION
-=============================== */
 .tour-info {
   display: flex;
   justify-content: space-between;
@@ -246,7 +119,6 @@ body {
   padding: 0 20px;
 }
 
-/* info left */
 .info-left {
   flex: 0 0 60%;
   color: #333;
@@ -269,7 +141,6 @@ body {
   border-radius: 2px;
 }
 
-/* tour header */
 .tour-header {
   text-align: center;
   margin-bottom: 35px;
@@ -292,7 +163,6 @@ body {
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
 }
 
-/* nav tabs */
 .tour-nav {
   display: none;
   justify-content: center;
@@ -327,7 +197,6 @@ body {
   width: 100%;
 }
 
-/* info right (video + form) */
 .info-right {
   flex: 0 0 40%;
   display: flex;
@@ -338,7 +207,6 @@ body {
   top: 40px;
 }
 
-/* video frame */
 .video-frame {
   width: 100%;
   max-width: 370px;
@@ -352,7 +220,6 @@ body {
   border-radius: var(--radius);
 }
 
-/* form */
 .join-form {
   width: 100%;
   max-width: 370px;
@@ -408,11 +275,12 @@ body {
   transition: 0.25s;
 }
 .book-btn:hover {
-  background: #2b6edc;
+  background: #fff;
+  color: #ffb700;
+  border: 2px solid #ffb700;
   transform: translateY(-2px);
 }
 
-/* others tour back button */
 .others-actions {
   margin: 20px auto;
   max-width: 1300px;
@@ -430,6 +298,8 @@ body {
   background: #fff;
   border-radius: 10px;
   text-decoration: none;
+  cursor: pointer;
+  font-size: 18px;
   font-weight: 600;
   transition: 0.25s ease;
 }
@@ -442,9 +312,6 @@ body {
   color: inherit;
 }
 
-/* ===============================
-   OVERVIEW SECTION
-=============================== */
 .info-left p {
   font-size: 16px;
   color: #555;
@@ -467,9 +334,6 @@ body {
   color: #444;
 }
 
-/* ===============================
-   INCLUDE / NOT INCLUDE
-=============================== */
 .include-wrapper {
   margin-top: 50px;
 }
@@ -499,9 +363,6 @@ body {
   color: var(--brand);
 }
 
-/* ===============================
-   MAP SECTION
-=============================== */
 .map-section {
   margin-top: 60px;
   color: #333;
@@ -522,7 +383,6 @@ body {
   margin-top: 10px;
 }
 
-/* iframe bên trong map */
 .map-container iframe {
   width: 100%;
   height: 400px; /* cao hơn */
@@ -531,9 +391,6 @@ body {
   border-radius: 14px;
 }
 
-/* ===============================
-   ITINERARY SECTION
-=============================== */
 .itinerary-section {
   margin-top: 60px;
   width: 100%;
@@ -617,7 +474,6 @@ body {
   }
 }
 
-/* mini tabs */
 .mini-nav {
   display: flex;
   justify-content: center;
@@ -657,9 +513,6 @@ body {
   margin-top: 10px;
 }
 
-/* ===============================
-   GUEST INPUTS (2 ô 1 hàng)
-=============================== */
 .guests .guest-inputs {
   display: flex;
   justify-content: space-between;
@@ -684,9 +537,6 @@ body {
   box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
 }
 
-/* ===============================
-   OTHERS TOUR SECTION
-=============================== */
 .others-tour {
   margin-top: 60px;
 }
@@ -697,7 +547,6 @@ body {
   gap: 18px;
 }
 
-/* bỏ gạch chân link */
 .tour-link {
   text-decoration: none;
   color: inherit;
@@ -705,7 +554,6 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* card */
 .tour-card-vertical {
   display: flex;
   align-items: center;
@@ -724,7 +572,6 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* ảnh */
 .tour-card-vertical img {
   width: 180px;
   height: 120px;
@@ -732,7 +579,6 @@ body {
   border-radius: 8px;
 }
 
-/* nội dung */
 .tour-content {
   flex: 1;
   display: flex;
@@ -769,9 +615,6 @@ body {
   color: var(--brand);
 }
 
-/* ============================
-   ✨ Lazy Loading Animation
-============================ */
 .lazy-hide {
   opacity: 0;
   transform: translateY(12px);
@@ -787,100 +630,7 @@ img.lazy-loaded {
   transition: opacity 0.3s;
 }
 
-/* ================================================
-   BẮT ĐẦU CSS PHẦN RESPONSIVE CHO BANNER
-================================================ */
-
-/* === Responsive (Tablet - 1024px, 1336px) === */
-@media (max-width: 1366px) {
-  .blog-frame {
-    /* Áp dụng style ảnh mờ, căn giữa */
-    height: 420px; /* Chiều cao cho tablet */
-    width: 100%;
-    margin: 0; /* Xóa margin cũ */
-    margin-bottom: 55px; /* Thêm margin-bottom để đẩy nội dung xuống */
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .blog-bg-color {
-    /* Nền màu chiếm hết */
-    width: 100%;
-  }
-
-  .blog-bg-img {
-    /* Ảnh nền full-width, căn giữa */
-    width: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    opacity: 0.5; /* Làm mờ ảnh để nổi text */
-  }
-
-  .blog-person {
-    /* Ẩn người đi cho đỡ rối */
-    display: none;
-  }
-
-  .blog-text {
-    /* Căn giữa text */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 90%;
-  }
-
-  .blog-text h1 {
-    /* Ẩn theo yêu cầu */
-    display: none;
-  }
-
-  .breadcrumb {
-    /* Căn giữa breadcrumb */
-    justify-content: center;
-    padding: 8px 16px;
-    border-width: 2px;
-    /* Đổi màu chữ cho dễ đọc */
-    background: rgba(255, 255, 255, 0.2);
-    transform: none; /* Bỏ transform lệch */
-  }
-
-  .breadcrumb .home,
-  .breadcrumb .current,
-  .breadcrumb .arrow {
-    color: #fff;
-    /* Thêm bóng mờ để nổi bật giống ảnh mẫu */
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  }
-
-  /* Tăng cỡ chữ breadcrumb cho tablet */
-  .breadcrumb .home,
-  .breadcrumb .current {
-    font-size: 18px; /* Tăng cỡ chữ */
-  }
-}
-
-/* --- Mobile (Dưới 767px) --- */
-@media (max-width: 767px) {
-  .blog-frame {
-    /* Chỉ cần ghi đè chiều cao cho mobile */
-    height: 280px;
-    margin-bottom: 40px; /* Giảm khoảng cách cho mobile 1 chút */
-  }
-
-  /* Giảm cỡ chữ breadcrumb cho mobile */
-  .breadcrumb .home,
-  .breadcrumb .current {
-    font-size: 16px; /* Trả về cỡ chữ nhỏ hơn cho mobile */
-  }
-}
-
-/* ================================================
-   BẮT ĐẦU CSS RESPONSIVE CHO NỘI DUNG
-================================================ */
-
-/* 🖥️ Tablet (768–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* Gallery */
   .tour-gallery {
     display: flex;
     align-items: stretch;
@@ -909,7 +659,6 @@ img.lazy-loaded {
     object-fit: cover;
   }
 
-  /* Layout chính */
   .tour-info {
     flex-direction: column;
     gap: 24px;
@@ -935,7 +684,6 @@ img.lazy-loaded {
     height: auto;
   }
 
-  /* Map */
   .map-container {
     max-width: 100%;
   }
@@ -943,7 +691,6 @@ img.lazy-loaded {
     height: 600px; /* tablet: vừa hơn */
   }
 
-  /* Form */
   .guests .guest-inputs {
     flex-direction: row;
     flex-wrap: wrap;
@@ -954,9 +701,7 @@ img.lazy-loaded {
   }
 }
 
-/* 📱 Mobile (<=767px) */
 @media (max-width: 767px) {
-  /* Gallery */
   .tour-gallery {
     display: block;
     width: 100%;
@@ -991,7 +736,6 @@ img.lazy-loaded {
     right: 6px;
   }
 
-  /* Layout chính */
   .tour-info {
     flex-direction: column;
     gap: 30px;
@@ -1007,12 +751,11 @@ img.lazy-loaded {
   }
   .video-frame,
   .join-form {
-    max-width: 560px; /* Vẫn giữ max-width cho form/video */
+    max-width: 560px;
     width: 100%;
     margin: 0 auto;
   }
 
-  /* Video Popup */
   .video-content {
     width: 92%;
   }
@@ -1020,28 +763,23 @@ img.lazy-loaded {
     height: 56vw; /* ~16:9 theo bề rộng */
   }
 
-  /* Title */
   .tour-title {
     font-size: 28px;
   }
 
-  /* Overview */
   .overview-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Include/Exclude */
   .include-section {
     flex-direction: column;
     gap: 20px;
   }
 
-  /* Map */
   .map-container iframe {
     height: 450px; /* mobile */
   }
 
-  /* Itinerary */
   .timeline {
     width: 100%;
     padding: 0 5%;
@@ -1055,7 +793,6 @@ img.lazy-loaded {
     font-size: 16px;
   }
 
-  /* Form */
   .guests .guest-inputs {
     flex-direction: column;
     gap: 10px;
@@ -1064,7 +801,6 @@ img.lazy-loaded {
     width: 100%;
   }
 
-  /* Other Tours */
   .tour-card-vertical {
     flex-direction: column;
     align-items: flex-start;

@@ -1,35 +1,3 @@
-/* =========================================================
-   GLOBAL STYLES & VARIABLES
-========================================================= */
-:root {
-  --offset: 55px;
-  --frame-width: 1820px;
-  --frame-height: 530px;
-  --gap: 28px;
-  --radius: 14px;
-  --border: #e5e7eb;
-  --text: #111827;
-  --muted: #6b7280;
-  --brand: #e4823d;
-  --card: #ffffff;
-  --bg: #f3f4f6; /* Nền dịu */
-}
-
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  background: #f4f4f4; /* Nền dự phòng */
-}
-
-/* =========================================================
-   ABOUT INTRO — 3 CỘT NGANG
-========================================================= */
 .about-intro {
   display: grid;
   grid-template-columns: 1.2fr 1.2fr 0.8fr;
@@ -37,14 +5,12 @@ body {
   justify-content: space-between;
   width: min(var(--frame-width), calc(100% - 110px));
   margin: var(--offset) auto 100px;
-  /* Thêm margin-top 90px để thay thế cho banner đã xóa */
   margin-top: 90px;
   padding: 60px 80px;
   gap: 60px;
   background: transparent;
 }
 
-/* --- TRÁI --- */
 .about-intro__left {
   display: flex;
   flex-direction: column;
@@ -68,7 +34,6 @@ body {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
-/* --- GIỮA --- */
 .about-intro__middle {
   display: flex;
   flex-direction: column;
@@ -107,7 +72,6 @@ body {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   font-size: 26px;
   color: #000;
-  /* (ĐÃ SỬA) Tinh chỉnh transition hover */
   transition: background 0.25s ease, transform 0.25s ease;
 }
 
@@ -129,7 +93,6 @@ body {
   line-height: 1.6;
 }
 
-/* --- PHẢI --- */
 .about-intro__right {
   display: flex;
   flex-direction: column;
@@ -161,7 +124,6 @@ body {
   margin-top: 10px;
 }
 
-/* --- BUTTON --- */
 .about-intro__button {
   margin-top: 25px;
   display: flex;
@@ -177,7 +139,6 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  /* (ĐÃ SỬA) Tinh chỉnh transition hover */
   transition: background-color 0.3s ease, transform 0.3s ease,
     box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -189,9 +150,6 @@ body {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
-/* =========================================================
-   TRAVEL EXPERIENCE (TIMELINE)
-========================================================= */
 .travel-experience {
   max-width: 1200px;
   margin: 100px auto;
@@ -294,9 +252,6 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* =========================================================
-   TEAM SECTION
-========================================================= */
 .team-section {
   text-align: center;
   padding: 60px 0;
@@ -322,7 +277,6 @@ body {
   border-radius: 16px;
   overflow: hidden;
   padding: 20px 10px;
-  /* (ĐÃ SỬA) Rút ngắn transition hover */
   transition: all 0.3s ease;
 }
 
@@ -393,9 +347,6 @@ body {
   opacity: 1;
 }
 
-/* =========================================================
-   BOOKING SECTION
-========================================================= */
 .booking-section {
   max-width: 1600px;
   margin: var(--offset) auto;
@@ -483,9 +434,6 @@ select {
   background-color: #555;
 }
 
-/* =========================================================
-   ABOUT HERO SECTION
-========================================================= */
 .about-hero {
   max-width: 1600px;
   margin: 100px auto;
@@ -584,10 +532,6 @@ select {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
-/* =========================================================
-   ANIMATIONS KEYFRAMES (GIỮ NGUYÊN)
-========================================================= */
-
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -629,24 +573,18 @@ select {
   }
 }
 
-/* =========================================================
-   TRẠNG THÁI ẨN BAN ĐẦU
-========================================================= */
-
-/* ABOUT HERO SECTION */
+/* Trạng thái ẩn ban đầu */
 .about-hero__content,
 .about-hero__left h1 {
   opacity: 0;
 }
 
-/* ABOUT INTRO SECTION */
 .about-intro__left,
 .about-intro__middle,
 .about-intro__right {
   opacity: 0;
 }
 
-/* TRAVEL EXPERIENCE */
 .timeline-item .timeline-content {
   opacity: 0;
 }
@@ -657,31 +595,22 @@ select {
   transform: translateX(150px);
 }
 
-/* BOOKING SECTION */
 .booking-form {
   opacity: 0;
   transform-origin: bottom;
   transform: scaleY(0.8);
 }
 
-/* =========================================================
-   KÍCH HOẠT HIỆU ỨNG KHI CLASS .visible ĐƯỢC THÊM
-   (ĐÃ TINH CHỈNH NHANH VÀ MƯỢT HƠN)
-========================================================= */
-
-/* ABOUT HERO SECTION */
+/* Kích hoạt hiệu ứng khi class .visible được thêm */
 .about-hero__content.visible {
-  /* Nhanh hơn (0.8s) và dứt khoát hơn (ease-out) */
   animation: fadeInUp 0.8s ease-out forwards;
 }
 .about-hero__left h1.visible {
-  /* Giảm delay từ 0.5s xuống 0.3s */
   animation: slideInLeft 0.7s ease-out 0.3s forwards;
 }
 
-/* ABOUT INTRO SECTION (Hiệu ứng xuất hiện lần lượt) */
+/* Hiệu ứng xuất hiện lần lượt */
 .about-intro__left.visible {
-  /* Rút ngắn thời gian và siết chặt delay */
   animation: fadeInUp 0.8s ease-out 0.1s forwards;
 }
 .about-intro__middle.visible {
@@ -691,33 +620,22 @@ select {
   animation: fadeInUp 0.8s ease-out 0.3s forwards;
 }
 
-/* TRAVEL EXPERIENCE */
-/* Áp dụng cho TẤT CẢ .left items (item 1 và 3) */
 .timeline-item.left.visible .timeline-content {
-  animation: slideInLeft 0.8s ease-out 0.2s forwards; /* Nhanh hơn (0.8s) */
+  animation: slideInLeft 0.8s ease-out 0.2s forwards;
 }
-/* Áp dụng cho .right item (item 2) */
 .timeline-item.right.visible .timeline-content {
-  animation: slideInRight 0.8s ease-out 0.4s forwards; /* Siết delay (từ 0.6s) */
+  animation: slideInRight 0.8s ease-out 0.4s forwards;
 }
-/* GHI ĐÈ item 3 (là item .left thứ 2) */
 .timeline-item.left:nth-of-type(3).visible .timeline-content {
-  animation-delay: 0.6s; /* Siết delay (từ 1s) */
+  animation-delay: 0.6s;
 }
 
-/* BOOKING SECTION */
 .booking-form.visible {
-  /* Nhanh hơn đáng kể (từ 1.5s xuống 0.9s) và giảm delay */
   animation: expandForm 0.9s ease-out 0.2s forwards;
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
 /* Tablet */
 @media (max-width: 992px) {
-  /* --- ABOUT INTRO --- */
   .about-intro {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -733,7 +651,6 @@ select {
     width: 220px;
   }
 
-  /* --- TRAVEL EXPERIENCE --- */
   .travel-experience {
     max-width: 90%;
     margin: 80px auto;
@@ -747,12 +664,10 @@ select {
     padding-left: 40px;
   }
 
-  /* === SỬA LỖI TRÀN MÀN HÌNH (FIX 1) === */
   .timeline-item.left .timeline-content,
   .timeline-item.right .timeline-content {
     transform: none;
   }
-  /* === HẾT SỬA LỖI === */
 
   .timeline-item::before {
     left: 0;
@@ -770,7 +685,6 @@ select {
     display: block;
   }
 
-  /* --- BOOKING SECTION --- */
   .booking-section__form-wrapper {
     padding: 40px;
     height: auto;
@@ -785,7 +699,6 @@ select {
     display: none;
   }
 
-  /* --- ABOUT HERO --- */
   .about-hero {
     padding: 0 30px;
   }
@@ -810,13 +723,11 @@ select {
 
 /* --- Mobile (Dưới 767px) --- */
 @media (max-width: 767px) {
-  /* --- ABOUT INTRO --- */
   .about-intro {
     width: 100%;
     padding: 30px 15px;
     gap: 30px;
     margin-bottom: 60px;
-    /* Đảm bảo có khoảng cách ở đầu trang mobile */
     margin-top: 70px;
   }
   .about-intro__title {
@@ -841,7 +752,6 @@ select {
     width: 200px;
   }
 
-  /* --- TRAVEL EXPERIENCE --- */
   .timeline::before,
   .timeline-item::before {
     display: none !important;
@@ -852,7 +762,7 @@ select {
     left: 0 !important;
     text-align: center !important;
     padding: 30px 15px !important;
-    margin-top: 0 !important; /* <-- ĐÃ SỬA LỖI */
+    margin-top: 0 !important;
     margin-bottom: 80px !important;
     box-sizing: border-box;
   }
@@ -889,13 +799,11 @@ select {
     animation: fadeInUp 0.8s ease forwards;
   }
 
-  /* === SỬA LỖI TRÀN MÀN HÌNH TIMELINE (FIX) === */
   .timeline-item.left .timeline-content,
   .timeline-item.right .timeline-content {
     transform: translateX(0) !important;
   }
 
-  /* --- BOOKING SECTION --- */
   .booking-section {
     padding: 0 15px;
     margin: 60px auto;
@@ -912,7 +820,6 @@ select {
     gap: 15px;
   }
 
-  /* --- ABOUT HERO --- */
   .about-hero {
     max-width: 100%;
     margin: 60px auto;
@@ -997,7 +904,6 @@ select {
     background-attachment: scroll;
   }
 
-  /* --- TEAM SECTION --- */
   .team-section h2 {
     font-size: 2.2em;
   }
@@ -1026,26 +932,7 @@ select {
   }
 }
 
-/* --- Small Mobile (<= 480px) --- */
-@media (max-width: 480px) {
-  /* CSS cho banner đã bị xóa */
-}
-
-@font-face {
-  font-family: "Font Awesome 6 Free";
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap; /* 👈 thêm dòng này */
-  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-solid-900.woff2")
-    format("woff2");
-}
-
-/* =========================================================
-   TABLET MINI (iPad mini / 8" Android) 768–880px
-   Dán CUỐI FILE để override
-========================================================= */
 @media (min-width: 768px) and (max-width: 880px) {
-  /* ===== ABOUT INTRO: 2 cột gọn gàng ===== */
   .about-intro {
     grid-template-columns: 1fr 1fr; /* trái + giữa */
     gap: 36px;
@@ -1065,7 +952,6 @@ select {
     font-size: 42px;
   }
 
-  /* ===== TIMELINE: một cột, không tràn ===== */
   .travel-experience {
     max-width: 94%;
     margin: 70px auto;
@@ -1081,12 +967,10 @@ select {
     margin-top: 0;
   }
 
-  /* === SỬA LỖI TRÀN MÀN HÌNH (FIX 1) === */
   .timeline-item.left .timeline-content,
   .timeline-item.right .timeline-content {
     transform: none;
   }
-  /* === HẾT SỬA LỖI === */
 
   .timeline-item::before {
     display: none;
@@ -1101,7 +985,6 @@ select {
     border-radius: 14px;
   }
 
-  /* ===== BOOKING SECTION: form xuống dưới, full-width ===== */
   .booking-section__form-wrapper {
     padding: 32px;
     height: auto;
@@ -1120,7 +1003,6 @@ select {
     gap: 16px;
   }
 
-  /* ===== ABOUT HERO: xếp dọc, padding gọn ===== */
   .about-hero {
     padding: 0 24px;
   }
@@ -1158,7 +1040,6 @@ select {
     font-size: 14px;
   }
 
-  /* ===== TEAM: thẻ to vừa, không nhảy ===== */
   .team-section__grid {
     gap: 28px;
   }
@@ -1172,15 +1053,12 @@ select {
     opacity: 1;
   }
 
-  /* =========================================================
-   THÔNG BÁO TOAST (CHO NÚT CHƯA PHÁT TRIỂN)
-========================================================= */
   #feature-toast {
     position: fixed;
     bottom: -100px; /* Ẩn ở dưới màn hình */
     left: 50%;
     transform: translateX(-50%);
-    background-color: #222; /* Màu tối */
+    background-color: #222;
     color: white;
     padding: 16px 24px;
     border-radius: 8px;
@@ -1193,206 +1071,18 @@ select {
     white-space: nowrap; /* Đảm bảo không vỡ dòng */
   }
 
-  /* Khi toast có class .show, nó sẽ trượt lên */
   #feature-toast.show {
     bottom: 30px; /* Trượt lên vị trí này */
     opacity: 1;
   }
 }
-/* === KHUNG CHÍNH === */
-.blog-frame {
-  position: relative;
-  margin: var(--offset) auto;
-  margin-top: 90px;
-  width: min(var(--frame-width), calc(100% - 110px));
-  height: var(--frame-height);
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* === NỀN MÀU TRÁI === */
-.blog-bg-color {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
-  /* phần nền trái */
-  height: 100%;
-  background-color: #f5e2d3;
-  z-index: 1;
-}
-
-/* === ẢNH NỀN === */
-.blog-bg-img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1140px;
-  height: 100%;
-  object-fit: cover;
-  z-index: 2;
-}
-
-/* === ẢNH NGƯỜI === */
-.blog-person {
-  position: absolute;
-  bottom: 0;
-  right: 290px;
-  height: 80%;
-  object-fit: contain;
-  z-index: 3;
-}
-
-/* === TEXT === */
-.blog-text {
-  position: absolute;
-  top: 50%;
-  left: 150px;
-  transform: translateY(-50%);
-  z-index: 4;
-}
-
-.blog-text h1 {
-  font-size: 45px;
-  font-weight: 900;
-  color: #000;
-  margin-bottom: 40px;
-  transform: translateX(80px);
-  /* tràn qua phải */
-}
-
-/* Breadcrumb */
-.breadcrumb {
-  display: inline-flex;
-  align-items: center;
-  border: 3px solid #eca871;
-  border-radius: 8px;
-  padding: 10px 22px;
-  background: transparent;
-  gap: 10px;
-  transform: translateX(80px);
-  /* tràn qua phải */
-}
-
-.breadcrumb .home {
-  font-weight: 700;
-  color: #000;
-}
-
-.breadcrumb .arrow {
-  color: #ff7c28;
-  font-weight: 700;
-  font-size: 30px;
-  transform: translateY(-3px);
-}
-
-.breadcrumb .current {
-  color: #b6b3b2;
-  font-weight: 600;
-}
-
-/* ================================================
-   PHẦN RESPONSIVE CHO BANNER (ĐÃ THAY THẾ)
-================================================ */
-
-/* === Responsive (Tablet - 1024px, 1336px) === */
-@media (max-width: 1366px) {
-  .blog-frame {
-    /* Áp dụng style ảnh mờ, căn giữa */
-    height: 420px; /* Chiều cao cho tablet */
-    width: 100%;
-    margin: 0; /* Xóa margin cũ */
-    margin-bottom: var(--offset); /* Thêm margin-bottom để đẩy nội dung xuống */
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .blog-bg-color {
-    /* Nền màu chiếm hết */
-    width: 100%;
-  }
-
-  .blog-bg-img {
-    /* Ảnh nền full-width, căn giữa */
-    width: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    opacity: 0.5; /* Làm mờ ảnh để nổi text */
-  }
-
-  .blog-person {
-    /* Ẩn người đi cho đỡ rối */
-    display: none;
-  }
-
-  .blog-text {
-    /* Căn giữa text */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 90%;
-  }
-
-  .blog-text h1 {
-    /* Ẩn theo yêu cầu */
-    display: none;
-  }
-
-  .breadcrumb {
-    /* Căn giữa breadcrumb */
-    justify-content: center;
-    padding: 8px 16px;
-    border-width: 2px;
-    /* Đổi màu chữ cho dễ đọc */
-    background: rgba(255, 255, 255, 0.2);
-    transform: none; /* Bỏ transform lệch */
-  }
-
-  .breadcrumb .home,
-  .breadcrumb .current,
-  .breadcrumb .arrow {
-    color: #fff;
-    /* Thêm bóng mờ để nổi bật giống ảnh mẫu */
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  }
-
-  /* Tăng cỡ chữ breadcrumb cho tablet */
-  .breadcrumb .home,
-  .breadcrumb .current {
-    font-size: 18px; /* Tăng cỡ chữ */
-  }
-}
-
-/* --- Mobile (Dưới 767px) --- */
-@media (max-width: 767px) {
-  .blog-frame {
-    /* Chỉ cần ghi đè chiều cao cho mobile */
-    height: 280px;
-    margin-bottom: 40px; /* Giảm khoảng cách cho mobile 1 chút */
-  }
-
-  /* Giảm cỡ chữ breadcrumb cho mobile */
-  .breadcrumb .home,
-  .breadcrumb .current {
-    font-size: 16px; /* Trả về cỡ chữ nhỏ hơn cho mobile */
-  }
-}
-
-/* =========================
-   HOTFIX: Tablet overflow + Timeline đẹp gọn
-   (DÁN CUỐI FILE about.css)
-========================= */
-
-/* Tablet chung: reset mọi khả năng gây tràn ngang */
 @media (max-width: 992px) {
   html,
   body {
     max-width: 100%;
-    overflow-x: hidden; /* “cửa chặn” an toàn, nhưng ta vẫn sửa tận gốc bên dưới */
+    overflow-x: hidden;
   }
 
-  /* ---- TIMELINE về 1 cột, bỏ mọi chồng lớp từ desktop ---- */
   .timeline::before {
     display: none !important;
   }
@@ -1404,7 +1094,7 @@ select {
     left: 0 !important;
     text-align: left !important;
     padding: 22px 0 !important;
-    margin-top: 0 !important; /* <-- QUAN TRỌNG: bỏ -200px/-350px */
+    margin-top: 0 !important;
     box-sizing: border-box;
   }
 
@@ -1413,11 +1103,10 @@ select {
   }
 
   .timeline-item .timeline-content {
-    transform: none !important; /* bỏ hiệu ứng lệch 2 phía */
+    transform: none !important;
     max-width: 100% !important;
   }
 
-  /* Ảnh không vượt khung trên tablet */
   .timeline-item.left .timeline-content img,
   .timeline-item.right .timeline-content img,
   .timeline-content img {
@@ -1429,40 +1118,29 @@ select {
   }
 }
 
-/* Ngưỡng “tablet lớn” cũng ép ảnh không tràn (tránh 130%) */
 @media (max-width: 1200px) {
   .timeline-item.right .timeline-content img {
-    width: 100% !important; /* thay vì 130% ở desktop */
+    width: 100% !important;
   }
 }
 
-/* Banner/breadcrumb: chắc chắn không bị đẩy trên tablet */
-@media (max-width: 992px) {
-  .blog-text h1,
-  .breadcrumb {
-    transform: none !important; /* loại bỏ translateX(80px) còn sót */
-  }
-}
-
-/* (Không bắt buộc) – bảo hiểm chống tràn từ phần tử bất kỳ lỡ tay > 100vw */
 @supports (overflow: clip) {
   body {
     overflow-x: clip;
-  } /* clip mượt hơn hidden nếu browser hỗ trợ */
+  }
 }
-/* ====== Timeline căng giữa cho TABLET ====== */
 @media (min-width: 768px) and (max-width: 992px) {
   .timeline {
     display: flex;
     flex-direction: column;
-    align-items: center; /* canh giữa timeline */
+    align-items: center;
     justify-content: center;
     margin: 0 auto;
   }
 
   .timeline-item {
     width: 100%;
-    max-width: 700px; /* cố định chiều rộng cho cân */
+    max-width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1482,7 +1160,6 @@ select {
     margin: 16px 0;
   }
 
-  /* Bỏ hiệu ứng lệch 2 bên nếu còn */
   .timeline-item.left,
   .timeline-item.right {
     left: 0 !important;

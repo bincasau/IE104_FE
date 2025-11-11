@@ -1,238 +1,13 @@
-:root {
-  --offset: 55px;
-  --frame-width: 1820px;
-  --frame-height: 530px;
-  --gap: 28px;
-  --radius: 14px;
-  --border: #e5e7eb;
-  --text: #111827;
-  --muted: #6b7280;
-  --brand: #e4823d;
-  --card: #ffffff;
-  --bg: #f3f4f6; /* Nền dịu */
-}
-
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  background: #f4f4f4; /* Nền dự phòng */
-}
-
-/* === KHUNG CHÍNH === */
-.blog-frame {
-  position: relative;
-  margin: var(--offset) auto;
-  margin-top: 90px;
-  width: min(var(--frame-width), calc(100% - 110px));
-  height: var(--frame-height);
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* === NỀN MÀU TRÁI === */
-.blog-bg-color {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
-  /* phần nền trái */
-  height: 100%;
-  background-color: #f5e2d3;
-  z-index: 1;
-}
-
-/* === ẢNH NỀN === */
-.blog-bg-img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1140px;
-  height: 100%;
-  object-fit: cover;
-  z-index: 2;
-}
-
-/* === ẢNH NGƯỜI === */
-.blog-person {
-  position: absolute;
-  bottom: 0;
-  right: 290px;
-  height: 80%;
-  object-fit: contain;
-  z-index: 3;
-}
-
-/* === TEXT === */
-.blog-text {
-  position: absolute;
-  top: 50%;
-  left: 150px;
-  transform: translateY(-50%);
-  z-index: 4;
-}
-
-.blog-text h1 {
-  font-size: 45px;
-  font-weight: 900;
-  color: #000;
-  margin-bottom: 40px;
-  transform: translateX(80px);
-  /* tràn qua phải */
-}
-
-/* Breadcrumb */
-.breadcrumb {
-  display: inline-flex;
-  align-items: center;
-  border: 3px solid #eca871;
-  border-radius: 8px;
-  padding: 10px 22px;
-  background: transparent;
-  gap: 10px;
-  transform: translateX(80px);
-  /* tràn qua phải */
-}
-
-.breadcrumb .home {
-  font-weight: 700;
-  color: #000;
-}
-
-.breadcrumb .arrow {
-  color: #ff7c28;
-  font-weight: 700;
-  font-size: 30px;
-  transform: translateY(-3px);
-}
-
-.breadcrumb .current {
-  color: #b6b3b2;
-  font-weight: 600;
-}
-
-/* ================================================
-   BẮT ĐẦU CSS PHẦN RESPONSIVE CHO BANNER
-================================================ */
-
-/* === Responsive (Tablet - 1024px, 1336px) === */
-@media (max-width: 1366px) {
-  .blog-frame {
-    /* Áp dụng style ảnh mờ, căn giữa */
-    height: 420px; /* Chiều cao cho tablet */
-    width: 100%;
-    margin: 0; /* Xóa margin cũ */
-    margin-bottom: var(--offset); /* Thêm margin-bottom để đẩy nội dung xuống */
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .blog-bg-color {
-    /* Nền màu chiếm hết */
-    width: 100%;
-  }
-
-  .blog-bg-img {
-    /* Ảnh nền full-width, căn giữa */
-    width: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    opacity: 0.5; /* Làm mờ ảnh để nổi text */
-  }
-
-  .blog-person {
-    /* Ẩn người đi cho đỡ rối */
-    display: none;
-  }
-
-  .blog-text {
-    /* Căn giữa text */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 90%;
-  }
-
-  .blog-text h1 {
-    /* Ẩn theo yêu cầu */
-    display: none;
-  }
-
-  .breadcrumb {
-    /* Căn giữa breadcrumb */
-    justify-content: center;
-    padding: 8px 16px;
-    border-width: 2px;
-    /* Đổi màu chữ cho dễ đọc */
-    background: rgba(255, 255, 255, 0.2);
-    transform: none; /* Bỏ transform lệch */
-  }
-
-  .breadcrumb .home,
-  .breadcrumb .current,
-  .breadcrumb .arrow {
-    color: #fff;
-    /* Thêm bóng mờ để nổi bật giống ảnh mẫu */
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  }
-
-  /* Tăng cỡ chữ breadcrumb cho tablet */
-  .breadcrumb .home,
-  .breadcrumb .current {
-    font-size: 18px; /* Tăng cỡ chữ */
-  }
-}
-
-/* --- Mobile (Dưới 767px) --- */
-@media (max-width: 767px) {
-  .blog-frame {
-    /* Chỉ cần ghi đè chiều cao cho mobile */
-    height: 280px;
-    margin-bottom: 40px; /* Giảm khoảng cách cho mobile 1 chút */
-  }
-
-  /* Giảm cỡ chữ breadcrumb cho mobile */
-  .breadcrumb .home,
-  .breadcrumb .current {
-    font-size: 16px; /* Trả về cỡ chữ nhỏ hơn cho mobile */
-  }
-}
-
-/* ================================================
-   KẾT THÚC CSS PHẦN RESPONSIVE CHO BANNER
-================================================ */
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--text);
-  /* font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; */
-}
-
-/* === THAY ĐỔI KÍCH THƯỚC === */
 .container {
-  max-width: 1560px; /* Tăng độ rộng tối đa */
+  max-width: 1560px;
   margin: 30px auto;
   padding: 0 18px;
   display: grid;
-  grid-template-columns: 360px 1fr; /* Tăng độ rộng sidebar */
+  grid-template-columns: 360px 1fr;
   gap: var(--gap);
 }
 
 @media (max-width: 1280px) {
-  /* Tăng breakpoint cho responsive */
   .container {
     grid-template-columns: 1fr;
   }
@@ -241,7 +16,6 @@ body {
     order: 2;
   }
 }
-/* === KẾT THÚC THAY ĐỔI === */
 
 /* Sidebar */
 .sidebar .search-box {
@@ -311,11 +85,10 @@ body {
   align-items: center;
   margin: 14px 0;
   padding: 6px 8px; /* Thêm padding để hover đẹp hơn */
-  border-radius: 12px; /* Thêm border-radius */
-  transition: all 0.2s ease; /* THÊM HIỆU ỨNG */
+  border-radius: 12px;
+  transition: all 0.2s ease;
 }
 
-/* THÊM HIỆU ỨNG POPULAR */
 .popular .item:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
@@ -419,41 +192,11 @@ body {
   height: 360px;
 }
 
-/* Pagination */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin: 26px 0 10px;
-  flex-wrap: wrap;
-}
-
-.pagination .btn,
-.pagination .page {
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  background: #fff;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.pagination .page.active {
-  background: var(--brand);
-  color: #fff;
-  border-color: var(--brand);
-}
-
-.pagination .btn[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 /* POPULAR: layout đều, bỏ margin lẻ tẻ */
 .popular {
   display: flex;
   flex-direction: column;
-  gap: 0; /* THAY ĐỔI: Chuyển margin/padding sang .item */
+  gap: 0;
 }
 
 /* Mỗi item: 2 cột (ảnh + nội dung), căn giữa theo trục dọc */
@@ -463,13 +206,13 @@ body {
   /* thumb 96px + nội dung */
   align-items: center;
   column-gap: 12px;
-  padding: 8px; /* THAY ĐỔI */
-  margin: 4px 0; /* THAY ĐỔI */
+  padding: 8px;
+  margin: 4px 0;
   border-radius: 12px;
   text-decoration: none;
   /* không gạch chân */
   color: inherit;
-  transition: all 0.2s ease; /* THÊM HIỆU ỨNG */
+  transition: all 0.2s ease;
 }
 
 /* Thumbnail cố định, không méo, bo tròn như nhau */
@@ -509,9 +252,9 @@ body {
 /* Hover/focus nhẹ tay cho dễ nhìn (giữ layout) */
 .popular .item:hover,
 .popular .item:focus {
-  transform: translateY(-3px); /* THÊM HIỆU ỨNG */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07); /* THÊM HIỆU ỨNG */
-  background: #fff; /* THÊM HIỆU ỨNG */
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  background: #fff;
   outline: none;
 }
 
@@ -530,10 +273,9 @@ body {
 /* Card to (hero) — to hơn 1 xí ở hàng đầu */
 .card.big .cover {
   aspect-ratio: 16 / 9;
-  /* cao hơn một chút */
 }
 
-/* Cho card đầu full-width hàng 1 (giống mock bạn gửi) */
+/* Cho card đầu full-width hàng 1 */
 @media (min-width: 781px) {
   .grid .card.big {
     grid-column: span 2;
@@ -541,10 +283,8 @@ body {
   }
 }
 
-/* Nhỏ hơn mobile vẫn 1 cột như cũ nên không cần gì thêm */
-/* =============== BLOG DETAIL =============== */
 .blog-detail {
-  background: #f9fafb; /* THAY ĐỔI: Màu nền dịu hơn */
+  background: #f9fafb;
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
@@ -559,7 +299,7 @@ body {
 .bd-hero img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 7; /* cao vừa mắt */
+  aspect-ratio: 16 / 7;
   object-fit: cover;
   display: block;
 }
@@ -580,21 +320,20 @@ body {
   padding: 22px 22px 10px;
 }
 
-/* NÂNG CẤP NÚT BACK */
 .back-btn {
   border: 1px solid var(--border);
   background: #fff;
   padding: 8px 12px;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 15px; /* THAY ĐỔI: Tăng cỡ chữ */
+  font-size: 15px;
   font-weight: 500;
   transition: all 0.2s ease;
-  font-family: "Poppins", sans-serif; /* THAY ĐỔI: Đổi font */
+  font-family: "Poppins", sans-serif;
 }
 .back-btn:hover {
-  background: #f5e2d3; /* THAY ĐỔI MÀU HOVER */
-  border-color: #e0cbb9; /* THAY ĐỔI MÀU HOVER */
+  background: #f5e2d3;
+  border-color: #e0cbb9;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
@@ -628,7 +367,7 @@ body {
 /* Body */
 .bd-intro {
   color: #374151;
-  font-size: 18px; /* THAY ĐỔI: Tăng cỡ chữ */
+  font-size: 18px;
   line-height: 1.75;
   margin-bottom: 14px;
 }
@@ -647,10 +386,9 @@ body {
 .bd-section p {
   color: #4b5563;
   line-height: 1.8;
-  font-size: 30px; /* THAY ĐỔI: Tăng cỡ chữ */
+  font-size: 30px;
 }
 
-/* THÊM HIỆU ỨNG HOVER ẢNH */
 .bd-section img {
   width: 100%;
   height: auto;
@@ -692,7 +430,6 @@ body {
   gap: 10px;
 }
 
-/* THÊM HIỆU ỨNG HOVER ẢNH */
 .bd-gallery img {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -706,23 +443,17 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Prev/Next nav (Lặp lại - bỏ qua) */
-/* ... */
-
-/* =============== BLOG DETAIL (Lặp lại) =============== */
 .blog-detail {
-  background: #f9fafb; /* THAY ĐỔI: Màu nền dịu hơn */
+  background: #f9fafb;
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
 }
 
-/* ... (Các phần lặp lại từ .bd-hero đến .bd-body) ... */
 .bd-body {
   padding: 6px 22px 22px;
 }
-/* ... */
 .bd-section h2 {
   font-size: 30px;
   margin: 0 0 8px;
@@ -732,9 +463,8 @@ body {
 .bd-section p {
   color: #4b5563;
   line-height: 1.8;
-  font-size: 18px; /* THAY ĐỔI: Tăng cỡ chữ */
+  font-size: 18px;
 }
-/* ... */
 
 /* ==== Blog Quote — Enhanced Focus Style ==== */
 .bd-quote {
@@ -804,16 +534,13 @@ body {
   }
 }
 
-/* Gallery (lặp lại) */
 .bd-gallery {
   margin-top: 14px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
-/* .bd-gallery img đã được style ở trên */
 
-/* --- KHỐI CSS NAV/SHARE ĐÃ SỬA --- */
 /* BD-NAV: Share (Trái) + Next (Phải) */
 .bd-nav {
   display: flex;
@@ -827,13 +554,13 @@ body {
 .bd-share {
   display: flex;
   align-items: center;
-  gap: 8px; /* Khoảng cách giữa các nút */
+  gap: 8px;
 }
 
 .bd-share span {
   font-size: 18px;
   color: var(--muted);
-  margin-right: 4px; /* Khoảng cách sau chữ "Share:" */
+  margin-right: 4px;
 }
 
 /* Nút share (FB, X, Ins) */
@@ -849,11 +576,10 @@ body {
   background: #fff;
   text-decoration: none;
   color: var(--text);
-  font-size: 16px; /* Sửa cho icon */
-  transition: all 0.2s ease; /* Sửa transition */
+  font-size: 16px;
+  transition: all 0.2s ease;
 }
 
-/* Nút "Other blogs" (bên phải) */
 .bd-nav .bd-next {
   display: inline-flex;
   align-items: center;
@@ -864,20 +590,19 @@ body {
   background: #fff;
   text-decoration: none;
   color: inherit;
-  font-weight: 500; /* NÂNG CẤP NÚT */
-  transition: all 0.2s ease; /* NÂNG CẤP NÚT */
-  font-family: "Poppins", sans-serif; /* THAY ĐỔI: Đổi font */
-  font-size: 18px; /* THAY ĐỔI: Tăng cỡ chữ */
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
 }
 
 /* Hiệu ứng hover chung cho cả 2 loại nút */
 .bd-nav .bd-next:hover,
 .bd-share-btn:hover {
-  transform: translateY(-2px); /* NÂNG CẤP NÚT */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* NÂNG CẤP NÚT */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* THAY ĐỔI MÀU HOVER CHO NÚT NEXT */
 .bd-nav .bd-next:hover {
   background: #f5e2d3;
   border-color: #e0cbb9;
@@ -902,7 +627,6 @@ body {
   color: #e1306c;
   background: #fff0f5;
 }
-/* --- KẾT THÚC KHỐI SỬA --- */
 
 /* 1 cột mobile */
 @media (max-width: 680px) {
@@ -914,18 +638,16 @@ body {
   }
 }
 
-/* === THAY ĐỔI KÍCH THƯỚC (Lặp lại) === */
 .container {
   /* dùng grid để sidebar sticky mượt mà hơn */
   display: grid;
-  grid-template-columns: 360px minmax(0, 1fr); /* Tăng độ rộng sidebar */
+  grid-template-columns: 360px minmax(0, 1fr);
   gap: 28px;
   align-items: start;
-  max-width: 1560px; /* Tăng độ rộng tối đa */
+  max-width: 1560px;
   margin: 24px auto;
   padding: 0 16px;
 }
-/* === KẾT THÚC THAY ĐỔI === */
 
 /* ====== Sticky Sidebar ====== */
 .sidebar {
@@ -941,9 +663,7 @@ body {
   overflow: visible;
 }
 
-/* === THAY ĐỔI KÍCH THƯỚC === */
 @media (max-width: 1280px) {
-  /* Tăng breakpoint cho responsive */
   .container {
     grid-template-columns: 1fr; /* 1 cột */
   }
@@ -952,7 +672,6 @@ body {
     top: auto;
   }
 }
-/* === KẾT THÚC THAY ĐỔI === */
 
 /* ===== Comments ===== */
 .bd-comments {
@@ -1035,67 +754,12 @@ body {
 
 .cmt-note {
   font-size: 13px;
-  color: #065f46; /* xanh đậm nhẹ */
-  background: #ecfdf5; /* xanh nhạt */
+  color: #065f46;
+  background: #ecfdf5;
   border: 1px solid #a7f3d0;
   border-radius: 10px;
   padding: 10px 12px;
 }
-
-/* ===== NÂNG CẤP NÚT BACK & NEXT ===== */
-/* (Dán code mới vào đây, nó sẽ tự đè lên code cũ) */
-
-/* Style chung cho cả 2 nút (Back và Next) */
-.back-btn,
-.bd-nav .bd-next {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 16px; /* Tăng padding ngang một chút cho thoáng */
-
-  /* Kiểu "Outline": Dùng màu brand cho viền và chữ */
-  border: 2px solid var(--brand);
-  background: var(--card); /* Nền trắng */
-  color: var(--brand);
-
-  border-radius: 12px; /* Bo tròn hơn 1 chút */
-  font-family: "Poppins", sans-serif;
-  font-size: 16px; /* Chuẩn hóa cỡ chữ */
-  font-weight: 600; /* Chữ đậm hơn cho rõ ràng */
-
-  text-decoration: none;
-  cursor: pointer;
-
-  /* Hiệu ứng chuyển động mượt mà */
-  transition: all 0.2s ease-out;
-}
-
-/* Hiệu ứng khi HOVER hoặc FOCUS (quan trọng cho accessibility) */
-.back-btn:hover,
-.bd-nav .bd-next:hover,
-.back-btn:focus-visible,
-.bd-nav .bd-next:focus-visible {
-  /* Đảo ngược: Nền brand, chữ trắng */
-  background: var(--brand);
-  color: #fff;
-
-  /* Hiệu ứng nổi lên đẹp mắt */
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.25); /* Đổ bóng màu brand */
-  outline: none; /* Tắt viền focus mặc định */
-}
-
-/* Hiệu ứng khi NHẤN XUỐNG (active) */
-.back-btn:active,
-.bd-nav .bd-next:active {
-  transform: translateY(-1px); /* Lún xuống một chút */
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
-}
-
-/* ======================================= */
-/* === BỔ SUNG RESPONSIVE (DÁN VÀO CUỐI FILE CSS) === */
-/* ======================================= */
 
 /* --- Mobile (Dưới 767px) --- */
 @media (max-width: 767px) {
@@ -1123,7 +787,7 @@ body {
   }
 
   .bd-title {
-    font-size: 24px; /* Giảm cỡ chữ tiêu đề */
+    font-size: 24px;
   }
 
   .bd-meta {
@@ -1161,7 +825,6 @@ body {
     font-size: 18px;
   }
 
-  /* Gallery (đã có ở 680px, nhưng ta gộp chung vào đây) */
   .bd-gallery {
     grid-template-columns: 1fr 1fr;
   }
@@ -1190,10 +853,6 @@ body {
   }
 }
 
-/* =================================================== */
-/* === BỔ SUNG: RESET CARD BỰ TRÊN MOBILE (YÊU CẦU MỚI) === */
-/* =================================================== */
-
 /* Khi màn hình nhỏ hơn 780px (lúc grid chuyển về 1 cột),
   ta reset lại tỉ lệ ảnh của card.big 
   để nó giống hệt các card bình thường (16/10).
@@ -1214,14 +873,54 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-/* ======= FIX KÉO NGANG & GIỮ KHUNG BLOG ======= */
 
-/* Ngăn kéo ngang toàn trang */
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+/* Style chung cho cả 3 nút */
+.back-btn,
+.bd-nav .bd-next,
+.cmt-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+
+  background: #ffcc00;
+  border: none;
+
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  /* Reset/Đảm bảo các thuộc tính riêng lẻ */
+  justify-self: start; /* Cho nút submit comment */
+  line-height: 1.2; /* Chống vỡ chữ */
 }
 
-/* (Các responsive cũ cho blog-frame đã bị xóa và thay thế bằng code ở đầu file) */
+/* Hiệu ứng Hover/Focus giống Tour.css */
+.back-btn:hover,
+.bd-nav .bd-next:hover,
+.cmt-submit:hover,
+.back-btn:focus-visible,
+.bd-nav .bd-next:focus-visible,
+.cmt-submit:focus-visible {
+  background: #ffb700;
+  color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* Hiệu ứng Active (nhấn xuống) */
+.back-btn:active,
+.bd-nav .bd-next:active,
+.cmt-submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}

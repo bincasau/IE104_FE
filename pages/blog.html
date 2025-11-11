@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Travel Blog — Recent Articles</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/common.css" />
     <link rel="stylesheet" href="../assets/css/blog.css" />
     <link
       rel="stylesheet"
@@ -12,36 +14,33 @@
   </head>
 
   <body>
-    <div class="blog-frame">
-      <!-- Nền màu -->
-      <div class="blog-bg-color"></div>
+    <div class="page-hero">
+      <div class="page-hero-bg-color"></div>
 
-      <!-- Ảnh nền bên phải -->
       <img
         src="../assets/images/TourHeader-Copy.webp"
         alt="Ảnh nền"
-        class="blog-bg-img"
+        class="page-hero-bg-img"
       />
 
-      <!-- Ảnh người đè lên -->
       <img
         src="../assets/images/TourHeaderPerson.webp"
         alt="Người"
-        class="blog-person"
+        class="page-hero-person"
       />
 
-      <!-- Text -->
-      <div class="blog-text">
+      <div class="page-hero-text">
         <h1 data-key="blog_header_title">BLOG RECENT</h1>
-        <div class="breadcrumb">
+        <div class="page-hero-breadcrumb">
           <span class="home" data-key="blog_breadcrumb_home">HOME</span>
           <span class="arrow">›</span>
-          <span class="current" data-key="blog_breadcrumb_current">BLOG</span>
+          <span class="home current" data-key="blog_breadcrumb_current"
+            >BLOG</span
+          >
         </div>
       </div>
     </div>
     <div class="container">
-      <!-- Sidebar -->
       <aside class="sidebar">
         <div class="search-box">
           <input
@@ -66,7 +65,6 @@
         </div>
       </aside>
 
-      <!-- Main -->
       <main class="main">
         <h2 class="section-title" data-key="blog_section_title">
           RECENT BLOGS
@@ -75,7 +73,6 @@
           <h2 class="section-title">Grid Section</h2>
         </section>
 
-        <!-- Pagination -->
         <nav id="pagination" class="pagination" aria-label="Pagination"></nav>
       </main>
     </div>

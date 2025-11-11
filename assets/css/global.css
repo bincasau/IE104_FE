@@ -1,0 +1,92 @@
+/* =========================================================
+   COMMON STYLES (DÙNG CHO TOÀN BỘ WEBSITE)
+========================================================= */
+
+/* === 1. BIẾN MÀU SẮC & KÍCH THƯỚC === */
+:root {
+  --offset: 55px;
+  --frame-width: 1820px;
+  --frame-height: 530px;
+  --gap: 28px;
+  --radius: 14px;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --brand: #ffb700; /* Màu cam/brand chính */
+  --card: #ffffff;
+  --bg: #f3f4f6;
+
+  /* Các biến màu cho tourdetail/contact (có thể bổ sung) */
+  --brand-tour: #e4823d;
+  --accent-tour: #ff7c28;
+  --light-bg-tour: #f5e2d3;
+}
+
+/* === 2. CSS RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === 3. BODY DEFAULTS === */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f4f4f4; /* Nền dự phòng chung */
+  color: var(--text);
+}
+
+/* === 4. PHÂN TRANG CHUNG (Cho Blog & Tour) === */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 35px 0 60px; /* Căn lề chung */
+  flex-wrap: wrap;
+}
+
+.pagination .btn,
+.pagination .page,
+.pagination button {
+  padding: 12px 18px;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.pagination .page.active,
+.pagination button.active {
+  background: #ffcc00; /* Màu vàng */
+  color: #333;
+  border-color: #ffcc00;
+}
+
+.pagination .btn[disabled],
+.pagination button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination .btn:not([disabled]):hover,
+.pagination .page:not(.active):hover,
+.pagination button:not(.active):not([disabled]):hover {
+  background: #fff8e1; /* Vàng nhạt */
+  border-color: #ffe066;
+}
+
+/* === 5. FIX LỖI KÉO NGANG (DÙNG CHO MỌI TRANG) === */
+@media (max-width: 1024px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}

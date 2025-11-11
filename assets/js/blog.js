@@ -51,6 +51,112 @@ export async function initPage() {
     };
   }
 
+  // ========== BẮT ĐẦU CODE MỚI (Hàm load comment) ==========
+  /**
+   * Tải comment từ localStorage và hiển thị ra danh sách.
+   * Hàm này cũng sẽ hiển thị các comment gốc.
+   * @param {string} slug - Slug của bài blog hiện tại.
+   * @param {HTMLElement} box - Element container của #blog-detail.
+   */
+  function loadAndRenderComments(slug, box) {
+    const list = box.querySelector(".cmt-list");
+    if (!list) return;
+
+    // 1. Định nghĩa các comment gốc (luôn hiển thị)
+    const hardcodedComments = [
+      {
+        avatar: "https://i.pravatar.cc/40?img=32",
+        author: "Minh Nguyen",
+        dateKey: "blog_comment_date_2days", // Key để dịch thuật
+        text: "Tuyệt vời! Bài viết rất hữu ích cho chuyến đi sắp tới.",
+      },
+      {
+        avatar: "https://i.pravatar.cc/40?img=15",
+        author: "Lan Pham",
+        dateKey: "blog_comment_date_yesterday", // Key để dịch thuật
+        text: "Mong có thêm phần chi phí dự kiến ở từng địa điểm nha.",
+      },
+    ];
+
+    // 2. Lấy các comment đã lưu từ localStorage
+    const storageKey = `blog_comments_${slug}`;
+    let savedComments = [];
+    try {
+      // Parse JSON đã lưu, nếu không có thì dùng mảng rỗng
+      savedComments = JSON.parse(localStorage.getItem(storageKey)) || [];
+    } catch (e) {
+      console.error("Failed to parse comments from localStorage", e);
+      savedComments = [];
+    }
+
+    // 3. Gộp 2 danh sách: comment mới nhất (đã lưu) lên đầu
+    const allComments = [...savedComments, ...hardcodedComments];
+
+    // 4. Xóa list cũ và render lại
+    list.innerHTML = ""; // Xóa sạch comment cũ
+
+    if (allComments.length === 0) {
+      const li = document.createElement("li");
+      li.className = "cmt-none";
+      li.textContent = "Chưa có bình luận nào.";
+      li.setAttribute("data-key", "blog_comment_none"); // Để dịch thuật
+      list.appendChild(li);
+    } else {
+      // Dùng forEach để tạo từng element (an toàn, chống XSS)
+      allComments.forEach((cmt) => {
+        const li = document.createElement("li");
+        li.className = "cmt";
+
+        const avatarImg = document.createElement("img");
+        avatarImg.className = "cmt-avatar";
+        // Lấy avatar đã lưu, hoặc random ảnh mới nếu là comment gốc
+        avatarImg.src =
+          cmt.avatar ||
+          `https://i.pravatar.cc/40?img=${Math.floor(Math.random() * 70) + 1}`;
+        avatarImg.alt = "User";
+
+        const bodyDiv = document.createElement("div");
+        bodyDiv.className = "cmt-body";
+
+        const metaDiv = document.createElement("div");
+        metaDiv.className = "cmt-meta";
+
+        const authorStrong = document.createElement("strong");
+        authorStrong.textContent = cmt.author || "Bạn";
+
+        const dateSpan = document.createElement("span");
+        if (cmt.dateKey) {
+          // Dùng cho comment gốc (để dịch thuật)
+          dateSpan.setAttribute("data-key", cmt.dateKey);
+        } else {
+          // Dùng cho comment của user
+          dateSpan.textContent = cmt.date || "Vừa xong";
+        }
+
+        metaDiv.appendChild(authorStrong);
+        metaDiv.append(" · "); // Thêm dấu "·"
+        metaDiv.appendChild(dateSpan);
+
+        const textP = document.createElement("p");
+        textP.textContent = cmt.text; // ✅ An toàn: Dùng textContent
+
+        // Gắn tất cả vào
+        bodyDiv.appendChild(metaDiv);
+        bodyDiv.appendChild(textP);
+        li.appendChild(avatarImg);
+        li.appendChild(bodyDiv);
+
+        list.appendChild(li);
+      });
+    }
+
+    // 5. Chạy lại hàm dịch thuật cho các key mới
+    import("./lang.js").then(({ applyTranslations }) =>
+      applyTranslations(list)
+    );
+  }
+  // ========== KẾT THÚC CODE MỚI (Hàm load comment) ==========
+
   // ====== SIDEBAR ======
   function renderTags(blogs) {
     const tags = uniq(blogs.map((b) => b.category));
@@ -195,17 +301,40 @@ export async function initPage() {
     scrollToGridTop();
   }
 
-  // ====== DETAIL ======
+  // ====== DETAIL (ĐÃ CẬP NHẬT) ======
   function renderBlogDetail(slug) {
     const post = details.find((p) => p.slug === slug);
     if (!post) return;
 
-    const currentCrumb = $(".breadcrumb .current");
-    if (currentCrumb) {
-      currentCrumb.setAttribute("data-key", "blog_breadcrumb_detail");
-      currentCrumb.textContent = "";
+    // SỬA BREADCRUMB: Thêm cấp "Blog Detail"
+    const breadcrumb = $(".page-hero-breadcrumb"); // <--- Tìm đúng container
+    if (breadcrumb) {
+      // 1. Bỏ class "current" khỏi chữ "BLOG"
+      const blogCrumb = breadcrumb.querySelector(".current");
+      if (blogCrumb) {
+        blogCrumb.classList.remove("current");
+      }
+
+      // 2. Chỉ thêm "Blog Detail" nếu nó chưa có
+      let detailCrumb = breadcrumb.querySelector(
+        `span[data-key="blog_breadcrumb_detail"]`
+      );
+      if (!detailCrumb) {
+        const newArrow = document.createElement("span");
+        newArrow.className = "arrow";
+        newArrow.textContent = "›";
+
+        detailCrumb = document.createElement("span");
+        detailCrumb.className = "current"; // Đây là mục active mới
+        detailCrumb.setAttribute("data-key", "blog_breadcrumb_detail");
+
+        breadcrumb.appendChild(newArrow);
+        breadcrumb.appendChild(detailCrumb);
+      }
+
+      // 3. Tải ngôn ngữ cho toàn bộ breadcrumb
       import("./lang.js").then(({ applyTranslations }) =>
-        applyTranslations($(".breadcrumb"))
+        applyTranslations(breadcrumb)
       );
     }
 
@@ -304,30 +433,9 @@ export async function initPage() {
 
       <section class="bd-comments">
         <h3 data-key="blog_comments_title"></h3>
+        
         <ul class="cmt-list">
-          <li class="cmt">
-            <img class="cmt-avatar" src="https://i.pravatar.cc/40?img=32" alt="User">
-            <div class="cmt-body">
-              <div class="cmt-meta">
-                <strong>Minh Nguyen</strong> · 
-                <span data-key="blog_comment_date_2days"></span>
-              </div>
-              <p>Tuyệt vời! Bài viết rất hữu ích cho chuyến đi sắp tới.</p>
-            </div>
-          </li>
-          <li class="cmt">
-            <img class="cmt-avatar" src="https://i.pravatar.cc/40?img=15" alt="User">
-            <div class="cmt-body">
-              <div class="cmt-meta">
-                <strong>Lan Pham</strong> · 
-                <span data-key="blog_comment_date_yesterday"></span>
-              </div>
-              <p>Mong có thêm phần chi phí dự kiến ở từng địa điểm nha.</p>
-            </div>
-          </li>
-        </ul>
-
-
+          </ul>
         <form id="cmtForm" class="cmt-form">
           <label for="cmtText" data-key="blog_leave_comment"></label>
           <textarea id="cmtText" rows="4" data-key-placeholder="blog_comment_placeholder"></textarea>
@@ -336,22 +444,69 @@ export async function initPage() {
         </form>
       </section>`;
 
+    // ========== PHẦN ĐÃ SỬA (Gọi hàm load comment) ==========
+    // ✅ Tải comment đã lưu (và comment gốc) cho bài viết này
+    loadAndRenderComments(slug, box);
+    // ========== KẾT THÚC PHẦN SỬA ==========
+
     box.querySelector(".back-btn").onclick = () => {
       location.hash = "";
     };
 
+    // ========== PHẦN ĐÃ SỬA (Logic submit form) ==========
     const form = box.querySelector("#cmtForm");
     form.onsubmit = (e) => {
       e.preventDefault();
       const textarea = box.querySelector("#cmtText");
-      const note = box.querySelector("#cmtNote");
-      if (!textarea.value.trim()) return textarea.focus();
-      textarea.value = "";
-      note.hidden = false;
-      note.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    };
+      const commentText = textarea.value.trim();
 
-    // Cuộn khi xem chi tiết (vẫn giữ nguyên)
+      // 1. Kiểm tra xem có nội dung không
+      if (!commentText) return textarea.focus();
+
+      // 2. Tạo đối tượng comment mới
+      const randomImgId = Math.floor(Math.random() * 70) + 1;
+      const newComment = {
+        author: "Bạn", // Có thể nâng cấp để hỏi tên user
+        text: commentText,
+        dateKey: "blog_comment_date_today",
+        avatar: `https://i.pravatar.cc/40?img=${10}`,
+      };
+
+      // 3. Lấy key và danh sách comment cũ từ localStorage
+      const storageKey = `blog_comments_${slug}`;
+      let savedComments = [];
+      try {
+        savedComments = JSON.parse(localStorage.getItem(storageKey)) || [];
+      } catch (e) {
+        savedComments = [];
+      }
+
+      // 4. Thêm comment mới vào *đầu* danh sách
+      savedComments.unshift(newComment);
+
+      // 5. Lưu danh sách mới (đã cập nhật) trở lại localStorage
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(savedComments));
+      } catch (e) {
+        console.error("Failed to save comments to localStorage", e);
+        // Có thể thêm thông báo lỗi nếu localStorage bị đầy
+      }
+
+      // 6. Render lại toàn bộ danh sách comment (từ localStorage)
+      loadAndRenderComments(slug, box);
+
+      // 7. Xóa nội dung trong textarea
+      textarea.value = "";
+
+      // 8. Cuộn đến danh sách comment
+      const list = box.querySelector(".cmt-list");
+      if (list) {
+        // Cuộn đến đầu danh sách
+        list.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+    // ========== KẾT THÚC PHẦN SỬA ==========
+
     const elementPosition = box.getBoundingClientRect().top + window.scrollY;
     const offsetPosition = elementPosition - HEADER_OFFSET;
 
@@ -361,14 +516,32 @@ export async function initPage() {
     });
   }
 
-  // ====== ROUTER ======
+  // ====== ROUTER (ĐÃ CẬP NHẬT) ======
   function showListView() {
-    const currentCrumb = $(".breadcrumb .current");
-    if (currentCrumb) {
-      currentCrumb.setAttribute("data-key", "blog_breadcrumb_current");
-      currentCrumb.textContent = "";
+    // SỬA BREADCRUMB: Quay lại cấp "Blog"
+    const breadcrumb = $(".page-hero-breadcrumb"); // <--- Tìm đúng container
+    if (breadcrumb) {
+      const blogCrumb = breadcrumb.querySelector(
+        `span[data-key="blog_breadcrumb_current"]`
+      );
+      const detailCrumb = breadcrumb.querySelector(
+        `span[data-key="blog_breadcrumb_detail"]`
+      );
+
+      // 1. Nếu đang có "Blog Detail", xóa nó và mũi tên trước nó
+      if (detailCrumb) {
+        breadcrumb.removeChild(detailCrumb.previousElementSibling); // Xóa mũi tên
+        breadcrumb.removeChild(detailCrumb); // Xóa "Blog Detail"
+      }
+
+      // 2. Thêm lại class "current" cho chữ "BLOG"
+      if (blogCrumb) {
+        blogCrumb.classList.add("current");
+      }
+
+      // 3. Tải ngôn ngữ (để dịch lại chữ BLOG nếu cần)
       import("./lang.js").then(({ applyTranslations }) =>
-        applyTranslations($(".breadcrumb"))
+        applyTranslations(breadcrumb)
       );
     }
 
