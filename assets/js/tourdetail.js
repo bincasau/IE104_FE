@@ -1,23 +1,26 @@
 // ===============================
-// tourdetail.js (FINAL FIX - Stable + Booking Popup đẹp)
+// tourdetail.js (HASH FIXED + Stable + Booking Popup đẹp)
 // ===============================
 import { I18N, applyTranslations } from "./lang.js";
 
 export async function initPage() {
   console.log("✅ Tour Detail JS initialized");
 
-  // --- Gắn hash để dễ nhận diện ---
-  if (!window.location.hash.includes("#tour-detail")) {
-    history.replaceState({ page: "tour-detail" }, "", "#tour-detail");
-  }
+  // ⭐ Gắn hash khi vào trang
+  history.replaceState({ page: "tour-detail" }, "", "#tour-detail");
 
-  // --- Gắn event popstate có thể gỡ được (chống stack) ---
+  // ===============================
+  // POPSTATE (nút Back trình duyệt)
+  // ===============================
   if (window._tourPopHandler) {
     window.removeEventListener("popstate", window._tourPopHandler);
   }
 
   window._tourPopHandler = (e) => {
     if (e?.state?.page === "tour-detail") return;
+
+    // ⭐ Xóa hash khi rời trang
+    history.replaceState(null, "", location.pathname);
 
     if (typeof window.loadSection === "function") {
       window.loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
@@ -27,26 +30,33 @@ export async function initPage() {
   };
   window.addEventListener("popstate", window._tourPopHandler);
 
-  // --- Nút Back ---
+  // ===============================
+  // NÚT BACK
+  // ===============================
   const backBtn = document.querySelector(".back-btn-tour");
   if (backBtn) {
     backBtn.addEventListener("click", async (e) => {
       e.preventDefault();
-      if (typeof window.loadSection === "function") {
-        await window.loadSection(
-          "content",
-          "./pages/tour.html",
-          "./tour.js",
-          "Tours"
-        );
-      } else {
-        window.location.href = "./tour.html";
-      }
+
+      // ⭐ Xóa hash khi rời trang
+      history.replaceState(null, "", location.pathname);
+
+      await window.loadSection(
+        "content",
+        "./pages/tour.html",
+        "./tour.js",
+        "Tours"
+      );
     });
   }
 
-  // --- Dọn dẹp event khi rời trang ---
+  // ===============================
+  // REMOVE HANDLERS KHI RỜI TRANG
+  // ===============================
   const removeTourHandlers = () => {
+    // ⭐ Xóa hash
+    history.replaceState(null, "", location.pathname);
+
     if (window._tourPopHandler) {
       window.removeEventListener("popstate", window._tourPopHandler);
       delete window._tourPopHandler;
@@ -54,16 +64,19 @@ export async function initPage() {
     }
   };
 
-  // Dọn dẹp khi click menu, logo, explore
+  // Khi click vào menu, logo, explore trip → rời trang
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a, button");
     if (!link) return;
+
     const href = link.getAttribute("href") || "";
+
     if (
       href.includes("blog") ||
       href.includes("home") ||
       href.includes("about") ||
       href.includes("contact") ||
+      href.includes("tour.html") ||
       link.classList.contains("btn-explore") ||
       link.classList.contains("logo")
     ) {
@@ -193,7 +206,7 @@ export async function initPage() {
       const adults = parseInt(adultInput.value || "0");
       const facility = document.getElementById("facilities")?.value;
 
-      // === Lấy ngôn ngữ & bản dịch ===
+      // Ngôn ngữ
       const lang = localStorage.getItem("lang") || "en";
       let t = (key) => key;
       try {
@@ -206,7 +219,6 @@ export async function initPage() {
         console.warn("⚠️ Translation not loaded:", e);
       }
 
-      // === Kiểm tra dữ liệu ===
       if (
         !name ||
         !startDate ||
@@ -219,7 +231,6 @@ export async function initPage() {
       }
       errorMsg.textContent = "";
 
-      // === Popup xác nhận ===
       const popup = document.createElement("div");
       popup.className = "booking-popup";
       popup.innerHTML = `
@@ -244,95 +255,11 @@ export async function initPage() {
       </div>
     `;
       document.body.appendChild(popup);
-      // === Xóa dữ liệu form sau khi gửi ===
       form.reset();
       adultInput.value = "";
       kidInput.value = "";
       updateTotal();
 
-      // === CSS inline (giao diện đẹp)
-      const style = document.createElement("style");
-      style.textContent = `
-        .booking-popup {
-          position: fixed;
-          inset: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-          font-family: 'Poppins', sans-serif;
-        }
-        .popup-overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(0,0,0,0.55);
-          animation: fadeIn 0.3s ease;
-        }
-        .popup-box {
-          position: relative;
-          background: #fff;
-          border-radius: 18px;
-          padding: 40px 50px;
-          max-width: 480px;
-          width: 90%;
-          text-align: center;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-          animation: scaleIn 0.3s ease;
-        }
-        .popup-close {
-          position: absolute;
-          top: 10px;
-          right: 15px;
-          font-size: 24px;
-          color: #999;
-          cursor: pointer;
-          transition: 0.2s;
-        }
-        .popup-close:hover { color: #333; }
-        .popup-icon {
-          font-size: 42px;
-          margin-bottom: 12px;
-          animation: pop 0.4s ease;
-        }
-        .popup-content h2 {
-          color: #2b6cb0;
-          margin-bottom: 10px;
-        }
-        .popup-content p {
-          color: #444;
-          font-size: 15px;
-          line-height: 1.6;
-        }
-        .popup-ok {
-          margin-top: 20px;
-          background: linear-gradient(135deg, #4A90E2, #357ABD);
-          color: white;
-          border: none;
-          padding: 10px 24px;
-          border-radius: 8px;
-          cursor: pointer;
-          font-size: 16px;
-          font-weight: 600;
-          transition: background 0.3s;
-        }
-        .popup-ok:hover {
-          background: linear-gradient(135deg, #357ABD, #2b6cb0);
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; } to { opacity: 1; }
-        }
-        @keyframes scaleIn {
-          from { transform: scale(0.8); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
-        }
-        @keyframes pop {
-          0% { transform: scale(0.5); opacity: 0; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-      `;
-      document.head.appendChild(style);
-
-      // === Đóng popup ===
       const closePopup = () => popup.remove();
       popup.querySelector(".popup-close").addEventListener("click", closePopup);
       popup
@@ -352,6 +279,10 @@ export async function initPage() {
       if (!tourId) return;
       sessionStorage.setItem("selectedTourId", tourId);
       window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // ⭐ Rời trang → xóa hash
+      history.replaceState(null, "", location.pathname);
+
       if (typeof window.loadSection === "function") {
         await window.loadSection(
           "content",
