@@ -197,7 +197,7 @@ export async function initPage() {
       const lang = localStorage.getItem("lang") || "en";
       let t = (key) => key;
       try {
-        const res = await fetch(`../../lang/${lang}.json`);
+        const res = await fetch(`././lang/${lang}.json`);
         if (res.ok) {
           const trans = await res.json();
           t = (key) => trans[key] || key;

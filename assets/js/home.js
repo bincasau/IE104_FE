@@ -71,13 +71,13 @@ export async function initPage() {
    PHẦN 5: RECOMMENDED TRIPS SECTION
    ============================================== */
   try {
-    const res = await fetch("../data/tours.json");
+    const res = await fetch("./data/tours.json");
     if (!res.ok) throw new Error("Không thể tải danh sách tour");
     const data = await res.json();
 
     // Lấy ngôn ngữ hiện tại
     const lang = localStorage.getItem("lang") || "en";
-    const langRes = await fetch(`../../lang/${lang}.json`);
+    const langRes = await fetch(`././lang/${lang}.json`);
     const translations = await langRes.json();
 
     const tours = data.tours.slice(0, 6);
@@ -182,7 +182,7 @@ export async function initPage() {
   /* =============================================
    PHẦN 10: BLOG SECTION
    ============================================== */
-  const BLOG_JSON = "../data/blogs.json";
+  const BLOG_JSON = "./data/blogs.json";
   const blogGrid = document.querySelector(".blog-grid");
 
   if (!blogGrid) {
@@ -257,7 +257,7 @@ export async function initPage() {
 
   (async () => {
     const lang = localStorage.getItem("lang") || "en";
-    const res = await fetch(`../../lang/${lang}.json`);
+    const res = await fetch(`././lang/${lang}.json`);
     translations = await res.json();
   })();
 

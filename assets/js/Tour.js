@@ -38,7 +38,7 @@ export async function initPage() {
   await (async () => {
     const lang = localStorage.getItem("lang") || "en";
     try {
-      const res = await fetch(`../../lang/${lang}.json`);
+      const res = await fetch(`././lang/${lang}.json`);
       if (res.ok) {
         const translations = await res.json();
         window.__translations = translations;
@@ -105,7 +105,7 @@ export async function initPage() {
   // THAY THẾ HÀM NÀY
   async function loadTours() {
     try {
-      const res = await fetch("../../data/tours.json");
+      const res = await fetch("././data/tours.json");
       const data = await res.json();
       tours = Array.isArray(data.tours) ? data.tours : [];
 
@@ -352,7 +352,7 @@ export async function initPage() {
 
     pageTours.forEach((tour) => {
       const saveAmount = tour.oldPrice ? tour.oldPrice - tour.price : 0;
-      const imgPath = tour.image.replace("../../", "../");
+      const imgPath = tour.image.replace("././", "./");
       let availHTML = "";
       if (Array.isArray(tour.availability) && tour.availability.length === 2) {
         const a = tour.availability[0];
@@ -579,7 +579,7 @@ export async function initPage() {
     );
     try {
       const lang = localStorage.getItem("lang") || "en";
-      const res = await fetch(`../../lang/${lang}.json`);
+      const res = await fetch(`././lang/${lang}.json`);
       const translations = await res.json();
       window.__translations = translations;
     } catch (err) {

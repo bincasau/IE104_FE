@@ -1,6 +1,6 @@
 export async function initPage() {
   console.log("Blog section initialized");
-  const DATA_URL = "../data/blogs.json";
+  const DATA_URL = "./data/blogs.json";
   const PAGE_SIZE = 5;
 
   let allBlogs = [],
