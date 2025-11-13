@@ -12,13 +12,13 @@
       "activities": ["Water Activities", "Relaxation & Nature Activities"],
       "availability": ["Aug 25, 2025", "Aug 27, 2025"],
       "shortDesc": "Cruise through emerald waters, explore limestone caves, and relax onboard a luxury cruise.",
-      "image": "../assets/images/tour/tour_1.webp",
+      "image": "./assets/images/tour/tour_1.webp",
       "gallery": [
-        "../assets/images/detailTour/tour1/1.webp",
-        "../assets/images/detailTour/tour1/2.webp",
-        "../assets/images/detailTour/tour1/3.webp",
-        "../assets/images/detailTour/tour1/4.webp",
-        "../assets/images/detailTour/tour1/5.webp"
+        "./assets/images/detailTour/tour1/1.webp",
+        "./assets/images/detailTour/tour1/2.webp",
+        "./assets/images/detailTour/tour1/3.webp",
+        "./assets/images/detailTour/tour1/4.webp",
+        "./assets/images/detailTour/tour1/5.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/SpOWgms2uto?si=M3i2Jeg5j4BgdUx8",
       "overview": "Ha Long Bay is a UNESCO World Heritage with thousands of limestone karsts rising from emerald waters. This 3-day cruise blends relaxation with soft adventure: caves, kayaking, seafood dinners, sunrise Tai Chi.",
@@ -50,7 +50,7 @@
           ],
           "meals": "Lunch, Dinner",
           "accommodation": "Deluxe cabin onboard (private bathroom)",
-          "image": "../assets/images/detailTour/hanoi.webp"
+          "image": "./assets/images/detailTour/hanoi.webp"
         },
         {
           "day": 2,
@@ -64,7 +64,7 @@
           ],
           "meals": "Breakfast, Lunch, Dinner",
           "accommodation": "Overnight onboard",
-          "image": "../assets/images/detailTour/tour1/6.webp"
+          "image": "./assets/images/detailTour/tour1/6.webp"
         },
         {
           "day": 3,
@@ -77,7 +77,7 @@
           ],
           "meals": "Breakfast/Brunch",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/tour1/7.webp"
+          "image": "./assets/images/detailTour/tour1/7.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Vịnh%20Hạ%20Long&t=&z=12&ie=UTF8&iwloc=&output=embed"
@@ -94,13 +94,13 @@
       "activities": ["Hiking & Trekking", "Cultural & Historical Activities"],
       "availability": ["Sep 10, 2025", "Sep 14, 2025"],
       "shortDesc": "Trek terraced rice fields, visit minority villages, stay in cozy homestays.",
-      "image": "../assets/images/tour/tour_2.webp",
+      "image": "./assets/images/tour/tour_2.webp",
       "gallery": [
-        "../assets/images/detailTour/tour2/1.webp",
-        "../assets/images/detailTour/tour2/2.webp",
-        "../assets/images/detailTour/tour2/3.webp",
-        "../assets/images/detailTour/tour2/4.webp",
-        "../assets/images/detailTour/tour2/5.webp"
+        "./assets/images/detailTour/tour2/1.webp",
+        "./assets/images/detailTour/tour2/2.webp",
+        "./assets/images/detailTour/tour2/3.webp",
+        "./assets/images/detailTour/tour2/4.webp",
+        "./assets/images/detailTour/tour2/5.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/KuKHih_QwhM?si=KMaWv4V3S3nJ3zHH",
       "overview": "Sapa’s cool highlands offer epic rice terraces and authentic hill-tribe culture. Moderate daily treks with plenty of photo stops.",
@@ -125,7 +125,7 @@
           "schedule": ["07:00 — Bus/train to Sapa", "14:00 — Cat Cat village"],
           "meals": "—",
           "accommodation": "Hotel in Sapa",
-          "image": "../assets/images/detailTour/tour2/1.webp"
+          "image": "./assets/images/detailTour/tour2/1.webp"
         },
         {
           "day": 2,
@@ -138,7 +138,7 @@
           ],
           "meals": "Breakfast, Lunch, Dinner",
           "accommodation": "Homestay",
-          "image": "../assets/images/detailTour/tour2/6.webp"
+          "image": "./assets/images/detailTour/tour2/6.webp"
         },
         {
           "day": 3,
@@ -150,7 +150,7 @@
           ],
           "meals": "Breakfast, Lunch",
           "accommodation": "Hotel in Sapa",
-          "image": "../assets/images/detailTour/tour2/7.webp"
+          "image": "./assets/images/detailTour/tour2/7.webp"
         },
         {
           "day": 4,
@@ -162,7 +162,7 @@
           ],
           "meals": "Breakfast",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/tour2/8.webp"
+          "image": "./assets/images/detailTour/tour2/8.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Sapa&t=&z=12&ie=UTF8&iwloc=&output=embed"
@@ -179,13 +179,13 @@
       "activities": ["Cultural & Historical Activities"],
       "availability": ["Aug 20, 2025", "Aug 22, 2025"],
       "shortDesc": "Lantern-lit streets, tailor-made outfits, and river cruises at dusk.",
-      "image": "../assets/images/tour/tour_3.webp",
+      "image": "./assets/images/tour/tour_3.webp",
       "gallery": [
-        "../assets/images/detailTour/tour3/1.webp",
-        "../assets/images/detailTour/tour3/2.webp",
-        "../assets/images/detailTour/tour3/3.webp",
-        "../assets/images/detailTour/tour3/4.webp",
-        "../assets/images/detailTour/tour3/5.webp"
+        "./assets/images/detailTour/tour3/1.webp",
+        "./assets/images/detailTour/tour3/2.webp",
+        "./assets/images/detailTour/tour3/3.webp",
+        "./assets/images/detailTour/tour3/4.webp",
+        "./assets/images/detailTour/tour3/5.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/QtJkmBb3TAM?si=5-bw0uVtFi-Yzldo",
       "overview": "Discover UNESCO-listed Hoi An: Japanese Bridge, ancient houses, and vibrant food scene.",
@@ -203,7 +203,7 @@
           "schedule": ["14:00 — Japanese Covered Bridge", "17:30 — Boat ride"],
           "meals": "—",
           "accommodation": "Hotel in Hoi An",
-          "image": "../assets/images/detailTour/tour3/3.webp"
+          "image": "./assets/images/detailTour/tour3/3.webp"
         },
         {
           "day": 2,
@@ -215,7 +215,7 @@
           ],
           "meals": "Breakfast",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/tour3/6.webp"
+          "image": "./assets/images/detailTour/tour3/6.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Hoi%20An&t=&z=12&ie=UTF8&iwloc=&output=embed"
@@ -232,13 +232,13 @@
       "activities": ["Water Activities", "Relaxation & Nature Activities"],
       "availability": ["Nov 1, 2025", "Nov 5, 2025"],
       "shortDesc": "Crystal-clear beaches, snorkeling coral gardens, and sunset fishing.",
-      "image": "../assets/images/tour/tour_4.webp",
+      "image": "./assets/images/tour/tour_4.webp",
       "gallery": [
-        "../assets/images/detailTour/tour4/1.webp",
-        "../assets/images/detailTour/tour4/2.webp",
-        "../assets/images/detailTour/tour4/3.webp",
-        "../assets/images/detailTour/tour4/4.webp",
-        "../assets/images/detailTour/tour4/5.webp"
+        "./assets/images/detailTour/tour4/1.webp",
+        "./assets/images/detailTour/tour4/2.webp",
+        "./assets/images/detailTour/tour4/3.webp",
+        "./assets/images/detailTour/tour4/4.webp",
+        "./assets/images/detailTour/tour4/5.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/__5mr_Xtb30?si=0PB0z5IIGAgPGIyS",
       "overview": "Explore the pearl island: Sao Beach, An Thoi archipelago, night market seafood.",
@@ -256,7 +256,7 @@
           "schedule": ["14:00 — Hotel check-in", "19:00 — Night market"],
           "meals": "—",
           "accommodation": "Resort 4★",
-          "image": "../assets/images/detailTour/detailTour1.webp"
+          "image": "./assets/images/detailTour/detailTour1.webp"
         },
         {
           "day": 2,
@@ -265,7 +265,7 @@
           "schedule": ["09:00 — Speedboat trip", "12:00 — Lunch on island"],
           "meals": "Breakfast, Lunch",
           "accommodation": "Resort 4★",
-          "image": "../assets/images/detailTour/tour4/6.webp"
+          "image": "./assets/images/detailTour/tour4/6.webp"
         },
         {
           "day": 3,
@@ -274,7 +274,7 @@
           "schedule": ["10:00 — Sao Beach", "16:00 — Cable car"],
           "meals": "Breakfast",
           "accommodation": "Resort 4★",
-          "image": "../assets/images/detailTour/tour4/7.webp"
+          "image": "./assets/images/detailTour/tour4/7.webp"
         },
         {
           "day": 4,
@@ -283,7 +283,7 @@
           "schedule": ["—"],
           "meals": "Breakfast",
           "accommodation": "Resort 4★",
-          "image": "../assets/images/detailTour/detailTour5.webp"
+          "image": "./assets/images/detailTour/detailTour5.webp"
         },
         {
           "day": 5,
@@ -292,7 +292,7 @@
           "schedule": ["—"],
           "meals": "Breakfast",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour2.webp"
+          "image": "./assets/images/detailTour/detailTour2.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Phu%20Quoc&t=&z=11&ie=UTF8&iwloc=&output=embed"
@@ -309,11 +309,11 @@
       "activities": ["Relaxation & Nature Activities", "Adventure Activities"],
       "availability": ["Sep 5, 2025", "Sep 7, 2025"],
       "shortDesc": "City of flowers, pine forests, coffee farms, and waterfalls.",
-      "image": "../assets/images/tour/tour_5.webp",
+      "image": "./assets/images/tour/tour_5.webp",
       "gallery": [
-        "../assets/images/detailTour/detailTour1.webp",
-        "../assets/images/detailTour/detailTour3.webp",
-        "../assets/images/detailTour/detailTour5.webp"
+        "./assets/images/detailTour/detailTour1.webp",
+        "./assets/images/detailTour/detailTour3.webp",
+        "./assets/images/detailTour/detailTour5.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/3JZ_D3ELwOQ",
       "overview": "Enjoy Da Lat’s cool climate, French villas, and café culture.",
@@ -331,7 +331,7 @@
           "schedule": ["14:00 — Crazy House", "16:30 — Night market"],
           "meals": "—",
           "accommodation": "Hotel 3★",
-          "image": "../assets/images/detailTour/detailTour4.webp"
+          "image": "./assets/images/detailTour/detailTour4.webp"
         },
         {
           "day": 2,
@@ -340,7 +340,7 @@
           "schedule": ["09:00 — Datanla", "14:00 — Coffee farm"],
           "meals": "Breakfast",
           "accommodation": "Hotel 3★",
-          "image": "../assets/images/detailTour/detailTour5.webp"
+          "image": "./assets/images/detailTour/detailTour5.webp"
         },
         {
           "day": 3,
@@ -349,7 +349,7 @@
           "schedule": ["—"],
           "meals": "Breakfast",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour2.webp"
+          "image": "./assets/images/detailTour/detailTour2.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Da%20Lat&t=&z=12&ie=UTF8&iwloc=&output=embed"
@@ -366,11 +366,11 @@
       "activities": ["Cultural & Historical Activities"],
       "availability": ["Oct 15, 2025", "Oct 17, 2025"],
       "shortDesc": "Citadel, royal tombs, and serene Perfume River cruise.",
-      "image": "../assets/images/tour/tour_6.webp",
+      "image": "./assets/images/tour/tour_6.webp",
       "gallery": [
-        "../assets/images/detailTour/detailTour2.webp",
-        "../assets/images/detailTour/detailTour3.webp",
-        "../assets/images/detailTour/detailTour4.webp"
+        "./assets/images/detailTour/detailTour2.webp",
+        "./assets/images/detailTour/detailTour3.webp",
+        "./assets/images/detailTour/detailTour4.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/4qk9RZrMMXk",
       "overview": "Step into Nguyen Dynasty heritage with palaces, pagodas, and garden houses.",
@@ -388,7 +388,7 @@
           "schedule": ["08:30 — Imperial City", "15:00 — Thien Mu Pagoda"],
           "meals": "—",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour1.webp"
+          "image": "./assets/images/detailTour/detailTour1.webp"
         },
         {
           "day": 2,
@@ -397,7 +397,7 @@
           "schedule": ["09:00 — Khai Dinh", "13:30 — Minh Mang"],
           "meals": "—",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour2.webp"
+          "image": "./assets/images/detailTour/detailTour2.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Hue%20Citadel&t=&z=12&ie=UTF8&iwloc=&output=embed"
@@ -414,11 +414,11 @@
       "activities": ["Water Activities", "Adventure Activities"],
       "availability": ["Aug 28, 2025", "Sep 1, 2025"],
       "shortDesc": "Turquoise waters, coral snorkeling, and seafood lunches.",
-      "image": "../assets/images/tour/tour_7.webp",
+      "image": "./assets/images/tour/tour_7.webp",
       "gallery": [
-        "../assets/images/detailTour/snorkeling.webp",
-        "../assets/images/detailTour/detailTour3.webp",
-        "../assets/images/detailTour/detailTour4.webp"
+        "./assets/images/detailTour/snorkeling.webp",
+        "./assets/images/detailTour/detailTour3.webp",
+        "./assets/images/detailTour/detailTour4.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/MI3bGQk0cSo",
       "overview": "Island-hop by speedboat, glass-bottom boat, or snorkeling set.",
@@ -436,7 +436,7 @@
           "schedule": ["09:00 — Boat departs", "12:30 — Lunch"],
           "meals": "Lunch",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour5.webp"
+          "image": "./assets/images/detailTour/detailTour5.webp"
         },
         {
           "day": 2,
@@ -445,7 +445,7 @@
           "schedule": ["—"],
           "meals": "—",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour4.webp"
+          "image": "./assets/images/detailTour/detailTour4.webp"
         },
         {
           "day": 3,
@@ -454,7 +454,7 @@
           "schedule": ["—"],
           "meals": "—",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour2.webp"
+          "image": "./assets/images/detailTour/detailTour2.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Nha%20Trang&t=&z=12&ie=UTF8&iwloc=&output=embed"
@@ -474,11 +474,11 @@
       ],
       "availability": ["Aug 18, 2025", "Aug 19, 2025"],
       "shortDesc": "Temples, museums, Old Quarter street food, and cyclo ride.",
-      "image": "../assets/images/tour/tour_8.webp",
+      "image": "./assets/images/tour/tour_8.webp",
       "gallery": [
-        "../assets/images/detailTour/detailTour1.webp",
-        "../assets/images/detailTour/detailTour3.webp",
-        "../assets/images/detailTour/culinary.webp"
+        "./assets/images/detailTour/detailTour1.webp",
+        "./assets/images/detailTour/detailTour3.webp",
+        "./assets/images/detailTour/culinary.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/4T6Yz6kGQ1s",
       "overview": "The capital’s best in two days—from Ho Chi Minh Complex to egg coffee alleys.",
@@ -496,7 +496,7 @@
           "schedule": ["15:00 — Cyclo ride", "18:00 — Street food tour"],
           "meals": "Dinner (tastings)",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/culinary.webp"
+          "image": "./assets/images/detailTour/culinary.webp"
         },
         {
           "day": 2,
@@ -508,7 +508,7 @@
           ],
           "meals": "—",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour3.webp"
+          "image": "./assets/images/detailTour/detailTour3.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Hanoi&t=&z=12&ie=UTF8&iwloc=&output=embed"
@@ -525,11 +525,11 @@
       "activities": ["Cultural & Historical Activities", "Water Activities"],
       "availability": ["Sep 2, 2025", "Sep 4, 2025"],
       "shortDesc": "Floating markets, river life, and fruit orchards.",
-      "image": "../assets/images/tour/tour_9.webp",
+      "image": "./assets/images/tour/tour_9.webp",
       "gallery": [
-        "../assets/images/detailTour/detailTour2.webp",
-        "../assets/images/detailTour/detailTour5.webp",
-        "../assets/images/detailTour/detailTour4.webp"
+        "./assets/images/detailTour/detailTour2.webp",
+        "./assets/images/detailTour/detailTour5.webp",
+        "./assets/images/detailTour/detailTour4.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/2p7w1Q9rJ8o",
       "overview": "Experience authentic delta culture, early morning markets, and canal cruises.",
@@ -547,7 +547,7 @@
           "schedule": ["08:00 — Depart HCMC", "19:00 — Ninh Kieu wharf"],
           "meals": "—",
           "accommodation": "Hotel in Can Tho",
-          "image": "../assets/images/detailTour/detailTour1.webp"
+          "image": "./assets/images/detailTour/detailTour1.webp"
         },
         {
           "day": 2,
@@ -556,7 +556,7 @@
           "schedule": ["05:30 — Boat to market", "09:00 — Fruit garden"],
           "meals": "Breakfast",
           "accommodation": "Hotel in Can Tho",
-          "image": "../assets/images/detailTour/detailTour2.webp"
+          "image": "./assets/images/detailTour/detailTour2.webp"
         },
         {
           "day": 3,
@@ -565,7 +565,7 @@
           "schedule": ["—"],
           "meals": "Breakfast",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour5.webp"
+          "image": "./assets/images/detailTour/detailTour5.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Can%20Tho&t=&z=11&ie=UTF8&iwloc=&output=embed"
@@ -582,11 +582,11 @@
       "activities": ["Relaxation & Nature Activities", "Adventure Activities"],
       "availability": ["Dec 1, 2025", "Dec 5, 2025"],
       "shortDesc": "Pristine beaches, national park hikes, and turtle conservation (seasonal).",
-      "image": "../assets/images/tour/tour_10.webp",
+      "image": "./assets/images/tour/tour_10.webp",
       "gallery": [
-        "../assets/images/detailTour/detailTour4.webp",
-        "../assets/images/detailTour/detailTour5.webp",
-        "../assets/images/detailTour/detailTour3.webp"
+        "./assets/images/detailTour/detailTour4.webp",
+        "./assets/images/detailTour/detailTour5.webp",
+        "./assets/images/detailTour/detailTour3.webp"
       ],
       "videoUrl": "https://www.youtube.com/embed/x0Zs7Xy8vYk",
       "overview": "Remote island beauty, WWII history sites, and protected bays.",
@@ -604,7 +604,7 @@
           "schedule": ["—"],
           "meals": "—",
           "accommodation": "Resort 4★",
-          "image": "../assets/images/detailTour/detailTour1.webp"
+          "image": "./assets/images/detailTour/detailTour1.webp"
         },
         {
           "day": 2,
@@ -613,7 +613,7 @@
           "schedule": ["09:00 — Park hikes"],
           "meals": "Breakfast",
           "accommodation": "Resort 4★",
-          "image": "../assets/images/detailTour/detailTour3.webp"
+          "image": "./assets/images/detailTour/detailTour3.webp"
         },
         {
           "day": 3,
@@ -622,7 +622,7 @@
           "schedule": ["—"],
           "meals": "Breakfast",
           "accommodation": "Resort 4★",
-          "image": "../assets/images/detailTour/detailTour5.webp"
+          "image": "./assets/images/detailTour/detailTour5.webp"
         },
         {
           "day": 4,
@@ -631,7 +631,7 @@
           "schedule": ["—"],
           "meals": "Breakfast",
           "accommodation": "—",
-          "image": "../assets/images/detailTour/detailTour2.webp"
+          "image": "./assets/images/detailTour/detailTour2.webp"
         }
       ],
       "mapEmbed": "https://maps.google.com/maps?q=Con%20Dao&t=&z=12&ie=UTF8&iwloc=&output=embed"
