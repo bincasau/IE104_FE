@@ -215,16 +215,16 @@ export async function initHeader() {
   if (img) {
     switch (savedLang) {
       case "vi":
-        img.src = "../assets/images/header/vi.webp";
+        img.src = "./assets/images/header/vi.webp";
         break;
       case "jp":
-        img.src = "../assets/images/header/jp.webp";
+        img.src = "./assets/images/header/jp.webp";
         break;
       case "cn":
-        img.src = "../assets/images/header/cn.webp";
+        img.src = "./assets/images/header/cn.webp";
         break;
       default:
-        img.src = "../assets/images/header/eng.webp";
+        img.src = "./assets/images/header/eng.webp";
     }
   }
 }
