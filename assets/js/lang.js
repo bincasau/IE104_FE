@@ -5,7 +5,7 @@ let CURRENT_LANG = "en";
 export async function setLanguage(lang) {
   CURRENT_LANG = lang;
   // ✔ dùng root-relative để tránh sai path ở mọi trang
-  const res = await fetch(`/lang/${lang}.json?v=${Date.now()}`);
+  const res = await fetch(`./lang/${lang}.json?v=${Date.now()}`);
   if (!res.ok) throw new Error("Language file not found");
   I18N = await res.json();
 
