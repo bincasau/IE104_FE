@@ -22,7 +22,7 @@ export async function loadSection(
     // --- 0. Quản lý CSS động theo trang (chống đè chéo) ---
     try {
       const cssName = filePath.split("/").pop().replace(".html", ".css");
-      const cssPath = `assets/css/${cssName}`;
+      const cssPath = `./assets/css/${cssName}`;
 
       // Xóa các CSS động cũ (trừ global/common)
       document
