@@ -138,7 +138,7 @@ export async function initPage() {
         metaDiv.appendChild(dateSpan);
 
         const textP = document.createElement("p");
-        textP.textContent = cmt.text; // ✅ An toàn: Dùng textContent
+        textP.textContent = cmt.text; //  An toàn: Dùng textContent
 
         // Gắn tất cả vào
         bodyDiv.appendChild(metaDiv);
