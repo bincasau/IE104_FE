@@ -1,29 +1,29 @@
 export async function initPage() {
   console.log("Blog section initialized");
+
   const DATA_URL = "./data/blogs.json";
   const PAGE_SIZE = 5;
 
-  let allBlogs = [],
-    details = [],
-    filteredBlogs = [];
-  let currentPage = 1,
-    activeTag = null;
+  let allBlogs = [];
+  let details = [];
+  let filteredBlogs = [];
+  let currentPage = 1;
+  let activeTag = null;
+  let isInitialLoad = true; // Cờ (flag) để check lần tải trang đầu tiên
 
-  // ✅ Cờ (flag) để check lần tải trang đầu tiên
-  let isInitialLoad = true;
-
+  // Helpers
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => Array.from(document.querySelectorAll(s));
   const paginate = (arr, p = 1, size = PAGE_SIZE) =>
     arr.slice((p - 1) * size, p * size);
   const uniq = (arr) => Array.from(new Set(arr));
 
-  // ✅ Định nghĩa chiều cao Header ở đây để dùng chung
+  // Định nghĩa chiều cao Header để dùng chung (cho offset cuộn)
   const HEADER_OFFSET = 96;
 
-  // ✅ TẠO HÀM CUỘN DÙNG CHUNG
-  // Hàm này sẽ cuộn đến đầu danh sách bài viết (ngay trên chữ "RECENT BLOGS")
-  // và chừa ra 96px cho header
+  /**
+   * Cuộn đến đầu danh sách bài viết (ngay trên chữ "RECENT BLOGS") với offset header.
+   */
   const scrollToGridTop = () => {
     const target = $(".section-title") || $(".main");
     if (target) {
@@ -38,7 +38,9 @@ export async function initPage() {
     }
   };
 
-  // ✅ Vấn đề 3: Thêm hàm Debounce (cho tìm kiếm live)
+  /**
+   * Hàm Debounce (cho tìm kiếm live).
+   */
   function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -51,10 +53,13 @@ export async function initPage() {
     };
   }
 
-  // ========== BẮT ĐẦU CODE MỚI (Hàm load comment) ==========
+  /* =============================================
+     CHỨC NĂNG BÌNH LUẬN (COMMENTS)
+  ============================================== */
+
   /**
    * Tải comment từ localStorage và hiển thị ra danh sách.
-   * Hàm này cũng sẽ hiển thị các comment gốc.
+   * Hàm này cũng sẽ hiển thị các comment gốc (hardcoded).
    * @param {string} slug - Slug của bài blog hiện tại.
    * @param {HTMLElement} box - Element container của #blog-detail.
    */
@@ -62,44 +67,42 @@ export async function initPage() {
     const list = box.querySelector(".cmt-list");
     if (!list) return;
 
-    // 1. Định nghĩa các comment gốc (luôn hiển thị)
+    // Định nghĩa các comment gốc (luôn hiển thị)
     const hardcodedComments = [
       {
         avatar: "https://i.pravatar.cc/40?img=32",
         author: "Minh Nguyen",
-        dateKey: "blog_comment_date_2days", // Key để dịch thuật
+        dateKey: "blog_comment_date_2days",
         text: "Tuyệt vời! Bài viết rất hữu ích cho chuyến đi sắp tới.",
       },
       {
         avatar: "https://i.pravatar.cc/40?img=15",
         author: "Lan Pham",
-        dateKey: "blog_comment_date_yesterday", // Key để dịch thuật
+        dateKey: "blog_comment_date_yesterday",
         text: "Mong có thêm phần chi phí dự kiến ở từng địa điểm nha.",
       },
     ];
 
-    // 2. Lấy các comment đã lưu từ localStorage
+    // Lấy các comment đã lưu từ localStorage
     const storageKey = `blog_comments_${slug}`;
     let savedComments = [];
     try {
-      // Parse JSON đã lưu, nếu không có thì dùng mảng rỗng
       savedComments = JSON.parse(localStorage.getItem(storageKey)) || [];
     } catch (e) {
       console.error("Failed to parse comments from localStorage", e);
-      savedComments = [];
     }
 
-    // 3. Gộp 2 danh sách: comment mới nhất (đã lưu) lên đầu
+    // Gộp 2 danh sách: comment mới nhất (đã lưu) lên đầu
     const allComments = [...savedComments, ...hardcodedComments];
 
-    // 4. Xóa list cũ và render lại
-    list.innerHTML = ""; // Xóa sạch comment cũ
+    // Xóa list cũ và render lại
+    list.innerHTML = "";
 
     if (allComments.length === 0) {
       const li = document.createElement("li");
       li.className = "cmt-none";
       li.textContent = "Chưa có bình luận nào.";
-      li.setAttribute("data-key", "blog_comment_none"); // Để dịch thuật
+      li.setAttribute("data-key", "blog_comment_none");
       list.appendChild(li);
     } else {
       // Dùng forEach để tạo từng element (an toàn, chống XSS)
@@ -109,7 +112,6 @@ export async function initPage() {
 
         const avatarImg = document.createElement("img");
         avatarImg.className = "cmt-avatar";
-        // Lấy avatar đã lưu, hoặc random ảnh mới nếu là comment gốc
         avatarImg.src =
           cmt.avatar ||
           `https://i.pravatar.cc/40?img=${Math.floor(Math.random() * 70) + 1}`;
@@ -126,10 +128,8 @@ export async function initPage() {
 
         const dateSpan = document.createElement("span");
         if (cmt.dateKey) {
-          // Dùng cho comment gốc (để dịch thuật)
           dateSpan.setAttribute("data-key", cmt.dateKey);
         } else {
-          // Dùng cho comment của user
           dateSpan.textContent = cmt.date || "Vừa xong";
         }
 
@@ -138,7 +138,7 @@ export async function initPage() {
         metaDiv.appendChild(dateSpan);
 
         const textP = document.createElement("p");
-        textP.textContent = cmt.text; //  An toàn: Dùng textContent
+        textP.textContent = cmt.text; // An toàn: Dùng textContent
 
         // Gắn tất cả vào
         bodyDiv.appendChild(metaDiv);
@@ -150,14 +150,61 @@ export async function initPage() {
       });
     }
 
-    // 5. Chạy lại hàm dịch thuật cho các key mới
+    // Chạy lại hàm dịch thuật cho các key mới
     import("./lang.js").then(({ applyTranslations }) =>
       applyTranslations(list)
     );
   }
-  // ========== KẾT THÚC CODE MỚI (Hàm load comment) ==========
 
-  // ====== SIDEBAR ======
+  // Xử lý submit comment
+  function handleSubmitComment(e) {
+    e.preventDefault();
+    const box = e.target.closest("#blog-detail");
+    const slug = box.dataset.slug;
+    const textarea = box.querySelector("#cmtText");
+    const commentText = textarea.value.trim();
+
+    if (!commentText) return textarea.focus();
+
+    // Tạo đối tượng comment mới
+    const newComment = {
+      author: "Bạn",
+      text: commentText,
+      dateKey: "blog_comment_date_today",
+      avatar: `https://i.pravatar.cc/40?img=${10}`,
+    };
+
+    // Lấy key và danh sách comment cũ từ localStorage
+    const storageKey = `blog_comments_${slug}`;
+    let savedComments = [];
+    try {
+      savedComments = JSON.parse(localStorage.getItem(storageKey)) || [];
+    } catch (e) {
+      savedComments = [];
+    }
+
+    // Thêm comment mới vào *đầu* danh sách
+    savedComments.unshift(newComment);
+
+    // Lưu danh sách mới trở lại localStorage
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(savedComments));
+    } catch (e) {
+      console.error("Failed to save comments to localStorage", e);
+    }
+
+    // Render lại toàn bộ danh sách comment
+    loadAndRenderComments(slug, box);
+
+    // Xóa nội dung trong textarea và cuộn đến danh sách
+    textarea.value = "";
+    box.querySelector(".cmt-list")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  /* =============================================
+     SIDEBAR & GRID RENDERING
+  ============================================== */
+
   function renderTags(blogs) {
     const tags = uniq(blogs.map((b) => b.category));
     $("#tags").innerHTML = tags
@@ -188,7 +235,6 @@ export async function initPage() {
       .join("");
   }
 
-  // ====== GRID ======
   function card(b, isBig = false) {
     return `
       <article class="card ${isBig ? "big" : ""}" data-slug="${b.slug}">
@@ -216,7 +262,7 @@ export async function initPage() {
       };
     });
 
-    const cards = $$("#grid .card");
+    // Intersection Observer cho animation card
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -228,7 +274,7 @@ export async function initPage() {
       },
       { threshold: 0.1 }
     );
-    cards.forEach((card) => observer.observe(card));
+    $$("#grid .card").forEach((card) => observer.observe(card));
   }
 
   function renderPagination() {
@@ -250,13 +296,13 @@ export async function initPage() {
         currentPage === total ? "disabled" : ""
       }></button>`;
 
-    // ✅ CHỈ GỌI HÀM CUỘN KHI NHẤN NÚT PHÂN TRANG
+    // Xử lý sự kiện phân trang
     nav.querySelector(".prev").onclick = () => {
       if (currentPage > 1) {
         currentPage--;
         renderGrid();
         renderPagination();
-        scrollToGridTop(); // ✅ Cuộn mượt
+        scrollToGridTop();
       }
     };
     nav.querySelector(".next").onclick = () => {
@@ -264,7 +310,7 @@ export async function initPage() {
         currentPage++;
         renderGrid();
         renderPagination();
-        scrollToGridTop(); // ✅ Cuộn mượt
+        scrollToGridTop();
       }
     };
     $$("#pagination .page").forEach(
@@ -275,45 +321,41 @@ export async function initPage() {
           currentPage = newPage;
           renderGrid();
           renderPagination();
-          scrollToGridTop(); // ✅ Cuộn mượt
+          scrollToGridTop();
         })
     );
 
     import("./lang.js").then(({ applyTranslations }) => applyTranslations(nav));
   }
 
-  // ====== FILTER ======
+  /* =============================================
+     FILTERING & ROUTING
+  ============================================== */
+
   function applyFilter() {
     const q = ($("#searchInput").value || "").toLowerCase();
     filteredBlogs = allBlogs.filter((b) => {
-      const t =
+      const titleAuthorMatch =
         !q ||
         b.title.toLowerCase().includes(q) ||
         b.author.toLowerCase().includes(q);
-      const c = !activeTag || b.category === activeTag;
-      return t && c;
+      const categoryMatch = !activeTag || b.category === activeTag;
+      return titleAuthorMatch && categoryMatch;
     });
     currentPage = 1;
     renderGrid();
     renderPagination();
 
-    // ✅ Thêm lại: Cuộn mượt khi lọc
+    // Cuộn mượt sau khi lọc
     scrollToGridTop();
   }
 
-  // ====== DETAIL (ĐÃ CẬP NHẬT) ======
-  function renderBlogDetail(slug) {
-    const post = details.find((p) => p.slug === slug);
-    if (!post) return;
-
-    // SỬA BREADCRUMB: Thêm cấp "Blog Detail"
-    const breadcrumb = $(".page-hero-breadcrumb"); // <--- Tìm đúng container
+  function updateBreadcrumbForDetail() {
+    const breadcrumb = $(".page-hero-breadcrumb");
     if (breadcrumb) {
       // 1. Bỏ class "current" khỏi chữ "BLOG"
       const blogCrumb = breadcrumb.querySelector(".current");
-      if (blogCrumb) {
-        blogCrumb.classList.remove("current");
-      }
+      blogCrumb?.classList.remove("current");
 
       // 2. Chỉ thêm "Blog Detail" nếu nó chưa có
       let detailCrumb = breadcrumb.querySelector(
@@ -325,23 +367,32 @@ export async function initPage() {
         newArrow.textContent = "›";
 
         detailCrumb = document.createElement("span");
-        detailCrumb.className = "current"; // Đây là mục active mới
+        detailCrumb.className = "current";
         detailCrumb.setAttribute("data-key", "blog_breadcrumb_detail");
 
         breadcrumb.appendChild(newArrow);
         breadcrumb.appendChild(detailCrumb);
       }
 
-      // 3. Tải ngôn ngữ cho toàn bộ breadcrumb
+      // 3. Tải ngôn ngữ
       import("./lang.js").then(({ applyTranslations }) =>
         applyTranslations(breadcrumb)
       );
     }
+  }
+
+  function renderBlogDetail(slug) {
+    const post = details.find((p) => p.slug === slug);
+    if (!post) return;
+
+    updateBreadcrumbForDetail();
 
     const list = $("#grid"),
       pag = $("#pagination"),
       ttl = $(".section-title");
     let box = $("#blog-detail");
+
+    // Tạo container nếu chưa có
     if (!box) {
       box = document.createElement("div");
       box.id = "blog-detail";
@@ -353,10 +404,10 @@ export async function initPage() {
     pag.style.display = "none";
     ttl.style.display = "none";
 
-    const avatar =
-      allBlogs.find((b) => b.slug === slug)?.avatar ||
-      "https://i.pravatar.cc/40?img=1";
-    const mins = Math.max(1, Math.round(post.intro.split(" ").length / 150));
+    const blogData = allBlogs.find((b) => b.slug === slug);
+    const avatar = blogData?.avatar || "https://i.pravatar.cc/40?img=1";
+    const wordCount = post.intro.split(" ").length + post.sections.reduce((acc, s) => acc + s.text.split(" ").length, 0);
+    const mins = Math.max(1, Math.round(wordCount / 150));
     const shareUrl = location.href;
     const shareTitle = post.title;
 
@@ -434,8 +485,7 @@ export async function initPage() {
       <section class="bd-comments">
         <h3 data-key="blog_comments_title"></h3>
         
-        <ul class="cmt-list">
-          </ul>
+        <ul class="cmt-list"></ul>
         <form id="cmtForm" class="cmt-form">
           <label for="cmtText" data-key="blog_leave_comment"></label>
           <textarea id="cmtText" rows="4" data-key-placeholder="blog_comment_placeholder"></textarea>
@@ -444,69 +494,16 @@ export async function initPage() {
         </form>
       </section>`;
 
-    // ========== PHẦN ĐÃ SỬA (Gọi hàm load comment) ==========
-    // ✅ Tải comment đã lưu (và comment gốc) cho bài viết này
+    // Tải comment đã lưu (và comment gốc) cho bài viết này
     loadAndRenderComments(slug, box);
-    // ========== KẾT THÚC PHẦN SỬA ==========
 
+    // Gán sự kiện cho nút back và form submit
     box.querySelector(".back-btn").onclick = () => {
       location.hash = "";
     };
+    box.querySelector("#cmtForm").onsubmit = handleSubmitComment;
 
-    // ========== PHẦN ĐÃ SỬA (Logic submit form) ==========
-    const form = box.querySelector("#cmtForm");
-    form.onsubmit = (e) => {
-      e.preventDefault();
-      const textarea = box.querySelector("#cmtText");
-      const commentText = textarea.value.trim();
-
-      // 1. Kiểm tra xem có nội dung không
-      if (!commentText) return textarea.focus();
-
-      // 2. Tạo đối tượng comment mới
-      const randomImgId = Math.floor(Math.random() * 70) + 1;
-      const newComment = {
-        author: "Bạn", // Có thể nâng cấp để hỏi tên user
-        text: commentText,
-        dateKey: "blog_comment_date_today",
-        avatar: `https://i.pravatar.cc/40?img=${10}`,
-      };
-
-      // 3. Lấy key và danh sách comment cũ từ localStorage
-      const storageKey = `blog_comments_${slug}`;
-      let savedComments = [];
-      try {
-        savedComments = JSON.parse(localStorage.getItem(storageKey)) || [];
-      } catch (e) {
-        savedComments = [];
-      }
-
-      // 4. Thêm comment mới vào *đầu* danh sách
-      savedComments.unshift(newComment);
-
-      // 5. Lưu danh sách mới (đã cập nhật) trở lại localStorage
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(savedComments));
-      } catch (e) {
-        console.error("Failed to save comments to localStorage", e);
-        // Có thể thêm thông báo lỗi nếu localStorage bị đầy
-      }
-
-      // 6. Render lại toàn bộ danh sách comment (từ localStorage)
-      loadAndRenderComments(slug, box);
-
-      // 7. Xóa nội dung trong textarea
-      textarea.value = "";
-
-      // 8. Cuộn đến danh sách comment
-      const list = box.querySelector(".cmt-list");
-      if (list) {
-        // Cuộn đến đầu danh sách
-        list.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
-    // ========== KẾT THÚC PHẦN SỬA ==========
-
+    // Cuộn lên đầu trang detail
     const elementPosition = box.getBoundingClientRect().top + window.scrollY;
     const offsetPosition = elementPosition - HEADER_OFFSET;
 
@@ -516,10 +513,9 @@ export async function initPage() {
     });
   }
 
-  // ====== ROUTER (ĐÃ CẬP NHẬT) ======
   function showListView() {
     // SỬA BREADCRUMB: Quay lại cấp "Blog"
-    const breadcrumb = $(".page-hero-breadcrumb"); // <--- Tìm đúng container
+    const breadcrumb = $(".page-hero-breadcrumb");
     if (breadcrumb) {
       const blogCrumb = breadcrumb.querySelector(
         `span[data-key="blog_breadcrumb_current"]`
@@ -528,18 +524,16 @@ export async function initPage() {
         `span[data-key="blog_breadcrumb_detail"]`
       );
 
-      // 1. Nếu đang có "Blog Detail", xóa nó và mũi tên trước nó
+      // Nếu đang có "Blog Detail", xóa nó và mũi tên trước nó
       if (detailCrumb) {
-        breadcrumb.removeChild(detailCrumb.previousElementSibling); // Xóa mũi tên
-        breadcrumb.removeChild(detailCrumb); // Xóa "Blog Detail"
+        breadcrumb.removeChild(detailCrumb.previousElementSibling);
+        breadcrumb.removeChild(detailCrumb);
       }
 
-      // 2. Thêm lại class "current" cho chữ "BLOG"
-      if (blogCrumb) {
-        blogCrumb.classList.add("current");
-      }
+      // Thêm lại class "current" cho chữ "BLOG"
+      blogCrumb?.classList.add("current");
 
-      // 3. Tải ngôn ngữ (để dịch lại chữ BLOG nếu cần)
+      // Tải ngôn ngữ
       import("./lang.js").then(({ applyTranslations }) =>
         applyTranslations(breadcrumb)
       );
@@ -555,9 +549,9 @@ export async function initPage() {
     if (pag) pag.style.display = "";
     if (ttl) ttl.style.display = "";
 
-    // ✅ SỬA LỖI CUỘN CỦA NÚT "BACK"
+    // Xử lý cuộn khi quay lại list view
     if (isInitialLoad) {
-      // Khi mới tải trang lần đầu -> không cuộn, chỉ nhảy lên top 0
+      // Lần tải trang đầu tiên -> không cuộn mượt
       if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: "instant" });
     } else {
       // Khi nhấn "Back" (hoặc tag) -> cuộn mượt
@@ -571,11 +565,12 @@ export async function initPage() {
       location.hash = savedSlug;
       sessionStorage.removeItem("openBlogSlug");
     }
+
     const slug = decodeURIComponent(location.hash.replace(/^#/, "").trim());
     if (!slug) {
       showListView();
       if (window.filterAfterHashChange) {
-        applyFilter(); // Filter này đã tự gọi scrollToGridTop()
+        applyFilter();
         window.filterAfterHashChange = false;
       }
       return;
@@ -585,23 +580,33 @@ export async function initPage() {
     renderBlogDetail(slug);
   }
 
-  // ====== INIT ======
-  (async () => {
-    const res = await fetch(DATA_URL);
-    const data = await res.json();
-    allBlogs = data.blogs;
-    details = data.details;
-    filteredBlogs = allBlogs.slice();
+  /* =============================================
+     KHỞI TẠO (INIT)
+  ============================================== */
 
+  (async () => {
+    // 1. Tải dữ liệu
+    try {
+      const res = await fetch(DATA_URL);
+      const data = await res.json();
+      allBlogs = data.blogs;
+      details = data.details;
+      filteredBlogs = allBlogs.slice();
+    } catch (error) {
+      console.error("Failed to load blog data:", error);
+      return; // Dừng nếu không tải được dữ liệu
+    }
+
+    // 2. Render UI ban đầu
     renderTags(allBlogs);
     renderPopular(allBlogs);
     renderGrid();
     renderPagination();
 
-    // ✅ Thêm lại tìm kiếm "live" (debounce)
+    // 3. Gán sự kiện
     const debouncedApplyFilter = debounce(applyFilter, 400);
     $("#searchInput").oninput = debouncedApplyFilter;
-    $("#searchBtn").onclick = applyFilter; // Giữ lại nút click
+    $("#searchBtn").onclick = applyFilter;
 
     $("#tags").onclick = (e) => {
       const b = e.target.closest(".tag");
@@ -609,6 +614,7 @@ export async function initPage() {
       const newTag = b.dataset.tag === activeTag ? null : b.dataset.tag;
       activeTag = newTag;
       renderTags(allBlogs);
+      // Xử lý chuyển từ detail về list để filter
       if ($("#blog-detail")) {
         window.filterAfterHashChange = true;
         location.hash = "";
@@ -616,12 +622,13 @@ export async function initPage() {
     };
 
     window.addEventListener("hashchange", handleRoute);
-    handleRoute(); // ✅ Lần tải trang đầu tiên chạy ở đây
+    handleRoute();
 
-    isInitialLoad = false; // ✅ Sau khi chạy xong lần đầu, tắt cờ
+    isInitialLoad = false;
   })();
 }
 
+// Xử lý dịch thuật khi ngôn ngữ thay đổi
 window.addEventListener("retranslate", () => {
   const box = document.querySelector("#blog-detail");
   if (box)

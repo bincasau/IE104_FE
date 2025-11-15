@@ -5,7 +5,7 @@ export function initPage() {
      THÔNG BÁO "TOAST" (THAY CHO ALERT)
   ============================================== */
 
-  // 1. Các câu thông báo theo ngôn ngữ
+  // Các câu thông báo tùy theo ngôn ngữ (khi tính năng đang phát triển)
   const notDevelopedMessages = {
     en: "This feature is under development. Please check back later!",
     vi: "Chức năng này đang được phát triển. Vui lòng thử lại sau!",
@@ -13,9 +13,12 @@ export function initPage() {
     jp: "この機能は開発中です。後ほど再試行してください。",
   };
 
-  // 2. Hàm hiển thị toast
+  /**
+   * Hiển thị thông báo "toast" nhỏ ở góc màn hình.
+   * @param {string} message - Nội dung thông báo.
+   */
   function showToast(message) {
-    // Xóa toast cũ nếu có (tránh click nhiều lần)
+    // Xóa toast cũ nếu có
     const existingToast = document.getElementById("feature-toast");
     if (existingToast) {
       existingToast.remove();
@@ -27,7 +30,7 @@ export function initPage() {
     toast.textContent = message;
     document.body.appendChild(toast);
 
-    // Animate (cho vào/ra)
+    // Animate (cho toast hiển thị)
     requestAnimationFrame(() => {
       toast.classList.add("show");
     });
@@ -37,7 +40,7 @@ export function initPage() {
       toast.classList.remove("show");
     }, 3000);
 
-    // Xóa khỏi DOM sau khi ẩn
+    // Xóa khỏi DOM sau khi animation ẩn kết thúc
     setTimeout(() => {
       if (toast.parentElement) {
         toast.parentElement.removeChild(toast);
@@ -45,7 +48,7 @@ export function initPage() {
     }, 3400);
   }
 
-  // 3. Gán sự kiện cho nút Explore Trip & form
+  // Lắng nghe click cho nút "Explore Trip" (hoặc các nút khác có class này)
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".btn-explore-trip");
     if (!btn) return;
@@ -58,6 +61,7 @@ export function initPage() {
     showToast(message);
   });
 
+  // Lắng nghe submit form đặt chuyến
   const bookingForm = document.querySelector(".booking-form");
   if (bookingForm) {
     bookingForm.addEventListener("submit", (e) => {
@@ -71,7 +75,7 @@ export function initPage() {
   }
 
   /* =============================================
-     CODE CŨ CỦA BẠN (Intersection Observer)
+     ANIMATION KHI SCROLL (Intersection Observer)
   ============================================== */
 
   const observer = new IntersectionObserver(
@@ -101,10 +105,11 @@ export function initPage() {
     document.querySelectorAll(sel).forEach((el) => {
       observer.observe(el);
 
-      // Kiểm tra nếu phần tử đã hiển thị sẵn khi load trang
+      // Xử lý trường hợp phần tử đã ở trong viewport ngay khi load (để đảm bảo animation hiển thị)
       const rect = el.getBoundingClientRect();
       const inView = rect.top <= window.innerHeight && rect.bottom >= 0;
 
+      // Chỉ áp dụng nếu phần tử được thiết lập opacity: 0 ban đầu
       if (inView && getComputedStyle(el).opacity === "0") {
         el.classList.add("visible");
         observer.unobserve(el);
