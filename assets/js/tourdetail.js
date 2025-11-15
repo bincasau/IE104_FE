@@ -237,7 +237,7 @@ export async function initPage() {
       popup.innerHTML = `
       <div class="popup-overlay"></div>
       <div class="popup-box">
-        <span class="popup-close">&times;</span>
+        <span class="popup-close">&times;</span> 
         <div class="popup-content">
           <div class="popup-icon">✅</div>
           <h2>${t("tourdetail_booking_success_title")}</h2>
@@ -261,15 +261,15 @@ export async function initPage() {
       kidInput.value = "";
       updateTotal();
 
+      // (2) THÊM SỰ KIỆN CLICK ĐỂ ĐÓNG POPUP
       const closePopup = () => popup.remove();
-      popup.querySelector(".popup-close").addEventListener("click", closePopup);
+      popup.querySelector(".popup-close").addEventListener("click", closePopup); // Bấm nút 'X'
       popup
         .querySelector(".popup-overlay")
-        .addEventListener("click", closePopup);
-      popup.querySelector(".popup-ok").addEventListener("click", closePopup);
+        .addEventListener("click", closePopup); // Bấm vào nền mờ
+      popup.querySelector(".popup-ok").addEventListener("click", closePopup); // Bấm nút 'OK'
     });
   }
-
   // ===============================
   // 🧭 Other Tours click handler
   // ===============================
