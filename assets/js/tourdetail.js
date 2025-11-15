@@ -160,7 +160,9 @@ export async function initPage() {
 
   // ===============================
   // 💰 Booking Form
-  // ===============================
+  // ============================== =
+
+  
   const pricePerAdult = 299;
   const guestInputs = document.querySelectorAll(".guest-inputs input");
   const adultInput = guestInputs[0];
@@ -223,8 +225,7 @@ export async function initPage() {
         !name ||
         !startDate ||
         adults <= 0 ||
-        !facility ||
-        facility === "Choose..."
+        !facility 
       ) {
         errorMsg.textContent = t("tourdetail_booking_fill_error");
         return;
