@@ -11,3 +11,11 @@ await loadSection("content", "./pages/home.html", "./home.js", "Home");
 // Sau khi header load xong thì khởi tạo JS cho header
 const { initHeader } = await import("./header.js");
 initHeader();
+
+// Sau khi footer load xong, khởi tạo JS cho footer
+try {
+  const { initFooter } = await import("./footer.js");
+  initFooter();
+} catch (e) {
+  console.error("Failed to init footer scripts:", e);
+}
