@@ -4,24 +4,25 @@ Website quảng bá và giới thiệu các tour du lịch Việt Nam, xây dự
 
 ----------------------------------
 
-## Cách chạy dự án
+## 🚀 Cách chạy dự án
 
-1. Tải dự án về máy:
-- Clone bằng Git:
-git clone https://github.com/bincasau/IE104_FE.git
+1.  **Tải dự án về máy:**
+    * Clone bằng Git:
+        ```bash
+        git clone https://github.com/bincasau/IE104_FE.git
+        ```
 
-2. Mở dự án bằng VS Code hoặc IDE bất kỳ.
+2.  **Mở dự án** bằng VS Code hoặc IDE bất kỳ.
 
-3. Chạy file index.html:
-- Tại file gốc
-- Chuột phải -> Open with Live Server
-hoặc
-- Mở trực tiếp file index.html bằng trình duyệt.
-Không cần backend, không cần cài đặt thêm.
+3.  **Chạy file `index.html`:**
+    * Tại file gốc, chuột phải -> **Open with Live Server** (nếu có cài extension Live Server).
+    * Hoặc mở trực tiếp file `index.html` bằng trình duyệt.
+
+    *(Không cần backend, không cần cài đặt thêm.)*
 
 ----------------------------------
 
-## Cấu trúc dự án
+## 📂 Cấu trúc dự án
 
 IE104_FE/
 - pages/ (các trang Home, Tour, Blog, About, Contact)
@@ -37,28 +38,30 @@ IE104_FE/
 
 ----------------------------------
 
-## Tính năng chính
+## ✨ Tính năng chính
 
-- Hỗ trợ 4 ngôn ngữ: Việt, Anh, Trung, Nhật
-- Tìm kiếm tour và blog
-- Lọc và sắp xếp tour
-- Xem chi tiết tour và blog
-- Lazy load hình ảnh
-- SPA chuyển trang không tải lại
-- Hoạt động tốt trên PC, tablet và mobile
-
-----------------------------------
-
-## Video demo dự án
-
-Link video demo: https://www.youtube.com/watch?v=FlNudXAyrGI
-Link video clone dự án: https://drive.google.com/drive/u/1/folders/1cx54WUf6gytYCCD0d4me72znopqLLHWx
+-   **Đa ngôn ngữ**: Hỗ trợ 4 ngôn ngữ (Việt, Anh, Trung, Nhật).
+-   **Tìm kiếm**: Tìm kiếm tour và blog.
+-   **Bộ lọc**: Lọc và sắp xếp tour theo nhiều tiêu chí.
+-   **Xem chi tiết**: Xem thông tin chi tiết của tour và blog.
+-   **Lazy Loading**: Tối ưu tốc độ tải trang bằng cách tải chậm hình ảnh.
+-   **SPA (Single Page Application)**: Chuyển trang mượt mà không cần tải lại.
+-   **Responsive Design**: Hoạt động tốt trên PC, tablet và mobile.
 
 ----------------------------------
 
-## Nhóm thực hiện (IE104.Q11)
+## 🎥 Video Demo
 
-- Huỳnh Tuấn Phi – 23521154
-- Võ Thành Nhân – 23521092
-- Nguyễn Lý Anh Vũ – 23521810
-- Trương Nguyễn Phú Nam – 23520989
+* **Video Demo Dự Án:** [Link YouTube](https://www.youtube.com/watch?v=FlNudXAyrGI)
+* **Video Clone Dự Án:** [Link Google Drive](https://drive.google.com/drive/u/1/folders/1cx54WUf6gytYCCD0d4me72znopqLLHWx)
+
+----------------------------------
+
+## 👨‍💻 Nhóm thực hiện
+
+| STT | Họ và Tên             | MSSV     |
+| :-- | :-------------------- | :------- |
+| 1   | Huỳnh Tuấn Phi        | 23521154 |
+| 2   | Võ Thành Nhân         | 23521092 |
+| 3   | Nguyễn Lý Anh Vũ      | 23521810 |
+| 4   | Trương Nguyễn Phú Nam | 23520989 |
