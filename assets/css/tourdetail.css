@@ -817,9 +817,6 @@ img.lazy-loaded {
   }
 }
 
-
-
-
 .booking-popup {
   position: fixed;
   inset: 0;
@@ -858,7 +855,7 @@ img.lazy-loaded {
 }
 
 .booking-popup h2 {
-  color: #007a33; /* Màu xanh lá cho thành công */
+  color: #4a90e2;
   font-weight: 700;
   font-size: 1.5rem;
   margin-bottom: 10px;
@@ -873,7 +870,7 @@ img.lazy-loaded {
 
 .booking-popup .popup-ok {
   padding: 12px 25px;
-  background: #007a33;
+  background: #4a90e2;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -908,6 +905,10 @@ img.lazy-loaded {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
