@@ -6,7 +6,7 @@ import { I18N, applyTranslations } from "./lang.js";
 export async function initPage() {
   console.log("✅ Tour Detail JS initialized");
 
-  // ⭐ Gắn hash khi vào trang
+  // Gắn hash khi vào trang
   history.replaceState({ page: "tour-detail" }, "", "#tour-detail");
 
   // ===============================
@@ -19,7 +19,7 @@ export async function initPage() {
   window._tourPopHandler = (e) => {
     if (e?.state?.page === "tour-detail") return;
 
-    // ⭐ Xóa hash khi rời trang
+    // Xóa hash khi rời trang
     history.replaceState(null, "", location.pathname);
 
     if (typeof window.loadSection === "function") {
@@ -87,7 +87,7 @@ export async function initPage() {
   window.addEventListener("beforeunload", removeTourHandlers);
 
   // ===============================
-  // 🎥 Video Popup
+  // Video Popup
   // ===============================
   const openBtn = document.getElementById("openVideo");
   const popup = document.getElementById("videoPopup");
@@ -110,7 +110,7 @@ export async function initPage() {
   }
 
   // ===============================
-  // 🧭 Smooth Scroll Navigation
+  // Smooth Scroll Navigation
   // ===============================
   document.querySelectorAll(".tour-nav a").forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -131,7 +131,7 @@ export async function initPage() {
   });
 
   // ===============================
-  // 📂 Accordion
+  // Accordion
   // ===============================
   document.querySelectorAll(".accordion-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -142,7 +142,7 @@ export async function initPage() {
   });
 
   // ===============================
-  // 🧭 Tabs
+  // Tabs
   // ===============================
   document.querySelectorAll(".mini-tab").forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -159,7 +159,7 @@ export async function initPage() {
   });
 
   // ===============================
-  // 💰 Booking Form
+  // Booking Form
   // ============================== =
 
   
@@ -197,7 +197,7 @@ export async function initPage() {
   updateTotal();
 
   // ===============================
-  // 🩵 Booking Popup đẹp
+  //  Booking Popup đẹp
   // ===============================
   if (bookBtn) {
     bookBtn.addEventListener("click", async (e) => {
@@ -271,7 +271,7 @@ export async function initPage() {
     });
   }
   // ===============================
-  // 🧭 Other Tours click handler
+  // Other Tours click handler
   // ===============================
   document.querySelectorAll(".others-list a").forEach((link) => {
     link.addEventListener("click", async (e) => {
@@ -281,7 +281,7 @@ export async function initPage() {
       sessionStorage.setItem("selectedTourId", tourId);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      // ⭐ Rời trang → xóa hash
+      // Rời trang → xóa hash
       history.replaceState(null, "", location.pathname);
 
       if (typeof window.loadSection === "function") {
@@ -298,7 +298,7 @@ export async function initPage() {
   });
 
   // ===============================
-  // ✨ Lazy Loading
+  // Lazy Loading
   // ===============================
   const lazyEls = {
     gallery: document.querySelector(".tour-gallery"),

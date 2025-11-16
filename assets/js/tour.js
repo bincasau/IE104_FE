@@ -356,7 +356,7 @@ export async function initPage() {
       provinces = [...new Set(tours.map((t) => t.location))];
       activities = [...new Set(tours.flatMap((t) => t.activities || []))];
 
-      // 1️⃣ Lấy dữ liệu từ Home (sessionStorage)
+      // 1️  Lấy dữ liệu từ Home (sessionStorage)
       const searchCity = sessionStorage.getItem("searchCity");
       const selectedProvinceRaw = sessionStorage.getItem("selectedProvince");
 
@@ -364,12 +364,12 @@ export async function initPage() {
       if (searchCity) sessionStorage.removeItem("searchCity");
       if (selectedProvinceRaw) sessionStorage.removeItem("selectedProvince");
 
-      // 2️⃣ Nếu có searchCity → điền vào thanh tìm kiếm
+      // 2️ Nếu có searchCity → điền vào thanh tìm kiếm
       if (searchCity && searchInput) {
         searchInput.value = searchCity;
       }
 
-      // 3️⃣ Xử lý tick tỉnh (nếu có selectedProvince)
+      // 3 Xử lý tick tỉnh (nếu có selectedProvince)
       if (selectedProvinceRaw) {
         const selectedProvince = normalize(selectedProvinceRaw);
         const hasProvince = provinces.some(
