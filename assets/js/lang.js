@@ -14,8 +14,8 @@ export async function setLanguage(lang) {
     // ✔ Sử dụng đường dẫn tuyệt đối (root-relative) bắt đầu bằng "/"
     //   để đảm bảo luôn fetch đúng file /lang/..json dù đang ở bất kỳ trang con nào.
     //   (Sửa từ "./lang/" thành "/lang/")
-    const res = await fetch(`/lang/${lang}.json?v=${Date.now()}`);
-    
+    const res = await fetch(`./lang/${lang}.json?v=${Date.now()}`);
+
     if (!res.ok) {
       console.error(`Không thể tải file ngôn ngữ: ${lang}.json`);
       throw new Error("Language file not found");
@@ -33,7 +33,6 @@ export async function setLanguage(lang) {
     //   Các phần của trang có nội dung render động (như blog/tour detail)
     //   có thể lắng nghe sự kiện này để tự render lại nội dung với ngôn ngữ mới.
     window.dispatchEvent(new CustomEvent("retranslate"));
-
   } catch (error) {
     console.error("Lỗi khi thiết lập ngôn ngữ:", error);
   }
@@ -90,7 +89,7 @@ export function enableAutoTranslate() {
   // Bắt đầu theo dõi các thay đổi trên document.body và các cây con của nó
   window.__i18nObserver.observe(document.body, {
     childList: true, // Theo dõi các node con được thêm/xóa
-    subtree: true,   // Theo dõi thay đổi trong toàn bộ cây con
+    subtree: true, // Theo dõi thay đổi trong toàn bộ cây con
   });
 }
 
