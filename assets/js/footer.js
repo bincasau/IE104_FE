@@ -41,7 +41,7 @@ async function navigateToPage(pageName) {
   // Load trang mới
   await loadSection("content", selected.html, selected.js, pageName);
 
-  // Cập nhật lại class 'active' trên HEADER
+  // Cập nhật lại class active trên HEADER
   $$(".nav-links a").forEach(headerLink => {
     headerLink.classList.toggle("active", headerLink.classList.contains(pageName));
   });
@@ -50,7 +50,7 @@ async function navigateToPage(pageName) {
 // 6. Hàm khởi tạo footer
 export function initFooter() {
   
-  // --- A. XỬ LÝ CÁC LINK ĐIỀU HƯỚNG (như cũ) ---
+  // --- A. XỬ LÝ CÁC LINK ĐIỀU HƯỚNG ---
   const footerLinks = $$("#footer .footer-links a");
 
   footerLinks.forEach(link => {
@@ -63,12 +63,11 @@ export function initFooter() {
     });
   });
 
-  // --- B. XỬ LÝ LOGO CLICK (PHẦN MỚI BẠN MUỐN) ---
-  // (Quan trọng: Phải chọn logo BÊN TRONG footer)
+  // --- B. XỬ LÝ LOGO CLICK---
   const logo = $("#footer .footer-about .logo"); 
 
   if (logo) {
-    // Gán sự kiện click y hệt như header.js
+    // Gán sự kiện click 
     logo.addEventListener("click", async (e) => {
       e.preventDefault();
 
