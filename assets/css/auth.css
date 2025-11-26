@@ -1,0 +1,83 @@
+/* auth.css - Style cụ thể cho form Đăng ký/Đăng nhập */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg); /* Dùng biến nền từ global.css */
+}
+.auth-card {
+  background: var(--card); /* Dùng biến màu thẻ từ global.css */
+  padding: 30px;
+  border-radius: var(--radius); /* Dùng biến radius từ global.css */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 380px;
+}
+.auth-card h2 {
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 25px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--muted); /* Dùng biến màu từ global.css */
+  font-size: 15px;
+}
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border); /* Dùng biến border từ global.css */
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--brand); /* Dùng biến màu brand từ global.css */
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 5px;
+  transition: background-color 0.2s ease;
+}
+.auth-btn:hover {
+  background-color: #f7a300; /* Darker brand */
+}
+
+.form-message {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+.form-message.success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+.form-message.error {
+  background-color: #f8d7da;
+  color: #842029;
+}
+.auth-form-toggle {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: var(--muted); /* Dùng biến màu từ global.css */
+}
+.auth-form-toggle a {
+  color: var(--brand); /* Dùng biến màu brand từ global.css */
+  font-weight: 600;
+  text-decoration: none;
+}

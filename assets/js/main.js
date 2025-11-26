@@ -1,7 +1,7 @@
 import { loadSection, setFavicon } from "./utils.js";
 
 // Đặt logo trên tab (favicon)
-setFavicon("./assets/images/logo_ie104.png");
+setFavicon("./assets/images/logo_ie104.webp");
 
 // Load các phần chính
 await loadSection("header", "./components/header.html");

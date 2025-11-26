@@ -84,10 +84,7 @@ export async function initHeader() {
       await navigateToPage("Tours");
       // Cập nhật lại trạng thái active của nav link
       $$(".nav-links a").forEach((link) => {
-        link.classList.toggle(
-          "active",
-          link.classList.contains("Tours")
-        );
+        link.classList.toggle("active", link.classList.contains("Tours"));
       });
     });
   }
