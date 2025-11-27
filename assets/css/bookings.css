@@ -1,36 +1,141 @@
-
-
-
-
-/* === CONTAINER CHUNG  === */
-.history-container {
-  max-width: 1000px;
+/* === LAYOUT CHÍNH (2 CỘT) === */
+.bookings-layout {
+  display: flex;
+  gap: 40px;
+  max-width: 1400px; /* Rộng hơn một chút để chứa 2 cột thoải mái */
   margin: 50px auto;
+  padding: 0 20px;
+  align-items: flex-start; /* Để sidebar có thể sticky */
+}
+
+/* --- CỘT TRÁI (SIDEBAR) --- */
+.sidebar-tours {
+  flex: 0 0 320px; /* Chiều rộng cố định */
+  position: sticky;
+  top: 110px; /* Dính khi cuộn trang */
+  background: #fff;
   padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+}
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.others-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* --- STYLE CARD TOUR NHỎ (SIDEBAR) --- */
+.tour-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.tour-card-vertical {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tour-card-vertical:hover {
+  background: #fffbf0; /* Màu nền nhẹ khi hover */
+  border-color: var(--brand);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.tour-card-vertical img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.tour-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  overflow: hidden;
+}
+
+.top-row h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-row .price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brand);
+  margin-bottom: 4px;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #666;
+}
+
+.bottom-row p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bottom-row i {
+  color: var(--brand);
+}
+
+/* --- CỘT PHẢI (MAIN CONTENT - BOOKING HISTORY) --- */
+.history-content {
+  flex: 1; /* Chiếm hết phần còn lại */
   background: var(--bg);
   border-radius: var(--radius);
 }
 
 .history-heading {
-  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
   color: var(--text);
-  margin-bottom: 30px;
-  font-size: 30px;
-  font-weight: 700;
+  margin-bottom: 25px;
+  padding-left: 10px;
+  border-left: 5px solid var(--brand);
 }
 
-/* === DANH SÁCH TOUR ĐÃ ĐẶT === */
 .booking-list {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 }
 
-/* === CARD LỊCH SỬ ĐẶT TOUR === */
+/* --- BOOKING CARD (Đã có, chỉnh lại chút cho đẹp trong layout mới) --- */
 .booking-card {
   display: flex;
   background: var(--card);
-  border-radius: var(--radius);
+  border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   border: 1px solid var(--border);
@@ -39,199 +144,190 @@
 
 .booking-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: #ddd;
 }
 
-/* --- Cột trái: Ảnh Tour --- */
 .booking-image {
   flex-shrink: 0;
-  width: 250px;
-  height: 180px;
-  overflow: hidden;
+  width: 240px;
+    height: 160px;
+  position: relative;
 }
 
 .booking-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* --- Cột giữa: Thông tin Chi tiết --- */
 .booking-details {
   flex: 1;
-  padding: 20px;
+  padding: 20px 25px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .tour-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.detail-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 30px;
+/* Grid cho thông tin chi tiết */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
   font-size: 14px;
-  color: var(--muted);
+  color: #555;
 }
 
 .detail-item {
   display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-.detail-item strong {
-  color: var(--text);
-  font-weight: 600;
+  gap: 8px;
 }
 
 .detail-item i {
-  color: var(--brand); /* Màu vàng/cam */
+  color: var(--brand);
+  width: 20px; 
+  text-align: center;
 }
 
-/* --- Cột phải: Giá và Trạng thái --- */
+.detail-item strong {
+  color: #222;
+  font-weight: 600;
+}
+
+/* Actions bên phải */
 .booking-actions {
-  flex-shrink: 0;
-  width: 200px;
+  width: 180px;
   padding: 20px;
-  background: var(--bg);
+  background: #fcfcfc;
+  border-left: 1px solid #f0f0f0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 
 .total-price {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
-  color: var(--brand); 
+  color: #d32f2f; /* Màu đỏ cho giá tiền nổi bật */
 }
 
 .status-badge {
   font-size: 12px;
   font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .status-success {
-  background: #d1fae5; /* Xanh lá nhạt */
+  background: #d1fae5;
   color: #065f46;
 }
 
 .status-pending {
-  background: #fffbeb; /* Vàng nhạt */
+  background: #fffbeb;
   color: #92400e;
 }
 
 .btn-view-detail {
-  background: var(--brand);
+  background: var(--text);
   color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
-  transition: background 0.2s ease;
+  font-size: 13px;
+  width: 100%;
+  transition: all 0.2s ease;
 }
 
 .btn-view-detail:hover {
-  background: #ffb700; /* Màu brand đậm hơn khi hover */
+  background: var(--brand);
+  color: #000;
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 768px) {
-  .history-container {
-    padding: 20px 10px;
-    margin: 30px auto;
+
+/* Tablet: Sidebar xuống dưới hoặc ẩn bớt */
+@media (max-width: 1024px) {
+  .bookings-layout {
+    flex-direction: column;
   }
   
+  .sidebar-tours {
+    width: 100%;
+    order: 2; /* Đẩy xuống dưới cùng */
+    position: static; /* Hết sticky */
+  }
+  
+  .others-list {
+    flex-direction: row; /* Chuyển thành hàng ngang */
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .tour-link {
+    min-width: 280px; /* Để scroll ngang được */
+  }
+  
+  .history-content {
+    width: 100%;
+    order: 1;
+  }
+}
+
+/* Mobile: Stack dọc hết */
+@media (max-width: 768px) {
+  .bookings-layout {
+    padding: 0 15px;
+    margin-top: 30px;
+  }
+
+  /* Card booking dọc */
   .booking-card {
     flex-direction: column;
   }
   
   .booking-image {
     width: 100%;
-    height: 200px;
+    height: 180px;
   }
   
   .booking-actions {
     width: 100%;
+    border-left: none;
+    border-top: 1px solid #f0f0f0;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    border-top: 1px solid var(--border);
+    padding: 15px;
   }
   
-  .total-price {
-    font-size: 20px;
+  .detail-grid {
+    grid-template-columns: 1fr; /* 1 cột thông tin */
+    gap: 10px;
   }
   
   .btn-view-detail {
-    padding: 8px 12px;
-    font-size: 13px;
+    width: auto;
   }
-}
 
-@media (max-width: 500px) {
-    .booking-details {
-        padding: 15px;
-    }
-    .detail-row {
-        flex-direction: column;
-        gap: 8px;
-    }
-    .booking-actions {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-    }
-    .status-badge {
-        align-self: flex-end;
-    }
-}
-
-/* === CẬP NHẬT: Định dạng cho Others Tour khi ở cột phải === */
-
-.others-tour {
-  /* Loại bỏ margin-top cũ vì nó được đặt trong info-left */
-  margin-top: 0; 
-  /* Đặt chiều rộng tối đa đồng nhất với form và video */
-  width: 100%;
-  max-width: 370px;
-}
-
-.others-tour .section-title {
-  /* Căn giữa tiêu đề theo phần tử cha (info-right) */
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 25px;
-}
-
-.others-tour .section-title::after {
-  /* Xóa thanh gạch chân bên dưới để căn giữa */
-  content: none;
-}
-
-/* Đảm bảo các thành phần trong info-right có khoảng cách đều */
-.info-right {
-  /* Điều chỉnh gap giữa các phần tử (Others Tour, Video, Form) */
-  gap: 25px; 
-}
-
-/* Điều chỉnh lại khoảng cách chung cho tour-info */
-.tour-info {
-  margin: 50px auto; 
-  /* Đảm bảo info-left và info-right có khoảng cách */
-  gap: 40px; 
+  /* Sidebar mobile */
+  .others-list {
+    flex-direction: column;
+  }
+  .tour-link {
+    min-width: auto;
+  }
 }

@@ -4,141 +4,163 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lịch Sử Đặt Tour - Travel VN</title>
-    <link rel="stylesheet" href="../assets/css/bookings.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     
     <link rel="stylesheet" href="../assets/css/common.css" />
     <link rel="stylesheet" href="../assets/css/global.css" />
-
+    
+    <link rel="stylesheet" href="../assets/css/bookings.css" />
   </head>
 
   <body>
     <div class="page-hero">
       <div class="page-hero-bg-color"></div>
-
       <img
         src="../assets/images/TourHeader-Copy.webp"
         alt="Ảnh nền"
         class="page-hero-bg-img"
       />
-      
       <img
         src="../assets/images/TourHeaderPerson.webp"
         alt="Người"
         class="page-hero-person"
       />
-
       <div class="page-hero-text">
         <h1 data-key="history_header_title">Bookings</h1>
         <div class="page-hero-breadcrumb">
           <span class="home" data-key="history_breadcrumb_home">Home</span>
           <span class="arrow">›</span>
-          <span class="current" data-key="history_breadcrumb_current"
-            >History</span
-          >
+          <span class="current" data-key="history_breadcrumb_current">History</span>
         </div>
       </div>
     </div>
 
-    <a href="#" class="tour-link" data-id="1">
-    <div class="tour-card-vertical">
-        <img src="./assets/images/detailTour/cave.webp" alt="Ninh Binh" /> 
-        <div class="tour-content">
-            <div class="top-row">
-                <h4>Ninh Binh – Tràng An Eco Tour</h4>
-                <p class="price">$199</p>
+    <div class="bookings-layout">
+      
+      <aside class="sidebar-tours">
+        <h3 class="sidebar-title">Có thể bạn thích</h3>
+        <div class="others-list">
+          <a href="/tourdetail.html#1" class="tour-link">
+            <div class="tour-card-vertical">
+              <img src="../assets/images/detailTour/cave.webp" alt="Ninh Binh" />
+              <div class="tour-content">
+                <div class="top-row">
+                  <h4>Ninh Binh – Tràng An Eco</h4>
+                  <p class="price">$199</p>
+                </div>
+                <div class="bottom-row">
+                  <p><i class="fa-solid fa-location-dot"></i> Ninh Binh</p>
+                  <p><i class="fa-regular fa-clock"></i> 2 ngày</p>
+                </div>
+              </div>
             </div>
-            <div class="bottom-row">
-                <p><i class="fa-solid fa-location-dot"></i> Ninh Binh, Vietnam</p>
-                <p><i class="fa-regular fa-clock"></i> 2 <span data-key="tour_days">days</span></p>
+          </a>
+
+          <a href="/tourdetail.html#2" class="tour-link">
+            <div class="tour-card-vertical">
+              <img src="../assets/images/detailTour/chichen.webp" alt="Da Nang" />
+              <div class="tour-content">
+                <div class="top-row">
+                  <h4>Da Nang – Hoi An Heritage</h4>
+                  <p class="price">$250</p>
+                </div>
+                <div class="bottom-row">
+                  <p><i class="fa-solid fa-location-dot"></i> Da Nang</p>
+                  <p><i class="fa-regular fa-clock"></i> 3 ngày</p>
+                </div>
+              </div>
             </div>
+          </a>
+
+          <a href="/tourdetail.html#3" class="tour-link">
+            <div class="tour-card-vertical">
+              <img src="../assets/images/detailTour/adventure-banner.webp" alt="Sapa" />
+              <div class="tour-content">
+                <div class="top-row">
+                  <h4>Sapa Mountain Adventure</h4>
+                  <p class="price">$280</p>
+                </div>
+                <div class="bottom-row">
+                  <p><i class="fa-solid fa-location-dot"></i> Sapa</p>
+                  <p><i class="fa-regular fa-clock"></i> 3 ngày</p>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
-    </div>
-</a>
+      </aside>
 
-    <main class="history-container">
-      <h2 class="history-heading">Your Tours</h2>
+      <main class="history-content">
+        <h2 class="history-heading">Your tours</h2>
 
-
-
-      <section class="booking-list">
-        <div class="booking-card" data-tour-id="1">
-          <div class="booking-image">
-            <img
-              src="../assets/images/tour/tour_1.webp"
-              alt="Hạ Long Bay Explorer"
-            />
-          </div>
-          <div class="booking-details">
-            <div>
+        <section class="booking-list">
+          <div class="booking-card">
+            <div class="booking-image">
+              <img src="../assets/images/tour/tour_1.webp" alt="Hạ Long Bay Explorer" />
+            </div>
+            <div class="booking-details">
               <h3 class="tour-title">Hạ Long Bay Explorer - 3 Ngày</h3>
-              <div class="detail-row">
-                <span class="detail-item">
-                  <i class="fa-solid fa-calendar-check"></i>
-                  Mã Booking: <strong>#A20250825</strong>
-                </span>
-                <span class="detail-item">
-                  <i class="fa-regular fa-calendar-alt"></i>
-                  Ngày đặt: <strong>01/07/2025</strong>
-                </span>
-                <span class="detail-item">
-                  <i class="fa-solid fa-route"></i>
-                  Khởi hành: <strong>25/08/2025</strong>
-                </span>
-                <span class="detail-item">
-                  <i class="fa-solid fa-users"></i>
-                  Khách: <strong>2 NL, 1 TE</strong>
-                </span>
+              <div class="detail-grid">
+                <div class="detail-item">
+                  <i class="fa-solid fa-barcode"></i>
+                  <span>Mã: <strong>#A20250825</strong></span>
+                </div>
+                <div class="detail-item">
+                  <i class="fa-regular fa-calendar"></i>
+                  <span>Ngày đặt: <strong>01/07/2025</strong></span>
+                </div>
+                <div class="detail-item">
+                  <i class="fa-solid fa-plane-departure"></i>
+                  <span>Khởi hành: <strong>25/08/2025</strong></span>
+                </div>
+                <div class="detail-item">
+                  <i class="fa-solid fa-user-group"></i>
+                  <span>Khách: <strong>2 NL, 1 TE</strong></span>
+                </div>
               </div>
             </div>
+            <div class="booking-actions">
+              <span class="status-badge status-success">Hoàn Thành</span>
+              <div class="total-price">$599.00</div>
+              <button class="btn-view-detail">Xem Chi Tiết</button>
+            </div>
           </div>
-          <div class="booking-actions">
-            <span class="status-badge status-success">Đã Hoàn Thành</span>
-            <div class="total-price">$599.00</div>
-            <button class="btn-view-detail">
-              <i class="fa-solid fa-eye"></i> Xem Chi Tiết
-            </button>
-          </div>
-        </div>
 
-        <div class="booking-card" data-tour-id="4">
-          <div class="booking-image">
-            <img
-              src="../assets/images/tour/tour_4.webp"
-              alt="Phu Quoc Beach Paradise"
-            />
-          </div>
-          <div class="booking-details">
-            <div>
+          <div class="booking-card">
+            <div class="booking-image">
+              <img src="../assets/images/tour/tour_4.webp" alt="Phu Quoc Beach" />
+            </div>
+            <div class="booking-details">
               <h3 class="tour-title">Phú Quốc Beach Paradise - 5 Ngày</h3>
-              <div class="detail-row">
-                <span class="detail-item">
-                  <i class="fa-solid fa-calendar-check"></i>
-                  Mã Booking: <strong>#B20251101</strong>
-                </span>
-                <span class="detail-item">
-                  <i class="fa-regular fa-calendar-alt"></i>
-                  Ngày đặt: <strong>10/10/2025</strong>
-                </span>
-                <span class="detail-item">
-                  <i class="fa-solid fa-route"></i>
-                  Khởi hành: <strong>01/11/2025</strong>
-                </span>
-                <span class="detail-item">
-                  <i class="fa-solid fa-users"></i>
-                  Khách: <strong>4 NL</strong>
-                </span>
+              <div class="detail-grid">
+                <div class="detail-item">
+                  <i class="fa-solid fa-barcode"></i>
+                  <span>Mã: <strong>#B20251101</strong></span>
+                </div>
+                <div class="detail-item">
+                  <i class="fa-regular fa-calendar"></i>
+                  <span>Ngày đặt: <strong>10/10/2025</strong></span>
+                </div>
+                <div class="detail-item">
+                  <i class="fa-solid fa-plane-departure"></i>
+                  <span>Khởi hành: <strong>01/11/2025</strong></span>
+                </div>
+                <div class="detail-item">
+                  <i class="fa-solid fa-user-group"></i>
+                  <span>Khách: <strong>4 NL</strong></span>
+                </div>
               </div>
             </div>
+            <div class="booking-actions">
+              <span class="status-badge status-pending">Đang Xử Lý</span>
+              <div class="total-price">$899.00</div>
+              <button class="btn-view-detail">Xem Chi Tiết</button>
+            </div>
           </div>
-          <div class="booking-actions">
-            <span class="status-badge status-pending">Đang Chờ Xử Lý</span>
-            <div class="total-price">$899.00</div>
-            <button class="btn-view-detail">
-              <i class="fa-solid fa-eye"></i> Xem Chi Tiết
-            </button>
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+
+    </div>
   </body>
 </html>
