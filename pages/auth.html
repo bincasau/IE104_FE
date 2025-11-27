@@ -1,63 +1,63 @@
-<!DOCTYPE html>
-<html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng ký & Đăng nhập</title>
-    <link rel="stylesheet" href="../assets/css/global.css" />
-    <link rel="stylesheet" href="../assets/css/auth.css" />
-  </head>
-  <body>
-    <div class="auth-container">
-      <div class="auth-card">
-        <div id="register-section" style="display: none">
-          <h2>Đăng ký Tài khoản</h2>
-          <form id="register-form">
-            <div class="form-group">
-              <label for="reg-fullname">Họ và Tên</label>
-              <input type="text" id="reg-fullname" required />
-            </div>
-            <div class="form-group">
-              <label for="reg-username">Tài khoản</label>
-              <input type="text" id="reg-username" required />
-            </div>
-            <div class="form-group">
-              <label for="reg-password">Mật khẩu</label>
-              <input type="password" id="reg-password" required />
-            </div>
-            <div class="form-group">
-              <label for="reg-confirm-password">Nhập lại Mật khẩu</label>
-              <input type="password" id="reg-confirm-password" required />
-            </div>
-            <button type="submit" class="auth-btn">Đăng ký</button>
-            <div id="reg-message" class="form-message"></div>
-          </form>
-          <p class="auth-form-toggle">
-            Đã có tài khoản? <a href="#" id="show-login">Đăng nhập</a>
-          </p>
-        </div>
+<div id="auth-popup" class="auth-modal hidden">
+  <div class="auth-modal-overlay"></div>
 
-        <div id="login-section">
-          <h2>Đăng nhập</h2>
-          <form id="login-form">
-            <div class="form-group">
-              <label for="login-username">Tài khoản</label>
-              <input type="text" id="login-username" required />
-            </div>
-            <div class="form-group">
-              <label for="login-password">Mật khẩu</label>
-              <input type="password" id="login-password" required />
-            </div>
-            <button type="submit" class="auth-btn">Đăng nhập</button>
-            <div id="login-message" class="form-message"></div>
-          </form>
-          <p class="auth-form-toggle">
-            Chưa có tài khoản? <a href="#" id="show-register">Đăng ký</a>
-          </p>
-        </div>
+  <div class="auth-modal-content">
+    <div class="auth-card">
+      <!-- Form Đăng ký -->
+      <div id="register-section" class="hidden">
+        <h2>Đăng ký Tài khoản</h2>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="reg-fullname">Họ và Tên</label>
+            <input type="text" id="reg-fullname" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-username">Tài khoản</label>
+            <input type="text" id="reg-username" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password">Mật khẩu</label>
+            <input type="password" id="reg-password" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-confirm-password">Nhập lại mật khẩu</label>
+            <input type="password" id="reg-confirm-password" required />
+          </div>
+
+          <button type="submit" class="auth-btn">Đăng ký</button>
+          <div id="reg-message" class="form-message"></div>
+        </form>
+
+        <p class="auth-form-toggle">
+          Đã có tài khoản? <a href="#" data-toggle="login">Đăng nhập</a>
+        </p>
+      </div>
+
+      <!-- Form Đăng nhập -->
+      <div id="login-section">
+        <h2>Đăng nhập</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-username">Tài khoản</label>
+            <input type="text" id="login-username" required />
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Mật khẩu</label>
+            <input type="password" id="login-password" required />
+          </div>
+
+          <button type="submit" class="auth-btn">Đăng nhập</button>
+          <div id="login-message" class="form-message"></div>
+        </form>
+
+        <p class="auth-form-toggle">
+          Chưa có tài khoản? <a href="#" data-toggle="register">Đăng ký</a>
+        </p>
       </div>
     </div>
-
-    <script src="../assets/js/auth.js"></script>
-  </body>
-</html>
+  </div>
+</div>

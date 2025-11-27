@@ -11,6 +11,149 @@ export async function initHeader() {
   const navLinksContainer = $(".nav-links");
   const navLinks = navLinksContainer ? $$(".nav-links a") : [];
   const hamburgerIcon = $(".hamburger-btn i");
+  const loginBtn = $("#headerLoginBtn");
+  const logoutBtn = $("#headerLogoutBtn");
+  const avatarWrapper = $("#headerUserAvatar");
+  const avatarImg = avatarWrapper?.querySelector("img");
+  const userMenu = $("#headerUserMenu");
+  const userDropdown = $("#headerUserDropdown");
+  const authModal = $("#auth-modal");
+  const authBackdrop = $(".auth-modal__backdrop");
+  const authCloseBtn = $(".auth-modal__close");
+  const authIframe = $("#auth-iframe");
+
+  const bootAuthIframe = () => {
+    const doc = authIframe?.contentDocument;
+    if (!doc) return;
+
+    // Bảo đảm CSS có mặt
+    const links = Array.from(doc.querySelectorAll("link[rel='stylesheet']"));
+    const hasAuth = links.some((l) => (l.href || "").includes("auth.css"));
+    const hasGlobal = links.some((l) => (l.href || "").includes("global.css"));
+
+    const appendLink = (href) => {
+      const link = doc.createElement("link");
+      link.rel = "stylesheet";
+      link.href = href;
+      doc.head.appendChild(link);
+    };
+
+    if (!hasGlobal) appendLink("../assets/css/global.css");
+    if (!hasAuth) appendLink("../assets/css/auth.css");
+
+    // Loại bỏ nền trắng bên trong iframe và overlay phụ
+    const style = doc.createElement("style");
+    style.textContent = `
+      html, body { background: transparent !important; }
+      .auth-modal { background: transparent !important; }
+      .auth-modal-overlay { display: none !important; }
+    `;
+    doc.head.appendChild(style);
+
+    // Hiển thị form (trong auth.html đang bị class hidden)
+    doc.getElementById("auth-popup")?.classList.remove("hidden");
+    doc.getElementById("login-section")?.classList.remove("hidden");
+    doc.getElementById("register-section")?.classList.add("hidden");
+
+    // Nạp script auth.js nếu chưa có
+    const hasScript = doc.querySelector("script[data-auth-bootstrap='true']");
+    const initAuth = () => doc.defaultView?.initAuthPopup?.();
+
+    if (!hasScript) {
+      const script = doc.createElement("script");
+      script.src = "../assets/js/auth.js";
+      script.dataset.authBootstrap = "true";
+      script.onload = initAuth;
+      doc.body.appendChild(script);
+    } else {
+      initAuth();
+    }
+
+    // Reset về tab login
+    doc.defaultView?.postMessage({ type: "auth-reset" }, "*");
+  };
+
+  const getStoredUser = () => {
+    try {
+      return JSON.parse(localStorage.getItem("currentUser"));
+    } catch (e) {
+      console.warn("Không đọc được currentUser:", e);
+      return null;
+    }
+  };
+
+  const resolveAvatarSrc = (user) => {
+    const avatarName = (user && user.avatar) || "avatarDefault.webp";
+    const safeAvatar = avatarName.replace(/\.wepb$/, ".webp");
+
+    if (
+      safeAvatar.startsWith("http") ||
+      safeAvatar.startsWith("data:") ||
+      safeAvatar.startsWith("./assets/") ||
+      safeAvatar.startsWith("/assets/")
+    ) {
+      return safeAvatar;
+    }
+
+    return `./assets/images/users/${safeAvatar}`;
+  };
+
+  const closeAuthModal = () => {
+    if (!authModal) return;
+    authModal.classList.remove("show");
+    authModal.setAttribute("aria-hidden", "true");
+  };
+
+  const openAuthModal = () => {
+    if (!authModal) return;
+    authModal.classList.add("show");
+    authModal.setAttribute("aria-hidden", "false");
+    if (authIframe) {
+      authIframe.src = `./pages/auth.html?v=${Date.now()}`; // luôn reset form
+      authIframe.onload = () => {
+        bootAuthIframe();
+      };
+    }
+  };
+
+  const updateAuthUI = () => {
+    const user = getStoredUser();
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const showAvatar = Boolean(isLoggedIn && user);
+
+    if (loginBtn) {
+      loginBtn.classList.toggle("is-hidden", showAvatar);
+    }
+
+    if (userMenu) {
+      userMenu.classList.toggle("show", showAvatar);
+      userMenu.style.display = showAvatar ? "flex" : "none";
+    }
+
+    if (userDropdown) {
+      userDropdown.classList.remove("show");
+    }
+
+    if (avatarWrapper) {
+      avatarWrapper.setAttribute(
+        "title",
+        showAvatar
+          ? user.fullName || user.username || "Tài khoản"
+          : "Đăng nhập"
+      );
+
+      if (avatarImg) {
+        avatarImg.src = resolveAvatarSrc(user);
+        avatarImg.onerror = () => {
+          avatarImg.src = "./assets/images/users/avatarDefault.webp";
+        };
+      }
+    }
+
+    if (showAvatar) {
+      closeAuthModal();
+    }
+  };
 
   // Định nghĩa mapping các trang
   const pageMap = {
@@ -163,6 +306,77 @@ export async function initHeader() {
       }
     });
   }
+
+  /* =============================================
+     AUTH BUTTON & MODAL
+  ============================================== */
+  if (loginBtn) {
+    loginBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openAuthModal();
+    });
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("currentUser");
+      updateAuthUI();
+      closeAuthModal();
+    });
+  }
+
+  if (avatarWrapper && userDropdown) {
+    avatarWrapper.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (!userMenu?.classList.contains("show")) return;
+      const isOpen = userDropdown.classList.toggle("show");
+      if (isOpen) {
+        document.addEventListener(
+          "click",
+          function handleOutside(event) {
+            const withinMenu =
+              userMenu?.contains(event.target) || userDropdown.contains(event.target);
+            if (!withinMenu) {
+              userDropdown.classList.remove("show");
+              document.removeEventListener("click", handleOutside);
+            }
+          },
+          { once: true }
+        );
+      }
+    });
+  }
+
+  authCloseBtn?.addEventListener("click", closeAuthModal);
+
+  if (authModal && authBackdrop) {
+    authModal.addEventListener("click", (e) => {
+      const isBackdropClick =
+        e.target === authModal || e.target === authBackdrop;
+      if (isBackdropClick) closeAuthModal();
+    });
+  }
+
+  document.addEventListener("keyup", (e) => {
+    if (e.key === "Escape") closeAuthModal();
+  });
+
+  window.addEventListener("storage", (event) => {
+    if (["isLoggedIn", "currentUser"].includes(event.key)) {
+      updateAuthUI();
+    }
+  });
+
+  window.addEventListener("message", (event) => {
+    if (!event.data || typeof event.data !== "object") return;
+    if (event.data.type === "auth-login-success") {
+      updateAuthUI();
+      closeAuthModal();
+    }
+  });
+
+  updateAuthUI();
 
   /* =============================================
      LANGUAGE SWITCHER

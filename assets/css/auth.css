@@ -1,83 +1,122 @@
-/* auth.css - Style cụ thể cho form Đăng ký/Đăng nhập */
+/* ===== POPUP MODAL ===== */
 
-.auth-container {
+.auth-modal {
+  position: fixed;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: var(--bg); /* Dùng biến nền từ global.css */
+  z-index: 9999;
 }
+
+.auth-modal.hidden {
+  display: none;
+}
+
+.auth-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.auth-modal-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* ===== CARD FORM ===== */
+
 .auth-card {
-  background: var(--card); /* Dùng biến màu thẻ từ global.css */
+  background: var(--card);
   padding: 30px;
-  border-radius: var(--radius); /* Dùng biến radius từ global.css */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
   width: 380px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
 .auth-card h2 {
   text-align: center;
   color: var(--text);
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
+
+/* ===== FORM ===== */
+
 .form-group {
   margin-bottom: 20px;
 }
+
 .form-group label {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  color: var(--muted); /* Dùng biến màu từ global.css */
+  color: var(--muted);
   font-size: 15px;
 }
-.form-group input[type="text"],
-.form-group input[type="password"] {
+
+.form-group input {
   width: 100%;
   padding: 12px;
-  border: 1px solid var(--border); /* Dùng biến border từ global.css */
+  border: 1px solid var(--border);
   border-radius: 8px;
-  box-sizing: border-box;
   font-size: 16px;
 }
+
+/* BUTTON */
+
 .auth-btn {
   width: 100%;
   padding: 12px;
-  background-color: var(--brand); /* Dùng biến màu brand từ global.css */
+  background: var(--brand);
   color: var(--text);
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
   font-size: 17px;
   font-weight: 700;
-  margin-top: 5px;
-  transition: background-color 0.2s ease;
-}
-.auth-btn:hover {
-  background-color: #f7a300; /* Darker brand */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
+.auth-btn:hover {
+  opacity: 0.9;
+}
+
+/* MESSAGE */
+
 .form-message {
-  margin-top: 20px;
+  margin-top: 18px;
   padding: 12px;
   border-radius: 8px;
   text-align: center;
   font-weight: 500;
 }
+
 .form-message.success {
-  background-color: #d1e7dd;
+  background: #d1e7dd;
   color: #0f5132;
 }
+
 .form-message.error {
-  background-color: #f8d7da;
+  background: #f8d7da;
   color: #842029;
 }
+
+/* TOGGLE LINKS */
+
 .auth-form-toggle {
   text-align: center;
-  margin-top: 25px;
-  font-size: 14px;
-  color: var(--muted); /* Dùng biến màu từ global.css */
+  margin-top: 20px;
+  color: var(--muted);
 }
+
 .auth-form-toggle a {
-  color: var(--brand); /* Dùng biến màu brand từ global.css */
+  color: var(--brand);
   font-weight: 600;
   text-decoration: none;
+}
+
+/* UTILITY */
+
+.hidden {
+  display: none;
 }

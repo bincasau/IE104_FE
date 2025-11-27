@@ -23,6 +23,19 @@
     </div>
 
     <button class="btn-explore" data-key="header_explore">EXPLORE TRIP</button>
+    <button class="btn-login" id="headerLoginBtn">Đăng nhập</button>
+    <div class="user-menu" id="headerUserMenu">
+      <div class="user-avatar" id="headerUserAvatar" title="Tài khoản">
+        <img
+          src="./assets/images/users/avatarDefault.webp"
+          alt="User avatar"
+          loading="lazy"
+        />
+      </div>
+      <div class="user-dropdown" id="headerUserDropdown">
+        <button class="btn-logout" id="headerLogoutBtn">Đăng xuất</button>
+      </div>
+    </div>
     <div class="language-selector">
       <button class="lang-btn" id="langButton">
         <img src="./assets/images/header/eng.webp" alt="English" class="flag" />
@@ -73,6 +86,22 @@
     alt="Plane"
     class="overlay-plane"
   />
+</div>
+
+<!-- Modal đăng nhập/đăng ký -->
+<div id="auth-modal" class="auth-modal" aria-hidden="true">
+  <div class="auth-modal__backdrop"></div>
+  <div class="auth-modal__content" role="dialog" aria-label="Đăng nhập">
+    <button class="auth-modal__close" aria-label="Đóng">
+      <i class="fas fa-times"></i>
+    </button>
+    <iframe
+      id="auth-iframe"
+      title="Đăng nhập / Đăng ký"
+      loading="lazy"
+      allow="clipboard-write"
+    ></iframe>
+  </div>
 </div>
 
 <link rel="stylesheet" href="./assets/css/header.css" />
