@@ -105,7 +105,7 @@ export function initPage() {
     document.querySelectorAll(sel).forEach((el) => {
       observer.observe(el);
 
-      // Xử lý trường hợp phần tử đã ở trong viewport ngay khi load (để đảm bảo animation hiển thị)
+      // Xử lý trường hợp phần tử đã ở trong viewport ngay khi load 
       const rect = el.getBoundingClientRect();
       const inView = rect.top <= window.innerHeight && rect.bottom >= 0;
 

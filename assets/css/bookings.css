@@ -1,0 +1,237 @@
+
+
+
+
+/* === CONTAINER CHUNG  === */
+.history-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  background: var(--bg);
+  border-radius: var(--radius);
+}
+
+.history-heading {
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* === DANH SÁCH TOUR ĐÃ ĐẶT === */
+.booking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* === CARD LỊCH SỬ ĐẶT TOUR === */
+.booking-card {
+  display: flex;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Cột trái: Ảnh Tour --- */
+.booking-image {
+  flex-shrink: 0;
+  width: 250px;
+  height: 180px;
+  overflow: hidden;
+}
+
+.booking-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Cột giữa: Thông tin Chi tiết --- */
+.booking-details {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tour-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.detail-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 30px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detail-item strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.detail-item i {
+  color: var(--brand); /* Màu vàng/cam */
+}
+
+/* --- Cột phải: Giá và Trạng thái --- */
+.booking-actions {
+  flex-shrink: 0;
+  width: 200px;
+  padding: 20px;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.total-price {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--brand); 
+}
+
+.status-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-success {
+  background: #d1fae5; /* Xanh lá nhạt */
+  color: #065f46;
+}
+
+.status-pending {
+  background: #fffbeb; /* Vàng nhạt */
+  color: #92400e;
+}
+
+.btn-view-detail {
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.btn-view-detail:hover {
+  background: #ffb700; /* Màu brand đậm hơn khi hover */
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .history-container {
+    padding: 20px 10px;
+    margin: 30px auto;
+  }
+  
+  .booking-card {
+    flex-direction: column;
+  }
+  
+  .booking-image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .booking-actions {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-top: 1px solid var(--border);
+  }
+  
+  .total-price {
+    font-size: 20px;
+  }
+  
+  .btn-view-detail {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 500px) {
+    .booking-details {
+        padding: 15px;
+    }
+    .detail-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .booking-actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    .status-badge {
+        align-self: flex-end;
+    }
+}
+
+/* === CẬP NHẬT: Định dạng cho Others Tour khi ở cột phải === */
+
+.others-tour {
+  /* Loại bỏ margin-top cũ vì nó được đặt trong info-left */
+  margin-top: 0; 
+  /* Đặt chiều rộng tối đa đồng nhất với form và video */
+  width: 100%;
+  max-width: 370px;
+}
+
+.others-tour .section-title {
+  /* Căn giữa tiêu đề theo phần tử cha (info-right) */
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+
+.others-tour .section-title::after {
+  /* Xóa thanh gạch chân bên dưới để căn giữa */
+  content: none;
+}
+
+/* Đảm bảo các thành phần trong info-right có khoảng cách đều */
+.info-right {
+  /* Điều chỉnh gap giữa các phần tử (Others Tour, Video, Form) */
+  gap: 25px; 
+}
+
+/* Điều chỉnh lại khoảng cách chung cho tour-info */
+.tour-info {
+  margin: 50px auto; 
+  /* Đảm bảo info-left và info-right có khoảng cách */
+  gap: 40px; 
+}

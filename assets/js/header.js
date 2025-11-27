@@ -21,6 +21,7 @@ export async function initHeader() {
     TourDetail: { html: "./pages/tourdetail.html", js: "./tourdetail.js" },
     Blog: { html: "./pages/blog.html", js: "./blog.js" },
     Contact: { html: "./pages/contact.html", js: "./contact.js" },
+    Bookings: { html: "./pages/bookings.html", js: "./bookings.js" },
   };
 
   /**
@@ -197,7 +198,7 @@ export async function initHeader() {
         const img = langBtn.querySelector("img");
         if (img) img.src = flagSrc;
 
-        // Lấy mã ngôn ngữ từ tên file (vd: vi.webp -> vi)
+        // Lấy mã ngôn ngữ từ tên file 
         const filename = flagSrc.split("/").pop().split(".")[0];
         let lang = "en";
         const validLangs = ["vi", "jp", "cn"];
