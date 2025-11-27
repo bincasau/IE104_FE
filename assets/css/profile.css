@@ -1,0 +1,287 @@
+/* Import các biến màu và font từ global.css */
+/* :root { ... } */
+
+.profile-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: var(--bg); /* Nền trang */
+  border-radius: var(--radius);
+}
+
+.profile-heading {
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.profile-card {
+  background: var(--card); /* Nền thẻ thông tin */
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Căn giữa các thành phần */
+  gap: 25px;
+}
+
+/* === AVATAR AREA === */
+.profile-avatar-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.avatar-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--brand); /* Viền màu brand */
+  transition: opacity 0.3s;
+}
+
+.btn-change-avatar {
+  padding: 8px 15px;
+  background: var(--brand);
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-change-avatar:hover {
+  background: #ffa500; /* Màu cam đậm hơn */
+}
+
+/* === INFO SECTION === */
+.profile-info {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 600;
+  color: var(--muted);
+  min-width: 120px;
+}
+
+.value {
+  flex-grow: 1;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.btn-edit {
+  background: none;
+  border: none;
+  color: var(--brand);
+  cursor: pointer;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.btn-edit:hover {
+  background: var(--light-bg-tour, #f5e2d3);
+}
+
+.btn-change-password {
+  margin-top: 10px;
+  padding: 12px 25px;
+  background: var(--accent-tour, #ff7c28);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-change-password:hover {
+  background: #e4641d;
+}
+
+/* === MODAL STYLES (Popup) === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: var(--card);
+  margin: 15% auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 400px;
+  border-radius: var(--radius);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  color: var(--text);
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.btn-save {
+  padding: 12px 20px;
+  background: var(--brand);
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-save:hover {
+  background: #ffa500;
+}
+
+.btn-save[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* === STYLING CHO AVATAR GALLERY === */
+#avatar-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  max-height: 250px; /* Giới hạn chiều cao */
+  overflow-y: auto; /* Thêm thanh cuộn nếu cần */
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+}
+
+.gallery-item {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid transparent; /* Viền mặc định */
+  transition: border-color 0.2s, transform 0.2s;
+  flex-shrink: 0; /* Đảm bảo không bị co lại */
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.gallery-item.active {
+  border-color: var(--brand); /* Màu brand khi được chọn */
+  box-shadow: 0 0 0 2px #fff;
+}
+
+/* === TOAST NOTIFICATION STYLES (MỚI) === */
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000; /* Cao hơn modal */
+  display: flex;
+  flex-direction: column-reverse; /* Đảm bảo thông báo mới nhất nằm dưới cùng */
+  gap: 10px;
+}
+
+.toast {
+  background-color: var(--text, #111827);
+  color: var(--card, #ffffff);
+  padding: 15px 20px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateX(100%);
+  min-width: 250px;
+  font-weight: 500;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast.error {
+  background-color: #ef4444; /* Màu đỏ cho lỗi */
+}
+
+.toast.success {
+  background-color: #10b981; /* Màu xanh lá cho thành công */
+}

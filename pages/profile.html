@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông tin cá nhân - Profile</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/profile.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="profile-container">
+      <h2 class="profile-heading">Thông tin cá nhân</h2>
+
+      <div class="profile-card">
+        <div class="profile-avatar-area">
+          <img
+            id="profile-avatar"
+            src="../assets/images/users/avartaDefault.webp"
+            alt="Avatar người dùng"
+            class="avatar-img"
+          />
+          <button class="btn-change-avatar" id="btn-open-avatar-modal">
+            Đổi Avatar
+          </button>
+        </div>
+
+        <div class="profile-info">
+          <div class="info-item">
+            <span class="label">Họ và Tên:</span>
+            <span class="value" id="display-fullname">[Đang tải...]</span>
+            <button class="btn-edit" data-target="fullname">Đổi tên</button>
+          </div>
+          <div class="info-item">
+            <span class="label">Username:</span>
+            <span class="value" id="display-username">[Đang tải...]</span>
+          </div>
+        </div>
+
+        <button class="btn-change-password" id="btn-open-password-modal">
+          Đổi Mật Khẩu
+        </button>
+      </div>
+    </div>
+
+    <div id="modal-fullname" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Đổi Họ và Tên</h3>
+        <input
+          type="text"
+          id="input-new-fullname"
+          placeholder="Nhập Họ và Tên mới"
+        />
+        <button id="btn-save-fullname" class="btn-save">Lưu</button>
+      </div>
+    </div>
+
+    <div id="modal-password" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Đổi Mật Khẩu</h3>
+        <input
+          type="password"
+          id="input-old-password"
+          placeholder="Mật khẩu cũ"
+        />
+        <input
+          type="password"
+          id="input-new-password"
+          placeholder="Mật khẩu mới"
+        />
+        <input
+          type="password"
+          id="input-confirm-password"
+          placeholder="Xác nhận mật khẩu mới"
+        />
+        <button id="btn-save-password" class="btn-save">Lưu</button>
+      </div>
+    </div>
+
+    <div id="modal-avatar" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Chọn Avatar có sẵn</h3>
+
+        <div id="avatar-gallery"></div>
+
+        <button id="btn-save-selected-avatar" class="btn-save" disabled>
+          Lưu Avatar đã chọn
+        </button>
+      </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="../assets/js/profile.js"></script>
+  </body>
+</html>
