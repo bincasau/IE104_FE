@@ -199,150 +199,82 @@ export async function initPage() {
   // ===============================
   //  Booking Popup đẹp
   // ===============================
-  if (bookBtn) {
-    bookBtn.addEventListener("click", async (e) => {
-      e.preventDefault();
+  // if (bookBtn) {
+  //   bookBtn.addEventListener("click", async (e) => {
+  //     e.preventDefault();
 
-      const name = document.getElementById("name")?.value.trim();
-      const startDate = document.getElementById("start-date")?.value;
-      const adults = parseInt(adultInput.value || "0");
-      const facility = document.getElementById("facilities")?.value;
+  //     const name = document.getElementById("name")?.value.trim();
+  //     const startDate = document.getElementById("start-date")?.value;
+  //     const adults = parseInt(adultInput.value || "0");
+  //     const facility = document.getElementById("facilities")?.value;
 
-      // Ngôn ngữ
-      const lang = localStorage.getItem("lang") || "en";
-      let t = (key) => key;
-      try {
-        const res = await fetch(`././lang/${lang}.json`);
-        if (res.ok) {
-          const trans = await res.json();
-          t = (key) => trans[key] || key;
-        }
-      } catch (e) {
-        console.warn("⚠️ Translation not loaded:", e);
-      }
+  //     // Ngôn ngữ
+  //     const lang = localStorage.getItem("lang") || "en";
+  //     let t = (key) => key;
+  //     try {
+  //       const res = await fetch(`././lang/${lang}.json`);
+  //       if (res.ok) {
+  //         const trans = await res.json();
+  //         t = (key) => trans[key] || key;
+  //       }
+  //     } catch (e) {
+  //       console.warn("⚠️ Translation not loaded:", e);
+  //     }
 
-      if (
-        !name ||
-        !startDate ||
-        adults <= 0 ||
-        !facility 
-      ) {
-        errorMsg.textContent = t("tourdetail_booking_fill_error");
-        return;
-      }
-      errorMsg.textContent = "";
+  //     if (
+  //       !name ||
+  //       !startDate ||
+  //       adults <= 0 ||
+  //       !facility 
+  //     ) {
+  //       errorMsg.textContent = t("tourdetail_booking_fill_error");
+  //       return;
+  //     }
+  //     errorMsg.textContent = "";
 
-      const popup = document.createElement("div");
-      popup.className = "booking-popup";
-      popup.innerHTML = `
-      <div class="popup-overlay"></div>
-      <div class="popup-box">
-        <span class="popup-close">&times;</span> 
-        <div class="popup-content">
-          <div class="popup-icon">✅</div>
-          <h2>${t("tourdetail_booking_success_title")}</h2>
-          <p>
-            ${t(
-              "tourdetail_booking_success_msg1"
-            )} <strong>${name}</strong>!<br>
-            ${t(
-              "tourdetail_booking_success_msg2"
-            )} <strong>Ha Long Bay Luxury Cruise Tour</strong> ${t(
-        "tourdetail_booking_success_msg3"
-      )}
-          </p>
-          <button class="popup-ok">${t("tourdetail_booking_ok_btn")}</button>
-        </div>
-      </div>
-    `;
-      document.body.appendChild(popup);
-      form.reset();
-      adultInput.value = "";
-      kidInput.value = "";
-      updateTotal();
+  //     const popup = document.createElement("div");
+  //     popup.className = "booking-popup";
+  //     popup.innerHTML = `
+  //     <div class="popup-overlay"></div>
+  //     <div class="popup-box">
+  //       <span class="popup-close">&times;</span> 
+  //       <div class="popup-content">
+  //         <div class="popup-icon">✅</div>
+  //         <h2>${t("tourdetail_booking_success_title")}</h2>
+  //         <p>
+  //           ${t(
+  //             "tourdetail_booking_success_msg1"
+  //           )} <strong>${name}</strong>!<br>
+  //           ${t(
+  //             "tourdetail_booking_success_msg2"
+  //           )} <strong>Ha Long Bay Luxury Cruise Tour</strong> ${t(
+  //       "tourdetail_booking_success_msg3"
+  //     )}
+  //         </p>
+  //         <button class="popup-ok">${t("tourdetail_booking_ok_btn")}</button>
+  //       </div>
+  //     </div>
+  //   `;
+  //     document.body.appendChild(popup);
+  //     form.reset();
+  //     adultInput.value = "";
+  //     kidInput.value = "";
+  //     updateTotal();
 
-      // (2) THÊM SỰ KIỆN CLICK ĐỂ ĐÓNG POPUP
-      const closePopup = () => popup.remove();
-      popup.querySelector(".popup-close").addEventListener("click", closePopup); // Bấm nút 'X'
-      popup
-        .querySelector(".popup-overlay")
-        .addEventListener("click", closePopup); // Bấm vào nền mờ
-      popup.querySelector(".popup-ok").addEventListener("click", closePopup); // Bấm nút 'OK'
-    });
-  }
-  // ===============================
-  // Other Tours click handler
-  // ===============================
-  document.querySelectorAll(".others-list a").forEach((link) => {
-    link.addEventListener("click", async (e) => {
-      e.preventDefault();
-      const tourId = link.dataset.id || link.getAttribute("data-id");
-      if (!tourId) return;
-      sessionStorage.setItem("selectedTourId", tourId);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  //     // (2) THÊM SỰ KIỆN CLICK ĐỂ ĐÓNG POPUP
+  //     const closePopup = () => popup.remove();
+  //     popup.querySelector(".popup-close").addEventListener("click", closePopup); // Bấm nút 'X'
+  //     popup
+  //       .querySelector(".popup-overlay")
+  //       .addEventListener("click", closePopup); // Bấm vào nền mờ
+  //     popup.querySelector(".popup-ok").addEventListener("click", closePopup); // Bấm nút 'OK'
+  //   });
+  // }
 
-      // Rời trang → xóa hash
-      history.replaceState(null, "", location.pathname);
-
-      if (typeof window.loadSection === "function") {
-        await window.loadSection(
-          "content",
-          "./pages/tourdetail.html",
-          "./tourdetail.js",
-          "Tours"
-        );
-      } else {
-        window.location.href = `./tourdetail.html`;
-      }
-    });
-  });
 
   // ===============================
-  // Lazy Loading
-  // ===============================
-  const lazyEls = {
-    gallery: document.querySelector(".tour-gallery"),
-    title: document.querySelector(".title-frame"),
-    nav: document.querySelector(".tour-nav"),
-    overviewText: document.querySelector("#overview p"),
-    overviewGrid: document.querySelector("#overview .overview-grid"),
-    include: document.querySelector(".include-wrapper"),
-    map: document.querySelector(".map-section"),
-    itinerary: document.querySelector(".itinerary-section"),
-    others: document.querySelector(".others-tour"),
-    form: document.querySelector(".info-right"),
-  };
-
-  Object.values(lazyEls).forEach((el) => el?.classList.add("lazy-hide"));
-  const observer = new IntersectionObserver(
-    (entries) =>
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("lazy-show");
-          observer.unobserve(entry.target);
-        }
-      }),
-    { threshold: 0.2 }
-  );
-
-  setTimeout(() => lazyEls.gallery?.classList.add("lazy-show"), 150);
-  setTimeout(() => {
-    lazyEls.title?.classList.add("lazy-show");
-    lazyEls.nav?.classList.add("lazy-show");
-  }, 500);
-  setTimeout(() => lazyEls.overviewText?.classList.add("lazy-show"), 800);
-  setTimeout(() => lazyEls.overviewGrid?.classList.add("lazy-show"), 1200);
-  [
-    lazyEls.include,
-    lazyEls.map,
-    lazyEls.itinerary,
-    lazyEls.others,
-    lazyEls.form,
-  ].forEach((sec) => sec && observer.observe(sec));
-}
-
-
-// luu data
+//  Booking Popup & Logic Lưu Data
+// ===============================
 if (bookBtn) {
   bookBtn.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -445,3 +377,78 @@ if (bookBtn) {
     popup.querySelector(".popup-ok").addEventListener("click", closePopup);
   });
 }
+
+
+  // ===============================
+  // Other Tours click handler
+  // ===============================
+  document.querySelectorAll(".others-list a").forEach((link) => {
+    link.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const tourId = link.dataset.id || link.getAttribute("data-id");
+      if (!tourId) return;
+      sessionStorage.setItem("selectedTourId", tourId);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Rời trang → xóa hash
+      history.replaceState(null, "", location.pathname);
+
+      if (typeof window.loadSection === "function") {
+        await window.loadSection(
+          "content",
+          "./pages/tourdetail.html",
+          "./tourdetail.js",
+          "Tours"
+        );
+      } else {
+        window.location.href = `./tourdetail.html`;
+      }
+    });
+  });
+
+  // ===============================
+  // Lazy Loading
+  // ===============================
+  const lazyEls = {
+    gallery: document.querySelector(".tour-gallery"),
+    title: document.querySelector(".title-frame"),
+    nav: document.querySelector(".tour-nav"),
+    overviewText: document.querySelector("#overview p"),
+    overviewGrid: document.querySelector("#overview .overview-grid"),
+    include: document.querySelector(".include-wrapper"),
+    map: document.querySelector(".map-section"),
+    itinerary: document.querySelector(".itinerary-section"),
+    others: document.querySelector(".others-tour"),
+    form: document.querySelector(".info-right"),
+  };
+
+  Object.values(lazyEls).forEach((el) => el?.classList.add("lazy-hide"));
+  const observer = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("lazy-show");
+          observer.unobserve(entry.target);
+        }
+      }),
+    { threshold: 0.2 }
+  );
+
+  setTimeout(() => lazyEls.gallery?.classList.add("lazy-show"), 150);
+  setTimeout(() => {
+    lazyEls.title?.classList.add("lazy-show");
+    lazyEls.nav?.classList.add("lazy-show");
+  }, 500);
+  setTimeout(() => lazyEls.overviewText?.classList.add("lazy-show"), 800);
+  setTimeout(() => lazyEls.overviewGrid?.classList.add("lazy-show"), 1200);
+  [
+    lazyEls.include,
+    lazyEls.map,
+    lazyEls.itinerary,
+    lazyEls.others,
+    lazyEls.form,
+  ].forEach((sec) => sec && observer.observe(sec));
+}
+
+
+// luu data

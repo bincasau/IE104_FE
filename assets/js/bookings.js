@@ -80,13 +80,37 @@ export function initPage() {
         <div class="booking-actions">
           <span class="status-badge ${getStatusClass(booking.status)}">${booking.status}</span>
           <div class="total-price">$${booking.totalPrice.toFixed(2)}</div>
-          <button class="btn-view-detail" onclick="alert('Tính năng chi tiết đang phát triển!')">Xem Chi Tiết</button>
+          <button class="btn-view-detail action-view">Xem Chi Tiết</button>
         </div>
       </div>
     `;
     bookingListEl.insertAdjacentHTML('beforeend', html);
   });
+
+bookingListEl.addEventListener('click', async (e) => {
+    if (e.target.classList.contains('action-view')) {
+        console.log("Chuyển hướng về trang Tour Detail...");
+
+        // Gọi hàm loadSection để chuyển trang (SPA)
+        // Lưu ý: Không cần truyền ID hay logic phức tạp
+        if (typeof window.loadSection === 'function') {
+            await window.loadSection(
+                "content", 
+                "./pages/tourdetail.html", 
+                "./tourdetail.js", 
+                "TourDetail"
+            );
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+            // Fallback nếu không phải SPA
+            window.location.href = "tourdetail.html";
+        }
+    }
+  });
+
 }
+
+
 
 // Helpers
 function getStatusClass(status) {
