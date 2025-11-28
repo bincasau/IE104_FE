@@ -69,7 +69,7 @@ export function initPage() {
             </div>
             <div class="detail-item">
               <i class="fa-solid fa-user-group"></i>
-              <span>Member: <strong>${booking.guests.adults} Lớn, ${booking.guests.kids} Bé</strong></span>
+              <span>Member: <strong>${booking.guests.adults} Adults, ${booking.guests.kids} Childs</strong></span>
             </div>
              <div class="detail-item">
               <i class="fa-solid fa-star"></i>
@@ -120,17 +120,16 @@ function getStatusClass(status) {
 
 function formatDate(dateString) {
   if(!dateString) return "N/A";
-  // Giả sử dateString dạng YYYY-MM-DD từ input date
   const date = new Date(dateString);
   return date.toLocaleDateString('vi-VN');
 }
 
 function formatService(val) {
     const map = {
-        'meals': 'Bữa ăn',
-        'pickup': 'Đưa đón',
-        'guide': 'HDV Riêng',
-        'insurance': 'Bảo hiểm'
+        'meals': 'Meals',
+        'pickup': 'Pickup',
+        'guide': 'Guide',
+        'insurance': 'Insurance'
     };
     return map[val] || val;
 }

@@ -282,7 +282,7 @@ if (bookBtn) {
     // 1. Kiểm tra đăng nhập
     const currentUserStr = localStorage.getItem("currentUser");
     if (!currentUserStr) {
-      alert("Vui lòng đăng nhập để đặt tour!"); // Hoặc hiển thị Toast/Modal yêu cầu đăng nhập
+      alert("Please login to book tour!"); // Hoặc hiển thị Toast/Modal yêu cầu đăng nhập
       return; 
     }
     const currentUser = JSON.parse(currentUserStr);
