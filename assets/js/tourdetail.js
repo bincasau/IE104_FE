@@ -23,7 +23,7 @@ export async function initPage() {
     history.replaceState(null, "", location.pathname);
 
     if (typeof window.loadSection === "function") {
-      window.loadSection("main", "./pages/tour.html", "./tour.js", "Tours");
+      window.loadSection("content", "./pages/tour.html", "./tour.js", "Tours");
     } else {
       window.location.href = "./tour.html";
     }
@@ -42,7 +42,7 @@ export async function initPage() {
       history.replaceState(null, "", location.pathname);
 
       await window.loadSection(
-        "main",
+        "content",
         "./pages/tour.html",
         "./tour.js",
         "Tours"
@@ -162,6 +162,7 @@ export async function initPage() {
   // Booking Form
   // ============================== =
 
+  
   const pricePerAdult = 299;
   const guestInputs = document.querySelectorAll(".guest-inputs input");
   const adultInput = guestInputs[0];
@@ -224,7 +225,7 @@ export async function initPage() {
   //       !name ||
   //       !startDate ||
   //       adults <= 0 ||
-  //       !facility
+  //       !facility 
   //     ) {
   //       errorMsg.textContent = t("tourdetail_booking_fill_error");
   //       return;
@@ -236,7 +237,7 @@ export async function initPage() {
   //     popup.innerHTML = `
   //     <div class="popup-overlay"></div>
   //     <div class="popup-box">
-  //       <span class="popup-close">&times;</span>
+  //       <span class="popup-close">&times;</span> 
   //       <div class="popup-content">
   //         <div class="popup-icon">✅</div>
   //         <h2>${t("tourdetail_booking_success_title")}</h2>
@@ -270,85 +271,82 @@ export async function initPage() {
   //   });
   // }
 
+
   // ===============================
-  //  Booking Popup & Logic Lưu Data
-  // ===============================
-  if (bookBtn) {
-    bookBtn.addEventListener("click", async (e) => {
-      e.preventDefault();
+//  Booking Popup & Logic Lưu Data
+// ===============================
+if (bookBtn) {
+  bookBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
 
-      // 1. Kiểm tra đăng nhập
-      const currentUserStr = localStorage.getItem("currentUser");
-      if (!currentUserStr) {
-        alert("Vui lòng đăng nhập để đặt tour!"); // Hoặc hiển thị Toast/Modal yêu cầu đăng nhập
-        // Có thể gọi hàm mở modal đăng nhập ở đây nếu có
-        return;
+    // 1. Kiểm tra đăng nhập
+    const currentUserStr = localStorage.getItem("currentUser");
+    if (!currentUserStr) {
+      alert("Vui lòng đăng nhập để đặt tour!"); // Hoặc hiển thị Toast/Modal yêu cầu đăng nhập
+      return; 
+    }
+    const currentUser = JSON.parse(currentUserStr);
+
+    // 2. Lấy dữ liệu từ Form
+    const name = document.getElementById("name")?.value.trim();
+    const startDate = document.getElementById("start-date")?.value;
+    const adults = parseInt(adultInput.value || "0");
+    const kids = parseInt(kidInput.value || "0");
+    const facility = document.getElementById("facilities")?.value;
+    
+    // Lấy thông tin Tour hiện tại từ giao diện (DOM)
+    const tourTitle = document.querySelector(".tour-title")?.innerText || "Unknown Tour";
+    const tourImageSrc = document.querySelector(".gallery-left img")?.src || "./assets/images/tour/tour_1.webp"; 
+
+
+    // Ngôn ngữ (giữ nguyên logic cũ của bạn)
+    const lang = localStorage.getItem("lang") || "en";
+    let t = (key) => key;
+    try {
+      const res = await fetch(`././lang/${lang}.json`);
+      if (res.ok) {
+        const trans = await res.json();
+        t = (key) => trans[key] || key;
       }
-      const currentUser = JSON.parse(currentUserStr);
+    } catch (e) {
+      console.warn("⚠️ Translation not loaded:", e);
+    }
 
-      // 2. Lấy dữ liệu từ Form
-      const name = document.getElementById("name")?.value.trim();
-      const startDate = document.getElementById("start-date")?.value;
-      const adults = parseInt(adultInput.value || "0");
-      const kids = parseInt(kidInput.value || "0");
-      const facility = document.getElementById("facilities")?.value;
+    // Validate
+    if (!name || !startDate || adults <= 0 || !facility) {
+      errorMsg.textContent = t("tourdetail_booking_fill_error");
+      return;
+    }
+    errorMsg.textContent = "";
 
-      // Lấy thông tin Tour hiện tại từ giao diện (DOM)
-      const tourTitle =
-        document.querySelector(".tour-title")?.innerText || "Unknown Tour";
-      const tourImageSrc =
-        document.querySelector(".gallery-left img")?.src ||
-        "./assets/images/tour/tour_1.webp";
-      // Lưu ý: tourImageSrc có thể là đường dẫn tuyệt đối, bạn có thể cần xử lý lại nếu muốn lưu tương đối
+    // 3. TẠO OBJECT BOOKING VÀ LƯU VÀO LOCALSTORAGE
+    const totalText = totalEl.textContent.replace('$', ''); // Lấy số tiền
+    
+    const newBooking = {
+      id: Date.now(), // Tạo ID duy nhất bằng timestamp
+      userId: currentUser.username, // Gắn với tài khoản đang đăng nhập
+      tourName: tourTitle,
+      image: tourImageSrc,
+      customerName: name,
+      date: startDate,
+      guests: { adults, kids },
+      facility: facility,
+      totalPrice: parseFloat(totalText),
+      status: "Pending", // Trạng thái mặc định
+      bookingDate: new Date().toLocaleDateString('vi-VN') // Ngày thực hiện đặt
+    };
 
-      // Ngôn ngữ (giữ nguyên logic cũ của bạn)
-      const lang = localStorage.getItem("lang") || "en";
-      let t = (key) => key;
-      try {
-        const res = await fetch(`././lang/${lang}.json`);
-        if (res.ok) {
-          const trans = await res.json();
-          t = (key) => trans[key] || key;
-        }
-      } catch (e) {
-        console.warn("⚠️ Translation not loaded:", e);
-      }
+    // Lấy danh sách cũ, thêm mới, rồi lưu lại
+    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    bookings.push(newBooking);
+    localStorage.setItem("bookings", JSON.stringify(bookings));
 
-      // Validate
-      if (!name || !startDate || adults <= 0 || !facility) {
-        errorMsg.textContent = t("tourdetail_booking_fill_error");
-        return;
-      }
-      errorMsg.textContent = "";
+    console.log("✅ Đã lưu booking:", newBooking);
 
-      // 3. TẠO OBJECT BOOKING VÀ LƯU VÀO LOCALSTORAGE
-      const totalText = totalEl.textContent.replace("$", ""); // Lấy số tiền
-
-      const newBooking = {
-        id: Date.now(), // Tạo ID duy nhất bằng timestamp
-        userId: currentUser.username, // Gắn với tài khoản đang đăng nhập
-        tourName: tourTitle,
-        image: tourImageSrc,
-        customerName: name,
-        date: startDate,
-        guests: { adults, kids },
-        facility: facility,
-        totalPrice: parseFloat(totalText),
-        status: "Pending", // Trạng thái mặc định
-        bookingDate: new Date().toLocaleDateString("vi-VN"), // Ngày thực hiện đặt
-      };
-
-      // Lấy danh sách cũ, thêm mới, rồi lưu lại
-      const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-      bookings.push(newBooking);
-      localStorage.setItem("bookings", JSON.stringify(bookings));
-
-      console.log("✅ Đã lưu booking:", newBooking);
-
-      // 4. Hiển thị Popup thành công (Code cũ của bạn)
-      const popup = document.createElement("div");
-      popup.className = "booking-popup";
-      popup.innerHTML = `
+    // 4. Hiển thị Popup thành công 
+    const popup = document.createElement("div");
+    popup.className = "booking-popup";
+    popup.innerHTML = `
     <div class="popup-overlay"></div>
     <div class="popup-box">
       <span class="popup-close">&times;</span> 
@@ -357,33 +355,28 @@ export async function initPage() {
         <h2>${t("tourdetail_booking_success_title")}</h2>
         <p>
           ${t("tourdetail_booking_success_msg1")} <strong>${name}</strong>!<br>
-          ${t(
-            "tourdetail_booking_success_msg2"
-          )} <strong>${tourTitle}</strong> ${t(
-        "tourdetail_booking_success_msg3"
-      )}
+          ${t("tourdetail_booking_success_msg2")} <strong>${tourTitle}</strong> ${t("tourdetail_booking_success_msg3")}
         </p>
         <button class="popup-ok">${t("tourdetail_booking_ok_btn")}</button>
       </div>
     </div>
   `;
-      document.body.appendChild(popup);
+    document.body.appendChild(popup);
+    
+    // Reset Form
+    form.reset();
+    adultInput.value = "";
+    kidInput.value = "";
+    updateTotal();
 
-      // Reset Form
-      form.reset();
-      adultInput.value = "";
-      kidInput.value = "";
-      updateTotal();
+    // Sự kiện đóng Popup
+    const closePopup = () => popup.remove();
+    popup.querySelector(".popup-close").addEventListener("click", closePopup);
+    popup.querySelector(".popup-overlay").addEventListener("click", closePopup);
+    popup.querySelector(".popup-ok").addEventListener("click", closePopup);
+  });
+}
 
-      // Sự kiện đóng Popup
-      const closePopup = () => popup.remove();
-      popup.querySelector(".popup-close").addEventListener("click", closePopup);
-      popup
-        .querySelector(".popup-overlay")
-        .addEventListener("click", closePopup);
-      popup.querySelector(".popup-ok").addEventListener("click", closePopup);
-    });
-  }
 
   // ===============================
   // Other Tours click handler
@@ -401,7 +394,7 @@ export async function initPage() {
 
       if (typeof window.loadSection === "function") {
         await window.loadSection(
-          "main",
+          "content",
           "./pages/tourdetail.html",
           "./tourdetail.js",
           "Tours"
@@ -455,5 +448,6 @@ export async function initPage() {
     lazyEls.form,
   ].forEach((sec) => sec && observer.observe(sec));
 }
+
 
 // luu data
