@@ -168,10 +168,9 @@ export async function initPage() {
             <div class="price-row">
               ${
                 tour.oldPrice
-                  ? `<div class="from-label">${t(
-                      "tour_from_label",
-                      "From"
-                    )} $${tour.oldPrice}</div>`
+                  ? `<div class="from-label">${t("tour_from_label", "From")} $${
+                      tour.oldPrice
+                    }</div>`
                   : ""
               }
               <div class="price">$${tour.price}</div>
@@ -300,7 +299,7 @@ export async function initPage() {
           sessionStorage.setItem("selectedTourId", selectedTour.id);
           if (window.loadSection) {
             await window.loadSection(
-              "content",
+              "main",
               "./pages/tourdetail.html",
               "./tourdetail.js",
               "TourDetail"
@@ -375,8 +374,7 @@ export async function initPage() {
         const hasProvince = provinces.some(
           (p) => normalize(p) === selectedProvince
         );
-        const isHidden =
-          hasProvince && !showAllDest && provinces.length > 4;
+        const isHidden = hasProvince && !showAllDest && provinces.length > 4;
 
         // Hàm này sẽ tìm và tick vào checkbox tỉnh
         const tickProvince = () => {

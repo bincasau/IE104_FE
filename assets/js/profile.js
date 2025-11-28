@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+export function initPage() {
+  console.log("Profile page initialized.");
+  // document.addEventListener("DOMContentLoaded", () => {
   // === 0. THIẾT LẬP CƠ BẢN VÀ DỮ LIỆU SẴN CÓ ===
   const LOCAL_STORAGE_KEY = "demoUsers";
   const USER_ID = 0;
@@ -7,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentUser = null;
   let selectedAvatarFileName = null; // Biến để lưu tên ảnh được chọn tạm thời
 
-  // Danh sách tên các file ảnh CÓ SẴN TRONG THƯ MỤC ../assets/images/users/
+  // Danh sách tên các file ảnh CÓ SẴN TRONG THƯ MỤC ./assets/images/users/
   const availableAvatars = [
     "avatarDefault.webp", // Ảnh mặc định
     "avatar_user_1.webp",
@@ -86,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
       imgContainer.setAttribute("data-filename", fileName);
 
       const img = document.createElement("img");
-      img.src = "../assets/images/users/" + fileName;
+      img.src = "./assets/images/users/" + fileName;
       img.alt = fileName;
 
       imgContainer.appendChild(img);
@@ -119,19 +121,19 @@ document.addEventListener("DOMContentLoaded", () => {
       profileAvatar.style.opacity = "1";
 
       if (currentUser.avatar) {
-        profileAvatar.src = "../assets/images/users/" + currentUser.avatar;
+        profileAvatar.src = "./assets/images/users/" + currentUser.avatar;
       } else {
-        profileAvatar.src = "../assets/images/users/avatarDefault.webp";
+        profileAvatar.src = "./assets/images/users/avatarDefault.webp";
       }
 
       profileAvatar.onerror = () => {
-        profileAvatar.src = "../assets/images/users/avatarDefault.webp";
+        profileAvatar.src = "./assets/images/users/avatarDefault.webp";
       };
     } else {
       const NO_USER_MSG = "⚠ Không có người dùng";
       displayFullname.textContent = NO_USER_MSG;
       displayUsername.textContent = NO_USER_MSG;
-      profileAvatar.src = "../assets/images/users/avatarDefault.webp";
+      profileAvatar.src = "./assets/images/users/avatarDefault.webp";
       profileAvatar.style.opacity = "0.5";
       console.warn("Không có người dùng được tải từ Local Storage.");
     }
@@ -301,4 +303,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Bắt đầu tải dữ liệu
   loadUserData();
-});
+  // });
+}

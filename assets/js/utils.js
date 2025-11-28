@@ -13,9 +13,9 @@ export async function loadSection(
   pageName = null
 ) {
   try {
-    const container = document.getElementById(id);
+    const container = document.querySelector(id);
     if (!container) {
-      console.error(`Không tìm thấy phần tử #${id}`);
+      console.error(`Không tìm thấy phần tử ${id}`);
       return;
     }
 

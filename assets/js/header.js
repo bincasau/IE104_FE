@@ -5,22 +5,21 @@ export async function initHeader() {
   console.log("Header initialized");
   enableAutoTranslate();
 
-  // Helpers
-  const $ = (s) => document.querySelector(s);
-  const $$ = (s) => Array.from(document.querySelectorAll(s));
-  const navLinksContainer = $(".nav-links");
-  const navLinks = navLinksContainer ? $$(".nav-links a") : [];
-  const hamburgerIcon = $(".hamburger-btn i");
-  const loginBtn = $("#headerLoginBtn");
-  const logoutBtn = $("#headerLogoutBtn");
-  const avatarWrapper = $("#headerUserAvatar");
+  const navLinksContainer = document.querySelector(".nav-links");
+  const navLinks = navLinksContainer
+    ? Array.from(document.querySelectorAll(".nav-links a"))
+    : [];
+  const hamburgerIcon = document.querySelector(".hamburger-btn i");
+  const loginBtn = document.querySelector("#headerLoginBtn");
+  const logoutBtn = document.querySelector("#headerLogoutBtn");
+  const avatarWrapper = document.querySelector("#headerUserAvatar");
   const avatarImg = avatarWrapper?.querySelector("img");
-  const userMenu = $("#headerUserMenu");
-  const userDropdown = $("#headerUserDropdown");
-  const authModal = $("#auth-modal");
-  const authBackdrop = $(".auth-modal__backdrop");
-  const authCloseBtn = $(".auth-modal__close");
-  const authIframe = $("#auth-iframe");
+  const userMenu = document.querySelector("#headerUserMenu");
+  const userDropdown = document.querySelector("#headerUserDropdown");
+  const authModal = document.querySelector("#auth-modal");
+  const authBackdrop = document.querySelector(".auth-modal__backdrop");
+  const authCloseBtn = document.querySelector(".auth-modal__close");
+  const authIframe = document.querySelector("#auth-iframe");
 
   const bootAuthIframe = () => {
     const doc = authIframe?.contentDocument;
@@ -137,9 +136,7 @@ export async function initHeader() {
     if (avatarWrapper) {
       avatarWrapper.setAttribute(
         "title",
-        showAvatar
-          ? user.fullName || user.username || "Tài khoản"
-          : "Đăng nhập"
+        showAvatar ? user.fullName || user.username || "Tài khoản" : "Đăng nhập"
       );
 
       if (avatarImg) {
@@ -191,7 +188,7 @@ export async function initHeader() {
       history.replaceState(null, "", location.pathname);
     }
 
-    await loadSection("content", selected.html, selected.js, pageName);
+    await loadSection("main", selected.html, selected.js, pageName);
 
     // Đóng menu và đổi icon (cho mobile)
     navLinksContainer?.classList.remove("show");
@@ -221,25 +218,25 @@ export async function initHeader() {
   });
 
   // === NÚT EXPLORE TRIP (Chuyển đến Tours) ===
-  const btnExplore = $(".btn-explore");
+  const btnExplore = document.querySelector(".btn-explore");
   if (btnExplore) {
     btnExplore.addEventListener("click", async (e) => {
       e.preventDefault();
       await navigateToPage("Tours");
       // Cập nhật lại trạng thái active của nav link
-      $$(".nav-links a").forEach((link) => {
+      document.querySelectorAll(".nav-links a").forEach((link) => {
         link.classList.toggle("active", link.classList.contains("Tours"));
       });
     });
   }
 
   // === CLICK LOGO => overlay + về HOME ===
-  const logo = $(".logo");
+  const logo = document.querySelector(".logo");
   if (logo) {
     logo.addEventListener("click", async (e) => {
       e.preventDefault();
 
-      const overlay = $("#logo-overlay");
+      const overlay = document.querySelector("#logo-overlay");
       if (!overlay) {
         // Fallback an toàn nếu không có overlay
         await navigateToPage("Home");
@@ -271,7 +268,7 @@ export async function initHeader() {
   ============================================== */
 
   // === ICON MAIL ===
-  const sendMailBtn = $(".icon-mail");
+  const sendMailBtn = document.querySelector(".icon-mail");
   if (sendMailBtn) {
     sendMailBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -286,14 +283,14 @@ export async function initHeader() {
 
   // === HIỆU ỨNG HEADER KHI SCROLL ===
   window.addEventListener("scroll", () => {
-    const header = $(".header");
+    const header = document.querySelector(".header");
     if (!header) return;
     if (window.scrollY > 50) header.classList.add("scrolled");
     else header.classList.remove("scrolled");
   });
 
   // === HAMBURGER MENU ===
-  const hamburgerBtn = $(".hamburger-btn");
+  const hamburgerBtn = document.querySelector(".hamburger-btn");
 
   if (hamburgerBtn && navLinksContainer) {
     hamburgerBtn.addEventListener("click", () => {
@@ -336,7 +333,8 @@ export async function initHeader() {
           "click",
           function handleOutside(event) {
             const withinMenu =
-              userMenu?.contains(event.target) || userDropdown.contains(event.target);
+              userMenu?.contains(event.target) ||
+              userDropdown.contains(event.target);
             if (!withinMenu) {
               userDropdown.classList.remove("show");
               document.removeEventListener("click", handleOutside);
@@ -379,12 +377,41 @@ export async function initHeader() {
   updateAuthUI();
 
   /* =============================================
+     USER MENU
+  ============================================== */
+  const btnProfile = document.querySelector("#headerProfileBtn");
+  const btnHistory = document.querySelector("#headerHistoryBtn");
+  if (btnProfile) {
+    btnProfile.addEventListener("click", async (e) => {
+      e.preventDefault();
+      loadSection("main", "./pages/profile.html", "./profile.js", "Profile");
+      // Đóng dropdown sau khi chọn
+      if (userDropdown) userDropdown.classList.remove("show");
+      // Cập nhật lại trạng thái active của nav link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.classList.remove("active");
+      });
+    });
+  }
+  if (btnHistory) {
+    btnHistory.addEventListener("click", async (e) => {
+      e.preventDefault();
+      loadSection("main", "./pages/bookings.html", "./bookings.js", "Bookings");
+      // Đóng dropdown sau khi chọn
+      if (userDropdown) userDropdown.classList.remove("show");
+      // Cập nhật lại trạng thái active của nav link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.classList.remove("active");
+      });
+    });
+  }
+  /* =============================================
      LANGUAGE SWITCHER
   ============================================== */
 
-  const langBtn = $("#langButton");
-  const langDropdown = $("#langDropdown");
-  const languageSelector = $(".language-selector");
+  const langBtn = document.querySelector("#langButton");
+  const langDropdown = document.querySelector("#langDropdown");
+  const languageSelector = document.querySelector(".language-selector");
 
   if (langBtn && langDropdown && languageSelector) {
     // 1. Mở/Đóng Dropdown
@@ -409,7 +436,7 @@ export async function initHeader() {
         const img = langBtn.querySelector("img");
         if (img) img.src = flagSrc;
 
-        // Lấy mã ngôn ngữ từ tên file 
+        // Lấy mã ngôn ngữ từ tên file
         const filename = flagSrc.split("/").pop().split(".")[0];
         let lang = "en";
         const validLangs = ["vi", "jp", "cn"];

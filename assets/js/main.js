@@ -6,7 +6,7 @@ setFavicon("./assets/images/logo_ie104.webp");
 // Load các phần chính
 await loadSection("header", "./components/header.html");
 await loadSection("footer", "./components/footer.html");
-await loadSection("content", "./pages/home.html", "./home.js", "Home");
+await loadSection("main", "./pages/home.html", "./home.js", "Home");
 
 // Sau khi header load xong thì khởi tạo JS cho header
 const { initHeader } = await import("./header.js");

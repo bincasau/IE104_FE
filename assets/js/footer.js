@@ -1,5 +1,3 @@
-
-
 // 1. Import hàm loadSection
 import { loadSection } from "./utils.js";
 
@@ -39,35 +37,37 @@ async function navigateToPage(pageName) {
   }
 
   // Load trang mới
-  await loadSection("content", selected.html, selected.js, pageName);
+  await loadSection("main", selected.html, selected.js, pageName);
 
   // Cập nhật lại class active trên HEADER
-  $$(".nav-links a").forEach(headerLink => {
-    headerLink.classList.toggle("active", headerLink.classList.contains(pageName));
+  $$(".nav-links a").forEach((headerLink) => {
+    headerLink.classList.toggle(
+      "active",
+      headerLink.classList.contains(pageName)
+    );
   });
 }
 
 // 6. Hàm khởi tạo footer
 export function initFooter() {
-  
   // --- A. XỬ LÝ CÁC LINK ĐIỀU HƯỚNG ---
   const footerLinks = $$("#footer .footer-links a");
 
-  footerLinks.forEach(link => {
-    const pageName = [...link.classList].find(c => pageMap[c]);
+  footerLinks.forEach((link) => {
+    const pageName = [...link.classList].find((c) => pageMap[c]);
     if (!pageName) return; // Bỏ qua link PDF (Terms, Privacy)
 
     link.addEventListener("click", async (e) => {
-      e.preventDefault(); 
+      e.preventDefault();
       await navigateToPage(pageName);
     });
   });
 
   // --- B. XỬ LÝ LOGO CLICK---
-  const logo = $("#footer .footer-about .logo"); 
+  const logo = $("#footer .footer-about .logo");
 
   if (logo) {
-    // Gán sự kiện click 
+    // Gán sự kiện click
     logo.addEventListener("click", async (e) => {
       e.preventDefault();
 

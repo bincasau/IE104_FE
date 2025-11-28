@@ -12,7 +12,7 @@ export async function initPage() {
    * @param {string} pageName - Tên trang cho log (mặc định là "Tours").
    */
   const navigateToTours = (pageName = "Tours") => {
-    loadSection("content", "./pages/tour.html", "./tour.js", pageName);
+    loadSection("main", "./pages/tour.html", "./tour.js", pageName);
   };
 
   /**
@@ -20,7 +20,7 @@ export async function initPage() {
    */
   const navigateToTourDetail = () => {
     loadSection(
-      "content",
+      "main",
       "./pages/tourdetail.html",
       "./tourdetail.js",
       "Tour Detail"
@@ -77,7 +77,7 @@ export async function initPage() {
      ============================================== */
   $(".btn-about")?.addEventListener("click", () => {
     console.log("Đã click btn-about");
-    loadSection("content", "./pages/about.html", "./about.js", "About");
+    loadSection("main", "./pages/about.html", "./about.js", "About");
   });
 
   /* =============================================
@@ -221,12 +221,7 @@ export async function initPage() {
           const slug = item.dataset.slug;
           console.log("📰 Mở blog:", slug);
           sessionStorage.setItem("openBlogSlug", slug); // Lưu slug blog
-          loadSection(
-            "content",
-            "./pages/blog.html",
-            "./blog.js",
-            "Blog Detail"
-          );
+          loadSection("main", "./pages/blog.html", "./blog.js", "Blog Detail");
         });
       });
     } catch (err) {
@@ -320,8 +315,8 @@ export async function initPage() {
           if (entry.isIntersecting) {
             const img = entry.target;
             // Load ảnh từ data-src sang src
-             img.src = img.dataset.src;
-            
+            img.src = img.dataset.src;
+
             // Thêm class 'loaded' sau khi ảnh tải xong để kích hoạt fade-in
             img.addEventListener("load", () => {
               img.classList.add("loaded");
