@@ -23,7 +23,9 @@
     </div>
 
     <button class="btn-explore" data-key="header_explore">EXPLORE TRIP</button>
-    <button class="btn-login" id="headerLoginBtn">Đăng nhập</button>
+    <button class="btn-login" id="headerLoginBtn" data-key="header_btn_login">
+      Log In
+    </button>
     <div class="user-menu" id="headerUserMenu">
       <div class="user-avatar" id="headerUserAvatar" title="Tài khoản">
         <img
@@ -33,10 +35,27 @@
         />
       </div>
       <div class="user-dropdown" id="headerUserDropdown">
-        <button class="btn-profile" id="headerProfileBtn">Hồ sơ cá nhân</button>
-        <button class="btn-history" id="headerHistoryBtn">Đơn đã đặt</button>
-        <span class="dropdown-separator" type="dropdown-separator"></span>
-        <button class="btn-logout" id="headerLogoutBtn">Đăng xuất</button>
+        <button
+          class="btn-profile"
+          id="headerProfileBtn"
+          data-key="header_btn_profile"
+        >
+          Personal Information
+        </button>
+        <button
+          class="btn-history"
+          id="headerHistoryBtn"
+          data-key="header_btn_history"
+        >
+          Order placed
+        </button>
+        <button
+          class="btn-logout"
+          id="headerLogoutBtn"
+          data-key="header_btn_logout"
+        >
+          Log Out
+        </button>
       </div>
     </div>
     <div class="language-selector">
@@ -95,9 +114,6 @@
 <div id="auth-modal" class="auth-modal" aria-hidden="true">
   <div class="auth-modal__backdrop"></div>
   <div class="auth-modal__content" role="dialog" aria-label="Đăng nhập">
-    <button class="auth-modal__close" aria-label="Đóng">
-      <i class="fas fa-times"></i>
-    </button>
     <iframe
       id="auth-iframe"
       title="Đăng nhập / Đăng ký"

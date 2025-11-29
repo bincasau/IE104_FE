@@ -924,3 +924,6 @@
   transform: translateY(0);
   box-shadow: none;
 }
+.auth-modal__backdrop {
+  display: none !important;
+}

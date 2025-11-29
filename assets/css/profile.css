@@ -3,7 +3,7 @@
 
 .profile-container {
   max-width: 800px;
-  margin: 50px auto;
+  margin: 100px auto 50px auto;
   padding: 20px;
   background: var(--bg); /* Nền trang */
   border-radius: var(--radius);

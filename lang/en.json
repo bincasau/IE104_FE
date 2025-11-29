@@ -274,5 +274,65 @@
   "footer_company_terms": "Terms of Service",
   "footer_company_privacy": "Privacy Policy",
 
-  "footer_bottom_text": "©2025 BRTtheme | All Rights Reserved"
+  "footer_bottom_text": "©2025 BRTtheme | All Rights Reserved",
+
+  "profile_heading": "Personal Information",
+  "profile_btn_change_avatar": "Change Avatar",
+  "profile_label_fullname": "Full Name:",
+  "profile_label_username": "Username:",
+  "profile_btn_change_name": "Change Name",
+  "profile_btn_change_password": "Change Password",
+
+  "modal_fullname_heading": "Change Name",
+  "modal_fullname_placeholder": "Enter new full name",
+  "modal_btn_save": "Save",
+
+  "modal_password_heading": "Change Password",
+  "modal_password_old": "Old Password",
+  "modal_password_new": "New Password",
+  "modal_password_confirm": "Confirm New Password",
+
+  "modal_avatar_heading": "Choose An Available Avatar",
+  "modal_btn_save_avatar": "Save Selected Avatar",
+
+  "toast_error_no_user": "⚠ No user loaded. Please add data to Local Storage.",
+  "toast_success_fullname": "✅ Full name successfully changed to",
+  "toast_error_fullname_invalid": "❌ Invalid full name or no changes made.",
+  "toast_error_fill_all": "❌ Please fill in all required fields.",
+  "toast_error_password_old_incorrect": "❌ Old password is incorrect.",
+  "toast_error_password_not_match": "❌ New password and confirmation do not match.",
+  "toast_error_password_length": "❌ New password must be at least 4 characters long.",
+  "toast_success_password": "✅ Password successfully changed!",
+  "toast_success_avatar": "✅ Avatar successfully changed to",
+  "toast_no_change_avatar": "⚠️ No change, Avatar is still",
+
+  "history_header_title": "Bookings History",
+  "history_breadcrumb_home": "Home",
+  "history_breadcrumb_current": "Bookings",
+  "history_sidebar_other_tours": "Other Tours",
+  "history_heading_your_tours": "Your Tours",
+  "history_btn_more_detail": "More Detail",
+  "status_finish": "Finished",
+  "status_pending": "Processing",
+
+  "btn_explore_now": "Explore Tour Now",
+
+  "auth_register_title": "Register An Account",
+  "auth_label_fullname": "Full Name",
+  "auth_label_username": "Username",
+  "auth_label_password": "Password",
+  "auth_label_reenter_password": "Re-enter Password",
+  "auth_btn_register": "Register",
+  "auth_text_already_have": "Already Have An Account?",
+  "auth_link_signin": "Sign In",
+  "auth_login_title": "Sign In",
+  "auth_btn_signin": "Sign In",
+  "auth_text_no_account": "No account yet?",
+  "auth_link_register": "Register",
+
+  "header_btn_profile": "Personal Information",
+  "header_btn_history": "Order placed",
+  "header_btn_logout": "Log Out",
+
+  "header_btn_login": "Log In"
 }

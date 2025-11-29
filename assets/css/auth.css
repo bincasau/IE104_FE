@@ -1,5 +1,4 @@
-/* ===== POPUP MODAL ===== */
-
+/* POPUP */
 .auth-modal {
   position: fixed;
   inset: 0;
@@ -13,35 +12,29 @@
   display: none;
 }
 
+/* 🚀 ĐÃ SỬA: Ẩn lớp mờ bên trong iframe vì trang cha đã có backdrop */
 .auth-modal-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  display: none;
 }
 
 .auth-modal-content {
   position: relative;
   z-index: 10;
-}
-
-/* ===== CARD FORM ===== */
-
-.auth-card {
   background: var(--card);
-  padding: 30px;
-  border-radius: var(--radius);
+  padding: 32px;
   width: 380px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  /* box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15); */
 }
 
-.auth-card h2 {
+/* TITLE */
+.auth-modal-content h2 {
   text-align: center;
   color: var(--text);
   margin-bottom: 22px;
 }
 
-/* ===== FORM ===== */
-
+/* FORM */
 .form-group {
   margin-bottom: 20px;
 }
@@ -51,7 +44,6 @@
   margin-bottom: 8px;
   font-weight: 600;
   color: var(--muted);
-  font-size: 15px;
 }
 
 .form-group input {
@@ -60,10 +52,18 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 16px;
+  transition: 0.2s;
+}
+
+/* REMOVE FOCUS OUTLINE + GLOW */
+.form-group input:focus,
+.auth-btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: var(--brand);
 }
 
 /* BUTTON */
-
 .auth-btn {
   width: 100%;
   padding: 12px;
@@ -81,14 +81,17 @@
   opacity: 0.9;
 }
 
-/* MESSAGE */
+/* FIX: REGISTER BUTTON ALWAYS HAS ROUNDED CORNER */
+#register-section .auth-btn {
+  border-radius: 8px !important;
+}
 
+/* MESSAGES */
 .form-message {
-  margin-top: 18px;
+  margin-top: 16px;
   padding: 12px;
   border-radius: 8px;
   text-align: center;
-  font-weight: 500;
 }
 
 .form-message.success {
@@ -101,11 +104,10 @@
   color: #842029;
 }
 
-/* TOGGLE LINKS */
-
+/* TOGGLE */
 .auth-form-toggle {
-  text-align: center;
   margin-top: 20px;
+  text-align: center;
   color: var(--muted);
 }
 
@@ -115,8 +117,7 @@
   text-decoration: none;
 }
 
-/* UTILITY */
-
+/* HIDE ELEMENTS */
 .hidden {
   display: none;
 }

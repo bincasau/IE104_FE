@@ -274,5 +274,65 @@
   "footer_company_terms": "利用規約",
   "footer_company_privacy": "プライバシーポリシー",
 
-  "footer_bottom_text": "©2025 BRTtheme | 全著作権所有"
+  "footer_bottom_text": "©2025 BRTtheme | 全著作権所有",
+
+  "profile_heading": "個人情報",
+  "profile_btn_change_avatar": "アバターを変更",
+  "profile_label_fullname": "氏名:",
+  "profile_label_username": "ユーザー名:",
+  "profile_btn_change_name": "氏名を変更",
+  "profile_btn_change_password": "パスワードを変更",
+
+  "modal_fullname_heading": "氏名変更",
+  "modal_fullname_placeholder": "新しい氏名を入力",
+  "modal_btn_save": "保存",
+
+  "modal_password_heading": "パスワード変更",
+  "modal_password_old": "現在のパスワード",
+  "modal_password_new": "新しいパスワード",
+  "modal_password_confirm": "新しいパスワードを再入力",
+
+  "modal_avatar_heading": "利用可能なアバターを選択",
+  "modal_btn_save_avatar": "選択したアバターを保存",
+
+  "toast_error_no_user": "⚠ ユーザーがロードされていません。ローカルストレージにデータを追加してください。",
+  "toast_success_fullname": "✅ 氏名が正常に変更されました：",
+  "toast_error_fullname_invalid": "❌ 無効な氏名、または変更がありません。",
+  "toast_error_fill_all": "❌ 必須項目をすべて入力してください。",
+  "toast_error_password_old_incorrect": "❌ 現在のパスワードが正しくありません。",
+  "toast_error_password_not_match": "❌ 新しいパスワードが一致しません。",
+  "toast_error_password_length": "❌ 新しいパスワードは4文字以上である必要があります。",
+  "toast_success_password": "✅ パスワードが正常に変更されました！",
+  "toast_success_avatar": "✅ アバターが正常に変更されました：",
+  "toast_no_change_avatar": "⚠️ 変更はありません。アバターは変更されていません：",
+
+  "history_header_title": "予約履歴",
+  "history_breadcrumb_home": "ホーム",
+  "history_breadcrumb_current": "予約",
+  "history_sidebar_other_tours": "その他のツアー",
+  "history_heading_your_tours": "あなたのツアー",
+  "history_btn_more_detail": "詳細を見る",
+  "status_finish": "完了",
+  "status_pending": "処理中",
+
+  "btn_explore_now": "今すぐツアーを探索",
+
+  "auth_register_title": "アカウント登録",
+  "auth_label_fullname": "氏名",
+  "auth_label_username": "ユーザー名",
+  "auth_label_password": "パスワード",
+  "auth_label_reenter_password": "パスワード再入力",
+  "auth_btn_register": "登録",
+  "auth_text_already_have": "すでにアカウントをお持ちですか？",
+  "auth_link_signin": "サインイン",
+  "auth_login_title": "サインイン",
+  "auth_btn_signin": "サインイン",
+  "auth_text_no_account": "アカウントをお持ちではありませんか？",
+  "auth_link_register": "登録",
+
+  "header_btn_profile": "個人情報",
+  "header_btn_history": "予約履歴",
+  "header_btn_logout": "ログアウト",
+
+  "header_btn_login": "ログイン"
 }

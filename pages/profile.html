@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thông tin cá nhân - Profile</title>
+    <title>Personal Information - Profile</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
     <link rel="stylesheet" href="../assets/css/profile.css" />
     <link
@@ -13,7 +13,9 @@
   </head>
   <body>
     <div class="profile-container">
-      <h2 class="profile-heading">Thông tin cá nhân</h2>
+      <h2 class="profile-heading" data-key="profile_heading">
+        Peronal Information
+      </h2>
 
       <div class="profile-card">
         <div class="profile-avatar-area">
@@ -23,25 +25,43 @@
             alt="Avatar người dùng"
             class="avatar-img"
           />
-          <button class="btn-change-avatar" id="btnaf-open-avatar-modal">
-            Đổi Avatar
+          <button
+            class="btn-change-avatar"
+            id="btn-open-avatar-modal"
+            data-key="profile_btn_change_avatar"
+          >
+            Change Avatar
           </button>
         </div>
 
         <div class="profile-info">
           <div class="info-item">
-            <span class="label">Họ và Tên:</span>
-            <span class="value" id="display-fullname">[Đang tải...]</span>
-            <button class="btn-edit" data-target="fullname">Đổi tên</button>
+            <span class="label" data-key="profile_label_fullname"
+              >fullname:</span
+            >
+            <span class="value" id="display-fullname">[Loading...]</span>
+            <button
+              class="btn-edit"
+              data-target="fullname"
+              data-key="profile_btn_change_name"
+            >
+              Change Name
+            </button>
           </div>
           <div class="info-item">
-            <span class="label">Username:</span>
-            <span class="value" id="display-username">[Đang tải...]</span>
+            <span class="label" data-key="profile_label_username"
+              >Username:</span
+            >
+            <span class="value" id="display-username">[Loading...]</span>
           </div>
         </div>
 
-        <button class="btn-change-password" id="btn-open-password-modal">
-          Đổi Mật Khẩu
+        <button
+          class="btn-change-password"
+          id="btn-open-password-modal"
+          data-key="profile_btn_change_password"
+        >
+          Change Password
         </button>
       </div>
     </div>
@@ -49,48 +69,69 @@
     <div id="modal-fullname" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
-        <h3>Đổi Họ và Tên</h3>
+        <h3 data-key="modal_fullname_heading">Change Name</h3>
         <input
           type="text"
           id="input-new-fullname"
+          data-key-placeholder="modal_fullname_placeholder"
           placeholder="Nhập Họ và Tên mới"
         />
-        <button id="btn-save-fullname" class="btn-save">Lưu</button>
+        <button
+          id="btn-save-fullname"
+          class="btn-save"
+          data-key="modal_btn_save"
+        >
+          Save
+        </button>
       </div>
     </div>
 
     <div id="modal-password" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
-        <h3>Đổi Mật Khẩu</h3>
+        <h3 data-key="modal_password_heading">Change Password</h3>
         <input
           type="password"
           id="input-old-password"
-          placeholder="Mật khẩu cũ"
+          data-key-placeholder="modal_password_old"
+          placeholder="Old Password"
         />
         <input
           type="password"
           id="input-new-password"
-          placeholder="Mật khẩu mới"
+          data-key-placeholder="modal_password_new"
+          placeholder="New Password"
         />
         <input
           type="password"
           id="input-confirm-password"
-          placeholder="Xác nhận mật khẩu mới"
+          data-key-placeholder="modal_password_confirm"
+          placeholder="Confirm New Password"
         />
-        <button id="btn-save-password" class="btn-save">Lưu</button>
+        <button
+          id="btn-save-password"
+          class="btn-save"
+          data-key="modal_btn_save"
+        >
+          Save
+        </button>
       </div>
     </div>
 
     <div id="modal-avatar" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
-        <h3>Chọn Avatar có sẵn</h3>
+        <h3 data-key="modal_avatar_heading">Choose An Available Avatar</h3>
 
         <div id="avatar-gallery"></div>
 
-        <button id="btn-save-selected-avatar" class="btn-save" disabled>
-          Lưu Avatar đã chọn
+        <button
+          id="btn-save-selected-avatar"
+          class="btn-save"
+          disabled
+          data-key="modal_btn_save_avatar"
+        >
+          Save Elected Avatar
         </button>
       </div>
     </div>

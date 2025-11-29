@@ -2,62 +2,80 @@
   <div class="auth-modal-overlay"></div>
 
   <div class="auth-modal-content">
-    <div class="auth-card">
-      <!-- Form Đăng ký -->
-      <div id="register-section" class="hidden">
-        <h2>Đăng ký Tài khoản</h2>
-        <form id="register-form">
-          <div class="form-group">
-            <label for="reg-fullname">Họ và Tên</label>
-            <input type="text" id="reg-fullname" required />
-          </div>
+    <div id="register-section" class="hidden">
+      <h2 data-key="auth_register_title">Register An Account</h2>
+      <form id="register-form">
+        <div class="form-group">
+          <label for="reg-fullname" data-key="auth_label_fullname"
+            >Full Name</label
+          >
+          <input type="text" id="reg-fullname" required />
+        </div>
 
-          <div class="form-group">
-            <label for="reg-username">Tài khoản</label>
-            <input type="text" id="reg-username" required />
-          </div>
+        <div class="form-group">
+          <label for="reg-username" data-key="auth_label_username"
+            >Username</label
+          >
+          <input type="text" id="reg-username" required />
+        </div>
 
-          <div class="form-group">
-            <label for="reg-password">Mật khẩu</label>
-            <input type="password" id="reg-password" required />
-          </div>
+        <div class="form-group">
+          <label for="reg-password" data-key="auth_label_password"
+            >Password</label
+          >
+          <input type="password" id="reg-password" required />
+        </div>
 
-          <div class="form-group">
-            <label for="reg-confirm-password">Nhập lại mật khẩu</label>
-            <input type="password" id="reg-confirm-password" required />
-          </div>
+        <div class="form-group">
+          <label
+            for="reg-confirm-password"
+            data-key="auth_label_reenter_password"
+            >Re-enter Password</label
+          >
+          <input type="password" id="reg-confirm-password" required />
+        </div>
 
-          <button type="submit" class="auth-btn">Đăng ký</button>
-          <div id="reg-message" class="form-message"></div>
-        </form>
+        <button type="submit" class="auth-btn" data-key="auth_btn_register">
+          Register
+        </button>
+        <div id="reg-message" class="form-message"></div>
+      </form>
 
-        <p class="auth-form-toggle">
-          Đã có tài khoản? <a href="#" data-toggle="login">Đăng nhập</a>
-        </p>
-      </div>
+      <p class="auth-form-toggle">
+        <span data-key="auth_text_already_have">Already Have An Account?</span>
+        <a href="#" data-toggle="login" data-key="auth_link_signin">Sign In</a>
+      </p>
+    </div>
 
-      <!-- Form Đăng nhập -->
-      <div id="login-section">
-        <h2>Đăng nhập</h2>
-        <form id="login-form">
-          <div class="form-group">
-            <label for="login-username">Tài khoản</label>
-            <input type="text" id="login-username" required />
-          </div>
+    <div id="login-section">
+      <h2 data-key="auth_login_title">Sign In</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-username" data-key="auth_label_username"
+            >Username</label
+          >
+          <input type="text" id="login-username" required />
+        </div>
 
-          <div class="form-group">
-            <label for="login-password">Mật khẩu</label>
-            <input type="password" id="login-password" required />
-          </div>
+        <div class="form-group">
+          <label for="login-password" data-key="auth_label_password"
+            >Password</label
+          >
+          <input type="password" id="login-password" required />
+        </div>
 
-          <button type="submit" class="auth-btn">Đăng nhập</button>
-          <div id="login-message" class="form-message"></div>
-        </form>
+        <button type="submit" class="auth-btn" data-key="auth_btn_signin">
+          Sign In
+        </button>
+        <div id="login-message" class="form-message"></div>
+      </form>
 
-        <p class="auth-form-toggle">
-          Chưa có tài khoản? <a href="#" data-toggle="register">Đăng ký</a>
-        </p>
-      </div>
+      <p class="auth-form-toggle">
+        <span data-key="auth_text_no_account">No account yet?</span>
+        <a href="#" data-toggle="register" data-key="auth_link_register"
+          >Register</a
+        >
+      </p>
     </div>
   </div>
 </div>

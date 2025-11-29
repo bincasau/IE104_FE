@@ -274,5 +274,65 @@
   "footer_company_terms": "Điều Khoản Dịch Vụ",
   "footer_company_privacy": "Chính Sách Bảo Mật",
 
-  "footer_bottom_text": "©2025 BRTtheme | Mọi quyền được bảo lưu"
+  "footer_bottom_text": "©2025 BRTtheme | Mọi quyền được bảo lưu",
+
+  "profile_heading": "Thông tin Cá nhân",
+  "profile_btn_change_avatar": "Đổi Ảnh đại diện",
+  "profile_label_fullname": "Họ và Tên:",
+  "profile_label_username": "Tài khoản: ",
+  "profile_btn_change_name": "Đổi Tên",
+  "profile_btn_change_password": "Đổi Mật khẩu",
+
+  "modal_fullname_heading": "Đổi Tên",
+  "modal_fullname_placeholder": "Nhập Họ và Tên mới",
+  "modal_btn_save": "Lưu",
+
+  "modal_password_heading": "Đổi Mật khẩu",
+  "modal_password_old": "Mật khẩu Cũ",
+  "modal_password_new": "Mật khẩu Mới",
+  "modal_password_confirm": "Xác nhận Mật khẩu Mới",
+
+  "modal_avatar_heading": "Chọn Ảnh đại diện có sẵn",
+  "modal_btn_save_avatar": "Lưu Ảnh đại diện Đã chọn",
+
+  "toast_error_no_user": "⚠ Không có người dùng được tải. Vui lòng thêm dữ liệu vào Local Storage.",
+  "toast_success_fullname": "✅ Đã đổi tên thành công thành",
+  "toast_error_fullname_invalid": "❌ Họ và Tên không hợp lệ hoặc không có thay đổi.",
+  "toast_error_fill_all": "❌ Vui lòng điền đầy đủ tất cả các trường.",
+  "toast_error_password_old_incorrect": "❌ Mật khẩu cũ không chính xác.",
+  "toast_error_password_not_match": "❌ Mật khẩu mới và xác nhận mật khẩu không khớp.",
+  "toast_error_password_length": "❌ Mật khẩu mới phải có ít nhất 4 ký tự.",
+  "toast_success_password": "✅ Đã đổi mật khẩu thành công!",
+  "toast_success_avatar": "✅ Đã đổi Avatar thành công thành",
+  "toast_no_change_avatar": "⚠️ Không có thay đổi, Avatar vẫn là",
+
+  "history_header_title": "Lịch Sử Đặt Tour",
+  "history_breadcrumb_home": "Trang chủ",
+  "history_breadcrumb_current": "Lịch sử đặt tour",
+  "history_sidebar_other_tours": "Tour Khác",
+  "history_heading_your_tours": "Các chuyến đi của bạn",
+  "history_btn_more_detail": "Xem chi tiết",
+  "status_finish": "Đã hoàn thành",
+  "status_pending": "Đang xử lý",
+
+  "btn_explore_now": "Khám phá Tour ngay",
+
+  "auth_register_title": "Đăng Ký Tài Khoản",
+  "auth_label_fullname": "Họ và Tên",
+  "auth_label_username": "Tên Đăng Nhập",
+  "auth_label_password": "Mật Khẩu",
+  "auth_label_reenter_password": "Nhập Lại Mật Khẩu",
+  "auth_btn_register": "Đăng Ký",
+  "auth_text_already_have": "Đã có tài khoản?",
+  "auth_link_signin": "Đăng Nhập",
+  "auth_login_title": "Đăng Nhập",
+  "auth_btn_signin": "Đăng Nhập",
+  "auth_text_no_account": "Chưa có tài khoản?",
+  "auth_link_register": "Đăng Ký",
+
+  "header_btn_profile": "Thông tin cá nhân",
+  "header_btn_history": "Lịch sử đặt tour",
+  "header_btn_logout": "Đăng xuất",
+
+  "header_btn_login": "Đăng nhập"
 }

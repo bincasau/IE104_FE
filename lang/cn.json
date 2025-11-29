@@ -274,5 +274,65 @@
   "footer_company_terms": "服务条款",
   "footer_company_privacy": "隐私政策",
 
-  "footer_bottom_text": "©2025 BRTtheme | 版权所有"
+  "footer_bottom_text": "©2025 BRTtheme | 版权所有",
+
+  "profile_heading": "个人信息",
+  "profile_btn_change_avatar": "更换头像",
+  "profile_label_fullname": "全名:",
+  "profile_label_username": "用户名:",
+  "profile_btn_change_name": "修改姓名",
+  "profile_btn_change_password": "修改密码",
+
+  "modal_fullname_heading": "修改姓名",
+  "modal_fullname_placeholder": "输入新的全名",
+  "modal_btn_save": "保存",
+
+  "modal_password_heading": "修改密码",
+  "modal_password_old": "旧密码",
+  "modal_password_new": "新密码",
+  "modal_password_confirm": "确认新密码",
+
+  "modal_avatar_heading": "选择可用头像",
+  "modal_btn_save_avatar": "保存选定头像",
+
+  "toast_error_no_user": "⚠ 未加载用户。请在本地存储中添加数据。",
+  "toast_success_fullname": "✅ 成功将姓名更改为",
+  "toast_error_fullname_invalid": "❌ 姓名无效或未作任何更改。",
+  "toast_error_fill_all": "❌ 请填写所有必填字段。",
+  "toast_error_password_old_incorrect": "❌ 旧密码不正确。",
+  "toast_error_password_not_match": "❌ 新密码和确认密码不匹配。",
+  "toast_error_password_length": "❌ 新密码必须至少包含 4 个字符。",
+  "toast_success_password": "✅ 密码修改成功！",
+  "toast_success_avatar": "✅ 成功将头像更改为",
+  "toast_no_change_avatar": "⚠️ 未作更改，头像仍为",
+
+  "history_header_title": "预订历史",
+  "history_breadcrumb_home": "首页",
+  "history_breadcrumb_current": "预订",
+  "history_sidebar_other_tours": "其他旅行团",
+  "history_heading_your_tours": "您的旅行团",
+  "history_btn_more_detail": "查看详情",
+  "status_finish": "已完成",
+  "status_pending": "处理中",
+
+  "btn_explore_now": "立即探索行程",
+
+  "auth_register_title": "注册账户",
+  "auth_label_fullname": "全名",
+  "auth_label_username": "用户名",
+  "auth_label_password": "密码",
+  "auth_label_reenter_password": "再次输入密码",
+  "auth_btn_register": "注册",
+  "auth_text_already_have": "已有账户？",
+  "auth_link_signin": "登录",
+  "auth_login_title": "登录",
+  "auth_btn_signin": "登录",
+  "auth_text_no_account": "还没有账户？",
+  "auth_link_register": "注册",
+
+  "header_btn_profile": "个人信息",
+  "header_btn_history": "订单记录",
+  "header_btn_logout": "退出",
+
+  "header_btn_login": "登录"
 }
