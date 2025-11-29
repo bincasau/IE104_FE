@@ -14,7 +14,7 @@ export async function setLanguage(lang) {
     // ✔ Sử dụng đường dẫn tuyệt đối (root-relative) bắt đầu bằng "/"
     //   để đảm bảo luôn fetch đúng file /lang/..json dù đang ở bất kỳ trang con nào.
     //   (Sửa từ "./lang/" thành "/lang/")
-    const res = await fetch(`./lang/${lang}.json?v=${Date.now()}`);
+    const res = await fetch(`/lang/${lang}.json?v=${Date.now()}`);
 
     if (!res.ok) {
       console.error(`Không thể tải file ngôn ngữ: ${lang}.json`);
