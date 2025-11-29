@@ -41,13 +41,13 @@ export async function initHeader() {
     if (!hasAuth) appendLink("../assets/css/auth.css");
 
     // Loại bỏ nền trắng bên trong iframe và overlay phụ
-    const style = doc.createElement("style");
-    style.textContent = `
-      html, body { background: transparent !important; }
-      .auth-modal { background: transparent !important; }
-      .auth-modal-overlay { display: none !important; }
-    `;
-    doc.head.appendChild(style);
+    // const style = doc.createElement("style");
+    // style.textContent = `
+    //   html, body { background: transparent !important; }
+    //   .auth-modal { background: transparent !important; }
+    //   .auth-modal-overlay { display: none !important; }
+    // `;
+    // doc.head.appendChild(style);
 
     // Hiển thị form (trong auth.html đang bị class hidden)
     doc.getElementById("auth-popup")?.classList.remove("hidden");
