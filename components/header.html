@@ -26,6 +26,7 @@
     <button class="btn-login" id="headerLoginBtn" data-key="header_btn_login">
       Log In
     </button>
+
     <div class="user-menu" id="headerUserMenu">
       <div class="user-avatar" id="headerUserAvatar" title="Tài khoản">
         <img
@@ -35,29 +36,18 @@
         />
       </div>
       <div class="user-dropdown" id="headerUserDropdown">
-        <button
-          class="btn-profile"
-          id="headerProfileBtn"
-          data-key="header_btn_profile"
-        >
+        <button class="btn-profile" id="headerProfileBtn" data-key="header_btn_profile">
           Personal Information
         </button>
-        <button
-          class="btn-history"
-          id="headerHistoryBtn"
-          data-key="header_btn_history"
-        >
+        <button class="btn-history" id="headerHistoryBtn" data-key="header_btn_history">
           Order placed
         </button>
-        <button
-          class="btn-logout"
-          id="headerLogoutBtn"
-          data-key="header_btn_logout"
-        >
+        <button class="btn-logout" id="headerLogoutBtn" data-key="header_btn_logout">
           Log Out
         </button>
       </div>
     </div>
+
     <div class="language-selector">
       <button class="lang-btn" id="langButton">
         <img src="./assets/images/header/eng.webp" alt="English" class="flag" />
@@ -65,57 +55,40 @@
 
       <ul class="lang-dropdown" id="langDropdown">
         <li data-flag="./assets/images/header/vi.webp">
-          <img
-            src="./assets/images/header/vi.webp"
-            alt="Vietnamese"
-            class="flag"
-          />
+          <img src="./assets/images/header/vi.webp" alt="Vietnamese" class="flag" />
         </li>
         <li data-flag="./assets/images/header/eng.webp">
-          <img
-            src="./assets/images/header/eng.webp"
-            alt="English"
-            class="flag"
-          />
+          <img src="./assets/images/header/eng.webp" alt="English" class="flag" />
         </li>
         <li data-flag="./assets/images/header/cn.webp">
-          <img
-            src="./assets/images/header/cn.webp"
-            alt="Chinese"
-            class="flag"
-          />
+          <img src="./assets/images/header/cn.webp" alt="Chinese" class="flag" />
         </li>
         <li data-flag="./assets/images/header/jp.webp">
-          <img
-            src="./assets/images/header/jp.webp"
-            alt="Japanese"
-            class="flag"
-          />
+          <img src="./assets/images/header/jp.webp" alt="Japanese" class="flag" />
         </li>
       </ul>
     </div>
-    <!-- Hamburger icon -->
+
     <div class="icon-circle yellow hamburger-btn">
       <i class="fas fa-bars"></i>
     </div>
   </div>
 </header>
-<!-- Overlay khi bấm logo -->
+
+<!-- Logo overlay -->
 <div id="logo-overlay" aria-hidden="true">
   <div class="overlay-bg"></div>
-  <img
-    src="./assets/images/header/plane.webp"
-    alt="Plane"
-    class="overlay-plane"
-  />
+  <img src="./assets/images/header/plane.webp" alt="Plane" class="overlay-plane" />
 </div>
 
-<!-- Modal đăng nhập/đăng ký -->
+<!-- ⭐ AUTH MODAL (Popup đăng nhập/đăng ký) ⭐ -->
 <div id="auth-modal" class="auth-modal" aria-hidden="true">
   <div class="auth-modal__backdrop"></div>
+
   <div class="auth-modal__content" role="dialog" aria-label="Đăng nhập">
     <iframe
       id="auth-iframe"
+      src="./pages/auth.html"
       title="Đăng nhập / Đăng ký"
       loading="lazy"
       allow="clipboard-write"

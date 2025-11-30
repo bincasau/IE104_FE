@@ -19,3 +19,36 @@ try {
 } catch (e) {
   console.error("Failed to init footer scripts:", e);
 }
+
+// ============================
+// GLOBAL LOGIN POPUP CONTROLLER
+// ============================
+
+// 👉 Gọi lại đúng logic mở modal trong header.js
+window.openLoginPopup = function () {
+  const loginBtn = document.getElementById("headerLoginBtn");
+  if (!loginBtn) {
+    console.warn("❌ headerLoginBtn NOT FOUND – header chưa load xong?");
+    return;
+  }
+  loginBtn.click(); // dùng chính handler của header
+};
+
+// Tuỳ, nếu muốn đóng popup từ nơi khác
+window.closeLoginPopup = function () {
+  // nếu header.js có sẵn hàm đóng modal thì có thể gọi ở đây
+  const modal = document.getElementById("auth-modal");
+  if (!modal) return;
+  modal.setAttribute("aria-hidden", "true");
+  modal.classList.remove("show");
+};
+
+// Nếu bạn KHÔNG chắc header.js có lắng nghe message này,
+// có thể giữ lại; nếu thấy reload 2 lần thì xoá block dưới.
+window.addEventListener("message", (event) => {
+  if (event.data?.type === "auth-login-success") {
+    // Sau khi login thành công, có thể đóng modal ở đây nếu cần
+    window.closeLoginPopup();
+    location.reload(); // Cập nhật header
+  }
+});

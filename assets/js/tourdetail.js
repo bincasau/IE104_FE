@@ -1,5 +1,5 @@
 // ===============================
-// tourdetail.js (SPA FIXED + Stable + Booking Popup)
+// tourdetail.js (SPA FIXED + Stable + Booking Popup + Login Popup)
 // ===============================
 import { I18N, applyTranslations } from "./lang.js";
 
@@ -19,7 +19,6 @@ export async function initPage() {
   window._tourPopHandler = (e) => {
     if (e?.state?.page === "tour-detail") return;
 
-    // Xóa hash khi rời trang
     history.replaceState(null, "", location.pathname);
 
     if (typeof window.loadSection === "function") {
@@ -63,7 +62,6 @@ export async function initPage() {
     }
   };
 
-  // Click menu, logo → rời trang
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a,button");
     if (!link) return;
@@ -210,9 +208,14 @@ export async function initPage() {
     bookBtn.addEventListener("click", async (e) => {
       e.preventDefault();
 
+      // ⭐ CHECK LOGIN → SHOW POPUP ⭐
       const currentUserStr = localStorage.getItem("currentUser");
       if (!currentUserStr) {
-        alert("Please login to book tour!");
+        if (typeof window.openLoginPopup === "function") {
+          window.openLoginPopup();
+        } else {
+          console.warn("⚠️ openLoginPopup() NOT FOUND");
+        }
         return;
       }
 
@@ -250,24 +253,6 @@ export async function initPage() {
         status: "Pending",
         bookingDate: new Date().toLocaleDateString("vi-VN"),
       };
-
-      const otherTour = sessionStorage.getItem("selectedOtherTour");
-
-  if (otherTour) {
-    const data = JSON.parse(otherTour);
-
-    const imgEl = document.querySelector(".gallery-left img");
-    const titleEl = document.querySelector(".tour-title");
-    const priceEl = document.querySelector(".form-bottom .price span:last-child");
-    const locationEl = document.querySelector(".tour-location");
-
-    if (imgEl) imgEl.src = data.img;
-    if (titleEl) titleEl.innerText = data.title;
-    if (priceEl) priceEl.innerText = data.price;
-    if (locationEl) locationEl.innerText = data.location;
-
-    console.log("📌 Loaded OTHER TOUR:", data);
-  }
 
       const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
       bookings.push(newBooking);
