@@ -167,11 +167,20 @@ export async function initPage() {
     if (!commentText) return textarea.focus();
 
     // Tạo đối tượng comment mới
+    let currentUser = null;
+    try {
+      currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      console.log("Current User:", currentUser);
+    } catch (e) {
+      console.error("Failed to parse currentUser from localStorage", e);
+    }
     const newComment = {
-      author: "Bạn",
+      author: currentUser.name || "User",
       text: commentText,
       dateKey: "blog_comment_date_today",
-      avatar: `https://i.pravatar.cc/40?img=${10}`,
+      avatar:
+        "./assets/images/users/" + currentUser.avatar ||
+        "./assets/images/users/avatarDefault.webp",
     };
 
     // Lấy key và danh sách comment cũ từ localStorage
@@ -198,7 +207,9 @@ export async function initPage() {
 
     // Xóa nội dung trong textarea và cuộn đến danh sách
     textarea.value = "";
-    box.querySelector(".cmt-list")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    box
+      .querySelector(".cmt-list")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   /* =============================================
@@ -406,7 +417,9 @@ export async function initPage() {
 
     const blogData = allBlogs.find((b) => b.slug === slug);
     const avatar = blogData?.avatar || "https://i.pravatar.cc/40?img=1";
-    const wordCount = post.intro.split(" ").length + post.sections.reduce((acc, s) => acc + s.text.split(" ").length, 0);
+    const wordCount =
+      post.intro.split(" ").length +
+      post.sections.reduce((acc, s) => acc + s.text.split(" ").length, 0);
     const mins = Math.max(1, Math.round(wordCount / 150));
     const shareUrl = location.href;
     const shareTitle = post.title;
