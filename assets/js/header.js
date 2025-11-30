@@ -1,8 +1,8 @@
 // header.js
 
 import { loadSection } from "./utils.js";
-// ⭐ SỬA ĐỔI: Import thêm applyTranslations
-import { setLanguage, enableAutoTranslate, applyTranslations } from "./lang.js"; // <-- THAY ĐỔI
+// Import thêm applyTranslations
+import { setLanguage, enableAutoTranslate, applyTranslations } from "./lang.js";
 
 export async function initHeader() {
   console.log("Header initialized");
@@ -43,15 +43,6 @@ export async function initHeader() {
     if (!hasGlobal) appendLink("../assets/css/global.css");
     if (!hasAuth) appendLink("../assets/css/auth.css");
 
-    // Loại bỏ nền trắng bên trong iframe và overlay phụ
-    // const style = doc.createElement("style");
-    // style.textContent = `
-    //   html, body { background: transparent !important; }
-    //   .auth-modal { background: transparent !important; }
-    //   .auth-modal-overlay { display: none !important; }
-    // `;
-    // doc.head.appendChild(style);
-
     // Hiển thị form (trong auth.html đang bị class hidden)
     doc.getElementById("auth-popup")?.classList.remove("hidden");
     doc.getElementById("login-section")?.classList.remove("hidden");
@@ -71,7 +62,7 @@ export async function initHeader() {
       initAuth();
     }
 
-    // ⭐ SỬA ĐỔI: Gọi dịch cho nội dung iframe TẠI ĐÂY
+    //  Gọi dịch cho nội dung iframe TẠI ĐÂY
     if (applyTranslations) {
       applyTranslations(doc);
     }
@@ -323,11 +314,20 @@ export async function initHeader() {
   }
 
   if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
+    logoutBtn.addEventListener("click", async () => {
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("currentUser");
       updateAuthUI();
       closeAuthModal();
+      await navigateToPage("Home");
+
+      // Bỏ active các nav-links
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.classList.remove("active");
+      });
+
+      // Gán lại active cho Home
+      document.querySelector(".nav-links .Home")?.classList.add("active");
     });
   }
 
@@ -382,7 +382,7 @@ export async function initHeader() {
     }
   });
 
-  // ⭐ SỬA ĐỔI: Lắng nghe sự kiện retranslate từ lang.js để dịch lại iframe
+  //  Lắng nghe sự kiện retranslate từ lang.js để dịch lại iframe
   window.addEventListener("retranslate", () => {
     if (authIframe?.contentDocument) {
       // 1. Áp dụng bản dịch cho nội dung tĩnh (data-key)
@@ -425,6 +425,9 @@ export async function initHeader() {
       });
     });
   }
+  window.addEventListener("avt-updated", () => {
+    updateAuthUI(); // cập nhật avatar trên header
+  });
   /* =============================================
      LANGUAGE SWITCHER
   ============================================== */

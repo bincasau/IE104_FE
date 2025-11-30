@@ -35,9 +35,9 @@ const MSG = {
 };
 
 // lấy language trong localStorage (default EN)
-// ⭐ SỬA ĐỔI: Hàm này phải đọc từ localStorage để đồng bộ với cửa sổ cha
+//  SỬA ĐỔI: Hàm này phải đọc từ localStorage để đồng bộ với cửa sổ cha
 function getLang() {
-  return localStorage.getItem("lang") || "en"; // <-- THAY ĐỔI
+  return localStorage.getItem("lang") || "en";
 }
 
 function getMsg(key, param) {
@@ -169,7 +169,7 @@ function initAuthPopup() {
     window.parent?.postMessage({ type: "auth-login-success" }, "*");
   });
 
-  // ⭐ SỬA ĐỔI: Thêm listener để reset message box khi ngôn ngữ thay đổi trong cửa sổ cha
+  //  SỬA ĐỔI: Thêm listener để reset message box khi ngôn ngữ thay đổi trong cửa sổ cha
   window.addEventListener("storage", (event) => {
     if (event.key === "lang") {
       setMode(LOG_SECTION.classList.contains("hidden") ? "register" : "login");

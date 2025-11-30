@@ -99,7 +99,7 @@ export function initPage() {
     const toast = document.createElement("div");
     toast.className = `toast ${type}`;
 
-    // 🚀 Lấy ngôn ngữ mới nhất
+    //  Lấy ngôn ngữ mới nhất
     const currentLang = getCurrentLang();
 
     let text;
@@ -171,7 +171,7 @@ export function initPage() {
 
   // Update UI display
   function updateDisplay() {
-    // 🚀 Lấy ngôn ngữ mới nhất
+    //  Lấy ngôn ngữ mới nhất
     const currentLang = getCurrentLang();
 
     if (currentUser) {
@@ -366,6 +366,7 @@ export function initPage() {
 
       saveUserData(); // Sẽ lưu cả currentUser và usersData
       updateDisplay();
+      window.dispatchEvent(new Event("avt-updated"));
       showToast("avatarUpdated", "success");
     } else showToast("noChangesDetected");
     closeModal(modalAvatar);
