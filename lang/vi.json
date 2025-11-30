@@ -334,5 +334,8 @@
   "header_btn_history": "Lịch sử đặt tour",
   "header_btn_logout": "Đăng xuất",
 
-  "header_btn_login": "Đăng nhập"
+  "header_btn_login": "Đăng nhập",
+
+  "history_login_prompt": "Vui lòng đăng nhập để xem lịch sử đặt tour.",
+  "history_explore_tour_btn": "Khám phá Tour ngay"
 }

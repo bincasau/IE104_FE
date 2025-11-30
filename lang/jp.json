@@ -334,5 +334,8 @@
   "header_btn_history": "予約履歴",
   "header_btn_logout": "ログアウト",
 
-  "header_btn_login": "ログイン"
+  "header_btn_login": "ログイン",
+
+  "history_login_prompt": "ツアー予約履歴を表示するには、ログインしてください。",
+  "history_explore_tour_btn": "今すぐツアーを探す"
 }

@@ -334,5 +334,8 @@
   "header_btn_history": "Order placed",
   "header_btn_logout": "Log Out",
 
-  "header_btn_login": "Log In"
+  "header_btn_login": "Log In",
+
+  "history_login_prompt": "Please log in to view tour booking history.",
+  "history_explore_tour_btn": "Explore Tours now"
 }

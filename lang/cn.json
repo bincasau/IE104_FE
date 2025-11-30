@@ -334,5 +334,8 @@
   "header_btn_history": "订单记录",
   "header_btn_logout": "退出",
 
-  "header_btn_login": "登录"
+  "header_btn_login": "登录",
+
+  "history_login_prompt": "请登录以查看您的旅行预订历史记录。",
+  "history_explore_tour_btn": "立即探索旅行团"
 }

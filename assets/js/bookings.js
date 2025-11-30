@@ -20,18 +20,25 @@ export function initPage() {
 
   if (!currentUserStr) {
     bookingListEl.innerHTML = `
-      <div style="text-align: center; padding: 40px;">
-        <h3>Please log in to view tour booking history.</h3>
-        <a 
-          href="#"
-          class="btn-view-detail action-explore"
-          style="display:inline-block; width:auto; margin-top:20px;"
-        >
-          Explore Tour now
-        </a>
+     <div style="text-align: center; padding: 40px;">
+        <h3 data-key="history_login_prompt">
+      Please log in to view tour booking history.
+      </h3>
+      <a 
+        href="#"
+        class="btn-view-detail action-explore"
+        style="display:inline-block; width:auto; margin-top:20px;"
+        data-key="history_explore_tour_btn"
+      >
+        Explore Tour now
+      </a>
       </div>`;
-    attachHandlers(bookingListEl);
-    attachOtherToursHandlers();
+    import("./lang.js")
+      .then(({ applyTranslations }) => applyTranslations(bookingListEl))
+      .then(() => {
+        attachHandlers(bookingListEl);
+        attachOtherToursHandlers();
+      });
     return;
   }
 
@@ -41,30 +48,40 @@ export function initPage() {
   // 2. LẤY BOOKING CỦA USER
   // ===============================
   const allBookings = JSON.parse(localStorage.getItem("bookings")) || [];
-  const userBookings = allBookings.filter(b => b.userId === currentUser.username);
+  const userBookings = allBookings.filter(
+    (b) => b.userId === currentUser.username
+  );
 
-  // Cập nhật tiêu đề
-  if (historyHeading) {
-    historyHeading.innerHTML = `Your tours (${userBookings.length})`;
-  }
+  // // Cập nhật tiêu đề
+  // if (historyHeading) {
+  //   historyHeading.innerHTML = `Your tours (${userBookings.length})`;
+  // }
 
   // ===============================
   // 3. KHÔNG CÓ BOOKING NÀO
   // ===============================
   if (userBookings.length === 0) {
     bookingListEl.innerHTML = `
-      <div style="text-align: center; padding: 40px; color: #666;">
-        <p>You have not booked any tours yet.</p>
-        <a 
-          href="#"
-          class="btn-view-detail action-explore"
-          style="display:inline-block; width:auto; margin-top:10px;"
-        >
-          Explore Tour now
-        </a>
+      <div style="text-align: center; padding: 40px;">
+        <h3 data-key="history_login_prompt">
+      Please log in to view tour booking history.
+      </h3>
+      <a 
+        href="#"
+        class="btn-view-detail action-explore"
+        style="display:inline-block; width:auto; margin-top:20px;"
+        data-key="history_explore_tour_btn"
+      >
+        Explore Tour now
+      </a>
       </div>`;
-    attachHandlers(bookingListEl);
-    attachOtherToursHandlers();
+    import("./lang.js")
+      .then(({ applyTranslations }) => applyTranslations(bookingListEl))
+      .then(() => {
+        attachHandlers(bookingListEl);
+        attachOtherToursHandlers();
+      });
+
     return;
   }
 
@@ -106,12 +123,16 @@ export function initPage() {
 
               <div class="detail-item">
                 <i class="fa-solid fa-user-group"></i>
-                <span>Member: <strong>${booking.guests.adults} Adults, ${booking.guests.kids} Childs</strong></span>
+                <span>Member: <strong>${booking.guests.adults} Adults, ${
+        booking.guests.kids
+      } Childs</strong></span>
               </div>
 
               <div class="detail-item">
                 <i class="fa-solid fa-star"></i>
-                <span>Service: <strong>${formatService(booking.facility)}</strong></span>
+                <span>Service: <strong>${formatService(
+                  booking.facility
+                )}</strong></span>
               </div>
             </div>
           </div>
@@ -125,7 +146,8 @@ export function initPage() {
 
             <button 
               class="btn-view-detail action-view"
-              data-id="${booking.id}">
+              data-id="${booking.id}"
+              data-key="history_btn_more_detail">
               More Detail
             </button>
           </div>
@@ -136,8 +158,6 @@ export function initPage() {
     });
 
   attachHandlers(bookingListEl);
-
-  // ⭐ gắn handler cho Other Tours
   attachOtherToursHandlers();
 }
 
@@ -154,7 +174,12 @@ function attachHandlers(bookingListEl) {
       e.preventDefault();
 
       if (window.loadSection) {
-        await window.loadSection("main", "./pages/tour.html", "./tour.js", "Tours");
+        await window.loadSection(
+          "main",
+          "./pages/tour.html",
+          "./tour.js",
+          "Tours"
+        );
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         window.location.href = "./pages/tour.html";
@@ -170,7 +195,12 @@ function attachHandlers(bookingListEl) {
       sessionStorage.setItem("selectedBookingId", bookingId);
 
       if (window.loadSection) {
-        await window.loadSection("main", "./pages/tourdetail.html", "./tourdetail.js", "TourDetail");
+        await window.loadSection(
+          "main",
+          "./pages/tourdetail.html",
+          "./tourdetail.js",
+          "TourDetail"
+        );
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         window.location.href = "./pages/tourdetail.html";
@@ -195,8 +225,10 @@ function attachOtherToursHandlers() {
       const img = item.querySelector("img")?.src || "";
       const title = item.querySelector("h4")?.innerText || "Tour Detail";
       const price = item.querySelector(".price")?.innerText || "";
-      const location = item.querySelector(".bottom-row p:first-child")?.innerText || "";
-      const duration = item.querySelector(".bottom-row p:last-child")?.innerText || "";
+      const location =
+        item.querySelector(".bottom-row p:first-child")?.innerText || "";
+      const duration =
+        item.querySelector(".bottom-row p:last-child")?.innerText || "";
 
       // Lưu dữ liệu sang trang tourdetail
       sessionStorage.setItem(
