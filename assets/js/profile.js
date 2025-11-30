@@ -193,22 +193,68 @@ export function initPage() {
     }
   }
 
+  // Sửa hàm saveUserData: Đảm bảo lưu cả "currentUser" và "demoUsers"
   function saveUserData() {
+    // 1. Lưu thông tin người dùng hiện tại vào key "currentUser" (để load lần sau)
+    if (currentUser) {
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    }
+
+    // 2. Lưu mảng đầy đủ vào key "demoUsers" (để logic đăng nhập/đăng ký vẫn hoạt động chính xác)
+    // Cần đảm bảo usersData đã được cập nhật trước khi gọi hàm này
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(usersData));
-    console.log("User data saved to Local Storage.");
+    console.log(
+      "User data updated in Local Storage: currentUser and demoUsers."
+    );
   }
 
+  // Sửa hàm loadUserData: Đảm bảo load mảng demoUsers trước, sau đó tìm user hiện tại
+  // Hàm này được sửa lại để lấy được usersData (mảng) VÀ currentUser (object)
   function loadUserData() {
-    const storedData = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (storedData) {
+    const storedUsers = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const storedCurrentUser = localStorage.getItem("currentUser");
+
+    if (storedUsers) {
       try {
-        usersData = JSON.parse(storedData);
+        usersData = JSON.parse(storedUsers);
       } catch (e) {
-        console.error("Error parsing Local Storage data:", e);
+        console.error("Error parsing Local Storage data (demoUsers):", e);
         usersData = [];
       }
     }
-    currentUser = usersData.length > USER_ID ? usersData[USER_ID] : null;
+
+    if (storedCurrentUser) {
+      try {
+        currentUser = JSON.parse(storedCurrentUser);
+
+        // Cần đảm bảo currentUser trong usersData được cập nhật
+        if (currentUser) {
+          const userIndex = usersData.findIndex(
+            (u) => u.username === currentUser.username
+          );
+          if (userIndex !== -1) {
+            // Đặt currentUser vào vị trí 0 của mảng usersData (logic cũ)
+            // HOẶC tìm và cập nhật user trong mảng usersData
+            usersData[userIndex] = currentUser; // Cập nhật user trong mảng usersData
+          } else {
+            // Nếu user không có trong demoUsers (có thể chưa đăng ký),
+            // coi như không có user hiện tại hoặc thêm vào mảng.
+            // Ta sẽ dựa vào storedCurrentUser để hiển thị.
+            // Để giữ nguyên logic cũ usersData[USER_ID] = currentUser;
+            // Nhưng vì không có user id, ta chỉ lấy user đầu tiên nếu tồn tại.
+            // Giữ nguyên logic đơn giản: nếu tìm thấy storedCurrentUser, đó là user hiện tại.
+            // Logic cập nhật sẽ sử dụng username để tìm và sửa trong usersData.
+          }
+        }
+      } catch (e) {
+        console.error("Error parsing Local Storage data (currentUser):", e);
+        currentUser = null;
+      }
+    }
+
+    // Nếu không có storedCurrentUser nhưng có usersData, có thể đặt currentUser = usersData[0]
+    // Tuy nhiên, ta sẽ chỉ dựa vào storedCurrentUser (được auth.js thiết lập) để xác định.
+
     updateDisplay();
   }
 
@@ -261,8 +307,16 @@ export function initPage() {
     const newFullname = inputNewFullname.value.trim();
     if (newFullname && newFullname !== currentUser.fullName) {
       currentUser.fullName = newFullname;
-      usersData[USER_ID] = currentUser;
-      saveUserData();
+
+      // Cập nhật usersData trước khi lưu
+      const userIndex = usersData.findIndex(
+        (u) => u.username === currentUser.username
+      );
+      if (userIndex !== -1) {
+        usersData[userIndex] = currentUser;
+      }
+
+      saveUserData(); // Sẽ lưu cả currentUser và usersData
       updateDisplay();
       showToast("fullNameUpdated", "success", newFullname);
       closeModal(modalFullname);
@@ -283,8 +337,16 @@ export function initPage() {
     if (newPass !== confirmPass) return showToast("passwordMismatch", "error");
     if (newPass.length < 4) return showToast("passwordTooShort", "error");
     currentUser.password = newPass;
-    usersData[USER_ID] = currentUser;
-    saveUserData();
+
+    // Cập nhật usersData trước khi lưu
+    const userIndex = usersData.findIndex(
+      (u) => u.username === currentUser.username
+    );
+    if (userIndex !== -1) {
+      usersData[userIndex] = currentUser;
+    }
+
+    saveUserData(); // Sẽ lưu cả currentUser và usersData
     showToast("passwordUpdated", "success");
     closeModal(modalPassword);
   });
@@ -293,8 +355,16 @@ export function initPage() {
     if (!currentUser || !selectedAvatarFileName) return;
     if (currentUser.avatar !== selectedAvatarFileName) {
       currentUser.avatar = selectedAvatarFileName;
-      usersData[USER_ID] = currentUser;
-      saveUserData();
+
+      // Cập nhật usersData trước khi lưu
+      const userIndex = usersData.findIndex(
+        (u) => u.username === currentUser.username
+      );
+      if (userIndex !== -1) {
+        usersData[userIndex] = currentUser;
+      }
+
+      saveUserData(); // Sẽ lưu cả currentUser và usersData
       updateDisplay();
       showToast("avatarUpdated", "success");
     } else showToast("noChangesDetected");

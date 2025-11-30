@@ -1,5 +1,8 @@
+// header.js
+
 import { loadSection } from "./utils.js";
-import { setLanguage, enableAutoTranslate } from "./lang.js";
+// ⭐ SỬA ĐỔI: Import thêm applyTranslations
+import { setLanguage, enableAutoTranslate, applyTranslations } from "./lang.js"; // <-- THAY ĐỔI
 
 export async function initHeader() {
   console.log("Header initialized");
@@ -66,6 +69,11 @@ export async function initHeader() {
       doc.body.appendChild(script);
     } else {
       initAuth();
+    }
+
+    // ⭐ SỬA ĐỔI: Gọi dịch cho nội dung iframe TẠI ĐÂY
+    if (applyTranslations) {
+      applyTranslations(doc);
     }
 
     // Reset về tab login
@@ -374,6 +382,18 @@ export async function initHeader() {
     }
   });
 
+  // ⭐ SỬA ĐỔI: Lắng nghe sự kiện retranslate từ lang.js để dịch lại iframe
+  window.addEventListener("retranslate", () => {
+    if (authIframe?.contentDocument) {
+      // 1. Áp dụng bản dịch cho nội dung tĩnh (data-key)
+      applyTranslations(authIframe.contentDocument);
+
+      // 2. Thông báo cho iframe reset mode (để làm sạch message box)
+      authIframe.contentWindow?.postMessage({ type: "auth-reset" }, "*");
+    }
+  });
+  // END SỬA ĐỔI
+
   updateAuthUI();
 
   /* =============================================
@@ -445,7 +465,7 @@ export async function initHeader() {
         }
 
         await setLanguage(lang);
-        localStorage.setItem("lang", lang); // Lưu lại ngôn ngữ đã chọn
+        // localStorage.setItem("lang", lang); // Đã làm trong setLanguage()
         languageSelector.classList.remove("show");
       });
     });

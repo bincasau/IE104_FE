@@ -1,3 +1,53 @@
+// auth.js
+
+/* ===== MULTI LANGUAGE SYSTEM ===== */
+const MSG = {
+  wrongLogin: {
+    en: "Incorrect username or password.",
+    vi: "Sai tài khoản hoặc mật khẩu.",
+    jp: "ユーザー名またはパスワードが間違っています。",
+    cn: "用户名或密码错误。",
+  },
+  loginSuccess: {
+    en: (name) => `Login successful! Welcome ${name}.`,
+    vi: (name) => `Đăng nhập thành công! Chào ${name}.`,
+    jp: (name) => `ログイン成功！ようこそ ${name} さん。`,
+    cn: (name) => `登录成功！欢迎 ${name}。`,
+  },
+  passwordMismatch: {
+    en: "Passwords do not match.",
+    vi: "Mật khẩu không khớp.",
+    jp: "パスワードが一致しません。",
+    cn: "密码不匹配。",
+  },
+  userExists: {
+    en: (u) => `User '${u}' already exists.`,
+    vi: (u) => `Tài khoản '${u}' đã tồn tại.`,
+    jp: (u) => `ユーザー '${u}' は既に存在します。`,
+    cn: (u) => `用户 '${u}' 已存在。`,
+  },
+  registerSuccess: {
+    en: "Registration successful!",
+    vi: "Đăng ký thành công!",
+    jp: "登録が成功しました！",
+    cn: "注册成功！",
+  },
+};
+
+// lấy language trong localStorage (default EN)
+// ⭐ SỬA ĐỔI: Hàm này phải đọc từ localStorage để đồng bộ với cửa sổ cha
+function getLang() {
+  return localStorage.getItem("lang") || "en"; // <-- THAY ĐỔI
+}
+
+function getMsg(key, param) {
+  const lang = getLang();
+  const item = MSG[key][lang];
+  return typeof item === "function" ? item(param) : item;
+}
+
+/* ===== MAIN CODE ===== */
+
 function initAuthPopup() {
   const REG_FORM = document.getElementById("register-form");
   const LOG_FORM = document.getElementById("login-form");
@@ -13,8 +63,13 @@ function initAuthPopup() {
     const isLogin = mode === "login";
     LOG_SECTION.classList.toggle("hidden", !isLogin);
     REG_SECTION.classList.toggle("hidden", isLogin);
+
+    // Đảm bảo message box được làm sạch khi chuyển mode
     LOG_MESSAGE.textContent = "";
     REG_MESSAGE.textContent = "";
+    LOG_MESSAGE.className = "form-message";
+    REG_MESSAGE.className = "form-message";
+
     REG_FORM.reset();
     LOG_FORM.reset();
   };
@@ -56,18 +111,14 @@ function initAuthPopup() {
     ).value;
 
     if (password !== confirmPassword) {
-      displayMessage(REG_MESSAGE, "Mật khẩu không khớp.", "error");
+      displayMessage(REG_MESSAGE, getMsg("passwordMismatch"), "error");
       return;
     }
 
     const users = getUsers();
 
     if (users.some((u) => u.username === username)) {
-      displayMessage(
-        REG_MESSAGE,
-        `Tài khoản '${username}' đã tồn tại.`,
-        "error"
-      );
+      displayMessage(REG_MESSAGE, getMsg("userExists", username), "error");
       return;
     }
 
@@ -80,7 +131,7 @@ function initAuthPopup() {
 
     saveUsers(users);
 
-    displayMessage(REG_MESSAGE, "Đăng ký thành công!", "success");
+    displayMessage(REG_MESSAGE, getMsg("registerSuccess"), "success");
 
     setTimeout(() => {
       setMode("login");
@@ -101,13 +152,13 @@ function initAuthPopup() {
     );
 
     if (!user) {
-      displayMessage(LOG_MESSAGE, "Sai tài khoản hoặc mật khẩu.", "error");
+      displayMessage(LOG_MESSAGE, getMsg("wrongLogin"), "error");
       return;
     }
 
     displayMessage(
       LOG_MESSAGE,
-      `Đăng nhập thành công! Chào ${user.fullName}.`,
+      getMsg("loginSuccess", user.fullName),
       "success"
     );
 
@@ -118,7 +169,14 @@ function initAuthPopup() {
     window.parent?.postMessage({ type: "auth-login-success" }, "*");
   });
 
-  // Nhận yêu cầu reset từ parent để luôn về màn đăng nhập sạch
+  // ⭐ SỬA ĐỔI: Thêm listener để reset message box khi ngôn ngữ thay đổi trong cửa sổ cha
+  window.addEventListener("storage", (event) => {
+    if (event.key === "lang") {
+      setMode(LOG_SECTION.classList.contains("hidden") ? "register" : "login");
+    }
+  });
+
+  // Reset từ parent
   window.addEventListener("message", (event) => {
     if (!event.data || typeof event.data !== "object") return;
     if (event.data.type === "auth-reset") {

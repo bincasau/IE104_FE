@@ -96,4 +96,5 @@ export function enableAutoTranslate() {
 /**
  * Trả về đối tượng chứa tất cả bản dịch hiện tại.
  */
+
 export { I18N };
