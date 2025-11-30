@@ -23,7 +23,7 @@ const cleanupTourPopstate = () => {
 };
 
 /**
- * 5. Hàm Navigate (TÁCH RA để dùng chung)
+ * 5. Hàm Navigate 
  * Hàm này sẽ xử lý việc điều hướng SPA
  */
 async function navigateToPage(pageName) {
@@ -51,7 +51,7 @@ async function navigateToPage(pageName) {
 // 6. Hàm khởi tạo footer
 export function initFooter() {
   // --- A. XỬ LÝ CÁC LINK ĐIỀU HƯỚNG ---
-  const footerLinks = $$("#footer .footer-links a");
+  const footerLinks = $$("footer .footer-links a");
 
   footerLinks.forEach((link) => {
     const pageName = [...link.classList].find((c) => pageMap[c]);
