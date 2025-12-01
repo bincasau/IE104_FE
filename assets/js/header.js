@@ -40,8 +40,8 @@ export async function initHeader() {
       doc.head.appendChild(link);
     };
 
-    if (!hasGlobal) appendLink("../assets/css/global.css");
-    if (!hasAuth) appendLink("../assets/css/auth.css");
+    if (!hasGlobal) appendLink("./assets/css/global.css");
+    if (!hasAuth) appendLink("./assets/css/auth.css");
 
     // Hiển thị form (trong auth.html đang bị class hidden)
     doc.getElementById("auth-popup")?.classList.remove("hidden");
@@ -54,7 +54,7 @@ export async function initHeader() {
 
     if (!hasScript) {
       const script = doc.createElement("script");
-      script.src = "../assets/js/auth.js";
+      script.src = "./assets/js/auth.js";
       script.dataset.authBootstrap = "true";
       script.onload = initAuth;
       doc.body.appendChild(script);
