@@ -175,7 +175,7 @@ export async function initPage() {
       console.error("Failed to parse currentUser from localStorage", e);
     }
     const newComment = {
-      author: currentUser.name || "User",
+      author: currentUser.fullName || "User",
       text: commentText,
       dateKey: "blog_comment_date_today",
       avatar:

@@ -12,7 +12,7 @@ let translations = {}; // Object chứa các chuỗi dịch thuật
  */
 async function loadTranslations(lang) {
   try {
-    const res = await fetch(`../../lang/${lang}.json`);
+    const res = await fetch(`././lang/${lang}.json`);
     if (!res.ok) throw new Error(`Không tìm thấy file ngôn ngữ: ${lang}.json`);
     translations = await res.json();
   } catch (err) {
