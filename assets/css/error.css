@@ -1,0 +1,149 @@
+:root {
+    --bg-color: #0f0f11;
+    --text-color: #e0e0e0;
+    --accent-yellow: #FFD700;
+    --accent-hover: #e6c200;
+    --secondary-bg: #1f1f22;
+    --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Reset cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ===== NỀN TRANG ===== */
+.background-shapes {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.1;
+    animation: float 15s infinite ease-in-out alternate;
+}
+
+.shape.circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-yellow);
+    top: -50px;
+    right: -100px;
+}
+
+.shape.square {
+    width: 150px;
+    height: 150px;
+    background: var(--accent-yellow);
+    bottom: 10%;
+    left: 5%;
+    transform: rotate(45deg);
+    animation-delay: -5s;
+}
+
+.shape.line {
+    width: 200px;
+    height: 4px;
+    background: var(--accent-yellow);
+    top: 40%;
+    left: -50px;
+    animation-duration: 20s;
+}
+
+@keyframes float {
+    from { transform: translate(0, 0) rotate(0deg); }
+    to   { transform: translate(20px, 40px) rotate(10deg); }
+}
+
+/* ===== KHUNG NỘI DUNG ===== */
+.container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+}
+
+/* ===== CHỮ & TIÊU ĐỀ ===== */
+.error-code {
+    font-size: 10rem;
+    font-weight: 800;
+    color: var(--accent-yellow);
+    letter-spacing: -5px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.error-code:hover {
+    animation: glitch 0.3s infinite;
+}
+
+.message-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.message-desc {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* ===== NÚT BẤM ===== */
+.btn-group {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-yellow);
+    color: #000;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* ===== HIỆU ỨNG ===== */
+@keyframes glitch {
+    0%   { transform: translate(0); }
+    25%  { transform: translate(-2px, 2px); }
+    50%  { transform: translate(2px, -2px); }
+    75%  { transform: translate(-2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 480px) {
+    .error-code { font-size: 6rem; }
+    .message-title { font-size: 1.5rem; }
+}
